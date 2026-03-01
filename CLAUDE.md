@@ -24,6 +24,7 @@ vargocity-site/        ← repo root (also git root)
     index.html
     vite.config.js
     package.json
+  sps-peaks.json        ← SPS peaks data at REPO ROOT (not inside vargocity-site/)
 ```
 
 ## Routes
@@ -79,3 +80,60 @@ npm run lint        # run ESLint
 ## Base URL
 
 Configured via `VITE_BASE_URL` env var (defaults to `/`). Set this for subdirectory deployments.
+
+---
+
+## Site voice & narrative framing (established 2026-03)
+
+The site was significantly reframed in early March 2026. Key decisions to preserve:
+
+- **AGI as north star**: The site now leads with AGI as where Jason's work is pointing. The hero and about page open with the 25-year question about AGI's societal impact. Avoid reverting to older "climate equity" or narrow disciplinary framing.
+- **"Learning how to learn"** and **"diverse viewpoints, shared values"** are two explicit organizing principles woven through the About page — keep them.
+- **About page title**: "In Motion" (was "How I Got Here") — intentional, keep it.
+- **Research section**: Soft title "A Career of Asking For Whom"; description names AI as the current direction alongside past climate/health work. The old "Climate Equity Research" label was deliberately retired.
+- **ThemeCards**: "Technology & Society" card is first with dark highlight treatment. "Climate Equity" was renamed to "Climate & Communities".
+- **CareerTimeline**: No equity flag visual treatment. Language is universal but accurate. The 2019 CDPH entry is split into two: climate work (2019) and COVID-19 modeling lead (2020).
+- **Mentors named in about.md**: Jonathan Patz, Joel Rogers (UW), DJ Patil (CDPH/COVID era) — these are real formative figures, keep them accurate.
+
+## SPS peaks data (`sps-peaks.json`)
+
+Located at the **repo root** (not inside `vargocity-site/`). Structure:
+
+```json
+{
+  "source": "Sierra Peak Section (SPS) Peaks List with Scrambler Ratings",
+  "source_url": "...",
+  "legend": { ... },
+  "regions": [
+    {
+      "name": "Region Name",
+      "peaks": [
+        {
+          "name": "Peak Name",
+          "elevation_ft": 14000,
+          "yds_rating": "3",
+          "scrambling_rating": "S-2.1",
+          "flags": ["emblem_peak"],
+          "status": "active",
+          "ascents": [          ← only present if ascended
+            {
+              "date": "YYYY-MM-DD",
+              "notes": "free text trip notes",
+              "strava_url": "https://www.strava.com/activities/..."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+- 248 total peaks across 24 regions
+- 14 peaks ascended as of 2026-03 (each with date, notes, optional Strava link)
+- `ascents` is an array — multiple summit dates per peak are supported
+- The Adventures page reads this data to display a checklist/map of summits
+
+## Deployment
+
+Hosted on GitHub Pages. A `404.html` redirect hack is in place to support React Router's client-side routing on direct URL access and refresh (see `public/404.html` and the script in `index.html`).
