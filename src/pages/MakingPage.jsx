@@ -4,11 +4,11 @@ import TabBar from '../components/shared/TabBar'
 import ToolCard from '../components/making/ToolCard'
 import FurnitureCard from '../components/making/FurnitureCard'
 import tools from '../data/tools.json'
-import furniture from '../data/furniture.json'
+import design from '../data/design.json'
 
 const tabs = [
   { id: 'software', label: 'Software Tools' },
-  { id: 'furniture', label: 'Furniture & Design' },
+  { id: 'design', label: 'Design' },
 ]
 
 export default function MakingPage() {
@@ -18,8 +18,8 @@ export default function MakingPage() {
     <div className="max-w-5xl mx-auto px-6 py-16">
       <SectionHeader
         label="Making"
-        title="Code & Wood"
-        description="Software tools and furniture built from salvaged materials. Two different practices, same impulse: make something useful out of what you have."
+        title="Code & Design"
+        description="Software tools and design projects. Two different practices, same impulse: make something useful out of what you have."
       />
 
       <div className="mb-8">
@@ -32,9 +32,9 @@ export default function MakingPage() {
         </div>
       )}
 
-      {tab === 'furniture' && (
+      {tab === 'design' && (
         <div className="grid sm:grid-cols-2 gap-4">
-          {furniture.map(item => <FurnitureCard key={item.id} item={item} />)}
+          {design.map(item => <FurnitureCard key={item.id} item={item} />)}
         </div>
       )}
     </div>

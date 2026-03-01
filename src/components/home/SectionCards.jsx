@@ -10,8 +10,8 @@ const cards = [
   {
     to: '/making',
     label: 'Making',
-    title: 'Code & Wood',
-    description: 'Software tools and furniture built from salvaged materials. If something useful doesn\'t exist, build it.',
+    title: 'Code & Design',
+    description: 'Software tools and design projects. If something useful doesn\'t exist, build it.',
   },
   {
     to: '/adventures',

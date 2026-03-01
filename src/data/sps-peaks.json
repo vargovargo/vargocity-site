@@ -1271,7 +1271,10 @@
             {
               "date": "2024-09-21",
               "notes": "Northwest Ridge with Baker and Wayno. Initial objective was to combine this with Williamson but we tried to traverse the ridge toward the Willy start and it took too long.",
-              "strava_url": "https://www.strava.com/activities/12486404993"
+              "strava_url": "https://www.strava.com/activities/12486404993", 
+              "photos": [
+                { "url": "placeholder rl", "caption": "placeholder" }
+              ]
             }
           ]
         },
@@ -3203,7 +3206,10 @@
             {
               "date": "2023-08-26",
               "notes": "Middle Pals trip. The initial objective was to traverse the ridge south toward Dissapointment Peak and South Fork Pass and then camp to make a loop. We got into sketchy 4th Class and had to turn around bzack over Middle Pal - the way we came up.",
-              "strava_url": "https://www.strava.com/activities/9733107765"
+              "strava_url": "https://www.strava.com/activities/9733107765", 
+              "photos": [
+                { "url": "placeholder rl", "caption": "placeholder" }
+              ]
             }
           ]
         },
@@ -3633,7 +3639,10 @@
             {
               "date": "2024-08-27",
               "notes": "Ben and I did Thnderbolt to Sill Traverse above North Palisade Glacier",
-              "strava_url": "https://www.strava.com/activities/12266940261"
+              "strava_url": "https://www.strava.com/activities/12266940261", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391293/IMG_6555_zxcjbl.jpg", "caption": "The final summit of the traverse" }
+              ]
             }
           ]
         },
@@ -3670,7 +3679,10 @@
             {
               "date": "2024-08-27",
               "notes": "Ben and I did Thnderbolt to Sill Traverse above North Palisade Glacier",
-              "strava_url": "https://www.strava.com/activities/12266940261"
+              "strava_url": "https://www.strava.com/activities/12266940261", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391311/IMG_6558_o6if1k.jpg", "caption": "Good shot of North Pal from Sill" }
+              ]
             }
           ]
         },
@@ -3697,7 +3709,10 @@
             {
               "date": "2024-08-27",
               "notes": "Ben and I did Thnderbolt to Sill Traverse above North Pallisade Glacier",
-              "strava_url": "https://www.strava.com/activities/12266940261"
+              "strava_url": "https://www.strava.com/activities/12266940261", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391247/IMG_6505_ouplhc.jpg", "caption": "Assending the North Pal Glacier toward a couloir where we gained the ridge." }
+              ]
             }
           ]
         },
@@ -4251,7 +4266,10 @@
             {
               "date": "2025-08-23",
               "notes": "Quick dawn patrol strike with Middle Pals. Working ithin a tight weather window during a weird summer heat wave and thnderstorms. But we met Peter Croft on this trip at Owens Gorge",
-              "strava_url": "https://www.strava.com/activities/15576493897"
+              "strava_url": "https://www.strava.com/activities/15576493897", 
+              "photos": [
+                { "url": "placeholder rl", "caption": "placeholder" }
+              ]
             }
           ]
         },
@@ -4654,7 +4672,11 @@
             {
               "date": "2024-08-25",
               "notes": "Fun trip with Middle Pals. Great basecamp, good climb, easy hiking in, beautiful.",
-              "strava_url": "https://www.strava.com/activities/12248711159"
+              "strava_url": "https://www.strava.com/activities/12248711159", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391171/IMG_6386_gsljie.jpg", "caption": "Looking up at the climb from near Dade Lake" }, 
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391236/IMG_6408_txsrtu.jpg", "caption": "Starting up the spire" }
+              ]
             }
           ]
         },
@@ -5457,7 +5479,10 @@
             {
               "date": "2018-09-30",
               "notes": "A last minute, late fall day-trip with Ben and Ajay.",
-              "strava_url": "https://www.strava.com/activities/1876772547"
+              "strava_url": "https://www.strava.com/activities/1876772547", 
+              "photos": [
+                { "url": "placeholder rl", "caption": "placeholder" }
+              ]
             }
           ]
         }
@@ -5495,7 +5520,10 @@
             {
               "date": "2025-07-12",
               "notes": "This was part of the Tuolumene Triple Crown with Ben and Wayno",
-              "strava_url": "https://www.strava.com/activities/15105946682"
+              "strava_url": "https://www.strava.com/activities/15105946682", 
+              "photos": [
+                { "url": "placeholder rl", "caption": "placeholder" }
+              ]
             }
           ]
         },
@@ -5746,12 +5774,18 @@
             {
               "date": "2023-09-18",
               "notes": "Ben and I slept Sunday night in the Saddlebag Lake parking lot and climbed it on Monday. rope for two rappels.",
-              "strava_url": "https://www.strava.com/activities/9877126448"
+              "strava_url": "https://www.strava.com/activities/9877126448", 
+              "photos": [
+                { "url": "placeholder rl", "caption": "placeholder" }
+              ]
             },
             {
               "date": "2024-07-16",
               "notes": "Ben and I combined North Ridge with the West Ridge",
-              "strava_url": "https://www.strava.com/activities/11906993358"
+              "strava_url": "https://www.strava.com/activities/11906993358", 
+              "photos": [
+                { "url": "placeholder rl", "caption": "placeholder" }
+              ]
             }
           ]
         },
@@ -5783,12 +5817,19 @@
             {
               "date": "2022-09-17",
               "notes": "While on a trip with the families Ben and I split off at COnness Lakes and tagged it from that side",
-              "strava_url": "https://www.strava.com/activities/7830461222"
+              "strava_url": "https://www.strava.com/activities/7830461222", 
+              "photos": [
+                { "url": "placeholder rl", "caption": "placeholder" }
+              ]
             },
             {
               "date": "2025-07-26",
               "notes": "Along with Siler and Arriton, Leo and I made it up from the north ridge",
-              "strava_url": "https://www.strava.com/activities/15263743067"
+              "strava_url": "https://www.strava.com/activities/15263743067",
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772385752/IMG_1481_w9wpgy.jpg", "caption": "Heading up the ridge" }, 
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772389956/IMG_1494_wbjbz7.jpg", "caption": "The view from the top" }
+              ]
             }
           ]
         },
@@ -6096,7 +6137,10 @@
             {
               "date": "2021-08-28",
               "notes": "First backpacking trip with Albany Dads. Up above Kennedy Meadows. This was a trip trip in the middle and we ran into some wildfire smoke.",
-              "strava_url": "https://www.strava.com/activities/5874502788"
+              "strava_url": "https://www.strava.com/activities/5874502788", 
+              "photos": [
+                { "url": "placeholder rl", "caption": "placeholder" }
+              ]
             }
           ]
         },
@@ -6233,7 +6277,10 @@
             {
               "date": "2025-05-25",
               "notes": "Aaron and I did a daytrip while camping at Grover Hot Springs. Still in snow, we glissaded down.",
-              "strava_url": "https://www.strava.com/activities/14605951551"
+              "strava_url": "https://www.strava.com/activities/14605951551", 
+              "photos": [
+                { "url": "placeholder rl", "caption": "placeholder" }
+              ]
             }
           ]
         },
@@ -6286,12 +6333,18 @@
             {
               "date": "2023-10-07",
               "notes": "Getting one more ridge run in at the end of this season. Invited Paul to join me and Ben. Camped at Wrights Lake and went up Price first and traversed to Pyramid",
-              "strava_url": "https://www.strava.com/activities/9996559552"
+              "strava_url": "https://www.strava.com/activities/9996559552", 
+              "photos": [
+                { "url": "placeholder rl", "caption": "placeholder" }
+              ]
             },
             {
               "date": "2025-07-06",
               "notes": "Jst back from Europe I joined Ben for a Tripple Training sprint. We went the other way on the ridge starting with Pyramid this time.",
-              "strava_url": "https://www.strava.com/activities/15030632541"
+              "strava_url": "https://www.strava.com/activities/15030632541", 
+              "photos": [
+                { "url": "placeholder rl", "caption": "placeholder" }
+              ]
             }
           ]
         },

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import SectionHeader from '../components/shared/SectionHeader'
 import TabBar from '../components/shared/TabBar'
 import AdventureStats from '../components/adventures/AdventureStats'
@@ -20,7 +21,8 @@ const peakViews = [
 ]
 
 export default function AdventuresPage() {
-  const [tab, setTab] = useState('peaks')
+  const [searchParams] = useSearchParams()
+  const [tab, setTab] = useState(searchParams.get('tab') || 'peaks')
   const [peakView, setPeakView] = useState('grid')
 
   return (

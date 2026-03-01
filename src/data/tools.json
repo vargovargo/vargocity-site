@@ -8,6 +8,14 @@
     "status": "live"
   },
   {
+    "id": "bread-planner",
+    "name": "Bread Planner",
+    "description": "A baking scheduler for sourdough and naturally leavened breads. Enter your desired bake time and it works backwards through fermentation, shaping, and proofing to tell you exactly when to start.",
+    "url": "https://vargo.shinyapps.io/breadplanner/",
+    "tech": ["R", "Shiny"],
+    "status": "live"
+  },
+  {
     "id": "campsite-dashboard",
     "name": "Campsite Dashboard",
     "description": "A planning dashboard for backcountry camping trips — tracking permits, gear checklists, and route data.",

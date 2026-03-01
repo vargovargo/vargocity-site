@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { allAscents } from '../../data/spsUtils'
+import Lightbox from './Lightbox'
 
 function StravaLink({ url }) {
   if (!url) return null
@@ -20,6 +22,8 @@ function StravaLink({ url }) {
 }
 
 export default function PeakTimeline() {
+  const [lightbox, setLightbox] = useState(null)
+
   if (allAscents.length === 0) {
     return (
       <p className="text-sm py-12 text-center" style={{ color: '#8A8A8A' }}>
@@ -29,46 +33,69 @@ export default function PeakTimeline() {
   }
 
   return (
-    <div className="relative">
-      <div className="absolute left-2.5 top-0 bottom-0 w-px" style={{ backgroundColor: '#E5E5E0' }} />
-      <div className="space-y-8">
-        {allAscents.map((ascent, i) => {
-          const { peak } = ascent
-          const displayDate = new Date(ascent.date + 'T00:00:00').toLocaleDateString('en-US', {
-            year: 'numeric', month: 'long', day: 'numeric',
-          })
-          return (
-            <div key={`${peak.id}-${ascent.date}-${i}`} className="relative pl-10">
-              <div
-                className="absolute left-0 top-1 w-5 h-5 rounded-full border-2"
-                style={{ backgroundColor: '#1A1A1A', borderColor: '#1A1A1A' }}
-              />
-              <p className="text-xs tabular-nums mb-0.5" style={{ color: '#8A8A8A' }}>
-                {displayDate}
-              </p>
-              <div className="flex items-baseline gap-3 flex-wrap">
-                <h3 className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>
-                  {peak.name}
-                </h3>
-                <span className="text-xs tabular-nums" style={{ color: '#8A8A8A' }}>
-                  {peak.elevation.toLocaleString()} ft
-                </span>
-                <StravaLink url={ascent.strava_url} />
+    <>
+      {lightbox && (
+        <Lightbox
+          photos={lightbox.photos}
+          peakName={lightbox.peakName}
+          startIndex={lightbox.startIndex}
+          onClose={() => setLightbox(null)}
+        />
+      )}
+      <div className="relative">
+        <div className="absolute left-2.5 top-0 bottom-0 w-px" style={{ backgroundColor: '#E5E5E0' }} />
+        <div className="space-y-8">
+          {allAscents.map((ascent, i) => {
+            const { peak } = ascent
+            const displayDate = new Date(ascent.date + 'T00:00:00').toLocaleDateString('en-US', {
+              year: 'numeric', month: 'long', day: 'numeric',
+            })
+            return (
+              <div key={`${peak.id}-${ascent.date}-${i}`} className="relative pl-10">
+                <div
+                  className="absolute left-0 top-1 w-5 h-5 rounded-full border-2"
+                  style={{ backgroundColor: '#1A1A1A', borderColor: '#1A1A1A' }}
+                />
+                <p className="text-xs tabular-nums mb-0.5" style={{ color: '#8A8A8A' }}>
+                  {displayDate}
+                </p>
+                <div className="flex items-baseline gap-3 flex-wrap">
+                  <h3 className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>
+                    {peak.name}
+                  </h3>
+                  <span className="text-xs tabular-nums" style={{ color: '#8A8A8A' }}>
+                    {peak.elevation.toLocaleString()} ft
+                  </span>
+                  <StravaLink url={ascent.strava_url} />
+                </div>
+                {peak.routes?.length > 0 && (
+                  <p className="text-xs mt-0.5" style={{ color: '#4A4A4A' }}>
+                    {peak.routes.map(r => r.description).join(' · ')}
+                  </p>
+                )}
+                {ascent.notes && (
+                  <p className="text-xs mt-1.5 leading-relaxed" style={{ color: '#4A4A4A' }}>
+                    {ascent.notes}
+                  </p>
+                )}
+                {ascent.photos?.length > 0 && (
+                  <div className="mt-2 flex gap-2 flex-wrap">
+                    {ascent.photos.map((photo, pi) => (
+                      <img
+                        key={pi}
+                        src={photo.url}
+                        alt={photo.caption || `${peak.name} photo`}
+                        className="h-32 w-auto rounded object-cover cursor-pointer"
+                        onClick={() => setLightbox({ photos: ascent.photos, peakName: peak.name, startIndex: pi })}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
-              {peak.routes?.length > 0 && (
-                <p className="text-xs mt-0.5" style={{ color: '#4A4A4A' }}>
-                  {peak.routes.map(r => r.description).join(' · ')}
-                </p>
-              )}
-              {ascent.notes && (
-                <p className="text-xs mt-1.5 leading-relaxed" style={{ color: '#4A4A4A' }}>
-                  {ascent.notes}
-                </p>
-              )}
-            </div>
-          )
-        })}
+            )
+          })}
+        </div>
       </div>
-    </div>
+    </>
   )
 }

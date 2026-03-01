@@ -6,7 +6,6 @@ const links = [
   { to: '/research', label: 'Research' },
   { to: '/making', label: 'Making' },
   { to: '/adventures', label: 'Adventures' },
-  { to: '/writing', label: 'Writing' },
 ]
 
 export default function SiteNav() {

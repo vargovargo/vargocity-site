@@ -3,8 +3,218 @@
     "iso": "US",
     "name": "United States",
     "continent": "North America",
-    "year_first_visited": 1978,
-    "cities": [],
-    "notes": "Home."
+    "visits": [
+      { "type": "lived", "year_start": 1979, "year_end": 1997, "cities": ["Southgate, MI"], "notes": "" },
+      { "type": "lived", "year_start": 1997, "year_end": 2002, "cities": ["Ann Arbor, MI"], "notes": "" },
+      { "type": "lived", "year_start": 2002, "year_end": 2004, "cities": ["Louisville, KY"], "notes": "" },
+      { "type": "lived", "year_start": 2004, "year_end": 2012, "cities": ["Atlanta, GA"], "notes": "" },
+      { "type": "lived", "year_start": 2012, "year_end": 2017, "cities": ["Madison, WI"], "notes": "" },
+      { "type": "lived", "year_start": 2017, "year_end": null, "cities": ["Albany, CA"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "IT",
+    "name": "Italy",
+    "continent": "Europe",
+    "visits": [
+      { "type": "visited", "year": 2000, "cities": ["Venice", "Rome", "Florence", "Sienna", "Pisa", "Milan"], "notes": "Spring Break Junior Year." },
+      { "type": "visited", "year": 2025, "month": 7, "cities": ["Rome", "Sienna", "Florence"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "PT",
+    "name": "Portugal",
+    "continent": "Europe",
+    "visits": [
+      { "type": "visited", "year": 2025, "month": 6, "cities": ["Lisbon", "Funchal"], "notes": "Summer 2025 Madeira." }
+    ]
+  },
+  {
+    "iso": "BS",
+    "name": "Bahamas",
+    "continent": "North America",
+    "visits": [
+      { "type": "visited", "year": 1998, "cities": ["Nassau"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "TH",
+    "name": "Thailand",
+    "continent": "Asia",
+    "visits": [
+      { "type": "visited", "year": 2001, "month": 1,"cities": ["Bangkok","Chiang Mai","Ko Samui","Ko Tao","Ko Pha Ngan"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "MY",
+    "name": "Malaysia",
+    "continent": "Asia",
+    "visits": [
+      { "type": "visited", "year": 2001, "month": 2,"cities": ["Penang"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "SG",
+    "name": "Singapore",
+    "continent": "Asia",
+    "visits": [
+      { "type": "visited", "year": 2001, "month": 3,"cities": [""], "notes": "" }
+    ]
+  },
+  {
+    "iso": "ID",
+    "name": "Indonesia",
+    "continent": "Asia",
+    "visits": [
+      { "type": "visited", "year": 2001, "month": 4,"cities": ["Surabaya","Jakarta","Denpasar", "Ubud","Medan"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "LA",
+    "name": "Laos",
+    "continent": "Asia",
+    "visits": [
+      { "type": "visited", "year": 2001, "month": 5,"cities": ["Luang Prabang","Vang Vieng","Vientiane"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "VN",
+    "name": "Vietnam",
+    "continent": "Asia",
+    "visits": [
+      { "type": "visited", "year": 2001, "month": 6,"cities": ["Hanoi","Hoi An","Hue","Nha Trang","Dalat","Ho Chi Minh City", "Can Tho"], "notes": "" }, 
+       { "type": "lived","year_start": 2001, "year_end": 2002,  "cities": ["Ho Chi Minh City"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "KH",
+    "name": "Cambodia",
+    "continent": "Asia",
+    "visits": [
+      { "type": "visited", "year": 2001, "month": 7,"cities": ["Phnom Penh","Siem Reap"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "CN",
+    "name": "China",
+    "continent": "Asia",
+    "visits": [
+      { "type": "visited", "year": 2002, "month": 3, "cities": ["Kunming","Dali","Chongqing", "Shanghai","Xi'An","Beijing","Guangzhou"], "notes": "" },
+      { "type": "visited", "year": 2004, "month": 3, "cities": ["Tianjin", "Shanghai","Shenzhen"], "notes": "" }    
+    ]
+  }, 
+  {
+    "iso": "HK",
+    "name": "Hong Kong",
+    "continent": "Asia",
+    "visits": [
+      { "type": "visited", "year": 2002,"month": 4,"cities": [""], "notes": "" },
+      { "type": "visited", "year": 2004,"month": 4,"cities": [""], "notes": "" }
+    ]
+  }, 
+  {
+    "iso": "ET",
+    "name": "Ethiopia",
+    "continent": "Africa",
+    "visits": [
+      { "type": "visited", "year": 2013,"month": 6,"cities": ["Addis Ababa","Bahir Dar","Hawassa","Simien Mountains"], "notes": "" },
+      { "type": "visited", "year": 2014,"month": 1,"cities": ["Addis Ababa","Bahir Dar"], "notes": "" },
+      { "type": "visited", "year": 2015,"month": 6,"cities": ["Addis Ababa","Bahir Dar"], "notes": "" }
+    ]
+  }, 
+  {
+    "iso": "CA",
+    "name": "Canada",
+    "continent": "North America",
+    "visits": [
+      { "type": "visited", "year": 2003,"month": 4,"cities": ["Montreal"], "notes": "" },
+        { "type": "visited", "year": 2008,"month": 4,"cities": ["Vancouver Island"], "notes": "" },
+       { "type": "visited", "year": 2009,"month": 4,"cities": ["Vancouver"], "notes": "" },
+      { "type": "visited", "year": 2026,"month": 1,"cities": ["Revelestoke"], "notes": "" }
+    ]
+  }, 
+  {
+    "iso": "MX",
+    "name": "Mexico",
+    "continent": "North America",
+    "visits": [
+      { "type": "visited", "year": 2025,"month": 12,"cities": ["Mexico City"], "notes": "" },
+        { "type": "visited", "year": 2026,"month": 2,"cities": ["Todos Santos"], "notes": "" },
+        { "type": "visited", "year": 2025,"month": 2,"cities": ["Todos Santos"], "notes": "" },
+       { "type": "visited", "year": 2024,"month": 1,"cities": ["Todos Santos"], "notes": "" },
+        { "type": "visited", "year": 2023,"month": 1,"cities": ["Todos Santos"], "notes": "" }
+    ]
+  }, 
+  {
+    "iso": "CL",
+    "name": "Chile",
+    "continent": "South America",
+    "visits": [        
+      { "type": "visited", "year": 2023,"month": 1,"cities": ["Santiago", "Valparaiso"], "notes": "" }
+    ]
+  }, 
+  {
+    "iso": "PE",
+    "name": "Peru",
+    "continent": "South America",
+    "visits": [        
+      { "type": "visited", "year": 2023,"month": 1,"cities": ["Tacna","Cusco", "Aguas Calientes"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "BO",
+    "name": "Bolivia",
+    "continent": "South America",
+    "visits": [        
+      { "type": "visited", "year": 2023,"month": 3,"cities": ["La Paz", "Potosi", "Isla del Sol"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "AR",
+    "name": "Argentina",
+    "continent": "South America",
+    "visits": [        
+      { "type": "visited", "year": 2023,"month": 4,"cities": ["Buenos Aires", "Salta", "Cordoba", "Mendoza"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "GB",
+    "name": "England",
+    "continent": "Europe",
+    "visits": [        
+      { "type": "visited", "year": 2003,"month": 4,"cities": ["London", "Dover","Canterbury"], "notes": "" }
+    ]
+  },
+  {
+    "iso": "FR",
+    "name": "France",
+    "continent": "Europe",
+    "visits": [        
+      { "type": "visited", "year": 2003,"month": 4,"cities": ["Lyon"], "notes": "" }
+    ]
+  }, 
+  {
+    "iso": "NL",
+    "name": "Netherlands",
+    "continent": "Europe",
+    "visits": [        
+      { "type": "visited", "year": 2003,"month": 5,"cities": ["Amsterdam","Noordwijk","Sassenheim"], "notes": "" }
+    ]
+  },
+   {
+    "iso": "DK",
+    "name": "Denmark",
+    "continent": "Europe",
+    "visits": [        
+      { "type": "visited", "year": 2003,"month": 6,"cities": ["Copenhagen"], "notes": "" }
+    ]
+  }, 
+   {
+    "iso": "SE",
+    "name": "Sweden",
+    "continent": "Europe",
+    "visits": [        
+      { "type": "visited", "year": 2003,"month": 7,"cities": ["Malmo","Lund"], "notes": "" }
+    ]
   }
 ]

@@ -21,6 +21,7 @@ const isoAlpha2ToNumeric = {
   CR: '188', GT: '320', HN: '340', PA: '591', CU: '192', DO: '214',
   PR: '630', JM: '388', TT: '780', EC: '218', BO: '068', PY: '600',
   UY: '858', VE: '862', PG: '598', FJ: '242',
+  LA: '418', BS: '044', KH: '116',
 }
 
 export default function WorldMap() {
@@ -35,8 +36,8 @@ export default function WorldMap() {
             geographies.map((geo) => {
               // Check if this geography's numeric ID matches any visited country
               const numericId = geo.id?.toString()
-              const isVisited = [...visitedISOs].some(
-                iso => isoAlpha2ToNumeric[iso] === numericId
+              const isVisited = !!numericId && [...visitedISOs].some(
+                iso => iso && isoAlpha2ToNumeric[iso] === numericId
               )
               return (
                 <Geography
