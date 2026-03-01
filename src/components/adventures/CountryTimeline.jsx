@@ -1,46 +1,56 @@
 import countries from '../../data/countries.json'
 
-const sorted = [...countries].sort((a, b) => a.year_first_visited - b.year_first_visited)
+// Flatten all visits, attach country info
+const allVisits = countries.flatMap(c =>
+  c.visits.map(v => ({ ...v, country: c }))
+)
 
-// Group by decade
-const byDecade = sorted.reduce((acc, c) => {
-  const decade = Math.floor(c.year_first_visited / 10) * 10
-  const key = `${decade}s`
-  if (!acc[key]) acc[key] = []
-  acc[key].push(c)
-  return acc
-}, {})
+// Sort by start year (lived) or year (visited), then month, nulls last
+const sorted = [...allVisits].sort((a, b) => {
+  const aYear = a.type === 'lived' ? a.year_start : a.year
+  const bYear = b.type === 'lived' ? b.year_start : b.year
+  if (aYear === null && bYear === null) return 0
+  if (aYear === null) return 1
+  if (bYear === null) return -1
+  if (aYear !== bYear) return aYear - bYear
+  return (a.month ?? 0) - (b.month ?? 0)
+})
+
+function yearLabel(v) {
+  if (v.type === 'lived') {
+    return v.year_end ? `${v.year_start}–${v.year_end}` : `${v.year_start}–present`
+  }
+  return v.year ?? '—'
+}
 
 export default function CountryTimeline() {
   if (sorted.length === 0) {
     return <p className="text-sm py-12 text-center" style={{ color: '#8A8A8A' }}>No countries logged yet.</p>
   }
   return (
-    <div className="space-y-8">
-      {Object.entries(byDecade).map(([decade, items]) => (
-        <div key={decade}>
-          <p className="text-xs font-medium uppercase tracking-wider mb-3" style={{ color: '#8A8A8A' }}>
-            {decade}
-          </p>
-          <div className="space-y-2">
-            {items.map((c) => (
-              <div key={c.iso} className="flex items-start gap-4">
-                <span className="text-xs tabular-nums w-8 pt-px" style={{ color: '#8A8A8A' }}>
-                  {c.year_first_visited}
+    <div className="space-y-2">
+      {sorted.map((v, i) => (
+        <div key={i} className="flex items-start gap-4">
+          <span className="text-xs tabular-nums w-24 shrink-0 pt-px" style={{ color: '#8A8A8A' }}>
+            {yearLabel(v)}
+          </span>
+          <div>
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{v.country.name}</span>
+              {v.type === 'lived' && (
+                <span className="text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: '#F4F4F0', color: '#8A8A8A' }}>
+                  lived
                 </span>
-                <div>
-                  <span className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{c.name}</span>
-                  {c.cities?.length > 0 && (
-                    <span className="text-xs ml-2" style={{ color: '#4A4A4A' }}>
-                      {c.cities.join(', ')}
-                    </span>
-                  )}
-                  {c.notes && (
-                    <p className="text-xs mt-0.5" style={{ color: '#8A8A8A' }}>{c.notes}</p>
-                  )}
-                </div>
-              </div>
-            ))}
+              )}
+              {v.cities?.length > 0 && (
+                <span className="text-xs" style={{ color: '#4A4A4A' }}>
+                  {v.cities.join(', ')}
+                </span>
+              )}
+            </div>
+            {v.notes && (
+              <p className="text-xs mt-0.5" style={{ color: '#8A8A8A' }}>{v.notes}</p>
+            )}
           </div>
         </div>
       ))}

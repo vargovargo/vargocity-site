@@ -20,12 +20,6 @@ export default function Footer() {
             style={{ color: '#8A8A8A' }}>
             Fed Profile
           </a>
-          <a href="https://twitter.com/_vargo"
-            target="_blank" rel="noopener noreferrer"
-            className="text-xs transition-colors hover:text-[#1A1A1A]"
-            style={{ color: '#8A8A8A' }}>
-            @_vargo
-          </a>
           <a href="https://github.com/vargovargo"
             target="_blank" rel="noopener noreferrer"
             className="text-xs transition-colors hover:text-[#1A1A1A]"

@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { climbedPeaks } from '../../data/spsUtils'
+import Lightbox from './Lightbox'
 
 // Most recently climbed first
 const sorted = [...climbedPeaks].sort((a, b) => {
@@ -26,7 +28,10 @@ function StravaLink({ url }) {
   )
 }
 
+
 export default function PeakGrid() {
+  const [lightbox, setLightbox] = useState(null) // { photo, peakName }
+
   if (sorted.length === 0) {
     return (
       <p className="text-sm py-12 text-center" style={{ color: '#8A8A8A' }}>
@@ -35,47 +40,77 @@ export default function PeakGrid() {
     )
   }
   return (
-    <div
-      className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px"
-      style={{ border: '1px solid #E5E5E0', backgroundColor: '#E5E5E0' }}
-    >
-      {sorted.map((peak) => {
-        const lastAscent = peak.ascents.at(-1)
-        const displayDate = lastAscent?.date
-          ? new Date(lastAscent.date + 'T00:00:00').toLocaleDateString('en-US', {
-              year: 'numeric', month: 'short', day: 'numeric',
-            })
-          : null
-        return (
-          <div key={peak.id} className="p-5" style={{ backgroundColor: '#FFFFFF' }}>
-            <div className="flex items-start justify-between gap-2">
-              <h3 className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>{peak.name}</h3>
-              <span className="text-xs tabular-nums shrink-0" style={{ color: '#8A8A8A' }}>
-                {peak.elevation.toLocaleString()} ft
-              </span>
+    <>
+      {lightbox && (
+        <Lightbox
+          photos={lightbox.photos}
+          peakName={lightbox.peakName}
+          onClose={() => setLightbox(null)}
+        />
+      )}
+      <div
+        className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px"
+        style={{ border: '1px solid #E5E5E0', backgroundColor: '#E5E5E0' }}
+      >
+        {sorted.map((peak) => {
+          const lastAscent = peak.ascents.at(-1)
+          const displayDate = lastAscent?.date
+            ? new Date(lastAscent.date + 'T00:00:00').toLocaleDateString('en-US', {
+                year: 'numeric', month: 'short', day: 'numeric',
+              })
+            : null
+          const photo = lastAscent?.photos?.[0]
+          return (
+            <div
+              key={peak.id}
+              className="relative overflow-hidden"
+              style={{ backgroundColor: '#FFFFFF', cursor: photo ? 'pointer' : 'default' }}
+              onClick={photo ? () => setLightbox({ photos: lastAscent.photos, peakName: peak.name }) : undefined}
+            >
+              {photo && (
+                <>
+                  <img
+                    src={photo.url}
+                    alt={photo.caption || `${peak.name} summit`}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    style={{ opacity: 0.6 }}
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 100%)' }}
+                  />
+                </>
+              )}
+              <div className="relative p-5">
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="text-sm font-semibold" style={{ color: photo ? '#FFFFFF' : '#1A1A1A' }}>{peak.name}</h3>
+                  <span className="text-xs tabular-nums shrink-0" style={{ color: photo ? 'rgba(255,255,255,0.7)' : '#8A8A8A' }}>
+                    {peak.elevation.toLocaleString()} ft
+                  </span>
+                </div>
+                {displayDate && (
+                  <p className="text-xs mt-1" style={{ color: photo ? 'rgba(255,255,255,0.6)' : '#8A8A8A' }}>
+                    {displayDate}
+                  </p>
+                )}
+                {lastAscent?.notes && (
+                  <p className="text-xs mt-2 leading-relaxed" style={{ color: photo ? 'rgba(255,255,255,0.75)' : '#4A4A4A' }}>
+                    {lastAscent.notes.length > 120
+                      ? lastAscent.notes.slice(0, 120) + '…'
+                      : lastAscent.notes}
+                  </p>
+                )}
+                {peak.ascents.length > 1 && (
+                  <p className="text-xs mt-1" style={{ color: photo ? 'rgba(255,255,255,0.5)' : '#8A8A8A' }}>
+                    {peak.ascents.length} ascents
+                  </p>
+                )}
+                <StravaLink url={lastAscent?.strava_url} />
+              </div>
             </div>
-            {displayDate && (
-              <p className="text-xs mt-1" style={{ color: '#8A8A8A' }}>
-                {displayDate}
-                {peak.routes?.length > 0 && ` · ${peak.routes[0].description}`}
-              </p>
-            )}
-            {lastAscent?.notes && (
-              <p className="text-xs mt-2 leading-relaxed" style={{ color: '#4A4A4A' }}>
-                {lastAscent.notes.length > 120
-                  ? lastAscent.notes.slice(0, 120) + '…'
-                  : lastAscent.notes}
-              </p>
-            )}
-            {peak.ascents.length > 1 && (
-              <p className="text-xs mt-1" style={{ color: '#8A8A8A' }}>
-                {peak.ascents.length} ascents
-              </p>
-            )}
-            <StravaLink url={lastAscent?.strava_url} />
-          </div>
-        )
-      })}
-    </div>
+          )
+        })}
+      </div>
+    </>
   )
 }
