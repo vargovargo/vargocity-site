@@ -4682,7 +4682,8 @@
               "strava_url": "https://www.strava.com/activities/12248711159", 
               "photos": [
                 { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391171/IMG_6386_gsljie.jpg", "caption": "Looking up at the climb from near Dade Lake" }, 
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391236/IMG_6408_txsrtu.jpg", "caption": "Starting up the spire" }
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391236/IMG_6408_txsrtu.jpg", "caption": "Starting up the spire" }, 
+                 { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772434751/image_pmrtsc.jpg", "caption": "Some exposure near the top." }
               ]
             }
           ]
@@ -6355,7 +6356,7 @@
               "strava_url": "https://www.strava.com/activities/9996559552", 
               "photos": [
                 { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431084/image_ci7nym.jpg", "caption": "Making our wasy toward Pyramid along the ridge from Price." },
-                 { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431064/image_iijm1g.jpg", "caption": "Paul nearing the summit." },
+                 { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431102/image_zzfrd6.jpg", "caption": "Paul nearing the summit." },
                   { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431064/image_iijm1g.jpg", "caption": "Granled wood on the way up." }
               ]
             },
