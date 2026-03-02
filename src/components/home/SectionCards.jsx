@@ -5,7 +5,7 @@ const cards = [
     to: '/research',
     label: 'Research',
     title: 'A Career of Asking For Whom',
-    description: 'Twenty-five years of measuring how powerful systems distribute harm — through cities, climate, and now AI. The publications carry the detail; this is the through-line.',
+    description: 'Twenty-five years of measuring how powerful systems shape opportunity — and how to make that opportunity more widely shared. Through cities, climate, and now AI.',
   },
   {
     to: '/making',

@@ -7,7 +7,6 @@ import PeakGrid from '../components/adventures/PeakGrid'
 import PeakTimeline from '../components/adventures/PeakTimeline'
 import ElevationChart from '../components/adventures/ElevationChart'
 import WorldMap from '../components/adventures/WorldMap'
-import CountryTimeline from '../components/adventures/CountryTimeline'
 
 const tabs = [
   { id: 'peaks', label: 'Sierra Peaks' },
@@ -78,10 +77,9 @@ export default function AdventuresPage() {
       {tab === 'countries' && (
         <div>
           <AdventureStats section="countries" />
-          <div className="mt-6 mb-8">
+          <div className="mt-6">
             <WorldMap />
           </div>
-          <CountryTimeline />
         </div>
       )}
     </div>
