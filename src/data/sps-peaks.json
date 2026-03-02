@@ -1271,7 +1271,14 @@
             {
               "date": "2024-09-21",
               "notes": "Northwest Ridge with Baker and Wayno. Initial objective was to combine this with Williamson but we tried to traverse the ridge toward the Willy start and it took too long.",
-              "strava_url": "https://www.strava.com/activities/12486404993"
+              "strava_url": "https://www.strava.com/activities/12486404993", 
+              "photos": [
+                          { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772423286/image_tokr4a.jpg", "caption": "Staring down the ridge toward the summit." },
+                          { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772423596/image_nd4wit.jpg", "caption": "Looking west at first light." },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772423544/image_ujezpn.jpg", "caption": "Tyndall with a fresh dusting of snow." }, 
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772423365/image_ccrdkp.jpg", "caption": "Shepard's Pass by sunrise." } 
+
+              ]
             }
           ]
         },
@@ -3203,7 +3210,12 @@
             {
               "date": "2023-08-26",
               "notes": "Middle Pals trip. The initial objective was to traverse the ridge south toward Dissapointment Peak and South Fork Pass and then camp to make a loop. We got into sketchy 4th Class and had to turn around bzack over Middle Pal - the way we came up.",
-              "strava_url": "https://www.strava.com/activities/9733107765"
+              "strava_url": "https://www.strava.com/activities/9733107765", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432396/image_cossdb.jpg", "caption": "Sitting at the Summit after turning back." },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432288/image_uwyjec.jpg", "caption": "A good view of the objective at dawn." },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432251/image_mlszpy.jpg", "caption": "A tradition is born." }
+              ]
             }
           ]
         },
@@ -4260,7 +4272,11 @@
             {
               "date": "2025-08-23",
               "notes": "Quick dawn patrol strike with Middle Pals. Working ithin a tight weather window during a weird summer heat wave and thnderstorms. But we met Peter Croft on this trip at Owens Gorge",
-              "strava_url": "https://www.strava.com/activities/15576493897"
+              "strava_url": "https://www.strava.com/activities/15576493897", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430513/image_kmg7rm.jpg", "caption": "Ben on the summit" },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430488/image_cjaemq.jpg", "caption": "Getting back just before the storm." }
+              ]
             }
           ]
         },
@@ -5470,7 +5486,11 @@
             {
               "date": "2018-09-30",
               "notes": "A last minute, late fall day-trip with Ben and Ajay.",
-              "strava_url": "https://www.strava.com/activities/1876772547"
+              "strava_url": "https://www.strava.com/activities/1876772547", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432913/image_zwel7s.jpg", "caption": "Looking down at The Valley." }, 
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432869/image_iu28ku.jpg", "caption": "Kicking back at the top." }
+              ]
             }
           ]
         }
@@ -5508,7 +5528,11 @@
             {
               "date": "2025-07-12",
               "notes": "This was part of the Tuolumene Triple Crown with Ben and Wayno",
-              "strava_url": "https://www.strava.com/activities/15105946682"
+              "strava_url": "https://www.strava.com/activities/15105946682", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430717/image_w8ioxu.jpg", "caption": "The objective. Final climab of the day." }, 
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430706/image_vcyq1e.jpg", "caption": "We started down as the sun set and made it back to the ambo in the dark." }
+              ]
             }
           ]
         },
@@ -5761,15 +5785,22 @@
               "notes": "Ben and I slept Sunday night in the Saddlebag Lake parking lot and climbed it on Monday. rope for two rappels.",
               "strava_url": "https://www.strava.com/activities/9877126448", 
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392380/IMG_2011_bctlbv.jpg", "caption": "" }, 
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392329/IMG_1971_dov4kh.jpg", "caption": "The peak in alpenglow" }, 
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392322/IMG_1981_oyvxtt.jpg", "caption": "A good shot of the ridge from the saddle above Conness Lakes" }
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392322/IMG_1981_oyvxtt.jpg", "caption": "A good look at the objective from the saddle above Conness Lakes." },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392329/IMG_1971_dov4kh.jpg", "caption": "Alpenglow on Mt. Conness." }, 
+                   { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392380/IMG_2011_bctlbv.jpg", "caption": "This position will get you hooked." }
+
               ]
             },
             {
               "date": "2024-07-16",
               "notes": "Ben and I combined North Ridge with the West Ridge",
-              "strava_url": "https://www.strava.com/activities/11906993358"
+              "strava_url": "https://www.strava.com/activities/11906993358", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431467/image_cs3yyb.jpg", "caption": "Heading up the West Ridge." },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431535/image_vo2638.jpg", "caption": "Went up the North Ridge first." },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431573/image_rsqrkv.jpg", "caption": "And then up the West Ridge." },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431528/image_djinpp.jpg", "caption": "A perch on North Ridge." }
+              ]
             }
           ]
         },
@@ -5801,7 +5832,11 @@
             {
               "date": "2022-09-17",
               "notes": "While on a trip with the families Ben and I split off at Conness Lakes and tagged it from that side",
-              "strava_url": "https://www.strava.com/activities/7830461222"
+              "strava_url": "https://www.strava.com/activities/7830461222", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432023/image_js184n.jpg", "caption": "Already on to the next objective. Schemeing about Conness." },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432108/image_qlo711.jpg", "caption": "Walking back past Conness Lakes." }
+              ]
             },
             {
               "date": "2025-07-26",
@@ -6118,7 +6153,12 @@
             {
               "date": "2021-08-28",
               "notes": "First backpacking trip with Albany Dads. Up above Kennedy Meadows. This was a trip trip in the middle and we ran into some wildfire smoke.",
-              "strava_url": "https://www.strava.com/activities/5874502788"
+              "strava_url": "https://www.strava.com/activities/5874502788", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432628/image_mkwm16.jpg", "caption": "Getting some bouldering in on the descent." },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432671/image_qp7xil.jpg", "caption": "Heading down through the haze." },
+                             { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432565/image_rkaxwd.jpg", "caption": "Obligatory handstand pic." }
+              ]
             }
           ]
         },
@@ -6255,7 +6295,11 @@
             {
               "date": "2025-05-25",
               "notes": "Aaron and I did a daytrip while camping at Grover Hot Springs. Still in snow, we glissaded down.",
-              "strava_url": "https://www.strava.com/activities/14605951551"
+              "strava_url": "https://www.strava.com/activities/14605951551", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431296/image_jkx1ha.jpg", "caption": "Sliding down from the final section." },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431301/image_pobtsb.jpg", "caption": "Sliding down from the final section." }
+              ]
             }
           ]
         },
@@ -6308,12 +6352,20 @@
             {
               "date": "2023-10-07",
               "notes": "Getting one more ridge run in at the end of this season. Invited Paul to join me and Ben. Camped at Wrights Lake and went up Price first and traversed to Pyramid",
-              "strava_url": "https://www.strava.com/activities/9996559552"
+              "strava_url": "https://www.strava.com/activities/9996559552", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431084/image_ci7nym.jpg", "caption": "Making our wasy toward Pyramid along the ridge from Price." },
+                 { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431064/image_iijm1g.jpg", "caption": "Paul nearing the summit." },
+                  { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431064/image_iijm1g.jpg", "caption": "Granled wood on the way up." }
+              ]
             },
             {
               "date": "2025-07-06",
-              "notes": "Jst back from Europe I joined Ben for a Tripple Training sprint. We went the other way on the ridge starting with Pyramid this time.",
-              "strava_url": "https://www.strava.com/activities/15030632541"
+              "notes": "Just back from Europe I joined Ben for a Tripple Training sprint. We went the other way on the ridge starting with Pyramid this time.",
+              "strava_url": "https://www.strava.com/activities/15030632541", 
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430917/image_rocckv.jpg", "caption": "Heading down the ridge above Aloha Lake." }
+              ]
             }
           ]
         },
