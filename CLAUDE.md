@@ -24,7 +24,7 @@ vargocity-site/        ← repo root (also git root)
     index.html
     vite.config.js
     package.json
-  sps-peaks.json        ← SPS peaks data at REPO ROOT (not inside vargocity-site/)
+      data/             ← static JSON (countries, furniture, peaks, publications, scholar, tools)
 ```
 
 ## Routes
@@ -97,7 +97,7 @@ The site was significantly reframed in early March 2026. Key decisions to preser
 
 ## SPS peaks data (`sps-peaks.json`)
 
-Located at the **repo root** (not inside `vargocity-site/`). Structure:
+Located at `src/data/sps-peaks.json`. Structure:
 
 ```json
 {
