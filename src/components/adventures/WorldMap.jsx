@@ -1,54 +1,70 @@
+import { useState, useRef } from 'react'
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
 import countries from '../../data/countries.json'
 
-const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json'
+// Natural Earth GeoJSON — separates overseas territories (French Guiana, etc.)
+// Uses ISO_A2 property directly, no numeric ID lookup needed
+const GEO_URL = 'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_110m_admin_0_countries.geojson'
 
-const visitedISOs = new Set(countries.map(c => c.iso))
+const visitedISOs = new Set(countries.map(c => c.iso).filter(Boolean))
 
-// ISO 3166-1 alpha-2 to numeric mapping for common countries
-// react-simple-maps uses numeric ISO codes internally
-const isoAlpha2ToNumeric = {
-  US: '840', GB: '826', FR: '250', DE: '276', IT: '380', ES: '724',
-  JP: '392', CN: '156', AU: '036', CA: '124', MX: '484', BR: '076',
-  IN: '356', ZA: '710', NG: '566', EG: '818', KE: '404', MA: '504',
-  AR: '032', CL: '152', CO: '170', PE: '604', NZ: '554', KR: '410',
-  TH: '764', VN: '704', ID: '360', PH: '608', MY: '458', SG: '702',
-  HK: '344', TW: '158', PT: '620', NL: '528', BE: '056', CH: '756',
-  AT: '040', SE: '752', NO: '578', DK: '208', FI: '246', PL: '616',
-  CZ: '203', HU: '348', RO: '642', GR: '300', TR: '792', IL: '376',
-  SA: '682', AE: '784', QA: '634', KW: '414', JO: '400', LB: '422',
-  GH: '288', TZ: '834', UG: '800', ET: '231', SN: '686', CI: '384',
-  CR: '188', GT: '320', HN: '340', PA: '591', CU: '192', DO: '214',
-  PR: '630', JM: '388', TT: '780', EC: '218', BO: '068', PY: '600',
-  UY: '858', VE: '862', PG: '598', FJ: '242',
-  LA: '418', BS: '044', KH: '116',
+// Map ISO → country data for click panel
+const isoToCountry = {}
+countries.forEach(c => { if (c.iso) isoToCountry[c.iso] = c })
+
+function yearLabel(v) {
+  if (v.type === 'lived') {
+    return v.year_end ? `${v.year_start}–${v.year_end}` : `${v.year_start}–present`
+  }
+  return v.year ?? '—'
 }
 
 export default function WorldMap() {
+  const [tooltip, setTooltip] = useState(null) // { country, x, y }
+  const containerRef = useRef(null)
+
+  const handleClick = (geo, e) => {
+    const iso = geo.properties?.ISO_A2
+    const country = iso ? isoToCountry[iso] : null
+    if (!country) return
+
+    if (tooltip?.country.iso === country.iso) {
+      setTooltip(null)
+      return
+    }
+
+    const rect = containerRef.current.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    setTooltip({ country, x, y })
+  }
+
   return (
-    <div>
+    <div ref={containerRef} className="relative" onClick={(e) => {
+      // click on map background dismisses tooltip
+      if (e.target.tagName === 'svg' || e.target.tagName === 'rect') setTooltip(null)
+    }}>
       <ComposableMap
         projectionConfig={{ scale: 147 }}
         style={{ width: '100%', height: 'auto' }}
       >
         <Geographies geography={GEO_URL}>
           {({ geographies }) =>
-            geographies.map((geo) => {
-              // Check if this geography's numeric ID matches any visited country
-              const numericId = geo.id?.toString()
-              const isVisited = !!numericId && [...visitedISOs].some(
-                iso => iso && isoAlpha2ToNumeric[iso] === numericId
-              )
+            geographies.filter(geo => geo.properties?.ISO_A2 !== 'AQ').map((geo) => {
+              const iso = geo.properties?.ISO_A2
+              const isVisited = iso && visitedISOs.has(iso)
+              const isSelected = iso && tooltip?.country.iso === iso
               return (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  fill={isVisited ? '#1A1A1A' : '#E5E5E0'}
+                  onClick={(e) => handleClick(geo, e)}
+                  fill={isSelected ? '#FC4C02' : isVisited ? '#1A1A1A' : '#E5E5E0'}
                   stroke="#FAFAF8"
                   strokeWidth={0.5}
                   style={{
-                    default: { outline: 'none' },
-                    hover: { outline: 'none', fill: isVisited ? '#4A4A4A' : '#D0D0C8' },
+                    default: { outline: 'none', cursor: isVisited ? 'pointer' : 'default' },
+                    hover: { outline: 'none', fill: isSelected ? '#FC4C02' : isVisited ? '#4A4A4A' : '#D0D0C8', cursor: isVisited ? 'pointer' : 'default' },
                     pressed: { outline: 'none' },
                   }}
                 />
@@ -57,6 +73,37 @@ export default function WorldMap() {
           }
         </Geographies>
       </ComposableMap>
+
+      {tooltip && (
+        <div
+          className="absolute z-10 p-3 shadow-lg pointer-events-none"
+          style={{
+            left: tooltip.x + 12,
+            top: tooltip.y + 12,
+            backgroundColor: '#1A1A1A',
+            color: '#FFFFFF',
+            minWidth: '160px',
+            maxWidth: '240px',
+          }}
+        >
+          <p className="text-xs font-semibold mb-2">{tooltip.country.name}</p>
+          <div className="space-y-1">
+            {tooltip.country.visits.map((v, i) => {
+              const cities = v.cities?.filter(c => c).join(', ')
+              return (
+                <div key={i}>
+                  <span className="text-xs tabular-nums" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                    {yearLabel(v)}{v.type === 'lived' ? ' · lived' : ''}
+                  </span>
+                  {cities && (
+                    <p className="text-xs" style={{ color: 'rgba(255,255,255,0.85)' }}>{cities}</p>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

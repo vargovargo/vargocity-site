@@ -17,7 +17,7 @@ export default function ResearchPage() {
       <SectionHeader
         label="Research"
         title="A Career of Asking For Whom"
-        description="I study how large systems — urban environments, climate, economies — distribute harm unevenly, and what measurement and policy can do about it. The work is now pointing toward AI."
+        description="I study how large systems — urban environments, climate, economies — shape opportunity unevenly, and what measurement and policy can do to change that. The work is now pointing toward AI."
       />
 
       {/* Research Themes */}

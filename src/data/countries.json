@@ -216,5 +216,21 @@
     "visits": [        
       { "type": "visited", "year": 2003,"month": 7,"cities": ["Malmo","Lund"], "notes": "" }
     ]
+  }, 
+   {
+    "iso": "HR",
+    "name": "Croatia",
+    "continent": "Europe",
+    "visits": [        
+      { "type": "visited", "year": 2023,"month": 3,"cities": ["Zagreb","Baska"], "notes": "" }
+    ]
+  }, 
+     {
+    "iso": "CO",
+    "name": "Colombia",
+    "continent": "South America",
+    "visits": [        
+      { "type": "visited", "year": 2007,"month": 6,"cities": ["Bogota","Santa Marta"], "notes": "" }
+    ]
   }
 ]
