@@ -230,7 +230,8 @@
     "name": "Colombia",
     "continent": "South America",
     "visits": [        
-      { "type": "visited", "year": 2007,"month": 6,"cities": ["Bogota","Santa Marta"], "notes": "" }
+      { "type": "visited", "year": 2007,"month": 6,"cities": ["Bogota","Santa Marta"], "notes": "" },
+      { "type": "lived", "year_start": 2007, "year_end": 2007, "cities": ["Bogota","Santa Marta"], "notes": "" }
     ]
   }
 ]
