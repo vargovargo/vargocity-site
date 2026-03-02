@@ -1273,7 +1273,7 @@
               "notes": "Northwest Ridge with Baker and Wayno. Initial objective was to combine this with Williamson but we tried to traverse the ridge toward the Willy start and it took too long.",
               "strava_url": "https://www.strava.com/activities/12486404993", 
               "photos": [
-                { "url": "placeholder rl", "caption": "placeholder" }
+                { "url": "", "caption": "placeholder" }
               ]
             }
           ]
@@ -3208,7 +3208,7 @@
               "notes": "Middle Pals trip. The initial objective was to traverse the ridge south toward Dissapointment Peak and South Fork Pass and then camp to make a loop. We got into sketchy 4th Class and had to turn around bzack over Middle Pal - the way we came up.",
               "strava_url": "https://www.strava.com/activities/9733107765", 
               "photos": [
-                { "url": "placeholder rl", "caption": "placeholder" }
+                { "url": "", "caption": "placeholder" }
               ]
             }
           ]
@@ -4268,7 +4268,7 @@
               "notes": "Quick dawn patrol strike with Middle Pals. Working ithin a tight weather window during a weird summer heat wave and thnderstorms. But we met Peter Croft on this trip at Owens Gorge",
               "strava_url": "https://www.strava.com/activities/15576493897", 
               "photos": [
-                { "url": "placeholder rl", "caption": "placeholder" }
+                { "url": "", "caption": "placeholder" }
               ]
             }
           ]
@@ -5481,7 +5481,7 @@
               "notes": "A last minute, late fall day-trip with Ben and Ajay.",
               "strava_url": "https://www.strava.com/activities/1876772547", 
               "photos": [
-                { "url": "placeholder rl", "caption": "placeholder" }
+                { "url": "", "caption": "placeholder" }
               ]
             }
           ]
@@ -5522,7 +5522,7 @@
               "notes": "This was part of the Tuolumene Triple Crown with Ben and Wayno",
               "strava_url": "https://www.strava.com/activities/15105946682", 
               "photos": [
-                { "url": "placeholder rl", "caption": "placeholder" }
+                { "url": "", "caption": "placeholder" }
               ]
             }
           ]
@@ -5776,7 +5776,9 @@
               "notes": "Ben and I slept Sunday night in the Saddlebag Lake parking lot and climbed it on Monday. rope for two rappels.",
               "strava_url": "https://www.strava.com/activities/9877126448", 
               "photos": [
-                { "url": "placeholder rl", "caption": "placeholder" }
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392380/IMG_2011_bctlbv.jpg", "caption": "" }, 
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392329/IMG_1971_dov4kh.jpg", "caption": "The peak in alpenglow" }, 
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392322/IMG_1981_oyvxtt.jpg", "caption": "A good shot of the ridge from the saddle above Conness Lakes" }
               ]
             },
             {
@@ -5784,7 +5786,7 @@
               "notes": "Ben and I combined North Ridge with the West Ridge",
               "strava_url": "https://www.strava.com/activities/11906993358", 
               "photos": [
-                { "url": "placeholder rl", "caption": "placeholder" }
+                { "url": "", "caption": "placeholder" }
               ]
             }
           ]
@@ -5816,10 +5818,10 @@
           "ascents": [
             {
               "date": "2022-09-17",
-              "notes": "While on a trip with the families Ben and I split off at COnness Lakes and tagged it from that side",
+              "notes": "While on a trip with the families Ben and I split off at Conness Lakes and tagged it from that side",
               "strava_url": "https://www.strava.com/activities/7830461222", 
               "photos": [
-                { "url": "placeholder rl", "caption": "placeholder" }
+                { "url": "", "caption": "placeholder" }
               ]
             },
             {
@@ -6139,7 +6141,7 @@
               "notes": "First backpacking trip with Albany Dads. Up above Kennedy Meadows. This was a trip trip in the middle and we ran into some wildfire smoke.",
               "strava_url": "https://www.strava.com/activities/5874502788", 
               "photos": [
-                { "url": "placeholder rl", "caption": "placeholder" }
+                { "url": "", "caption": "placeholder" }
               ]
             }
           ]
@@ -6279,7 +6281,7 @@
               "notes": "Aaron and I did a daytrip while camping at Grover Hot Springs. Still in snow, we glissaded down.",
               "strava_url": "https://www.strava.com/activities/14605951551", 
               "photos": [
-                { "url": "placeholder rl", "caption": "placeholder" }
+                { "url": "", "caption": "placeholder" }
               ]
             }
           ]
@@ -6335,7 +6337,7 @@
               "notes": "Getting one more ridge run in at the end of this season. Invited Paul to join me and Ben. Camped at Wrights Lake and went up Price first and traversed to Pyramid",
               "strava_url": "https://www.strava.com/activities/9996559552", 
               "photos": [
-                { "url": "placeholder rl", "caption": "placeholder" }
+                { "url": "", "caption": "placeholder" }
               ]
             },
             {
@@ -6343,7 +6345,7 @@
               "notes": "Jst back from Europe I joined Ben for a Tripple Training sprint. We went the other way on the ridge starting with Pyramid this time.",
               "strava_url": "https://www.strava.com/activities/15030632541", 
               "photos": [
-                { "url": "placeholder rl", "caption": "placeholder" }
+                { "url": "", "caption": "placeholder" }
               ]
             }
           ]
