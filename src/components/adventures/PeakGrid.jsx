@@ -1,13 +1,9 @@
 import { useState } from 'react'
-import { climbedPeaks } from '../../data/spsUtils'
+import { allAscents } from '../../data/spsUtils'
 import Lightbox from './Lightbox'
 
-// Most recently climbed first
-const sorted = [...climbedPeaks].sort((a, b) => {
-  const aLast = a.ascents.at(-1)?.date || ''
-  const bLast = b.ascents.at(-1)?.date || ''
-  return bLast.localeCompare(aLast)
-})
+// One entry per ascent, newest first
+const ascentsNewestFirst = [...allAscents].reverse()
 
 function StravaLink({ url }) {
   if (!url) return null
@@ -28,17 +24,17 @@ function StravaLink({ url }) {
   )
 }
 
-
 export default function PeakGrid() {
-  const [lightbox, setLightbox] = useState(null) // { photo, peakName }
+  const [lightbox, setLightbox] = useState(null)
 
-  if (sorted.length === 0) {
+  if (ascentsNewestFirst.length === 0) {
     return (
       <p className="text-sm py-12 text-center" style={{ color: '#8A8A8A' }}>
         No peaks logged yet.
       </p>
     )
   }
+
   return (
     <>
       {lightbox && (
@@ -52,20 +48,20 @@ export default function PeakGrid() {
         className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px"
         style={{ border: '1px solid #E5E5E0', backgroundColor: '#E5E5E0' }}
       >
-        {sorted.map((peak) => {
-          const lastAscent = peak.ascents.at(-1)
-          const displayDate = lastAscent?.date
-            ? new Date(lastAscent.date + 'T00:00:00').toLocaleDateString('en-US', {
+        {ascentsNewestFirst.map((ascent, idx) => {
+          const peak = ascent.peak
+          const displayDate = ascent.date
+            ? new Date(ascent.date + 'T00:00:00').toLocaleDateString('en-US', {
                 year: 'numeric', month: 'short', day: 'numeric',
               })
             : null
-          const photo = lastAscent?.photos?.[0]
+          const photo = ascent.photos?.[0]
           return (
             <div
-              key={peak.id}
+              key={`${peak.id}-${ascent.date}-${idx}`}
               className="relative overflow-hidden"
               style={{ backgroundColor: '#FFFFFF', cursor: photo ? 'pointer' : 'default' }}
-              onClick={photo ? () => setLightbox({ photos: lastAscent.photos, peakName: peak.name }) : undefined}
+              onClick={photo ? () => setLightbox({ photos: ascent.photos, peakName: peak.name }) : undefined}
             >
               {photo && (
                 <>
@@ -83,7 +79,9 @@ export default function PeakGrid() {
               )}
               <div className="relative p-5">
                 <div className="flex items-start justify-between gap-2">
-                  <h3 className="text-sm font-semibold" style={{ color: photo ? '#FFFFFF' : '#1A1A1A' }}>{peak.name}</h3>
+                  <h3 className="text-sm font-semibold" style={{ color: photo ? '#FFFFFF' : '#1A1A1A' }}>
+                    {peak.name}
+                  </h3>
                   <span className="text-xs tabular-nums shrink-0" style={{ color: photo ? 'rgba(255,255,255,0.7)' : '#8A8A8A' }}>
                     {peak.elevation.toLocaleString()} ft
                   </span>
@@ -93,19 +91,14 @@ export default function PeakGrid() {
                     {displayDate}
                   </p>
                 )}
-                {lastAscent?.notes && (
+                {ascent.notes && (
                   <p className="text-xs mt-2 leading-relaxed" style={{ color: photo ? 'rgba(255,255,255,0.75)' : '#4A4A4A' }}>
-                    {lastAscent.notes.length > 120
-                      ? lastAscent.notes.slice(0, 120) + '…'
-                      : lastAscent.notes}
+                    {ascent.notes.length > 120
+                      ? ascent.notes.slice(0, 120) + '…'
+                      : ascent.notes}
                   </p>
                 )}
-                {peak.ascents.length > 1 && (
-                  <p className="text-xs mt-1" style={{ color: photo ? 'rgba(255,255,255,0.5)' : '#8A8A8A' }}>
-                    {peak.ascents.length} ascents
-                  </p>
-                )}
-                <StravaLink url={lastAscent?.strava_url} />
+                <StravaLink url={ascent.strava_url} />
               </div>
             </div>
           )
