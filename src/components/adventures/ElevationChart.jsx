@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { peaksByElevation, climbedPeaks } from '../../data/spsUtils'
 
-const climbedIds = new Set(climbedPeaks.map(p => p.id))
 const climbedMap = new Map(climbedPeaks.map(p => [p.id, p]))
 
 function StravaLink({ url }) {
@@ -12,7 +11,7 @@ function StravaLink({ url }) {
       target="_blank"
       rel="noopener noreferrer"
       title="Strava activity (private — log in to view)"
-      className="inline-flex items-center gap-1 text-xs"
+      className="inline-flex items-center gap-1 text-xs mt-1"
       style={{ color: '#FC4C02' }}
     >
       <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
@@ -50,7 +49,7 @@ export default function ElevationChart() {
 
       <div className="space-y-1">
         {peaksByElevation.map((peak) => {
-          const climbed = climbedIds.has(peak.id)
+          const climbed = climbedMap.has(peak.id)
           const isSelected = selectedId === peak.id
           const peakData = climbed ? climbedMap.get(peak.id) : null
 
@@ -99,6 +98,11 @@ export default function ElevationChart() {
                             year: 'numeric', month: 'long', day: 'numeric',
                           })}
                         </span>
+                        {peakData.ascents.length > 1 && (
+                          <span className="text-xs" style={{ color: '#8A8A8A' }}>
+                            ascent {i + 1} of {peakData.ascents.length}
+                          </span>
+                        )}
                         <StravaLink url={ascent.strava_url} />
                       </div>
                       {ascent.notes && (

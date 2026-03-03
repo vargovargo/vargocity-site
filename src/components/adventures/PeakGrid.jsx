@@ -1,11 +1,9 @@
 import { useState } from 'react'
-import { climbedPeaks } from '../../data/spsUtils'
+import { allAscents } from '../../data/spsUtils'
 import Lightbox from './Lightbox'
 
-// One entry per ascent, most recent first
-const ascentEntries = climbedPeaks
-  .flatMap(peak => peak.ascents.map(ascent => ({ peak, ascent })))
-  .sort((a, b) => b.ascent.date.localeCompare(a.ascent.date))
+// One entry per ascent, newest first
+const ascentsNewestFirst = [...allAscents].reverse()
 
 function StravaLink({ url }) {
   if (!url) return null
@@ -29,7 +27,7 @@ function StravaLink({ url }) {
 export default function PeakGrid() {
   const [lightbox, setLightbox] = useState(null)
 
-  if (ascentEntries.length === 0) {
+  if (ascentsNewestFirst.length === 0) {
     return (
       <p className="text-sm py-12 text-center" style={{ color: '#8A8A8A' }}>
         No peaks logged yet.
@@ -50,7 +48,8 @@ export default function PeakGrid() {
         className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px"
         style={{ border: '1px solid #E5E5E0', backgroundColor: '#E5E5E0' }}
       >
-        {ascentEntries.map(({ peak, ascent }, i) => {
+        {ascentsNewestFirst.map((ascent, idx) => {
+          const peak = ascent.peak
           const displayDate = ascent.date
             ? new Date(ascent.date + 'T00:00:00').toLocaleDateString('en-US', {
                 year: 'numeric', month: 'short', day: 'numeric',
@@ -59,7 +58,7 @@ export default function PeakGrid() {
           const photo = ascent.photos?.[0]
           return (
             <div
-              key={`${peak.id}-${ascent.date}-${i}`}
+              key={`${peak.id}-${ascent.date}-${idx}`}
               className="relative overflow-hidden"
               style={{ backgroundColor: '#FFFFFF', cursor: photo ? 'pointer' : 'default' }}
               onClick={photo ? () => setLightbox({ photos: ascent.photos, peakName: peak.name }) : undefined}
@@ -80,7 +79,9 @@ export default function PeakGrid() {
               )}
               <div className="relative p-5">
                 <div className="flex items-start justify-between gap-2">
-                  <h3 className="text-sm font-semibold" style={{ color: photo ? '#FFFFFF' : '#1A1A1A' }}>{peak.name}</h3>
+                  <h3 className="text-sm font-semibold" style={{ color: photo ? '#FFFFFF' : '#1A1A1A' }}>
+                    {peak.name}
+                  </h3>
                   <span className="text-xs tabular-nums shrink-0" style={{ color: photo ? 'rgba(255,255,255,0.7)' : '#8A8A8A' }}>
                     {peak.elevation.toLocaleString()} ft
                   </span>
