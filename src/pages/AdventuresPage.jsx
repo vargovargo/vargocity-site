@@ -22,7 +22,7 @@ const peakViews = [
 export default function AdventuresPage() {
   const [searchParams] = useSearchParams()
   const [tab, setTab] = useState(searchParams.get('tab') || 'peaks')
-  const [peakView, setPeakView] = useState('grid')
+  const [peakView, setPeakView] = useState('chart')
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
