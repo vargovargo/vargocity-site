@@ -3,13 +3,13 @@ const milestones = [
     year: '2001',
     role: 'B.S. Chemical Engineering',
     org: 'University of Michigan',
-    note: 'Where the habit of precise measurement began — and the lesson that learning how to learn matters more than any specific content.',
+    note: 'My initiation into the importance of continuous curiousity. I learned how to learnand I\'m still going.',
   },
   {
     year: '2009',
     role: 'MCRP + MPH (dual degree)',
     org: 'Georgia Tech & Emory University',
-    note: 'Pioneered this joint degree program connecting urban planning to public health — two fields asking the same question about who thrives in the built environment.',
+    note: 'Pioneered a joint degree program connecting urban planning to public health. Identified the intersection of two fields to ask questions about who thrives in our built environments.',
   },
   {
     year: '2012',
@@ -21,31 +21,31 @@ const milestones = [
     year: '2012',
     role: 'Assistant Scientist',
     org: 'Global Health Institute & Nelson Institute, UW–Madison',
-    note: 'Postdoctoral research on cities, climate, and environmental health — working alongside Jonathan Patz, whose IPCC contributions helped earn the 2007 Nobel Peace Prize.',
+    note: 'Postdoctoral research on cities, climate, and environmental health. Worked alongside Jonathan Patz, whose IPCC contributions helped earn the 2007 Nobel Peace Prize.',
   },
   {
     year: '2015',
     role: 'Founder & Director, UniverCity Alliance',
     org: 'University of Wisconsin–Madison',
-    note: 'Built a cross-campus initiative connecting UW research to Wisconsin communities. Twenty-nine partnerships. Joel Rogers — MacArthur Fellow and architect of the High Road framework — was across campus; his argument that economic and environmental wellbeing aren\'t trade-offs has never left me.',
+    note: 'Built a cross-campus initiative connecting UW research to Wisconsin communities. Twenty-nine partnerships. Joel Rogers, my mentor and partner in the work, showed me how to build a program that is centered on \'High Road\' principles.',
   },
   {
     year: '2019',
     role: 'Lead Scientist, Climate Change & Health Equity',
     org: 'California Department of Public Health',
-    note: 'Research on wildfire smoke, extreme heat, and the communities that bear the burden — and why that burden is distributed the way it is.',
+    note: 'Climate solutions that don\'t make also us healthier are missed opportunities. Research on wildfire smoke, extreme heat, and the communities that bear the biggest burden. Adaptation isn\'t equally available to all.',
   },
   {
     year: '2020',
     role: 'Lead, COVID-19 Modeling & Forecasting',
     org: 'California Department of Public Health',
-    note: 'Pulled from the climate team to lead the state\'s COVID-19 modeling effort. Built a public forecasting dashboard drawing on data ensembles from hundreds of citizen scientists. Developed the COVID-19 Health Equity Metric to direct state resources toward the communities at greatest risk. Working with DJ Patil — the first U.S. Chief Data Scientist — sharpened a framework for the ethics of data science that I carry into every project since.',
+    note: 'Redirected from the climate team to lead the state\'s COVID-19 modeling effort. Built a public forecasting dashboard drawing on data ensembles from teams of citizen scientists. Developed the COVID-19 Health Equity Metric to direct state resources toward the communities suffering the most. Working with DJ Patil, sharpened a framework for the ethics of data science that I carry into every project since.',
   },
   {
     year: '2022',
     role: 'Senior Researcher, Community Development',
     org: 'Federal Reserve Bank of San Francisco',
-    note: 'Researching how climate risk intersects with economic opportunity in lower-income communities. Same question, new institution.',
+    note: 'Researching how investements and economic opportunity reach lower-income communities. Working on the economic drivers I saw in health from a new institution.',
   },
 ]
 
