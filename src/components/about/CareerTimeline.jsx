@@ -3,7 +3,7 @@ const milestones = [
     year: '2001',
     role: 'B.S. Chemical Engineering',
     org: 'University of Michigan',
-    note: 'My initiation into the importance of continuous curiousity. I learned how to learnand I\'m still going.',
+    note: 'My initiation into the importance of continuous curiousity. I learned how to learn and I\'m still going.',
   },
   {
     year: '2009',
