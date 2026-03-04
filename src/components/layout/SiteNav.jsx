@@ -4,8 +4,8 @@ import { NavLink, Link } from 'react-router-dom'
 const links = [
   { to: '/about', label: 'About' },
   { to: '/research', label: 'Research' },
-  { to: '/making', label: 'Making' },
   { to: '/adventures', label: 'Adventures' },
+  { to: '/making', label: 'Making' },
 ]
 
 export default function SiteNav() {
