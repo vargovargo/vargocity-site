@@ -91,7 +91,7 @@ The site was significantly reframed in early March 2026. Key decisions to preser
 - **"Learning how to learn"** and **"diverse viewpoints, shared values"** are two explicit organizing principles woven through the About page — keep them.
 - **About page title**: "In Motion" (was "How I Got Here") — intentional, keep it.
 - **Research section**: Soft title "A Career of Asking For Whom"; description names AI as the current direction alongside past climate/health work. The old "Climate Equity Research" label was deliberately retired.
-- **ThemeCards**: "Technology & Society" card is first with dark highlight treatment. "Climate Equity" was renamed to "Climate & Communities".
+- **ThemeCards**: "Technology & Society" card is first. "Climate Equity" was renamed to "Climate & Communities".
 - **CareerTimeline**: No equity flag visual treatment. Language is universal but accurate. The 2019 CDPH entry is split into two: climate work (2019) and COVID-19 modeling lead (2020).
 - **Mentors named in about.md**: Jonathan Patz, Joel Rogers (UW), DJ Patil (CDPH/COVID era) — these are real formative figures, keep them accurate.
 

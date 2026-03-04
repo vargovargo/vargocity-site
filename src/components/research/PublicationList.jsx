@@ -1,13 +1,10 @@
-import { useState } from 'react'
 import publications from '../../data/publications.json'
 
 const sorted = [...publications].sort((a, b) => b.year - a.year)
 
 const allTags = [...new Set(publications.flatMap(p => p.tags))].sort()
 
-export default function PublicationList() {
-  const [activeTag, setActiveTag] = useState(null)
-
+export default function PublicationList({ activeTag, onTagChange }) {
   const filtered = activeTag
     ? sorted.filter(p => p.tags.includes(activeTag))
     : sorted
@@ -17,7 +14,7 @@ export default function PublicationList() {
       {/* Tag filter */}
       <div className="flex flex-wrap gap-2 mb-6">
         <button
-          onClick={() => setActiveTag(null)}
+          onClick={() => onTagChange(null)}
           className="px-3 py-1 text-xs rounded-full transition-colors"
           style={{
             backgroundColor: !activeTag ? '#1A1A1A' : '#FFFFFF',
@@ -31,7 +28,7 @@ export default function PublicationList() {
         {allTags.map(tag => (
           <button
             key={tag}
-            onClick={() => setActiveTag(tag === activeTag ? null : tag)}
+            onClick={() => onTagChange(tag === activeTag ? null : tag)}
             className="px-3 py-1 text-xs rounded-full transition-colors"
             style={{
               backgroundColor: activeTag === tag ? '#1A1A1A' : '#FFFFFF',

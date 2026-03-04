@@ -1,17 +1,27 @@
+import { useState } from 'react'
 import SectionHeader from '../components/shared/SectionHeader'
 import ThemeCards from '../components/research/ThemeCards'
 import ScholarStats from '../components/research/ScholarStats'
 import PublicationList from '../components/research/PublicationList'
 
 const media = [
-  { outlet: 'NASA Applied Sciences', title: 'Watching Wildfire Smoke Impacts for Healthier Communities', url: 'https://appliedsciences.nasa.gov/our-impact/people/watching-wildfire-smoke-impacts-healthier-communities' },
-  { outlet: 'Smithsonian Magazine', title: 'Humans Are Becoming City-Dwelling Metro Sapiens', url: 'https://www.smithsonianmag.com/science-nature/humans-are-becoming-city-dwelling-metro-sapiens-180953449/' },
-  { outlet: 'Scientific American', title: 'Urban Planning and Public Health', url: '' },
-  { outlet: 'FedCommunities', title: 'Unveiling the Effects of Wildfire Smoke on Vulnerable Communities', url: 'https://fedcommunities.org/unveiling-effects-wildfire-smoke-vulnerable-communities/' },
-  { outlet: 'HuffPost', title: 'Author archive', url: 'https://www.huffpost.com/author/jason-vargo' },
+  { outlet: 'NASA Applied Sciences', title: 'Watching Wildfire Smoke Impacts for Healthier Communities', url: 'https://appliedsciences.nasa.gov/our-impact/people/watching-wildfire-smoke-impacts-healthier-communities', tags: ['wildfire', 'air-quality', 'health'] },
+  { outlet: 'Smithsonian Magazine', title: 'Humans Are Becoming City-Dwelling Metro Sapiens', url: 'https://www.smithsonianmag.com/science-nature/humans-are-becoming-city-dwelling-metro-sapiens-180953449/', tags: ['urbanism', 'metro-sapiens'] },
+  { outlet: 'Scientific American', title: 'How People Make the Summer Hotter', url: 'https://www.scientificamerican.com/article/how-people-make-summer-hotter/', tags: ['urban-heat', 'climate'] },
+  { outlet: 'FedCommunities', title: 'Unveiling the Effects of Wildfire Smoke on Vulnerable Communities', url: 'https://fedcommunities.org/unveiling-effects-wildfire-smoke-vulnerable-communities/', tags: ['wildfire', 'air-quality', 'health'] },
+  { outlet: 'HuffPost', title: 'Author archive', url: 'https://www.huffpost.com/author/jason-vargo', tags: ['urbanism', 'climate'] },
+  { outlet: 'NPR', title: 'As More Adults Pedal, Biking Injuries and Deaths Are Spiking Too', url: 'https://www.npr.org/sections/health-shots/2015/09/02/436662737/as-more-adults-pedal-their-biking-injuries-and-deaths-are-spiking-too', tags: ['active-transport', 'health'] },
+  { outlet: 'Bloomberg', title: 'Cycling Deaths Among Children Have Plummeted', url: 'https://www.bloomberg.com/news/articles/2015-08-13/cycling-deaths-among-children-have-plummeted', tags: ['active-transport', 'health'] },
+  { outlet: 'Madison.com', title: 'UW-Madison, Monona to Collaborate on Sustainability', url: 'https://madison.com/news/local/focus-on-dane-county-uw-madison-monona-to-collaborate-on/article_e28b7b44-4387-5ed0-ba75-57d44f524de7.html', tags: ['urbanism', 'policy'] },
 ]
 
 export default function ResearchPage() {
+  const [activeTag, setActiveTag] = useState(null)
+
+  const filteredMedia = activeTag
+    ? media.filter(m => m.tags.includes(activeTag))
+    : media
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
       <SectionHeader
@@ -19,6 +29,11 @@ export default function ResearchPage() {
         title="A Career of Asking For Whom"
         description="I study how large systems — urban environments, climate, economies — shape opportunity unevenly, and what measurement and policy can do to change that. The work is now pointing toward AI."
       />
+
+      {/* Page jump links */}
+      <div className="flex gap-5 mb-12 -mt-4">
+        <a href="#media" className="text-xs hover:underline" style={{ color: '#8A8A8A' }}>↓ Media & Press</a>
+      </div>
 
       {/* Research Themes */}
       <section className="mb-14">
@@ -41,18 +56,19 @@ export default function ResearchPage() {
         <h2 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: '#8A8A8A' }}>
           Selected Publications
         </h2>
-        <PublicationList />
+        <PublicationList activeTag={activeTag} onTagChange={setActiveTag} />
       </section>
 
       {/* Media */}
-      <section>
+      {filteredMedia.length > 0 && (
+      <section id="media">
         <h2 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: '#8A8A8A' }}>
           Media & Press
         </h2>
         <div className="space-y-0" style={{ border: '1px solid #E5E5E0' }}>
-          {media.map((m, i) => (
+          {filteredMedia.map((m, i) => (
             <div key={i}
-              style={{ borderBottom: i < media.length - 1 ? '1px solid #E5E5E0' : 'none' }}
+              style={{ borderBottom: i < filteredMedia.length - 1 ? '1px solid #E5E5E0' : 'none' }}
               className="px-5 py-4 bg-white">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -74,6 +90,7 @@ export default function ResearchPage() {
           ))}
         </div>
       </section>
+      )}
     </div>
   )
 }

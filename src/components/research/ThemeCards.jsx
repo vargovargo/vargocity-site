@@ -3,7 +3,6 @@ const themes = [
     id: 'technology-society',
     title: 'Technology & Society',
     description: 'The question I\'ve spent a career asking — who bears the cost of powerful systems — applies with full force to AI. AGI is arriving. The tools I\'ve built for measuring harm, identifying root causes, and translating findings into policy are the right tools for this moment. That\'s the work I\'m moving toward.',
-    highlight: true,
   },
   {
     id: 'climate-communities',
@@ -17,14 +16,9 @@ const themes = [
     description: 'How the built environment shapes human health. Walkability, green space, housing density, transit access — design choices that determine whether healthy choices are easy choices.',
   },
   {
-    id: 'sustainable-urbanism',
-    title: 'Sustainable Urbanism',
-    description: 'Cities are humanity\'s dominant habitat. They can sustain the planet\'s life support systems or degrade them. Good urban planning does both: builds for people and builds for the planet.',
-  },
-  {
     id: 'metro-sapiens',
-    title: 'Metro Sapiens',
-    description: 'The central provocation of my early work: we are becoming an urban species. More than half of humanity now lives in cities. Understanding that habitat — and designing it well — is the challenge of our century.',
+    title: 'Metro Sapiens & Sustainable Urbanism',
+    description: 'We are becoming an urban species — more than half of humanity now lives in cities. That habitat can sustain the planet\'s life support systems or degrade them. Understanding it, designing it well, and making it equitable is the challenge of our century.',
   },
 ]
 
