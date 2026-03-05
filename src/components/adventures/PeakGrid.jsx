@@ -13,6 +13,7 @@ function StravaLink({ url }) {
       target="_blank"
       rel="noopener noreferrer"
       title="Strava activity (private — log in to view)"
+      onClick={e => e.stopPropagation()}
       className="inline-flex items-center gap-1 text-xs mt-2"
       style={{ color: '#FC4C02' }}
     >
@@ -55,50 +56,38 @@ export default function PeakGrid() {
                 year: 'numeric', month: 'short', day: 'numeric',
               })
             : null
-          const photo = ascent.photos?.[0]
+          const photos = ascent.photos ?? []
           return (
             <div
               key={`${peak.id}-${ascent.date}-${idx}`}
-              className="relative overflow-hidden"
-              style={{ backgroundColor: '#FFFFFF', cursor: photo ? 'pointer' : 'default' }}
-              onClick={photo ? () => setLightbox({ photos: ascent.photos, peakName: peak.name }) : undefined}
+              className="relative overflow-hidden flex cursor-pointer"
+              style={{ backgroundColor: '#FFFFFF' }}
+              onClick={() => photos.length > 0 && setLightbox({ photos, peakName: peak.name })}
             >
-              {photo && (
-                <>
-                  <img
-                    src={photo.url}
-                    alt={photo.caption || `${peak.name} summit`}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ opacity: 0.6 }}
-                  />
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.35) 100%)' }}
-                  />
-                </>
-              )}
-              <div className="relative p-5">
+              <div className="p-5 flex flex-col h-full">
                 <div className="flex items-start justify-between gap-2">
-                  <h3 className="text-sm font-semibold" style={{ color: photo ? '#FFFFFF' : '#1A1A1A' }}>
+                  <h3 className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>
                     {peak.name}
                   </h3>
-                  <span className="text-xs tabular-nums shrink-0" style={{ color: photo ? 'rgba(255,255,255,0.7)' : '#8A8A8A' }}>
+                  <span className="text-xs tabular-nums shrink-0" style={{ color: '#8A8A8A' }}>
                     {peak.elevation.toLocaleString()} ft
                   </span>
                 </div>
                 {displayDate && (
-                  <p className="text-xs mt-1" style={{ color: photo ? 'rgba(255,255,255,0.6)' : '#8A8A8A' }}>
+                  <p className="text-xs mt-1" style={{ color: '#8A8A8A' }}>
                     {displayDate}
                   </p>
                 )}
                 {ascent.notes && (
-                  <p className="text-xs mt-2 leading-relaxed" style={{ color: photo ? 'rgba(255,255,255,0.75)' : '#4A4A4A' }}>
+                  <p className="text-xs mt-2 leading-relaxed" style={{ color: '#4A4A4A' }}>
                     {ascent.notes.length > 120
                       ? ascent.notes.slice(0, 120) + '…'
                       : ascent.notes}
                   </p>
                 )}
-                <StravaLink url={ascent.strava_url} />
+                <div className="mt-auto pt-2">
+                  <StravaLink url={ascent.strava_url} />
+                </div>
               </div>
             </div>
           )

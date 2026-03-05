@@ -182,7 +182,9 @@
     "name": "England",
     "continent": "Europe",
     "visits": [        
-      { "type": "visited", "year": 2003,"month": 4,"cities": ["London", "Dover","Canterbury"], "notes": "" }
+      { "type": "visited", "year": 2003,"month": 4,"cities": ["London", "Dover","Canterbury"], "notes": "Visited with Laren to see her dad who was working in England for a couple years." }, 
+       { "type": "visited", "year": 2013,"month": 12,"cities": ["London"], "notes": "" }, 
+        { "type": "visited", "year": 2015,"month": 4,"cities": ["London"], "notes": "" }
     ]
   },
   {
