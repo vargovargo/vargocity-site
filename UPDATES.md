@@ -42,7 +42,7 @@ Add and contextualize press coverage from **vargocity.com**:
 
 ## Copy / Tone
 
-- [ ] **Revisit copy/language sitewide** — make tone more hopeful, pull back on AI framing; lead with human impact and optimism. i am providing thoughts here that may help revisions and outting things into my own words. 
+- [ ] **Revisit copy/language sitewide** — make tone more hopeful, pull back on AI framing; lead with human impact and optimism. i am providing thoughts here that may help revisions and putting things into my own words. what follows is for fodder and context to inform tone of language throughout the site.
 - [ ] right know the site reads a bit arrogant and flashy ('bro'-y), my kids think the whole exercise of making the site is 'glazing'. i'd like the feel on the language to embody my values but also make me look competent and creative. some things that are important to me:
   - [ ] personally: patience,humility, compassion. building communitiy. lifelong learning (i put this into the first entry of the career timeline; this is apparent throughout the career - exploring emerging discplinary intersections and eagerly tacking new projects), making new friends, seeing new places (travel), pushing myself to discover new limits (Sierra).
   - [ ] in community and society: i think better decisions are reached when diverse perspectives can contribute but also that those closest to the problems have unique knowledge for creating solutions. we are stronger when the things we value most are the things we share. i love public spaces and think Central Park is a great example; everybody would say it one of the best things about living in NYC and no one owns it. great places are ones with a high quantity of public goods consumable by everyone especially kids. joel rogers used to tell me this and that was why he choose to live in Madison with his family. its kind of the 8-80 (gil peñalosa) mentality. my grad school field work was in Bogota looking at the public investments in the city (public transit, parks, libraries, bike paths - infrastructure that works for everyone) and how they benefits health (the work of Enrique Peñalosa). these were informative experiences for me.
@@ -60,3 +60,6 @@ Add and contextualize press coverage from **vargocity.com**:
 ## Notes / Context
 
 - **Review 2010s travel** — verify countries.json has all visits from that decade before the decade tab goes live
+- trips to add
+   - london december 2013
+   - london, april 2015
