@@ -5,13 +5,13 @@ const cards = [
     to: '/research',
     label: 'Research',
     title: 'A Career of Asking For Whom',
-    description: 'Twenty-five years of measuring how powerful systems shape opportunity — and how to make that opportunity more widely shared. Through cities, climate, and now AI.',
+    description: 'Twenty-five years of tracking who bears the cost when powerful systems shift — and building tools to make that visible and changeable. Cities, climate, health, economy.',
   },
   {
     to: '/making',
     label: 'Making',
     title: 'Code & Design',
-    description: 'Software tools and design projects. If something useful doesn\'t exist, build it.',
+    description: 'Tools built when something useful didn\'t exist, and design work that helps ideas reach the people who need them.',
   },
   {
     to: '/adventures',
