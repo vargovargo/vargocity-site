@@ -14,7 +14,7 @@ _Last updated: March 3, 2026_
   - Only show tabs for decades with actual visits
   - Click panel still shows full visit history across all years
 - [x] Bring back **Citations** as its own counter (separate from other stats)
-- [ ] on peaks page add toggle when elevation or region are selected to show only climbed peaks or the full SPS list, default to climbed only 
+- [x] on peaks page add toggle when elevation or region are selected to show only climbed peaks or the full SPS list, default to climbed only
 
 ---
 

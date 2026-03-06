@@ -24,31 +24,53 @@ function StravaLink({ url }) {
 
 export default function ElevationChart() {
   const [selectedId, setSelectedId] = useState(null)
+  const [climbedOnly, setClimbedOnly] = useState(true)
 
   if (peaksByElevation.length === 0) return null
 
   const maxElev = peaksByElevation[0].elevation
+  const displayPeaks = climbedOnly
+    ? peaksByElevation.filter(p => climbedMap.has(p.id))
+    : peaksByElevation
 
   return (
     <div>
       <div className="flex items-center gap-6 mb-5">
         <p className="text-xs font-medium uppercase tracking-wider" style={{ color: '#8A8A8A' }}>
-          All 248 SPS Peaks by Elevation
+          {climbedOnly
+            ? `${climbedPeaks.length} Climbed Peaks by Elevation`
+            : 'All 248 SPS Peaks by Elevation'}
         </p>
         <div className="flex items-center gap-4 ml-auto">
-          <span className="flex items-center gap-1.5 text-xs" style={{ color: '#1A1A1A' }}>
-            <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: '#1A1A1A' }} />
-            Climbed
-          </span>
-          <span className="flex items-center gap-1.5 text-xs" style={{ color: '#8A8A8A' }}>
-            <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: '#E5E5E0' }} />
-            On the list
-          </span>
+          {!climbedOnly && (
+            <>
+              <span className="flex items-center gap-1.5 text-xs" style={{ color: '#1A1A1A' }}>
+                <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: '#1A1A1A' }} />
+                Climbed
+              </span>
+              <span className="flex items-center gap-1.5 text-xs" style={{ color: '#8A8A8A' }}>
+                <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: '#E5E5E0' }} />
+                On the list
+              </span>
+            </>
+          )}
+          <button
+            onClick={() => { setClimbedOnly(v => !v); setSelectedId(null) }}
+            className="text-xs px-3 py-1.5 rounded transition-colors"
+            style={{
+              backgroundColor: '#FFFFFF',
+              color: '#8A8A8A',
+              border: '1px solid #E5E5E0',
+              cursor: 'pointer',
+            }}
+          >
+            {climbedOnly ? 'Show full list' : 'Climbed only'}
+          </button>
         </div>
       </div>
 
       <div className="space-y-1">
-        {peaksByElevation.map((peak) => {
+        {displayPeaks.map((peak) => {
           const climbed = climbedMap.has(peak.id)
           const isSelected = selectedId === peak.id
           const peakData = climbed ? climbedMap.get(peak.id) : null

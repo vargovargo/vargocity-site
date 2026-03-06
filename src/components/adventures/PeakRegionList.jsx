@@ -22,25 +22,51 @@ function StravaLink({ url }) {
 
 export default function PeakRegionList() {
   const [selectedPeak, setSelectedPeak] = useState(null) // peak.name
+  const [climbedOnly, setClimbedOnly] = useState(true)
+
+  const regionsToShow = spsData.regions
+    .map(region => {
+      const climbedCount = region.peaks.filter(p => p.ascents?.length > 0).length
+      const displayPeaks = climbedOnly
+        ? region.peaks.filter(p => p.ascents?.length > 0)
+        : region.peaks
+      return { ...region, displayPeaks, climbedCount, totalCount: region.peaks.length }
+    })
+    .filter(r => r.displayPeaks.length > 0)
 
   return (
-    <div className="space-y-10">
-      {spsData.regions.map(region => {
-        const total = region.peaks.length
-        const climbed = region.peaks.filter(p => p.ascents?.length > 0).length
-        const selected = region.peaks.find(p => p.name === selectedPeak)
+    <div>
+      <div className="flex justify-end mb-4">
+        <button
+          onClick={() => { setClimbedOnly(v => !v); setSelectedPeak(null) }}
+          className="text-xs px-3 py-1.5 rounded transition-colors"
+          style={{
+            backgroundColor: '#FFFFFF',
+            color: '#8A8A8A',
+            border: '1px solid #E5E5E0',
+            cursor: 'pointer',
+          }}
+        >
+          {climbedOnly ? 'Show full list' : 'Climbed only'}
+        </button>
+      </div>
+
+      <div className="space-y-10">
+      {regionsToShow.map(region => {
+        const { displayPeaks, climbedCount, totalCount } = region
+        const selected = displayPeaks.find(p => p.name === selectedPeak)
 
         return (
           <div key={region.name}>
             <div className="flex items-baseline justify-between mb-3 pb-2" style={{ borderBottom: '1px solid #E5E5E0' }}>
               <h3 className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>{region.name}</h3>
-              <span className="text-xs tabular-nums" style={{ color: climbed > 0 ? '#1A1A1A' : '#8A8A8A' }}>
-                {climbed} / {total}
+              <span className="text-xs tabular-nums" style={{ color: climbedCount > 0 ? '#1A1A1A' : '#8A8A8A' }}>
+                {climbedCount} / {totalCount}
               </span>
             </div>
 
             <div className="flex flex-wrap gap-2">
-              {region.peaks.map(peak => {
+              {displayPeaks.map(peak => {
                 const isClimbed = peak.ascents?.length > 0
                 const isSelected = peak.name === selectedPeak
                 return (
@@ -91,6 +117,7 @@ export default function PeakRegionList() {
           </div>
         )
       })}
+      </div>
     </div>
   )
 }
