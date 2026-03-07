@@ -31,16 +31,20 @@ function decadeLabel(d) {
   return yr === 0 ? "'00s" : `'${yr < 10 ? '0' + yr : yr}s`
 }
 
-// Map ISO → first visit decade
-const isoToDecade = {}
+// Map ISO → set of all visit decades
+const isoToDecades = {}
 countries.forEach(c => {
   if (!c.iso) return
-  const y = firstVisitYear(c)
-  if (y) isoToDecade[c.iso] = toDecade(y)
+  const decades = new Set()
+  for (const v of c.visits) {
+    const y = v.year ?? v.year_start
+    if (y) decades.add(toDecade(y))
+  }
+  if (decades.size) isoToDecades[c.iso] = decades
 })
 
-// Sorted list of decades that have at least one first visit (excluding 70s and 90s)
-const availableDecades = [...new Set(Object.values(isoToDecade))]
+// Sorted list of decades that have at least one visit (excluding 70s and 90s)
+const availableDecades = [...new Set(Object.values(isoToDecades).flatMap(s => [...s]))]
   .filter(d => d !== 1970 && d !== 1990)
   .sort()
 
@@ -121,8 +125,8 @@ export default function WorldMap() {
                 const iso = geo.properties?.ISO_A2
                 const isVisited = iso && visitedISOs.has(iso)
                 const isSelected = iso && tooltip?.country.iso === iso
-                const countryDecade = iso ? isoToDecade[iso] : null
-                const isThisDecade = countryDecade === selectedDecade
+                const countryDecades = iso ? isoToDecades[iso] : null
+                const isThisDecade = countryDecades?.has(selectedDecade)
 
                 let fill
                 if (isSelected) {
