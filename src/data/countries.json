@@ -150,7 +150,7 @@
     "name": "Chile",
     "continent": "South America",
     "visits": [        
-      { "type": "visited", "year": 2023,"month": 1,"cities": ["Santiago", "Valparaiso"], "notes": "" }
+      { "type": "visited", "year": 2005,"month": 1,"cities": ["Santiago", "Valparaiso"], "notes": "" }
     ]
   }, 
   {
@@ -158,7 +158,7 @@
     "name": "Peru",
     "continent": "South America",
     "visits": [        
-      { "type": "visited", "year": 2023,"month": 1,"cities": ["Tacna","Cusco", "Aguas Calientes"], "notes": "" }
+      { "type": "visited", "year": 2005,"month": 1,"cities": ["Tacna","Cusco", "Aguas Calientes"], "notes": "" }
     ]
   },
   {
@@ -166,7 +166,7 @@
     "name": "Bolivia",
     "continent": "South America",
     "visits": [        
-      { "type": "visited", "year": 2023,"month": 3,"cities": ["La Paz", "Potosi", "Isla del Sol"], "notes": "" }
+      { "type": "visited", "year": 2005,"month": 3,"cities": ["La Paz", "Potosi", "Isla del Sol"], "notes": "" }
     ]
   },
   {
@@ -174,7 +174,7 @@
     "name": "Argentina",
     "continent": "South America",
     "visits": [        
-      { "type": "visited", "year": 2023,"month": 4,"cities": ["Buenos Aires", "Salta", "Cordoba", "Mendoza"], "notes": "" }
+      { "type": "visited", "year": 2005,"month": 4,"cities": ["Buenos Aires", "Salta", "Cordoba", "Mendoza"], "notes": "" }
     ]
   },
   {
