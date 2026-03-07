@@ -55,6 +55,7 @@ Add and contextualize press coverage from **vargocity.com**:
       - [ ] 'right now used to be the future' (my best tweet i think);
       - [ ] things only grow if you bless them with your patience (First Aid Kit song);
       - [ ] specificity is the heart of narrative (john Hodgeman, though i recently heard George Saundrers say specifity brings us closer to real/deep truth -something like that)
+      - [ ] another quote i found that i like "getting to the top of high places is a good way to find out where you are". i put that in Strava notes from a run i did feb7,2025. i think maybe we could include it subtly somewhere. id like to get rid of the peak counts by region and maybe it could go there. 
 
 ---
 
