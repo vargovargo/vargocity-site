@@ -16,6 +16,14 @@
     "status": "live"
   },
   {
+    "id": "fridgecal",
+    "name": "FridgeCal",
+    "description": "Photograph the family whiteboard and it parses the shorthand — OTF, CCT, Bay City basketball — and pushes the week's events straight to Google Calendar. Built for the fridge calendar, which actually runs the household.",
+    "url": "https://fridgecal.vercel.app",
+    "tech": ["React", "Vite", "Google Calendar API"],
+    "status": "live"
+  },
+  {
     "id": "campsite-dashboard",
     "name": "Campsite Dashboard",
     "description": "A planning dashboard for backcountry camping trips — tracking permits, gear checklists, and route data.",
