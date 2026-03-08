@@ -31,7 +31,7 @@ export default function AdventuresPage() {
       <SectionHeader
         label="Adventures"
         title="Sierra Peaks & Far Places"
-        description="The window for hard adventuring is finite. A log of Sierra summits and far places — and what I've done with it so far."
+        description="The window for hard adventuring is finite, so get to the top of high places. It's a good way to find out where you've been and which direction to go. "
       />
 
       <div className="mb-8">
