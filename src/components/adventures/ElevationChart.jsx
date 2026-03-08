@@ -3,7 +3,7 @@ import { peaksByElevation, climbedPeaks } from '../../data/spsUtils'
 
 const climbedMap = new Map(climbedPeaks.map(p => [p.id, p]))
 
-function StravaLink({ url }) {
+function StravaLink({ url, hasData }) {
   if (!url) return null
   return (
     <a
@@ -17,8 +17,37 @@ function StravaLink({ url }) {
       <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
         <path d="M15.387 17.944l-2.089-4.116h-3.065L15.387 24l5.15-10.172h-3.066m-7.008-5.599l2.836 5.598h4.172L10.463 0l-7 13.828h4.169" />
       </svg>
-      Strava
+      {hasData ? 'view full recording →' : 'Strava'}
     </a>
+  )
+}
+
+function StravaDetail({ strava, stravaUrl }) {
+  if (!strava) return <StravaLink url={stravaUrl} hasData={false} />
+  const parts = [
+    strava.elevation_gain_ft != null && `↑ ${strava.elevation_gain_ft.toLocaleString()} ft`,
+    strava.distance_miles != null && `${strava.distance_miles} mi`,
+    strava.moving_time_hms && strava.moving_time_hms,
+    strava.avg_heart_rate != null && `avg ${strava.avg_heart_rate} bpm`,
+    strava.max_heart_rate != null && `max ${strava.max_heart_rate} bpm`,
+  ].filter(Boolean)
+  return (
+    <div>
+      {strava.sparkline_svg && (
+        <img
+          src={strava.sparkline_svg}
+          alt="elevation profile"
+          className="mb-1.5"
+          style={{ width: '160px', height: '40px', objectFit: 'fill' }}
+        />
+      )}
+      {parts.length > 0 && (
+        <p className="text-xs tabular-nums" style={{ color: '#8A8A8A' }}>
+          {parts.join(' · ')}
+        </p>
+      )}
+      <StravaLink url={stravaUrl} hasData={!!strava.sparkline_svg} />
+    </div>
   )
 }
 
@@ -125,13 +154,13 @@ export default function ElevationChart() {
                             ascent {i + 1} of {peakData.ascents.length}
                           </span>
                         )}
-                        <StravaLink url={ascent.strava_url} />
                       </div>
                       {ascent.notes && (
                         <p className="text-xs mt-0.5 leading-relaxed" style={{ color: '#4A4A4A' }}>
                           {ascent.notes}
                         </p>
                       )}
+                      <StravaDetail strava={ascent.strava} stravaUrl={ascent.strava_url} />
                     </div>
                   ))}
                 </div>

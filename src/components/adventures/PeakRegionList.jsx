@@ -20,6 +20,22 @@ function StravaLink({ url }) {
   )
 }
 
+function StravaStats({ strava }) {
+  if (!strava) return null
+  const timeParts = strava.moving_time_hms?.split(':').slice(0, 2).join(':')
+  const parts = [
+    strava.elevation_gain_ft != null && `↑ ${strava.elevation_gain_ft.toLocaleString()} ft`,
+    strava.distance_miles != null && `${strava.distance_miles} mi`,
+    timeParts && timeParts,
+  ].filter(Boolean)
+  if (parts.length === 0) return null
+  return (
+    <span className="text-xs tabular-nums" style={{ color: '#8A8A8A' }}>
+      {parts.join(' · ')}
+    </span>
+  )
+}
+
 export default function PeakRegionList() {
   const [selectedPeak, setSelectedPeak] = useState(null) // peak.name
   const [climbedOnly, setClimbedOnly] = useState(true)
@@ -105,6 +121,15 @@ export default function PeakRegionList() {
                       )}
                       <StravaLink url={ascent.strava_url} />
                     </div>
+                    {ascent.strava?.sparkline_svg && (
+                      <img
+                        src={ascent.strava.sparkline_svg}
+                        alt="elevation profile"
+                        className="mt-1 mb-1"
+                        style={{ width: '160px', height: '40px', objectFit: 'fill' }}
+                      />
+                    )}
+                    <StravaStats strava={ascent.strava} />
                     {ascent.notes && (
                       <p className="text-xs mt-0.5 leading-relaxed" style={{ color: '#4A4A4A' }}>
                         {ascent.notes}

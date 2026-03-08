@@ -25,6 +25,22 @@ function StravaLink({ url }) {
   )
 }
 
+function StravaStats({ strava }) {
+  if (!strava) return null
+  const timeParts = strava.moving_time_hms?.split(':').slice(0, 2).join(':')
+  const parts = [
+    strava.elevation_gain_ft != null && `↑ ${strava.elevation_gain_ft.toLocaleString()} ft`,
+    strava.distance_miles != null && `${strava.distance_miles} mi`,
+    timeParts && timeParts,
+  ].filter(Boolean)
+  if (parts.length === 0) return null
+  return (
+    <p className="text-xs tabular-nums mt-1.5" style={{ color: '#8A8A8A' }}>
+      {parts.join(' · ')}
+    </p>
+  )
+}
+
 export default function PeakGrid() {
   const [lightbox, setLightbox] = useState(null)
 
@@ -85,6 +101,16 @@ export default function PeakGrid() {
                       : ascent.notes}
                   </p>
                 )}
+                {ascent.strava?.sparkline_svg && (
+                  <img
+                    src={ascent.strava.sparkline_svg}
+                    alt="elevation profile"
+                    className="w-full mt-3"
+                    style={{ height: '40px', objectFit: 'fill' }}
+                    onClick={e => e.stopPropagation()}
+                  />
+                )}
+                <StravaStats strava={ascent.strava} />
                 <div className="mt-auto pt-2">
                   <StravaLink url={ascent.strava_url} />
                 </div>

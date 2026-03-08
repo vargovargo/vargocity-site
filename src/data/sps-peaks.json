@@ -3,10 +3,10 @@
   "source_url": "https://www.sierraclub.org/sites/default/files/2025-12/sps-25-12-scrambler-ratings-spspkslist.pdf",
   "legend": {
     "peak_flags": {
-      "emblem_peak": "** \u2014 one of the most significant SPS peaks",
-      "mountaineering_peak": "* \u2014 requires technical climbing skills",
-      "vagmarten_list": "# \u2014 appears on the Vagmarten Peak List",
-      "tahoe_ogul_list": "@ \u2014 appears on the Tahoe-Ogul Peak List"
+      "emblem_peak": "** — one of the most significant SPS peaks",
+      "mountaineering_peak": "* — requires technical climbing skills",
+      "vagmarten_list": "# — appears on the Vagmarten Peak List",
+      "tahoe_ogul_list": "@ — appears on the Tahoe-Ogul Peak List"
     },
     "elevation": {
       "+": "Minimum elevation; true summit may be higher or exact elevation unconfirmed",
@@ -19,8 +19,8 @@
     },
     "scrambling_rating": {
       "description": "SPS Scrambler Rating (S-1.0 through S-4.2+)",
-      "sr_notation": "'S-2.1/srS-3.0' \u2014 approach is S-2.1, summit rocks are S-3.0",
-      "yds_notation": "'S-3.2/srYDS-5.6' \u2014 approach is S-3.2, summit rocks require YDS 5.6 roped climbing"
+      "sr_notation": "'S-2.1/srS-3.0' — approach is S-2.1, summit rocks are S-3.0",
+      "yds_notation": "'S-3.2/srYDS-5.6' — approach is S-3.2, summit rocks require YDS 5.6 roped climbing"
     },
     "status": {
       "active": "Peak is on the current SPS list",
@@ -1271,14 +1271,35 @@
             {
               "date": "2024-09-21",
               "notes": "Northwest Ridge with Baker and Wayno. Initial objective was to combine this with Williamson but we tried to traverse the ridge toward the Willy start and it took too long.",
-              "strava_url": "https://www.strava.com/activities/12486404993", 
+              "strava_url": "https://www.strava.com/activities/12486404993",
               "photos": [
-                          { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772423286/image_tokr4a.jpg", "caption": "Staring down the ridge toward the summit." },
-                          { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772423596/image_nd4wit.jpg", "caption": "Looking west at first light." },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772423544/image_ujezpn.jpg", "caption": "Tyndall with a fresh dusting of snow." }, 
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772423365/image_ccrdkp.jpg", "caption": "Shepard's Pass by sunrise." } 
-
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772423286/image_tokr4a.jpg",
+                  "caption": "Staring down the ridge toward the summit."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772423596/image_nd4wit.jpg",
+                  "caption": "Looking west at first light."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772423544/image_ujezpn.jpg",
+                  "caption": "Tyndall with a fresh dusting of snow."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772423365/image_ccrdkp.jpg",
+                  "caption": "Shepard's Pass by sunrise."
+                }
+              ],
+              "strava": {
+                "activity_id": "12486404993",
+                "distance_miles": 27.9,
+                "elevation_gain_ft": 10187,
+                "moving_time_hms": "11:51:53",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/12486404993.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },
@@ -3210,12 +3231,31 @@
             {
               "date": "2023-08-26",
               "notes": "Middle Pals trip. The initial objective was to traverse the ridge south toward Dissapointment Peak and South Fork Pass and then camp to make a loop. We got into sketchy 4th Class and had to turn around back over Middle Pal - the way we came up.",
-              "strava_url": "https://www.strava.com/activities/9733107765", 
+              "strava_url": "https://www.strava.com/activities/9733107765",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432396/image_cossdb.jpg", "caption": "Sitting at the Summit after turning back." },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432288/image_uwyjec.jpg", "caption": "A good view of the objective at dawn." },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432251/image_mlszpy.jpg", "caption": "A tradition is born." }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432396/image_cossdb.jpg",
+                  "caption": "Sitting at the Summit after turning back."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432288/image_uwyjec.jpg",
+                  "caption": "A good view of the objective at dawn."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432251/image_mlszpy.jpg",
+                  "caption": "A tradition is born."
+                }
+              ],
+              "strava": {
+                "activity_id": "9733107765",
+                "distance_miles": 6,
+                "elevation_gain_ft": 10889,
+                "moving_time_hms": "4:19:37",
+                "avg_heart_rate": 102,
+                "max_heart_rate": 133,
+                "sparkline_svg": "/strava/9733107765.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },
@@ -3645,10 +3685,23 @@
             {
               "date": "2024-08-27",
               "notes": "Ben and I did Thnderbolt to Sill Traverse above North Palisade Glacier",
-              "strava_url": "https://www.strava.com/activities/12266940261", 
+              "strava_url": "https://www.strava.com/activities/12266940261",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391293/IMG_6555_zxcjbl.jpg", "caption": "The final summit of the traverse" }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391293/IMG_6555_zxcjbl.jpg",
+                  "caption": "The final summit of the traverse"
+                }
+              ],
+              "strava": {
+                "activity_id": "12266940261",
+                "distance_miles": 12,
+                "elevation_gain_ft": 13802,
+                "moving_time_hms": "7:36:33",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/12266940261.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },
@@ -3685,10 +3738,23 @@
             {
               "date": "2024-08-27",
               "notes": "Ben and I did Thnderbolt to Sill Traverse above North Palisade Glacier",
-              "strava_url": "https://www.strava.com/activities/12266940261", 
+              "strava_url": "https://www.strava.com/activities/12266940261",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391311/IMG_6558_o6if1k.jpg", "caption": "Good shot of North Pal from Sill" }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391311/IMG_6558_o6if1k.jpg",
+                  "caption": "Good shot of North Pal from Sill"
+                }
+              ],
+              "strava": {
+                "activity_id": "12266940261",
+                "distance_miles": 12,
+                "elevation_gain_ft": 13802,
+                "moving_time_hms": "7:36:33",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/12266940261.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },
@@ -3715,10 +3781,23 @@
             {
               "date": "2024-08-27",
               "notes": "Ben and I did Thnderbolt to Sill Traverse above North Pallisade Glacier",
-              "strava_url": "https://www.strava.com/activities/12266940261", 
+              "strava_url": "https://www.strava.com/activities/12266940261",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391247/IMG_6505_ouplhc.jpg", "caption": "Assending the North Pal Glacier toward a couloir where we gained the ridge." }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391247/IMG_6505_ouplhc.jpg",
+                  "caption": "Assending the North Pal Glacier toward a couloir where we gained the ridge."
+                }
+              ],
+              "strava": {
+                "activity_id": "12266940261",
+                "distance_miles": 12,
+                "elevation_gain_ft": 13802,
+                "moving_time_hms": "7:36:33",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/12266940261.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },
@@ -4272,11 +4351,27 @@
             {
               "date": "2025-08-23",
               "notes": "Quick dawn patrol strike with Middle Pals. Working ithin a tight weather window during a weird summer heat wave and thnderstorms. But we met Peter Croft on this trip at Owens Gorge",
-              "strava_url": "https://www.strava.com/activities/15576493897", 
+              "strava_url": "https://www.strava.com/activities/15576493897",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430513/image_kmg7rm.jpg", "caption": "Ben on the summit" },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430488/image_cjaemq.jpg", "caption": "Getting back just before the storm." }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430513/image_kmg7rm.jpg",
+                  "caption": "Ben on the summit"
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430488/image_cjaemq.jpg",
+                  "caption": "Getting back just before the storm."
+                }
+              ],
+              "strava": {
+                "activity_id": "15576493897",
+                "distance_miles": 9.2,
+                "elevation_gain_ft": 3990,
+                "moving_time_hms": "4:39:49",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/15576493897.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },
@@ -4679,12 +4774,31 @@
             {
               "date": "2024-08-25",
               "notes": "Fun trip with Middle Pals. Great basecamp, good climb, easy hiking in, beautiful.",
-              "strava_url": "https://www.strava.com/activities/12248711159", 
+              "strava_url": "https://www.strava.com/activities/12248711159",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391171/IMG_6386_gsljie.jpg", "caption": "Looking up at the climb from near Dade Lake" }, 
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391236/IMG_6408_txsrtu.jpg", "caption": "Starting up the spire" }, 
-                 { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772434751/image_pmrtsc.jpg", "caption": "Some exposure near the top." }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391171/IMG_6386_gsljie.jpg",
+                  "caption": "Looking up at the climb from near Dade Lake"
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772391236/IMG_6408_txsrtu.jpg",
+                  "caption": "Starting up the spire"
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772434751/image_pmrtsc.jpg",
+                  "caption": "Some exposure near the top."
+                }
+              ],
+              "strava": {
+                "activity_id": "12248711159",
+                "distance_miles": 6.1,
+                "elevation_gain_ft": 5208,
+                "moving_time_hms": "3:46:58",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/12248711159.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },
@@ -5487,11 +5601,27 @@
             {
               "date": "2018-09-30",
               "notes": "A last minute, late fall day-trip with Ben and Ajay.",
-              "strava_url": "https://www.strava.com/activities/1876772547", 
+              "strava_url": "https://www.strava.com/activities/1876772547",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432913/image_zwel7s.jpg", "caption": "Looking down at The Valley." }, 
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432869/image_iu28ku.jpg", "caption": "Kicking back at the top." }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432913/image_zwel7s.jpg",
+                  "caption": "Looking down at The Valley."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432869/image_iu28ku.jpg",
+                  "caption": "Kicking back at the top."
+                }
+              ],
+              "strava": {
+                "activity_id": "1876772547",
+                "distance_miles": 12.7,
+                "elevation_gain_ft": 3130,
+                "moving_time_hms": "4:51:20",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/1876772547.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         }
@@ -5529,11 +5659,27 @@
             {
               "date": "2025-07-12",
               "notes": "This was part of the Tuolumene Triple Crown with Ben and Wayno",
-              "strava_url": "https://www.strava.com/activities/15105946682", 
+              "strava_url": "https://www.strava.com/activities/15105946682",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430717/image_w8ioxu.jpg", "caption": "The objective. Final climab of the day." }, 
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430706/image_vcyq1e.jpg", "caption": "We started down as the sun set and made it back to the ambo in the dark." }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430717/image_w8ioxu.jpg",
+                  "caption": "The objective. Final climab of the day."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430706/image_vcyq1e.jpg",
+                  "caption": "We started down as the sun set and made it back to the ambo in the dark."
+                }
+              ],
+              "strava": {
+                "activity_id": "15105946682",
+                "distance_miles": 12.4,
+                "elevation_gain_ft": 8073,
+                "moving_time_hms": "6:05:33",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/15105946682.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },
@@ -5784,24 +5930,64 @@
             {
               "date": "2023-09-18",
               "notes": "Ben and I slept Sunday night in the Saddlebag Lake parking lot and climbed it on Monday. rope for two rappels.",
-              "strava_url": "https://www.strava.com/activities/9877126448", 
+              "strava_url": "https://www.strava.com/activities/9877126448",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392322/IMG_1981_oyvxtt.jpg", "caption": "A good look at the objective from the saddle above Conness Lakes." },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392329/IMG_1971_dov4kh.jpg", "caption": "Alpenglow on Mt. Conness." }, 
-                   { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392380/IMG_2011_bctlbv.jpg", "caption": "This position will get you hooked." }
-
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392322/IMG_1981_oyvxtt.jpg",
+                  "caption": "A good look at the objective from the saddle above Conness Lakes."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392329/IMG_1971_dov4kh.jpg",
+                  "caption": "Alpenglow on Mt. Conness."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772392380/IMG_2011_bctlbv.jpg",
+                  "caption": "This position will get you hooked."
+                }
+              ],
+              "strava": {
+                "activity_id": "9877126448",
+                "distance_miles": 10.5,
+                "elevation_gain_ft": 7131,
+                "moving_time_hms": "5:04:15",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/9877126448.svg",
+                "fetched_at": "2026-03-08"
+              }
             },
             {
               "date": "2024-07-16",
               "notes": "Ben and I combined North Ridge with the West Ridge",
-              "strava_url": "https://www.strava.com/activities/11906993358", 
+              "strava_url": "https://www.strava.com/activities/11906993358",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431467/image_cs3yyb.jpg", "caption": "Heading up the West Ridge." },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431535/image_vo2638.jpg", "caption": "Went up the North Ridge first." },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431573/image_rsqrkv.jpg", "caption": "And then up the West Ridge." },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431528/image_djinpp.jpg", "caption": "A perch on North Ridge." }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431467/image_cs3yyb.jpg",
+                  "caption": "Heading up the West Ridge."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431535/image_vo2638.jpg",
+                  "caption": "Went up the North Ridge first."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431573/image_rsqrkv.jpg",
+                  "caption": "And then up the West Ridge."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431528/image_djinpp.jpg",
+                  "caption": "A perch on North Ridge."
+                }
+              ],
+              "strava": {
+                "activity_id": "11906993358",
+                "distance_miles": 9.9,
+                "elevation_gain_ft": 7765,
+                "moving_time_hms": "5:33:26",
+                "avg_heart_rate": 134,
+                "max_heart_rate": 179,
+                "sparkline_svg": "/strava/11906993358.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },
@@ -5833,20 +6019,52 @@
             {
               "date": "2022-09-17",
               "notes": "While on a trip with the families Ben and I split off at Conness Lakes and tagged it from that side",
-              "strava_url": "https://www.strava.com/activities/7830461222", 
+              "strava_url": "https://www.strava.com/activities/7830461222",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432023/image_js184n.jpg", "caption": "Already on to the next objective. Schemeing about Conness." },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432108/image_qlo711.jpg", "caption": "Walking back past Conness Lakes." }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432023/image_js184n.jpg",
+                  "caption": "Already on to the next objective. Schemeing about Conness."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432108/image_qlo711.jpg",
+                  "caption": "Walking back past Conness Lakes."
+                }
+              ],
+              "strava": {
+                "activity_id": "7830461222",
+                "distance_miles": 11.6,
+                "elevation_gain_ft": 607,
+                "moving_time_hms": "2:11:35",
+                "avg_heart_rate": 107,
+                "max_heart_rate": 135,
+                "sparkline_svg": "/strava/7830461222.svg",
+                "fetched_at": "2026-03-08"
+              }
             },
             {
               "date": "2025-07-26",
               "notes": "Along with Siler and Arriton, Leo and I made it up from the north ridge",
               "strava_url": "https://www.strava.com/activities/15263743067",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772385752/IMG_1481_w9wpgy.jpg", "caption": "Heading up the ridge" }, 
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772389956/IMG_1494_wbjbz7.jpg", "caption": "The view from the top" }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772385752/IMG_1481_w9wpgy.jpg",
+                  "caption": "Heading up the ridge"
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772389956/IMG_1494_wbjbz7.jpg",
+                  "caption": "The view from the top"
+                }
+              ],
+              "strava": {
+                "activity_id": "15263743067",
+                "distance_miles": 14.6,
+                "elevation_gain_ft": 4072,
+                "moving_time_hms": "6:38:44",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/15263743067.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },
@@ -6154,12 +6372,31 @@
             {
               "date": "2021-08-28",
               "notes": "First backpacking trip with Albany Dads. Up above Kennedy Meadows. This was a side trip in the middle and we ran into some wildfire smoke.",
-              "strava_url": "https://www.strava.com/activities/5874502788", 
+              "strava_url": "https://www.strava.com/activities/5874502788",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432628/image_mkwm16.jpg", "caption": "Getting some bouldering in on the descent." },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432671/image_qp7xil.jpg", "caption": "Heading down through the haze." },
-                             { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432565/image_rkaxwd.jpg", "caption": "Obligatory handstand pic." }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432628/image_mkwm16.jpg",
+                  "caption": "Getting some bouldering in on the descent."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432671/image_qp7xil.jpg",
+                  "caption": "Heading down through the haze."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772432565/image_rkaxwd.jpg",
+                  "caption": "Obligatory handstand pic."
+                }
+              ],
+              "strava": {
+                "activity_id": "5874502788",
+                "distance_miles": 5.3,
+                "elevation_gain_ft": 1752,
+                "moving_time_hms": "2:51:51",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/5874502788.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },
@@ -6296,11 +6533,27 @@
             {
               "date": "2025-05-25",
               "notes": "Aaron and I did a daytrip while camping at Grover Hot Springs. Still in snow, we glissaded down.",
-              "strava_url": "https://www.strava.com/activities/14605951551", 
+              "strava_url": "https://www.strava.com/activities/14605951551",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431296/image_jkx1ha.jpg", "caption": "Sliding down from the final section." },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431301/image_pobtsb.jpg", "caption": "Sliding down from the final section." }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431296/image_jkx1ha.jpg",
+                  "caption": "Sliding down from the final section."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431301/image_pobtsb.jpg",
+                  "caption": "Sliding down from the final section."
+                }
+              ],
+              "strava": {
+                "activity_id": "14605951551",
+                "distance_miles": 8.1,
+                "elevation_gain_ft": 2561,
+                "moving_time_hms": "3:44:59",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/14605951551.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },
@@ -6353,20 +6606,52 @@
             {
               "date": "2023-10-07",
               "notes": "Getting one more ridge run in at the end of this season. Invited Paul to join me and Ben. Camped at Wrights Lake and went up Price first and traversed to Pyramid",
-              "strava_url": "https://www.strava.com/activities/9996559552", 
+              "strava_url": "https://www.strava.com/activities/9996559552",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431084/image_ci7nym.jpg", "caption": "Making our wasy toward Pyramid along the ridge from Price." },
-                 { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431102/image_zzfrd6.jpg", "caption": "Paul nearing the summit." },
-                  { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431064/image_iijm1g.jpg", "caption": "Granled wood on the way up." }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431084/image_ci7nym.jpg",
+                  "caption": "Making our wasy toward Pyramid along the ridge from Price."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431102/image_zzfrd6.jpg",
+                  "caption": "Paul nearing the summit."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431064/image_iijm1g.jpg",
+                  "caption": "Granled wood on the way up."
+                }
+              ],
+              "strava": {
+                "activity_id": "9996559552",
+                "distance_miles": 13.6,
+                "elevation_gain_ft": 5304,
+                "moving_time_hms": "2:53:50",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/9996559552.svg",
+                "fetched_at": "2026-03-08"
+              }
             },
             {
               "date": "2025-07-06",
               "notes": "Just back from Europe I joined Ben for a Tripple Training sprint. We went the other way on the ridge starting with Pyramid this time.",
-              "strava_url": "https://www.strava.com/activities/15030632541", 
+              "strava_url": "https://www.strava.com/activities/15030632541",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430917/image_rocckv.jpg", "caption": "Heading down the ridge above Aloha Lake." }
-              ]
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772430917/image_rocckv.jpg",
+                  "caption": "Heading down the ridge above Aloha Lake."
+                }
+              ],
+              "strava": {
+                "activity_id": "15030632541",
+                "distance_miles": 16.9,
+                "elevation_gain_ft": 6258,
+                "moving_time_hms": "3:46:55",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/15030632541.svg",
+                "fetched_at": "2026-03-08"
+              }
             }
           ]
         },

@@ -21,6 +21,22 @@ function StravaLink({ url }) {
   )
 }
 
+function StravaStats({ strava }) {
+  if (!strava) return null
+  const timeParts = strava.moving_time_hms?.split(':').slice(0, 2).join(':')
+  const parts = [
+    strava.elevation_gain_ft != null && `↑ ${strava.elevation_gain_ft.toLocaleString()} ft`,
+    strava.distance_miles != null && `${strava.distance_miles} mi`,
+    timeParts && timeParts,
+  ].filter(Boolean)
+  if (parts.length === 0) return null
+  return (
+    <p className="text-xs tabular-nums mt-1" style={{ color: '#8A8A8A' }}>
+      {parts.join(' · ')}
+    </p>
+  )
+}
+
 export default function PeakTimeline() {
   const [lightbox, setLightbox] = useState(null)
 
@@ -59,7 +75,7 @@ export default function PeakTimeline() {
                 <p className="text-xs tabular-nums mb-0.5" style={{ color: '#8A8A8A' }}>
                   {displayDate}
                 </p>
-                <div className="flex items-baseline gap-3 flex-wrap">
+                <div className="flex items-center gap-3 flex-wrap">
                   <h3 className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>
                     {peak.name}
                   </h3>
@@ -67,6 +83,13 @@ export default function PeakTimeline() {
                     {peak.elevation.toLocaleString()} ft
                   </span>
                   <StravaLink url={ascent.strava_url} />
+                  {ascent.strava?.sparkline_svg && (
+                    <img
+                      src={ascent.strava.sparkline_svg}
+                      alt="elevation profile"
+                      style={{ width: '72px', height: '20px', objectFit: 'fill' }}
+                    />
+                  )}
                 </div>
                 {peak.routes?.length > 0 && (
                   <p className="text-xs mt-0.5" style={{ color: '#4A4A4A' }}>
@@ -78,6 +101,7 @@ export default function PeakTimeline() {
                     {ascent.notes}
                   </p>
                 )}
+                <StravaStats strava={ascent.strava} />
                 {ascent.photos?.length > 0 && (
                   <div className="mt-2 flex gap-2 flex-wrap">
                     {ascent.photos.map((photo, pi) => (

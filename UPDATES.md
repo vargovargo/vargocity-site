@@ -59,6 +59,52 @@ Add and contextualize press coverage from **vargocity.com**:
 
 ---
 
+## Strava Elevation Pipeline — Planned (2026-03-08)
+
+**Spec:** provided 2026-03-08
+
+### Key adaptations from spec to actual codebase
+
+| Spec says | Reality |
+|-----------|---------|
+| `data/peaks.json` | `src/data/sps-peaks.json` |
+| `strava` block on peak object | `strava_url` is on the **ascent** object — enriched `strava` block goes on the ascent too |
+| `assets/strava/` | `public/strava/` (Vite serves `public/` as site root; SVGs available at `/strava/{id}.svg`) |
+| 4 views: Cards, Timeline, Elevation, Region | `PeakGrid.jsx`, `PeakTimeline.jsx`, `ElevationChart.jsx`, `PeakRegionList.jsx` |
+
+### Enriched ascent object (after pipeline runs)
+
+```json
+{
+  "date": "2024-09-21",
+  "strava_url": "https://www.strava.com/activities/12486404993",
+  "strava": {
+    "activity_id": "12486404993",
+    "distance_miles": 8.4,
+    "elevation_gain_ft": 2100,
+    "moving_time_hms": "3:42:10",
+    "avg_heart_rate": 142,
+    "max_heart_rate": 168,
+    "sparkline_svg": "/strava/12486404993.svg",
+    "fetched_at": "2026-03-08"
+  }
+}
+```
+
+### Implementation checklist
+
+- [x] Phase 1: `scripts/strava-auth.js` (token exchange + auto-refresh); add `.env` to `.gitignore`
+- [x] Phase 2: `scripts/enrich-peaks.js` — reads `src/data/sps-peaks.json`, enriches each ascent that has `strava_url`, writes SVGs to `public/strava/`, writes JSON back in place; supports `--force` and `--dry-run` flags
+- [x] Phase 3: SVG sparklines — cardinal/catmull-rom curve, forest green `#2a4a35`, 240×60 viewBox, output to `public/strava/`
+- [x] Phase 4: Site component updates:
+  - `PeakGrid.jsx` — sparkline + stats row (↑ gain · distance · time) below notes
+  - `PeakTimeline.jsx` — sparkline strip + stats row above photos
+  - `ElevationChart.jsx` — sparkline prominently per ascent + full stats (incl. HR); Strava link → "view full recording →"
+  - `PeakRegionList.jsx` — stats row only (no sparkline), omit if no strava data
+- [ ] Phase 5: README "Data Pipeline" section
+
+---
+
 ## Notes / Context
 
 - **Review 2010s travel** — verify countries.json has all visits from that decade before the decade tab goes live
