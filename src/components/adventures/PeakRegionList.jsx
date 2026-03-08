@@ -123,7 +123,7 @@ export default function PeakRegionList() {
                     </div>
                     {ascent.strava?.sparkline_svg && (
                       <img
-                        src={ascent.strava.sparkline_svg}
+                        src={`${import.meta.env.BASE_URL}${ascent.strava.sparkline_svg.replace(/^\//, '')}`}
                         alt="elevation profile"
                         className="mt-1 mb-1"
                         style={{ width: '160px', height: '40px', objectFit: 'fill' }}

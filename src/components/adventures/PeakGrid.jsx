@@ -103,7 +103,7 @@ export default function PeakGrid() {
                 )}
                 {ascent.strava?.sparkline_svg && (
                   <img
-                    src={ascent.strava.sparkline_svg}
+                    src={`${import.meta.env.BASE_URL}${ascent.strava.sparkline_svg.replace(/^\//, '')}`}
                     alt="elevation profile"
                     className="w-full mt-3"
                     style={{ height: '40px', objectFit: 'fill' }}

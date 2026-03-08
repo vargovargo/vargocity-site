@@ -85,7 +85,7 @@ export default function PeakTimeline() {
                   <StravaLink url={ascent.strava_url} />
                   {ascent.strava?.sparkline_svg && (
                     <img
-                      src={ascent.strava.sparkline_svg}
+                      src={`${import.meta.env.BASE_URL}${ascent.strava.sparkline_svg.replace(/^\//, '')}`}
                       alt="elevation profile"
                       style={{ width: '72px', height: '20px', objectFit: 'fill' }}
                     />

@@ -35,7 +35,7 @@ function StravaDetail({ strava, stravaUrl }) {
     <div>
       {strava.sparkline_svg && (
         <img
-          src={strava.sparkline_svg}
+          src={`${import.meta.env.BASE_URL}${strava.sparkline_svg.replace(/^\//, '')}`}
           alt="elevation profile"
           className="mb-1.5"
           style={{ width: '160px', height: '40px', objectFit: 'fill' }}
