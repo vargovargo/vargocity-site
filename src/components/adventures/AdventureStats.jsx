@@ -1,20 +1,10 @@
 import { climbedPeaks, highestClimbed, SPS_TOTAL } from '../../data/spsUtils'
-import spsData from '../../data/sps-peaks.json'
 import countries from '../../data/countries.json'
 
 const CONTINENT_ORDER = ['Asia', 'Europe', 'North America', 'South America', 'Africa', 'Oceania']
 
 export default function AdventureStats({ section }) {
   if (section === 'peaks') {
-    const regionBreakdown = spsData.regions
-      .map(r => ({
-        name: r.name,
-        climbed: r.peaks.filter(p => p.ascents?.length > 0).length,
-        total: r.peaks.length,
-      }))
-      .filter(r => r.climbed > 0)
-      .sort((a, b) => b.climbed - a.climbed)
-
     return (
       <div style={{ borderBottom: '1px solid #E5E5E0' }}>
         <div className="flex flex-wrap gap-8 py-6">
@@ -37,16 +27,6 @@ export default function AdventureStats({ section }) {
             </div>
           )}
         </div>
-        {regionBreakdown.length > 0 && (
-          <div className="pb-4 flex flex-wrap gap-x-6 gap-y-2">
-            {regionBreakdown.map(r => (
-              <span key={r.name} className="text-xs" style={{ color: '#4A4A4A' }}>
-                <span className="font-medium">{r.name}</span>
-                <span style={{ color: '#8A8A8A' }}> {r.climbed}/{r.total}</span>
-              </span>
-            ))}
-          </div>
-        )}
       </div>
     )
   }
