@@ -1,10 +1,12 @@
-For twenty-five years I've been tracking a pattern: when large systems get disrupted — a heat wave hits, a pandemic arrives, a neighborhood gets rebuilt — the people with the fewest resources absorb the most. The framework has been consistent throughout: measure who benefits and who doesn't yet, identify root causes, build tools that make the gap legible to people who can act on it. I've applied it to cities, to climate, to wildfire smoke, to COVID, to economic vulnerability. AI looks like the next major disruption on the horizon — and unlike most, it might also be the most powerful equalizer we've ever had. That's what makes it worth paying attention to.
+For twenty-five years I've been tracking a pattern: when large systems get disrupted - the flood maps shift, a pandemic arrives - the people with the fewest resources will have the fewest options. Adaptation is a priviledge. My approach has been consistent throughout: measure who benefits and who is harmed, identify root causes, build tools that make the gap legible to people who can act on it. I've applied it to cities, to climate, to wildfire smoke, to COVID, to economic vulnerability. AI looks like the next major disruption on the horizon and it might be the most powerful equalizer we've seen. That's what makes it worth paying attention to.
 
 ---
 
-It started with a chemical engineering degree at Michigan, in 2001 — a program that turned out to be less about thermodynamics than about learning how to learn. Measure things carefully before believing them. Think in systems. Ask: what's actually happening here, and why?
+It started with a chemical engineering degree at Michigan, in 2001 — a program that turned out, for me, to be less about thermodynamics than about learning how to learn. Measure things carefully before believing them. Measure carefully. Check your work. Think in systems. 
 
-But somewhere in my twenties, the question that started to matter most wasn't *how* but *who*. Who bears the cost? Who gets left out when we build a city, plan a highway, design a neighborhood? Who benefits when we get it right?
+I grew up near a city people were trying to avoid and when i got around to seeing some other I started to see what was possible. The decisions we make create place and place in turn makes us. 
+
+Living in cities showed me how the built environment mattered and what they could do for people.  Studying them showed me how power played out in space. The difference between those two led me to ask who benefits and who loses. 
 
 That question pulled me south to Atlanta, where I pioneered a dual degree between Georgia Tech's urban planning program and Emory's school of public health. The connection seemed obvious to me: urban planning and public health are both fundamentally about how environments shape human lives — and whose lives, specifically. I finished the PhD in 2012 with a dissertation on how cities plan (or don't) for extreme heat. The built environment gets hot. Not everyone has the same way to get cool.
 
