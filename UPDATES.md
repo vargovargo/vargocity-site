@@ -41,6 +41,20 @@ Add and contextualize press coverage from **vargocity.com**:
 
 ---
 
+***Ahead of vargo.city launch*** 
+While i have been careful in sharing the sote so far, i am moving toward a broader roll out. I am thinking that producing an independent research piece (economic-index-trends) would be a nice piece to feature as the sote rolls out. it and pieces like it could be the focus of the hidden 'writing' section. before thst i have some items to tackle
+- france not showing up in the map
+- update citation counts
+- should articles on research page sort by release or number of citations?
+- develop alternative CSS (dark) to test
+- add SEO
+- add gratitude-app card to making page
+- more design items?
+- register vargo.city and update github
+- group peaks timeline by year, climbing has a season and the timeline can refelect that
+
+---
+
 ## Copy / Tone
 
 - [ ] **Revisit copy/language sitewide** — make tone more hopeful, pull back on AI framing; lead with human impact and optimism. i am providing thoughts here that may help revisions and putting things into my own words. what follows is for fodder and context to inform tone of language throughout the site.
