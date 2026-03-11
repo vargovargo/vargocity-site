@@ -5,7 +5,7 @@ const cards = [
     to: '/about',
     label: 'About',
     title: 'In Motion',
-    description: 'Raised in the suburbs, but love cities. From the Midwest, but long for higher elevation. From the Motor City, but get everywhere by bike.',
+    description: 'Raised in the suburbs, but love cities. From the Midwest, but long for higher elevation. Born in the Motor City, but get everywhere by bike.',
   },
   {
     to: '/research',
