@@ -2,28 +2,28 @@ import { Link } from 'react-router-dom'
 
 const cards = [
   {
+    to: '/about',
+    label: 'About',
+    title: 'In Motion',
+    description: 'Raised in the suburbs, but love cities. From the Midwest, but long for higher elevation. From the Motor City, but get everywhere by bike.',
+  },
+  {
     to: '/research',
     label: 'Research',
     title: 'A Career of Asking For Whom',
-    description: 'Twenty-five years of tracking who bears the cost when powerful systems shift — and building tools to make that visible and changeable. Cities, climate, health, economy.',
-  },
-  {
-    to: '/making',
-    label: 'Making',
-    title: 'Code & Design',
-    description: 'Tools built when something useful didn\'t exist, and design work that helps ideas reach the people who need them.',
+    description: 'Find the signal. Cut the noise. Make it beautiful enough that people can\'t ignore it. Cities, climate, health, opportunity.',
   },
   {
     to: '/adventures',
     label: 'Adventures',
     title: 'Sierra Peaks & Far Places',
-    description: 'The window for hard adventuring is finite. A running count of Sierra peaks and far places.',
+    description: 'The window for hard adventuring is finite. Keep surprising yourself.',
   },
   {
-    to: '/writing',
-    label: 'Writing',
-    title: 'Blog, Letters & Reading',
-    description: 'Essays, dispatches from the newsletter, and notes from a reading life.',
+    to: '/making',
+    label: 'Making',
+    title: 'Code & Design',
+    description: 'Creativity and knowledge come from the same place. The first version is just permission to make the next one better.',
   },
 ]
 

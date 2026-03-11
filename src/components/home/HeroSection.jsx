@@ -11,15 +11,10 @@ export default function HeroSection() {
           measuring my own<br />rate of change
         </h1>
         <p className="mt-6 text-base leading-relaxed max-w-xl" style={{ color: '#4A4A4A' }}>
-          For twenty-five years I've been asking the same question across different problems:
-          when powerful systems shift, who bears the cost? I've tracked it through urban heat,
-          wildfire smoke, COVID, and economic disruption. The pattern holds — big disruptions
-          land hardest on people with the least cushion. AI looks like the next one. But unlike
-          most disruptions, it might also be the biggest equalizer we've ever had access to.
-          Whether that happens depends on who's paying attention.
-        </p>
-        <p className="mt-3 text-sm" style={{ color: '#8A8A8A' }}>
-          Senior Researcher · Federal Reserve Bank of San Francisco
+          The question has been the same for twenty-five years, just wearing different clothes:
+          when things shift, who gets left? Urban heat, wildfire smoke, a pandemic, economic
+          disruption — the pattern holds. The terrain changes. The question doesn't. Right now
+          it's turned toward AI, which might be the first disruption that could answer it differently.
         </p>
       </div>
     </section>
