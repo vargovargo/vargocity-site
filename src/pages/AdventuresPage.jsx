@@ -59,8 +59,8 @@ export default function AdventuresPage() {
                 onClick={() => setPeakView(v.id)}
                 className="text-xs px-3 py-1.5 rounded transition-colors"
                 style={{
-                  backgroundColor: peakView === v.id ? 'var(--c-invert-bg)' : 'var(--c-surface)',
-                  color: peakView === v.id ? 'var(--c-invert-text)' : 'var(--c-text-muted)',
+                  backgroundColor: peakView === v.id ? 'var(--c-peaks-btn-active, var(--c-invert-bg))' : 'var(--c-peaks-btn-idle, var(--c-surface))',
+                  color: peakView === v.id ? 'var(--c-peaks-btn-active-text, var(--c-invert-text))' : 'var(--c-peaks-btn-idle-text, var(--c-text-muted))',
                   border: '1px solid var(--c-border)',
                   cursor: 'pointer',
                 }}
