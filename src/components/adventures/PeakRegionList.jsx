@@ -91,10 +91,10 @@ export default function PeakRegionList() {
                     onClick={isClimbed ? () => setSelectedPeak(isSelected ? null : peak.name) : undefined}
                     className="text-xs px-2.5 py-1"
                     style={{
-                      backgroundColor: isSelected ? `var(--c-selected)` : isClimbed ? 'var(--c-invert-bg)' : 'var(--c-bg)',
+                      backgroundColor: isSelected ? 'var(--c-peaks-bar-active, var(--c-selected))' : isClimbed ? 'var(--c-peaks-bar-idle, var(--c-invert-bg))' : 'var(--c-bg)',
                       color: isClimbed ? 'var(--c-invert-text)' : 'var(--c-text-muted)',
                       border: '1px solid',
-                      borderColor: isSelected ? `var(--c-selected)` : isClimbed ? 'var(--c-invert-bg)' : 'var(--c-border)',
+                      borderColor: isSelected ? 'var(--c-peaks-bar-active, var(--c-selected))' : isClimbed ? 'var(--c-peaks-bar-idle, var(--c-invert-bg))' : 'var(--c-border)',
                       cursor: isClimbed ? 'pointer' : 'default',
                     }}
                   >
@@ -105,7 +105,7 @@ export default function PeakRegionList() {
             </div>
 
             {selected?.ascents?.length > 0 && (
-              <div className="mt-3 pl-3 border-l-2 space-y-2" style={{ borderColor: `var(--c-selected)` }}>
+              <div className="mt-3 pl-3 border-l-2 space-y-2" style={{ borderColor: 'var(--c-peaks-bar-active, var(--c-selected))' }}>
                 {selected.ascents.map((ascent, i) => (
                   <div key={i}>
                     <div className="flex items-center gap-3 flex-wrap">
