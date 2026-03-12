@@ -86,10 +86,10 @@
   --c-peaks-bar-idle: #DCE8F2;
   --c-peaks-bar-active: #7AB8CC;
   --c-map-stroke: #0F1621;
-  --c-map-visited: #7AB8CC;
+  --c-map-visited: #DCE8F2;
   --c-map-unvisited: #243040;
   --c-map-dim: #3A5068;
-  --c-map-selected: #DCE8F2;
+  --c-map-selected: #7AB8CC;
   --c-font-heading: 'Barlow', system-ui, sans-serif;
   --c-font-mono: 'DM Mono', ui-monospace, monospace;
 }
