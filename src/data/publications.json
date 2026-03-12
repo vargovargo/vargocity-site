@@ -7,7 +7,7 @@
     "venue": "Georgia Institute of Technology (Technical Report)",
     "url": "",
     "citations": 7,
-    "tags": ["urban-planning", "demographics"]
+    "tags": ["cities", "modeling"]
   },
   {
     "id": "stone2012managing",
@@ -17,7 +17,7 @@
     "venue": "Landscape and Urban Planning",
     "url": "",
     "citations": 322,
-    "tags": ["urban-heat", "climate", "policy", "urban-planning"]
+    "tags": ["climate", "policy", "cities"]
   },
   {
     "id": "vargo2012google",
@@ -27,7 +27,7 @@
     "venue": "Journal of Physical Activity and Health",
     "url": "",
     "citations": 83,
-    "tags": ["walkability", "built-environment", "urbanism", "health"]
+    "tags": ["cities", "health"]
   },
   {
     "id": "vargo2012planning",
@@ -37,7 +37,7 @@
     "venue": "Dissertation (Georgia Institute of Technology)",
     "url": "",
     "citations": 1,
-    "tags": ["urban-planning", "climate", "heat"]
+    "tags": ["cities", "climate"]
   },
   {
     "id": "stone2013climate",
@@ -47,7 +47,7 @@
     "venue": "Environmental Science & Technology",
     "url": "",
     "citations": 75,
-    "tags": ["urban-heat", "climate", "policy", "heat"]
+    "tags": ["climate", "policy"]
   },
   {
     "id": "vargo2013importance",
@@ -57,7 +57,7 @@
     "venue": "Journal of Environmental Management",
     "url": "",
     "citations": 81,
-    "tags": ["urban-heat", "climate", "built-environment", "land-use"]
+    "tags": ["climate", "cities"]
   },
   {
     "id": "vargo2013getting",
@@ -67,7 +67,7 @@
     "venue": "Paving the Way Forward in Urbanization (book chapter)",
     "url": "",
     "citations": 1,
-    "tags": ["urban-heat", "climate"]
+    "tags": ["climate"]
   },
   {
     "id": "metro-sapiens",
@@ -77,7 +77,17 @@
     "venue": "Journal of Environmental Studies and Sciences",
     "url": "https://link.springer.com/article/10.1007/s13412-014-0195-7",
     "citations": 10,
-    "tags": ["urbanism", "health", "metro-sapiens"]
+    "tags": ["cities", "health"]
+  },
+  {
+    "id": "vargo2014planning-atlanta",
+    "title": "Planning for the Forest and the Trees",
+    "authors": ["Jason Vargo"],
+    "year": 2014,
+    "venue": "Planning Atlanta: Ruins and Resurgence (APA Planners Press)",
+    "url": "",
+    "citations": 0,
+    "tags": ["cities", "policy"]
   },
   {
     "id": "stone2014avoided",
@@ -87,7 +97,7 @@
     "venue": "PLOS ONE",
     "url": "",
     "citations": 224,
-    "tags": ["urban-heat", "climate", "health", "heat", "policy"]
+    "tags": ["climate", "health", "policy"]
   },
   {
     "id": "habeeb2015rising",
@@ -97,7 +107,7 @@
     "venue": "Natural Hazards",
     "url": "",
     "citations": 395,
-    "tags": ["urban-heat", "climate", "heat"]
+    "tags": ["climate"]
   },
   {
     "id": "vargo2015bicyclist",
@@ -107,7 +117,7 @@
     "venue": "MMWR Morbidity and Mortality Weekly Report",
     "url": "",
     "citations": 23,
-    "tags": ["active-transport", "health", "epidemiology"]
+    "tags": ["transportation", "health"]
   },
   {
     "id": "vargo2015performance",
@@ -117,7 +127,7 @@
     "venue": "Advances in Meteorology",
     "url": "",
     "citations": 12,
-    "tags": ["urban-heat", "heat", "climate"]
+    "tags": ["climate"]
   },
   {
     "id": "sailor2016improving",
@@ -127,7 +137,7 @@
     "venue": "Sustainability",
     "url": "",
     "citations": 40,
-    "tags": ["urban-heat", "health", "policy"]
+    "tags": ["climate", "health", "policy"]
   },
   {
     "id": "social-spatial-heat-uhi",
@@ -137,7 +147,7 @@
     "venue": "Environmental Science & Policy",
     "url": "",
     "citations": 124,
-    "tags": ["climate-equity", "heat", "urban", "health-equity"]
+    "tags": ["climate", "cities", "health"]
   },
   {
     "id": "schneider2017comparison",
@@ -147,7 +157,7 @@
     "venue": "Accident Analysis & Prevention",
     "url": "",
     "citations": 29,
-    "tags": ["active-transport", "health", "transportation"]
+    "tags": ["transportation", "health"]
   },
   {
     "id": "smith2017climate",
@@ -160,6 +170,16 @@
     "tags": ["climate", "policy", "health"]
   },
   {
+    "id": "vargo2017global-health",
+    "title": "The Urban Opportunity for Global Health",
+    "authors": ["Jason Vargo"],
+    "year": 2017,
+    "venue": "Foundations for Global Health Practice (Wiley)",
+    "url": "",
+    "citations": 0,
+    "tags": ["cities", "health"]
+  },
+  {
     "id": "vargo2017new",
     "title": "A new implementation of the integrated transport and health impacts model for the United States",
     "authors": ["Jason Vargo", "Samuel Younkin", "Jonathan Patz"],
@@ -167,7 +187,7 @@
     "venue": "Journal of Transport & Health",
     "url": "",
     "citations": 2,
-    "tags": ["active-transport", "health", "transportation"]
+    "tags": ["transportation", "health"]
   },
   {
     "id": "hutchinson2018san",
@@ -177,7 +197,7 @@
     "venue": "PLOS Medicine",
     "url": "",
     "citations": 204,
-    "tags": ["wildfire", "health", "air-quality", "epidemiology"]
+    "tags": ["air-quality", "health"]
   },
   {
     "id": "limaye2018climate",
@@ -187,7 +207,7 @@
     "venue": "EcoHealth",
     "url": "",
     "citations": 75,
-    "tags": ["climate", "heat", "health", "epidemiology"]
+    "tags": ["climate", "health"]
   },
   {
     "id": "fergus2019trends",
@@ -197,7 +217,7 @@
     "venue": "Traffic Injury Prevention",
     "url": "",
     "citations": 18,
-    "tags": ["active-transport", "health", "epidemiology"]
+    "tags": ["transportation", "health"]
   },
   {
     "id": "jones2019cardiac",
@@ -207,7 +227,7 @@
     "venue": "Environmental Epidemiology",
     "url": "",
     "citations": 1,
-    "tags": ["wildfire", "air-quality", "health", "epidemiology"]
+    "tags": ["air-quality", "health"]
   },
   {
     "id": "parry2019visible",
@@ -217,7 +237,7 @@
     "venue": "Social Science & Medicine",
     "url": "",
     "citations": 98,
-    "tags": ["climate", "health-equity", "health"]
+    "tags": ["climate", "health"]
   },
   {
     "id": "jones2020cardiac-wildfires",
@@ -227,7 +247,7 @@
     "venue": "Journal of the American Heart Association",
     "url": "",
     "citations": 109,
-    "tags": ["wildfire", "air-quality", "health", "epidemiology"]
+    "tags": ["air-quality", "health"]
   },
   {
     "id": "vargo2020time",
@@ -237,7 +257,7 @@
     "venue": "Frontiers in Public Health",
     "url": "",
     "citations": 24,
-    "tags": ["wildfire", "air-quality", "health"]
+    "tags": ["air-quality", "health"]
   },
   {
     "id": "fadadu2021dermatitis",
@@ -247,7 +267,7 @@
     "venue": "JAMA Dermatology",
     "url": "",
     "citations": 133,
-    "tags": ["wildfire", "air-quality", "health", "dermatology"]
+    "tags": ["air-quality", "health"]
   },
   {
     "id": "goldhaber2021reply",
@@ -257,7 +277,7 @@
     "venue": "Health Affairs",
     "url": "",
     "citations": 0,
-    "tags": ["covid", "health-equity"]
+    "tags": ["covid", "health"]
   },
   {
     "id": "leon2021nonpharmaceutical",
@@ -267,7 +287,7 @@
     "venue": "Open Forum Infectious Diseases",
     "url": "",
     "citations": 11,
-    "tags": ["covid", "policy", "epidemiology"]
+    "tags": ["covid", "policy", "modeling"]
   },
   {
     "id": "o2021multi",
@@ -277,7 +297,7 @@
     "venue": "Journal of the Air & Waste Management Association",
     "url": "",
     "citations": 50,
-    "tags": ["wildfire", "air-quality", "health", "epidemiology"]
+    "tags": ["air-quality", "health"]
   },
   {
     "id": "reitsma2021racial",
@@ -287,7 +307,7 @@
     "venue": "Health Affairs",
     "url": "",
     "citations": 170,
-    "tags": ["covid", "health-equity", "epidemiology"]
+    "tags": ["covid", "health"]
   },
   {
     "id": "shete2021equity",
@@ -297,7 +317,7 @@
     "venue": "Health Affairs Forefront",
     "url": "",
     "citations": 8,
-    "tags": ["covid", "health-equity", "policy"]
+    "tags": ["covid", "health", "policy"]
   },
   {
     "id": "diao2022satellite",
@@ -307,7 +327,7 @@
     "venue": "Authorea Preprints",
     "url": "",
     "citations": 0,
-    "tags": ["wildfire", "air-quality"]
+    "tags": ["air-quality"]
   },
   {
     "id": "fadadu2022older-adults",
@@ -317,7 +337,7 @@
     "venue": "JAMA Network Open",
     "url": "",
     "citations": 26,
-    "tags": ["wildfire", "air-quality", "health", "dermatology"]
+    "tags": ["air-quality", "health"]
   },
   {
     "id": "hwang2022residential",
@@ -327,7 +347,7 @@
     "venue": "Federal Reserve Bank of San Francisco Community Development Research Brief",
     "url": "https://www.frbsf.org/research-and-insights/publications/community-development-research-briefs/2022/07/residential-instability-sf-bay-area-covid-19/",
     "citations": 32,
-    "tags": ["covid", "housing", "health-equity"]
+    "tags": ["covid", "cities", "health"]
   },
   {
     "id": "lappe2022disruptions",
@@ -337,7 +357,7 @@
     "venue": "Federal Reserve Bank of San Francisco Community Development Research Brief",
     "url": "",
     "citations": 3,
-    "tags": ["wildfire", "health-equity", "climate-equity"]
+    "tags": ["air-quality", "climate", "health"]
   },
   {
     "id": "mallen2022overcoming",
@@ -347,7 +367,7 @@
     "venue": "International Journal of Environmental Research and Public Health",
     "url": "",
     "citations": 30,
-    "tags": ["climate", "health", "policy", "urban-planning"]
+    "tags": ["climate", "health", "policy", "cities"]
   },
   {
     "id": "olshen2022covidnearterm",
@@ -357,7 +377,7 @@
     "venue": "Journal of Clinical and Translational Science",
     "url": "",
     "citations": 8,
-    "tags": ["covid", "epidemiology", "modeling"]
+    "tags": ["covid", "modeling"]
   },
   {
     "id": "fadadu2023psoriasis",
@@ -367,17 +387,17 @@
     "venue": "JAMA Network Open",
     "url": "",
     "citations": 20,
-    "tags": ["wildfire", "air-quality", "health", "dermatology"]
+    "tags": ["air-quality", "health"]
   },
   {
     "id": "stone2023urban",
     "title": "Urban heat management in Louisville, Kentucky: A framework for climate adaptation planning",
     "authors": ["Brian Stone Jr", "Kevin Lanza", "Evan Mallen", "Jason Vargo", "Armistead Russell"],
-    "year": 2023,
+    "year": 2019,
     "venue": "Journal of Planning Education and Research",
     "url": "",
     "citations": 68,
-    "tags": ["urban-heat", "climate", "policy", "urban-planning"]
+    "tags": ["climate", "policy", "cities"]
   },
   {
     "id": "vargo2023social",
@@ -387,7 +407,7 @@
     "venue": "American Journal of Public Health",
     "url": "",
     "citations": 45,
-    "tags": ["wildfire", "health-equity", "climate-equity", "air-quality"]
+    "tags": ["air-quality", "climate", "health"]
   },
   {
     "id": "jones2024daily",
@@ -397,7 +417,7 @@
     "venue": "Atmosphere",
     "url": "",
     "citations": 3,
-    "tags": ["wildfire", "air-quality"]
+    "tags": ["air-quality"]
   },
   {
     "id": "vargo2024planning",
@@ -407,7 +427,7 @@
     "venue": "Climate Change and Public Health (Oxford University Press)",
     "url": "",
     "citations": 0,
-    "tags": ["built-environment", "urban-planning", "policy"]
+    "tags": ["cities", "policy"]
   },
   {
     "id": "jones2025increasing",
@@ -417,7 +437,7 @@
     "venue": "Earth's Future",
     "url": "",
     "citations": 1,
-    "tags": ["wildfire", "climate", "air-quality", "heat"]
+    "tags": ["air-quality", "climate"]
   },
   {
     "id": "jones2025joint",
@@ -427,7 +447,7 @@
     "venue": "GeoHealth",
     "url": "",
     "citations": 3,
-    "tags": ["wildfire", "climate", "heat", "health", "epidemiology"]
+    "tags": ["air-quality", "climate", "health"]
   },
   {
     "id": "kwan2025integration",
@@ -437,7 +457,7 @@
     "venue": "PLOS ONE",
     "url": "",
     "citations": 6,
-    "tags": ["covid", "health-equity", "policy"]
+    "tags": ["covid", "health", "policy"]
   },
   {
     "id": "leon2025fostering",

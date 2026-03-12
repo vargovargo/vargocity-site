@@ -69,10 +69,16 @@ export default function PublicationList({ activeTag, onTagChange }) {
                 </p>
                 <div className="flex flex-wrap gap-1.5 mt-2">
                   {pub.tags.map(tag => (
-                    <span key={tag} className="px-2 py-0.5 text-xs rounded"
-                      style={{ backgroundColor: 'var(--c-border)', color: 'var(--c-text-body)' }}>
+                    <button key={tag} onClick={() => onTagChange(tag === activeTag ? null : tag)}
+                      className="px-2 py-0.5 text-xs rounded transition-colors"
+                      style={{
+                        backgroundColor: tag === activeTag ? 'var(--c-invert-bg)' : 'var(--c-border)',
+                        color: tag === activeTag ? 'var(--c-invert-text)' : 'var(--c-text-body)',
+                        cursor: 'pointer',
+                        border: 'none',
+                      }}>
                       {tag}
-                    </span>
+                    </button>
                   ))}
                 </div>
               </div>
