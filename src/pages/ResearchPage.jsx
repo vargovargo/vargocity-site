@@ -69,7 +69,7 @@ export default function ResearchPage() {
           {filteredMedia.map((m, i) => (
             <div key={i}
               style={{ borderBottom: i < filteredMedia.length - 1 ? '1px solid var(--c-border)' : 'none' }}
-              className="px-5 py-4 bg-white">
+              className="px-5 py-4" style={{ backgroundColor: 'var(--c-surface)' }}>
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs font-medium mb-0.5" style={{ color: 'var(--c-text-muted)' }}>{m.outlet}</p>

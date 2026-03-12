@@ -46,8 +46,11 @@ export default function PublicationList({ activeTag, onTagChange }) {
       <div className="space-y-0" style={{ border: '1px solid var(--c-border)' }}>
         {filtered.map((pub, i) => (
           <div key={pub.id}
-            style={{ borderBottom: i < filtered.length - 1 ? '1px solid var(--c-border)' : 'none' }}
-            className="p-5 bg-white">
+            className="p-5"
+            style={{
+              backgroundColor: 'var(--c-surface)',
+              borderBottom: i < filtered.length - 1 ? '1px solid var(--c-border)' : 'none',
+            }}>
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
                 {pub.url ? (
@@ -65,9 +68,9 @@ export default function PublicationList({ activeTag, onTagChange }) {
                   {pub.venue} · {pub.year}
                 </p>
                 <div className="flex flex-wrap gap-1.5 mt-2">
-                  {pub.tags.filter(t => t === 'climate-equity' || t === 'health-equity').map(tag => (
+                  {pub.tags.map(tag => (
                     <span key={tag} className="px-2 py-0.5 text-xs rounded"
-                      style={{ backgroundColor: 'var(--c-card-hover)', color: 'var(--c-text-body)' }}>
+                      style={{ backgroundColor: 'var(--c-border)', color: 'var(--c-text-body)' }}>
                       {tag}
                     </span>
                   ))}
