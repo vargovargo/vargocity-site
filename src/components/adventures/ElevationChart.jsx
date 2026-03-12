@@ -74,7 +74,7 @@ export default function ElevationChart() {
           {!climbedOnly && (
             <>
               <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text)' }}>
-                <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: 'var(--c-invert-bg)' }} />
+                <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: 'var(--c-peaks-bar-idle, var(--c-invert-bg))' }} />
                 Climbed
               </span>
               <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
@@ -124,7 +124,7 @@ export default function ElevationChart() {
                     className="h-full transition-all"
                     style={{
                       width: `${(peak.elevation / maxElev) * 100}%`,
-                      backgroundColor: climbed ? (isSelected ? `var(--c-selected)` : 'var(--c-invert-bg)') : 'var(--c-border)',
+                      backgroundColor: climbed ? (isSelected ? 'var(--c-peaks-bar-active, var(--c-selected))' : 'var(--c-peaks-bar-idle, var(--c-invert-bg))') : 'var(--c-border)',
                     }}
                   />
                 </div>
@@ -139,7 +139,7 @@ export default function ElevationChart() {
               {isSelected && peakData && (
                 <div
                   className="ml-[9.75rem] mt-1 mb-2 pl-3 border-l-2 space-y-2"
-                  style={{ borderColor: `var(--c-selected)` }}
+                  style={{ borderColor: 'var(--c-peaks-bar-active, var(--c-selected))' }}
                 >
                   {peakData.ascents.map((ascent, i) => (
                     <div key={i}>

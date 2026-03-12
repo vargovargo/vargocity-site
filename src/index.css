@@ -79,10 +79,12 @@
   --c-invert-bg: #7AB8CC;
   --c-invert-text: #0F1621;
   --c-invert-muted: #2A4A5A;
-  --c-peaks-btn-idle: #7AB8CC;
+  --c-peaks-btn-idle: #DCE8F2;
   --c-peaks-btn-idle-text: #0F1621;
-  --c-peaks-btn-active: #DCE8F2;
+  --c-peaks-btn-active: #7AB8CC;
   --c-peaks-btn-active-text: #0F1621;
+  --c-peaks-bar-idle: #DCE8F2;
+  --c-peaks-bar-active: #7AB8CC;
   --c-map-stroke: #0F1621;
   --c-map-visited: #7AB8CC;
   --c-map-unvisited: #243040;
