@@ -43,7 +43,7 @@ export default function AdventuresPage() {
           <AdventureStats section="peaks" />
 
           {/* SPS list context */}
-          <p className="text-sm leading-relaxed mt-6" style={{ color: '#4A4A4A' }}>
+          <p className="text-sm leading-relaxed mt-6" style={{ color: 'var(--c-text-body)' }}>
             The <strong>Sierra Peaks Section (SPS) List</strong> is a roster of 248 peaks maintained
             by the Angeles Chapter of the Sierra Club — a lifetime project for most who attempt it.
             The peaks span the length of the Sierra Nevada, from the volcanic tableland near Mammoth
@@ -59,9 +59,9 @@ export default function AdventuresPage() {
                 onClick={() => setPeakView(v.id)}
                 className="text-xs px-3 py-1.5 rounded transition-colors"
                 style={{
-                  backgroundColor: peakView === v.id ? '#1A1A1A' : '#FFFFFF',
-                  color: peakView === v.id ? '#FFFFFF' : '#8A8A8A',
-                  border: '1px solid #E5E5E0',
+                  backgroundColor: peakView === v.id ? 'var(--c-invert-bg)' : 'var(--c-surface)',
+                  color: peakView === v.id ? 'var(--c-invert-text)' : 'var(--c-text-muted)',
+                  border: '1px solid var(--c-border)',
                   cursor: 'pointer',
                 }}
               >

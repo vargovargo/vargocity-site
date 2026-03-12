@@ -24,21 +24,21 @@ const themes = [
 
 export default function ThemeCards() {
   return (
-    <div className="grid sm:grid-cols-2 gap-px" style={{ border: '1px solid #E5E5E0', backgroundColor: '#E5E5E0' }}>
+    <div className="grid sm:grid-cols-2 gap-px" style={{ border: '1px solid var(--c-border)', backgroundColor: 'var(--c-border)' }}>
       {themes.map((t) => (
         <div key={t.id} className="p-6"
-          style={{ backgroundColor: t.highlight ? '#1A1A1A' : '#FFFFFF' }}>
+          style={{ backgroundColor: t.highlight ? 'var(--c-invert-bg)' : 'var(--c-surface)' }}>
           <h3 className="text-base font-semibold mb-2"
-            style={{ color: t.highlight ? '#FFFFFF' : '#1A1A1A' }}>
+            style={{ color: t.highlight ? 'var(--c-invert-text)' : 'var(--c-text)' }}>
             {t.title}
           </h3>
           <p className="text-sm leading-relaxed"
-            style={{ color: t.highlight ? '#A0A0A0' : '#4A4A4A' }}>
+            style={{ color: t.highlight ? 'var(--c-invert-muted)' : 'var(--c-text-body)' }}>
             {t.description}
           </p>
           {t.quote && (
             <blockquote className="mt-4 pl-3 text-sm italic leading-relaxed"
-              style={{ color: '#4A4A4A', borderLeft: '2px solid #E5E5E0' }}>
+              style={{ color: 'var(--c-text-body)', borderLeft: '2px solid var(--c-border)' }}>
               {t.quote}
             </blockquote>
           )}

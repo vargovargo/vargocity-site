@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&family=Barlow:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -15,6 +15,101 @@
   --color-ink-light: #B0B0A8;
 }
 
+/* ── Theme tokens ─────────────────────────────────────────── */
+:root {
+  --c-bg: #FAFAF8;
+  --c-surface: #FFFFFF;
+  --c-border: #E5E5E0;
+  --c-text: #1A1A1A;
+  --c-text-body: #4A4A4A;
+  --c-text-muted: #8A8A8A;
+  --c-text-light: #B0B0A8;
+  --c-accent: #FC4C02;
+  --c-strava: #FC4C02;
+  --c-selected: #FC4C02;
+  --c-card-hover: #F5F5F2;
+  --c-invert-bg: #1A1A1A;
+  --c-invert-text: #FFFFFF;
+  --c-invert-muted: #A0A0A0;
+  --c-map-stroke: #FAFAF8;
+  --c-map-visited: #1A1A1A;
+  --c-map-unvisited: #E5E5E0;
+  --c-map-dim: #D0D0C8;
+  --c-map-selected: #FC4C02;
+  --c-font-heading: 'Inter', system-ui, sans-serif;
+  --c-font-mono: ui-monospace, monospace;
+}
+
+[data-theme="warm"] {
+  --c-bg: #F5EDE0;
+  --c-surface: #FAF4EA;
+  --c-border: #D8CCBA;
+  --c-text: #1C1714;
+  --c-text-body: #4A3F35;
+  --c-text-muted: #8A7A6A;
+  --c-text-light: #B0A090;
+  --c-accent: #B87333;
+  --c-strava: #FC4C02;
+  --c-selected: #B85C38;
+  --c-card-hover: #F0E8D8;
+  --c-invert-bg: #1C1714;
+  --c-invert-text: #FAF4EA;
+  --c-invert-muted: #8A7A6A;
+  --c-map-stroke: #F5EDE0;
+  --c-map-visited: #1C1714;
+  --c-map-unvisited: #D8CCBA;
+  --c-map-dim: #C4B8A0;
+  --c-map-selected: #B85C38;
+  --c-font-heading: 'Lora', Georgia, serif;
+  --c-font-mono: ui-monospace, monospace;
+}
+
+[data-theme="alpine"] {
+  --c-bg: #0F1621;
+  --c-surface: #1A2332;
+  --c-border: #2A3848;
+  --c-text: #E8EDF5;
+  --c-text-body: #B8C4D4;
+  --c-text-muted: #7A8A9A;
+  --c-text-light: #4A5A6A;
+  --c-accent: #7AB8CC;
+  --c-strava: #7AB8CC;
+  --c-selected: #DCE8F2;
+  --c-card-hover: #1E2A3A;
+  --c-invert-bg: #7AB8CC;
+  --c-invert-text: #0F1621;
+  --c-invert-muted: #2A4A5A;
+  --c-map-stroke: #0F1621;
+  --c-map-visited: #7AB8CC;
+  --c-map-unvisited: #243040;
+  --c-map-dim: #3A5068;
+  --c-map-selected: #DCE8F2;
+  --c-font-heading: 'Barlow', system-ui, sans-serif;
+  --c-font-mono: 'DM Mono', ui-monospace, monospace;
+}
+
+/* numeric/data labels use mono in alpine */
+.font-data {
+  font-family: var(--c-font-mono);
+}
+
+/* world map country strokes — overrides hardcoded SVG attribute */
+.world-map path {
+  stroke: var(--c-map-stroke) !important;
+}
+
+/* sparkline elevation profiles — brighten to near-white on dark theme */
+[data-theme="alpine"] .sparkline {
+  filter: brightness(8) saturate(0);
+}
+
+/* hover color that respects theme */
+.theme-hover:hover { color: var(--c-text) !important; }
+
+h1, h2, h3, h4 {
+  font-family: var(--c-font-heading);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -27,8 +122,8 @@ html {
 
 body {
   margin: 0;
-  background-color: #FAFAF8;
-  color: #1A1A1A;
+  background-color: var(--c-bg);
+  color: var(--c-text);
   min-height: 100vh;
 }
 

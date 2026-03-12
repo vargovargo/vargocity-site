@@ -32,12 +32,12 @@ export default function ResearchPage() {
 
       {/* Page jump links */}
       <div className="flex gap-5 mb-12 -mt-4">
-        <a href="#media" className="text-xs hover:underline" style={{ color: '#8A8A8A' }}>↓ Media & Press</a>
+        <a href="#media" className="text-xs hover:underline" style={{ color: 'var(--c-text-muted)' }}>↓ Media & Press</a>
       </div>
 
       {/* Research Themes */}
       <section className="mb-14">
-        <h2 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: '#8A8A8A' }}>
+        <h2 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: 'var(--c-text-muted)' }}>
           Research Themes
         </h2>
         <ThemeCards />
@@ -45,7 +45,7 @@ export default function ResearchPage() {
 
       {/* Scholar Stats */}
       <section className="mb-14">
-        <h2 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: '#8A8A8A' }}>
+        <h2 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: 'var(--c-text-muted)' }}>
           Google Scholar
         </h2>
         <ScholarStats />
@@ -53,7 +53,7 @@ export default function ResearchPage() {
 
       {/* Publications */}
       <section className="mb-14">
-        <h2 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: '#8A8A8A' }}>
+        <h2 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: 'var(--c-text-muted)' }}>
           Selected Publications
         </h2>
         <PublicationList activeTag={activeTag} onTagChange={setActiveTag} />
@@ -62,28 +62,28 @@ export default function ResearchPage() {
       {/* Media */}
       {filteredMedia.length > 0 && (
       <section id="media">
-        <h2 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: '#8A8A8A' }}>
+        <h2 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: 'var(--c-text-muted)' }}>
           Media & Press
         </h2>
-        <div className="space-y-0" style={{ border: '1px solid #E5E5E0' }}>
+        <div className="space-y-0" style={{ border: '1px solid var(--c-border)' }}>
           {filteredMedia.map((m, i) => (
             <div key={i}
-              style={{ borderBottom: i < filteredMedia.length - 1 ? '1px solid #E5E5E0' : 'none' }}
+              style={{ borderBottom: i < filteredMedia.length - 1 ? '1px solid var(--c-border)' : 'none' }}
               className="px-5 py-4 bg-white">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <p className="text-xs font-medium mb-0.5" style={{ color: '#8A8A8A' }}>{m.outlet}</p>
+                  <p className="text-xs font-medium mb-0.5" style={{ color: 'var(--c-text-muted)' }}>{m.outlet}</p>
                   {m.url ? (
                     <a href={m.url} target="_blank" rel="noopener noreferrer"
-                      className="text-sm hover:underline" style={{ color: '#1A1A1A' }}>
+                      className="text-sm hover:underline" style={{ color: 'var(--c-text)' }}>
                       {m.title}
                     </a>
                   ) : (
-                    <p className="text-sm" style={{ color: '#1A1A1A' }}>{m.title}</p>
+                    <p className="text-sm" style={{ color: 'var(--c-text)' }}>{m.title}</p>
                   )}
                 </div>
                 {m.url && (
-                  <span className="text-xs shrink-0" style={{ color: '#8A8A8A' }}>↗</span>
+                  <span className="text-xs shrink-0" style={{ color: 'var(--c-text-muted)' }}>↗</span>
                 )}
               </div>
             </div>

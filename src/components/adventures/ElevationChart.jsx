@@ -37,12 +37,12 @@ function StravaDetail({ strava, stravaUrl }) {
         <img
           src={`${import.meta.env.BASE_URL}${strava.sparkline_svg.replace(/^\//, '')}`}
           alt="elevation profile"
-          className="mb-1.5"
+          className="mb-1.5 sparkline"
           style={{ width: '160px', height: '40px', objectFit: 'fill' }}
         />
       )}
       {parts.length > 0 && (
-        <p className="text-xs tabular-nums" style={{ color: '#8A8A8A' }}>
+        <p className="text-xs tabular-nums font-data" style={{ color: 'var(--c-text-muted)' }}>
           {parts.join(' · ')}
         </p>
       )}
@@ -65,7 +65,7 @@ export default function ElevationChart() {
   return (
     <div>
       <div className="flex items-center gap-6 mb-5">
-        <p className="text-xs font-medium uppercase tracking-wider" style={{ color: '#8A8A8A' }}>
+        <p className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--c-text-muted)' }}>
           {climbedOnly
             ? `${climbedPeaks.length} Climbed Peaks by Elevation`
             : 'All 248 SPS Peaks by Elevation'}
@@ -73,12 +73,12 @@ export default function ElevationChart() {
         <div className="flex items-center gap-4 ml-auto">
           {!climbedOnly && (
             <>
-              <span className="flex items-center gap-1.5 text-xs" style={{ color: '#1A1A1A' }}>
-                <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: '#1A1A1A' }} />
+              <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text)' }}>
+                <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: 'var(--c-invert-bg)' }} />
                 Climbed
               </span>
-              <span className="flex items-center gap-1.5 text-xs" style={{ color: '#8A8A8A' }}>
-                <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: '#E5E5E0' }} />
+              <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+                <span className="inline-block w-3 h-3 rounded-sm" style={{ backgroundColor: 'var(--c-border)' }} />
                 On the list
               </span>
             </>
@@ -87,9 +87,9 @@ export default function ElevationChart() {
             onClick={() => { setClimbedOnly(v => !v); setSelectedId(null) }}
             className="text-xs px-3 py-1.5 rounded transition-colors"
             style={{
-              backgroundColor: '#FFFFFF',
-              color: '#8A8A8A',
-              border: '1px solid #E5E5E0',
+              backgroundColor: 'var(--c-surface)',
+              color: 'var(--c-text-muted)',
+              border: '1px solid var(--c-border)',
               cursor: 'pointer',
             }}
           >
@@ -114,23 +114,23 @@ export default function ElevationChart() {
                 <div className="w-36 shrink-0 text-right">
                   <span
                     className="text-xs"
-                    style={{ color: climbed ? '#1A1A1A' : '#C0C0BA', fontWeight: climbed ? 600 : 400 }}
+                    style={{ color: climbed ? 'var(--c-text)' : 'var(--c-border)', fontWeight: climbed ? 600 : 400 }}
                   >
                     {peak.name}
                   </span>
                 </div>
-                <div className="flex-1 h-4 relative" style={{ backgroundColor: '#F4F4F0' }}>
+                <div className="flex-1 h-4 relative" style={{ backgroundColor: 'var(--c-card-hover)' }}>
                   <div
                     className="h-full transition-all"
                     style={{
                       width: `${(peak.elevation / maxElev) * 100}%`,
-                      backgroundColor: climbed ? (isSelected ? '#FC4C02' : '#1A1A1A') : '#E5E5E0',
+                      backgroundColor: climbed ? (isSelected ? `var(--c-selected)` : 'var(--c-invert-bg)') : 'var(--c-border)',
                     }}
                   />
                 </div>
                 <span
-                  className="text-xs tabular-nums w-16 shrink-0"
-                  style={{ color: climbed ? '#4A4A4A' : '#C0C0BA' }}
+                  className="text-xs tabular-nums whitespace-nowrap shrink-0 font-data"
+                  style={{ color: climbed ? 'var(--c-text-body)' : 'var(--c-border)' }}
                 >
                   {peak.elevation.toLocaleString()} ft
                 </span>
@@ -139,24 +139,24 @@ export default function ElevationChart() {
               {isSelected && peakData && (
                 <div
                   className="ml-[9.75rem] mt-1 mb-2 pl-3 border-l-2 space-y-2"
-                  style={{ borderColor: '#FC4C02' }}
+                  style={{ borderColor: `var(--c-selected)` }}
                 >
                   {peakData.ascents.map((ascent, i) => (
                     <div key={i}>
                       <div className="flex items-center gap-3">
-                        <span className="text-xs font-medium" style={{ color: '#1A1A1A' }}>
+                        <span className="text-xs font-medium font-data" style={{ color: 'var(--c-text)' }}>
                           {new Date(ascent.date + 'T00:00:00').toLocaleDateString('en-US', {
                             year: 'numeric', month: 'long', day: 'numeric',
                           })}
                         </span>
                         {peakData.ascents.length > 1 && (
-                          <span className="text-xs" style={{ color: '#8A8A8A' }}>
+                          <span className="text-xs" style={{ color: 'var(--c-text-muted)' }}>
                             ascent {i + 1} of {peakData.ascents.length}
                           </span>
                         )}
                       </div>
                       {ascent.notes && (
-                        <p className="text-xs mt-0.5 leading-relaxed" style={{ color: '#4A4A4A' }}>
+                        <p className="text-xs mt-0.5 leading-relaxed" style={{ color: 'var(--c-text-body)' }}>
                           {ascent.notes}
                         </p>
                       )}

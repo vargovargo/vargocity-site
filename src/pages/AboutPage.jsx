@@ -17,7 +17,7 @@ export default function AboutPage() {
         {/* Narrative prose */}
         <div className="lg:col-span-3">
           <div className="prose prose-sm max-w-none"
-            style={{ color: '#4A4A4A', lineHeight: '1.85' }}>
+            style={{ color: 'var(--c-text-body)', lineHeight: '1.85' }}>
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {aboutRaw}
             </ReactMarkdown>
@@ -27,7 +27,7 @@ export default function AboutPage() {
         {/* Timeline sidebar */}
         <div className="lg:col-span-2">
           <h2 className="text-sm font-semibold mb-6 uppercase tracking-wider"
-            style={{ color: '#8A8A8A' }}>
+            style={{ color: 'var(--c-text-muted)' }}>
             Career
           </h2>
           <CareerTimeline />

@@ -31,28 +31,28 @@ export default function SectionCards() {
   return (
     <section className="py-16">
       <div className="max-w-5xl mx-auto px-6">
-        <div className="grid sm:grid-cols-2 gap-px" style={{ border: '1px solid #E5E5E0', backgroundColor: '#E5E5E0' }}>
+        <div className="grid sm:grid-cols-2 gap-px" style={{ border: '1px solid var(--c-border)', backgroundColor: 'var(--c-border)' }}>
           {cards.map(({ to, label, title, description }) => (
             <Link
               key={to}
               to={to}
               className="group block p-8 transition-colors"
-              style={{ backgroundColor: '#FFFFFF' }}
-              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#FAFAF8'}
-              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#FFFFFF'}
+              style={{ backgroundColor: 'var(--c-surface)' }}
+              onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--c-card-hover)'}
+              onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--c-surface)'}
             >
               <p className="text-xs font-medium tracking-widest uppercase mb-3"
-                style={{ color: '#8A8A8A' }}>
+                style={{ color: 'var(--c-text-muted)' }}>
                 {label}
               </p>
               <h3 className="text-lg font-semibold mb-2 tracking-tight"
-                style={{ color: '#1A1A1A' }}>
+                style={{ color: 'var(--c-text)' }}>
                 {title}
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: '#4A4A4A' }}>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--c-text-body)' }}>
                 {description}
               </p>
-              <p className="mt-4 text-xs" style={{ color: '#8A8A8A' }}>
+              <p className="mt-4 text-xs" style={{ color: 'var(--c-text-muted)' }}>
                 Explore →
               </p>
             </Link>

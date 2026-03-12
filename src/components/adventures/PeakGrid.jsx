@@ -35,7 +35,7 @@ function StravaStats({ strava }) {
   ].filter(Boolean)
   if (parts.length === 0) return null
   return (
-    <p className="text-xs tabular-nums mt-1.5" style={{ color: '#8A8A8A' }}>
+    <p className="text-xs tabular-nums mt-1.5 font-data" style={{ color: 'var(--c-text-muted)' }}>
       {parts.join(' · ')}
     </p>
   )
@@ -46,7 +46,7 @@ export default function PeakGrid() {
 
   if (ascentsNewestFirst.length === 0) {
     return (
-      <p className="text-sm py-12 text-center" style={{ color: '#8A8A8A' }}>
+      <p className="text-sm py-12 text-center" style={{ color: 'var(--c-text-muted)' }}>
         No peaks logged yet.
       </p>
     )
@@ -63,7 +63,7 @@ export default function PeakGrid() {
       )}
       <div
         className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px"
-        style={{ border: '1px solid #E5E5E0', backgroundColor: '#E5E5E0' }}
+        style={{ border: '1px solid var(--c-border)', backgroundColor: 'var(--c-border)' }}
       >
         {ascentsNewestFirst.map((ascent, idx) => {
           const peak = ascent.peak
@@ -77,25 +77,25 @@ export default function PeakGrid() {
             <div
               key={`${peak.id}-${ascent.date}-${idx}`}
               className="relative overflow-hidden flex cursor-pointer"
-              style={{ backgroundColor: '#FFFFFF' }}
+              style={{ backgroundColor: 'var(--c-surface)' }}
               onClick={() => photos.length > 0 && setLightbox({ photos, peakName: peak.name })}
             >
               <div className="p-5 flex flex-col h-full">
                 <div className="flex items-start justify-between gap-2">
-                  <h3 className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>
+                  <h3 className="text-sm font-semibold" style={{ color: 'var(--c-text)' }}>
                     {peak.name}
                   </h3>
-                  <span className="text-xs tabular-nums shrink-0" style={{ color: '#8A8A8A' }}>
+                  <span className="text-xs tabular-nums shrink-0 font-data" style={{ color: 'var(--c-text-muted)' }}>
                     {peak.elevation.toLocaleString()} ft
                   </span>
                 </div>
                 {displayDate && (
-                  <p className="text-xs mt-1" style={{ color: '#8A8A8A' }}>
+                  <p className="text-xs mt-1 font-data" style={{ color: 'var(--c-text-muted)' }}>
                     {displayDate}
                   </p>
                 )}
                 {ascent.notes && (
-                  <p className="text-xs mt-2 leading-relaxed" style={{ color: '#4A4A4A' }}>
+                  <p className="text-xs mt-2 leading-relaxed" style={{ color: 'var(--c-text-body)' }}>
                     {ascent.notes.length > 120
                       ? ascent.notes.slice(0, 120) + '…'
                       : ascent.notes}
@@ -105,7 +105,7 @@ export default function PeakGrid() {
                   <img
                     src={`${import.meta.env.BASE_URL}${ascent.strava.sparkline_svg.replace(/^\//, '')}`}
                     alt="elevation profile"
-                    className="w-full mt-3"
+                    className="w-full mt-3 sparkline"
                     style={{ height: '40px', objectFit: 'fill' }}
                     onClick={e => e.stopPropagation()}
                   />

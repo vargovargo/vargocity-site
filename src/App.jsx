@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import SiteNav from './components/layout/SiteNav'
 import Footer from './components/layout/Footer'
@@ -8,10 +9,27 @@ import MakingPage from './pages/MakingPage'
 import AdventuresPage from './pages/AdventuresPage'
 import WritingPage from './pages/WritingPage'
 
+const themes = [
+  { id: 'default', label: 'Default', swatch: '#FAFAF8', ring: '#1A1A1A' },
+  { id: 'warm',    label: 'Warm',    swatch: '#F5EDE0', ring: '#B87333' },
+  { id: 'alpine',  label: 'Alpine',  swatch: '#0F1621', ring: '#7AB8CC' },
+]
+
 export default function App() {
+  const [theme, setTheme] = useState(() => localStorage.getItem('site-theme') || 'default')
+
+  useEffect(() => {
+    if (theme === 'default') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+    localStorage.setItem('site-theme', theme)
+  }, [theme])
+
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: '#FAFAF8' }}>
+      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--c-bg)' }}>
         <SiteNav />
         <main style={{ flex: 1 }}>
           <Routes>
@@ -24,7 +42,7 @@ export default function App() {
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
-        <Footer />
+        <Footer theme={theme} themes={themes} onThemeChange={setTheme} />
       </div>
     </BrowserRouter>
   )

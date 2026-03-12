@@ -53,25 +53,25 @@ export default function CareerTimeline() {
   return (
     <div className="relative">
       {/* Vertical line */}
-      <div className="absolute left-2.5 top-0 bottom-0 w-px" style={{ backgroundColor: '#E5E5E0' }} />
+      <div className="absolute left-2.5 top-0 bottom-0 w-px" style={{ backgroundColor: 'var(--c-border)' }} />
 
       <div className="space-y-8">
         {milestones.map((m, i) => (
           <div key={i} className="relative pl-10">
             {/* Node */}
             <div className="absolute left-0 top-1 w-5 h-5 rounded-full"
-              style={{ backgroundColor: '#FAFAF8', border: '1px solid #E5E5E0' }} />
+              style={{ backgroundColor: 'var(--c-bg)', border: '1px solid var(--c-border)' }} />
 
-            <p className="text-xs font-medium tabular-nums mb-0.5" style={{ color: '#8A8A8A' }}>
+            <p className="text-xs font-medium tabular-nums mb-0.5 font-data" style={{ color: 'var(--c-text-muted)' }}>
               {m.year}
             </p>
-            <p className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>
+            <p className="text-sm font-semibold" style={{ color: 'var(--c-text)' }}>
               {m.role}
             </p>
-            <p className="text-sm" style={{ color: '#4A4A4A' }}>
+            <p className="text-sm" style={{ color: 'var(--c-text-body)' }}>
               {m.org}
             </p>
-            <p className="text-sm mt-1 leading-relaxed" style={{ color: '#8A8A8A' }}>
+            <p className="text-sm mt-1 leading-relaxed" style={{ color: 'var(--c-text-muted)' }}>
               {m.note}
             </p>
           </div>

@@ -24,6 +24,14 @@
     "status": "live"
   },
   {
+    "id": "gratitude-app",
+    "name": "Gratitude Text App",
+    "description": "A family SMS service for building a daily gratitude practice together. Sends a rotating morning prompt, collects replies, tracks streaks, and cheers milestones — all over text, no app required.",
+    "url": "https://github.com/vargovargo/gratitude-app",
+    "tech": ["Node.js", "Twilio", "SMS"],
+    "status": "live"
+  },
+  {
     "id": "campsite-dashboard",
     "name": "Campsite Dashboard",
     "description": "A planning dashboard for backcountry camping trips — tracking permits, gear checklists, and route data.",

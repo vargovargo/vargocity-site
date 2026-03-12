@@ -25,31 +25,31 @@ function yearLabel(v) {
 
 export default function CountryTimeline() {
   if (sorted.length === 0) {
-    return <p className="text-sm py-12 text-center" style={{ color: '#8A8A8A' }}>No countries logged yet.</p>
+    return <p className="text-sm py-12 text-center" style={{ color: 'var(--c-text-muted)' }}>No countries logged yet.</p>
   }
   return (
     <div className="space-y-2">
       {sorted.map((v, i) => (
         <div key={i} className="flex items-start gap-4">
-          <span className="text-xs tabular-nums w-24 shrink-0 pt-px" style={{ color: '#8A8A8A' }}>
+          <span className="text-xs tabular-nums w-24 shrink-0 pt-px font-data" style={{ color: 'var(--c-text-muted)' }}>
             {yearLabel(v)}
           </span>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-sm font-medium" style={{ color: '#1A1A1A' }}>{v.country.name}</span>
+              <span className="text-sm font-medium" style={{ color: 'var(--c-text)' }}>{v.country.name}</span>
               {v.type === 'lived' && (
-                <span className="text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: '#F4F4F0', color: '#8A8A8A' }}>
+                <span className="text-xs px-1.5 py-0.5 rounded" style={{ backgroundColor: 'var(--c-card-hover)', color: 'var(--c-text-muted)' }}>
                   lived
                 </span>
               )}
               {v.cities?.length > 0 && (
-                <span className="text-xs" style={{ color: '#4A4A4A' }}>
+                <span className="text-xs" style={{ color: 'var(--c-text-body)' }}>
                   {v.cities.join(', ')}
                 </span>
               )}
             </div>
             {v.notes && (
-              <p className="text-xs mt-0.5" style={{ color: '#8A8A8A' }}>{v.notes}</p>
+              <p className="text-xs mt-0.5" style={{ color: 'var(--c-text-muted)' }}>{v.notes}</p>
             )}
           </div>
         </div>

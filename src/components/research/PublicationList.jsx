@@ -17,9 +17,9 @@ export default function PublicationList({ activeTag, onTagChange }) {
           onClick={() => onTagChange(null)}
           className="px-3 py-1 text-xs rounded-full transition-colors"
           style={{
-            backgroundColor: !activeTag ? '#1A1A1A' : '#FFFFFF',
-            color: !activeTag ? '#FFFFFF' : '#8A8A8A',
-            border: '1px solid #E5E5E0',
+            backgroundColor: !activeTag ? 'var(--c-invert-bg)' : 'var(--c-surface)',
+            color: !activeTag ? 'var(--c-invert-text)' : 'var(--c-text-muted)',
+            border: '1px solid var(--c-border)',
             cursor: 'pointer',
           }}
         >
@@ -31,9 +31,9 @@ export default function PublicationList({ activeTag, onTagChange }) {
             onClick={() => onTagChange(tag === activeTag ? null : tag)}
             className="px-3 py-1 text-xs rounded-full transition-colors"
             style={{
-              backgroundColor: activeTag === tag ? '#1A1A1A' : '#FFFFFF',
-              color: activeTag === tag ? '#FFFFFF' : '#8A8A8A',
-              border: '1px solid #E5E5E0',
+              backgroundColor: activeTag === tag ? 'var(--c-invert-bg)' : 'var(--c-surface)',
+              color: activeTag === tag ? 'var(--c-invert-text)' : 'var(--c-text-muted)',
+              border: '1px solid var(--c-border)',
               cursor: 'pointer',
             }}
           >
@@ -43,41 +43,41 @@ export default function PublicationList({ activeTag, onTagChange }) {
       </div>
 
       {/* Publications */}
-      <div className="space-y-0" style={{ border: '1px solid #E5E5E0' }}>
+      <div className="space-y-0" style={{ border: '1px solid var(--c-border)' }}>
         {filtered.map((pub, i) => (
           <div key={pub.id}
-            style={{ borderBottom: i < filtered.length - 1 ? '1px solid #E5E5E0' : 'none' }}
+            style={{ borderBottom: i < filtered.length - 1 ? '1px solid var(--c-border)' : 'none' }}
             className="p-5 bg-white">
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
                 {pub.url ? (
                   <a href={pub.url} target="_blank" rel="noopener noreferrer"
                     className="text-sm font-medium hover:underline"
-                    style={{ color: '#1A1A1A' }}>
+                    style={{ color: 'var(--c-text)' }}>
                     {pub.title}
                   </a>
                 ) : (
-                  <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>
+                  <p className="text-sm font-medium" style={{ color: 'var(--c-text)' }}>
                     {pub.title}
                   </p>
                 )}
-                <p className="text-xs mt-1" style={{ color: '#4A4A4A' }}>
+                <p className="text-xs mt-1 font-data" style={{ color: 'var(--c-text-body)' }}>
                   {pub.venue} · {pub.year}
                 </p>
                 <div className="flex flex-wrap gap-1.5 mt-2">
                   {pub.tags.filter(t => t === 'climate-equity' || t === 'health-equity').map(tag => (
                     <span key={tag} className="px-2 py-0.5 text-xs rounded"
-                      style={{ backgroundColor: '#F0F0EC', color: '#4A4A4A' }}>
+                      style={{ backgroundColor: 'var(--c-card-hover)', color: 'var(--c-text-body)' }}>
                       {tag}
                     </span>
                   ))}
                 </div>
               </div>
               <div className="text-right shrink-0">
-                <p className="text-sm font-semibold tabular-nums" style={{ color: '#1A1A1A' }}>
+                <p className="text-sm font-semibold tabular-nums font-data" style={{ color: 'var(--c-text)' }}>
                   {pub.citations}
                 </p>
-                <p className="text-xs" style={{ color: '#8A8A8A' }}>cited</p>
+                <p className="text-xs" style={{ color: 'var(--c-text-muted)' }}>cited</p>
               </div>
             </div>
           </div>

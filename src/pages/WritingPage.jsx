@@ -13,8 +13,8 @@ const tabs = [
 ]
 
 function PostList({ posts, basePath, loading }) {
-  if (loading) return <p className="text-sm py-12 text-center" style={{ color: '#8A8A8A' }}>Loading…</p>
-  if (!posts.length) return <p className="text-sm py-12 text-center" style={{ color: '#8A8A8A' }}>Nothing here yet.</p>
+  if (loading) return <p className="text-sm py-12 text-center" style={{ color: 'var(--c-text-muted)' }}>Loading…</p>
+  if (!posts.length) return <p className="text-sm py-12 text-center" style={{ color: 'var(--c-text-muted)' }}>Nothing here yet.</p>
   return (
     <div>
       {posts.map(post => (

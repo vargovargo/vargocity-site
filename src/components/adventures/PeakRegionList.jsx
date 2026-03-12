@@ -30,7 +30,7 @@ function StravaStats({ strava }) {
   ].filter(Boolean)
   if (parts.length === 0) return null
   return (
-    <span className="text-xs tabular-nums" style={{ color: '#8A8A8A' }}>
+    <span className="text-xs tabular-nums font-data" style={{ color: 'var(--c-text-muted)' }}>
       {parts.join(' · ')}
     </span>
   )
@@ -57,9 +57,9 @@ export default function PeakRegionList() {
           onClick={() => { setClimbedOnly(v => !v); setSelectedPeak(null) }}
           className="text-xs px-3 py-1.5 rounded transition-colors"
           style={{
-            backgroundColor: '#FFFFFF',
-            color: '#8A8A8A',
-            border: '1px solid #E5E5E0',
+            backgroundColor: 'var(--c-surface)',
+            color: 'var(--c-text-muted)',
+            border: '1px solid var(--c-border)',
             cursor: 'pointer',
           }}
         >
@@ -74,9 +74,9 @@ export default function PeakRegionList() {
 
         return (
           <div key={region.name}>
-            <div className="flex items-baseline justify-between mb-3 pb-2" style={{ borderBottom: '1px solid #E5E5E0' }}>
-              <h3 className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>{region.name}</h3>
-              <span className="text-xs tabular-nums" style={{ color: climbedCount > 0 ? '#1A1A1A' : '#8A8A8A' }}>
+            <div className="flex items-baseline justify-between mb-3 pb-2" style={{ borderBottom: '1px solid var(--c-border)' }}>
+              <h3 className="text-sm font-semibold" style={{ color: 'var(--c-text)' }}>{region.name}</h3>
+              <span className="text-xs tabular-nums font-data" style={{ color: climbedCount > 0 ? 'var(--c-text)' : 'var(--c-text-muted)' }}>
                 {climbedCount} / {totalCount}
               </span>
             </div>
@@ -91,10 +91,10 @@ export default function PeakRegionList() {
                     onClick={isClimbed ? () => setSelectedPeak(isSelected ? null : peak.name) : undefined}
                     className="text-xs px-2.5 py-1"
                     style={{
-                      backgroundColor: isSelected ? '#FC4C02' : isClimbed ? '#1A1A1A' : '#FAFAF8',
-                      color: isClimbed ? '#FFFFFF' : '#8A8A8A',
+                      backgroundColor: isSelected ? `var(--c-selected)` : isClimbed ? 'var(--c-invert-bg)' : 'var(--c-bg)',
+                      color: isClimbed ? 'var(--c-invert-text)' : 'var(--c-text-muted)',
                       border: '1px solid',
-                      borderColor: isSelected ? '#FC4C02' : isClimbed ? '#1A1A1A' : '#E5E5E0',
+                      borderColor: isSelected ? `var(--c-selected)` : isClimbed ? 'var(--c-invert-bg)' : 'var(--c-border)',
                       cursor: isClimbed ? 'pointer' : 'default',
                     }}
                   >
@@ -105,17 +105,17 @@ export default function PeakRegionList() {
             </div>
 
             {selected?.ascents?.length > 0 && (
-              <div className="mt-3 pl-3 border-l-2 space-y-2" style={{ borderColor: '#FC4C02' }}>
+              <div className="mt-3 pl-3 border-l-2 space-y-2" style={{ borderColor: `var(--c-selected)` }}>
                 {selected.ascents.map((ascent, i) => (
                   <div key={i}>
                     <div className="flex items-center gap-3 flex-wrap">
-                      <span className="text-xs font-medium" style={{ color: '#1A1A1A' }}>
+                      <span className="text-xs font-medium font-data" style={{ color: 'var(--c-text)' }}>
                         {new Date(ascent.date + 'T00:00:00').toLocaleDateString('en-US', {
                           year: 'numeric', month: 'long', day: 'numeric',
                         })}
                       </span>
                       {selected.ascents.length > 1 && (
-                        <span className="text-xs" style={{ color: '#8A8A8A' }}>
+                        <span className="text-xs" style={{ color: 'var(--c-text-muted)' }}>
                           ascent {i + 1} of {selected.ascents.length}
                         </span>
                       )}
@@ -125,13 +125,13 @@ export default function PeakRegionList() {
                       <img
                         src={`${import.meta.env.BASE_URL}${ascent.strava.sparkline_svg.replace(/^\//, '')}`}
                         alt="elevation profile"
-                        className="mt-1 mb-1"
+                        className="mt-1 mb-1 sparkline"
                         style={{ width: '160px', height: '40px', objectFit: 'fill' }}
                       />
                     )}
                     <StravaStats strava={ascent.strava} />
                     {ascent.notes && (
-                      <p className="text-xs mt-0.5 leading-relaxed" style={{ color: '#4A4A4A' }}>
+                      <p className="text-xs mt-0.5 leading-relaxed" style={{ color: 'var(--c-text-body)' }}>
                         {ascent.notes}
                       </p>
                     )}

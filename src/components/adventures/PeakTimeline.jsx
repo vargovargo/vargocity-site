@@ -31,7 +31,7 @@ function StravaStats({ strava }) {
   ].filter(Boolean)
   if (parts.length === 0) return null
   return (
-    <p className="text-xs tabular-nums mt-1" style={{ color: '#8A8A8A' }}>
+    <p className="text-xs tabular-nums mt-1 font-data" style={{ color: 'var(--c-text-muted)' }}>
       {parts.join(' · ')}
     </p>
   )
@@ -42,10 +42,22 @@ export default function PeakTimeline() {
 
   if (allAscents.length === 0) {
     return (
-      <p className="text-sm py-12 text-center" style={{ color: '#8A8A8A' }}>
+      <p className="text-sm py-12 text-center" style={{ color: 'var(--c-text-muted)' }}>
         No ascents logged yet.
       </p>
     )
+  }
+
+  // Group ascents by year, preserving sort order (oldest → newest)
+  const ascentsByYear = []
+  let currentYear = null
+  for (const ascent of allAscents) {
+    const year = ascent.date.slice(0, 4)
+    if (year !== currentYear) {
+      ascentsByYear.push({ year, ascents: [] })
+      currentYear = year
+    }
+    ascentsByYear[ascentsByYear.length - 1].ascents.push(ascent)
   }
 
   return (
@@ -59,9 +71,21 @@ export default function PeakTimeline() {
         />
       )}
       <div className="relative">
-        <div className="absolute left-2.5 top-0 bottom-0 w-px" style={{ backgroundColor: '#E5E5E0' }} />
-        <div className="space-y-8">
-          {allAscents.map((ascent, i) => {
+        <div className="absolute left-2.5 top-0 bottom-0 w-px" style={{ backgroundColor: 'var(--c-border)' }} />
+        <div className="space-y-10">
+          {ascentsByYear.map(({ year, ascents }) => (
+            <div key={year}>
+              <div className="relative pl-10 mb-6">
+                <div
+                  className="absolute left-0 top-1 w-5 h-5 rounded-full border-2 flex items-center justify-center"
+                  style={{ backgroundColor: 'var(--c-bg)', borderColor: 'var(--c-accent)' }}
+                />
+                <p className="text-xs font-semibold tracking-widest uppercase font-data" style={{ color: 'var(--c-text-muted)' }}>
+                  {year} season
+                </p>
+              </div>
+              <div className="space-y-8">
+                {ascents.map((ascent, i) => {
             const { peak } = ascent
             const displayDate = new Date(ascent.date + 'T00:00:00').toLocaleDateString('en-US', {
               year: 'numeric', month: 'long', day: 'numeric',
@@ -70,16 +94,16 @@ export default function PeakTimeline() {
               <div key={`${peak.id}-${ascent.date}-${i}`} className="relative pl-10">
                 <div
                   className="absolute left-0 top-1 w-5 h-5 rounded-full border-2"
-                  style={{ backgroundColor: '#1A1A1A', borderColor: '#1A1A1A' }}
+                  style={{ backgroundColor: 'var(--c-invert-bg)', borderColor: 'var(--c-invert-bg)' }}
                 />
-                <p className="text-xs tabular-nums mb-0.5" style={{ color: '#8A8A8A' }}>
+                <p className="text-xs tabular-nums mb-0.5 font-data" style={{ color: 'var(--c-text-muted)' }}>
                   {displayDate}
                 </p>
                 <div className="flex items-center gap-3 flex-wrap">
-                  <h3 className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>
+                  <h3 className="text-sm font-semibold" style={{ color: 'var(--c-text)' }}>
                     {peak.name}
                   </h3>
-                  <span className="text-xs tabular-nums" style={{ color: '#8A8A8A' }}>
+                  <span className="text-xs tabular-nums font-data" style={{ color: 'var(--c-text-muted)' }}>
                     {peak.elevation.toLocaleString()} ft
                   </span>
                   <StravaLink url={ascent.strava_url} />
@@ -87,17 +111,18 @@ export default function PeakTimeline() {
                     <img
                       src={`${import.meta.env.BASE_URL}${ascent.strava.sparkline_svg.replace(/^\//, '')}`}
                       alt="elevation profile"
+                      className="sparkline"
                       style={{ width: '72px', height: '20px', objectFit: 'fill' }}
                     />
                   )}
                 </div>
                 {peak.routes?.length > 0 && (
-                  <p className="text-xs mt-0.5" style={{ color: '#4A4A4A' }}>
+                  <p className="text-xs mt-0.5" style={{ color: 'var(--c-text-body)' }}>
                     {peak.routes.map(r => r.description).join(' · ')}
                   </p>
                 )}
                 {ascent.notes && (
-                  <p className="text-xs mt-1.5 leading-relaxed" style={{ color: '#4A4A4A' }}>
+                  <p className="text-xs mt-1.5 leading-relaxed" style={{ color: 'var(--c-text-body)' }}>
                     {ascent.notes}
                   </p>
                 )}
@@ -118,6 +143,9 @@ export default function PeakTimeline() {
               </div>
             )
           })}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </>

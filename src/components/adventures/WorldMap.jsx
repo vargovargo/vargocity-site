@@ -55,13 +55,18 @@ function yearLabel(v) {
   return v.year ?? '—'
 }
 
+function getIso(geo) {
+  const iso = geo.properties?.ISO_A2
+  return (iso && iso !== '-99') ? iso : (geo.properties?.ISO_A2_EH ?? null)
+}
+
 export default function WorldMap() {
   const [tooltip, setTooltip] = useState(null) // { country, x, y }
   const [selectedDecade, setSelectedDecade] = useState(null) // null = All
   const containerRef = useRef(null)
 
   const handleClick = (geo, e) => {
-    const iso = geo.properties?.ISO_A2
+    const iso = getIso(geo)
     const country = iso ? isoToCountry[iso] : null
     if (!country) return
 
@@ -84,10 +89,10 @@ export default function WorldMap() {
           onClick={() => setSelectedDecade(null)}
           className="text-xs px-3 py-1.5 transition-colors"
           style={{
-            backgroundColor: selectedDecade === null ? '#1A1A1A' : '#FFFFFF',
-            color: selectedDecade === null ? '#FFFFFF' : '#8A8A8A',
+            backgroundColor: selectedDecade === null ? 'var(--c-invert-bg)' : 'var(--c-surface)',
+            color: selectedDecade === null ? 'var(--c-invert-text)' : 'var(--c-text-muted)',
             border: '1px solid',
-            borderColor: selectedDecade === null ? '#1A1A1A' : '#E5E5E0',
+            borderColor: selectedDecade === null ? 'var(--c-invert-bg)' : 'var(--c-border)',
             cursor: 'pointer',
           }}
         >
@@ -99,10 +104,10 @@ export default function WorldMap() {
             onClick={() => setSelectedDecade(selectedDecade === d ? null : d)}
             className="text-xs px-3 py-1.5 transition-colors"
             style={{
-              backgroundColor: selectedDecade === d ? '#1A1A1A' : '#FFFFFF',
-              color: selectedDecade === d ? '#FFFFFF' : '#8A8A8A',
+              backgroundColor: selectedDecade === d ? 'var(--c-invert-bg)' : 'var(--c-surface)',
+              color: selectedDecade === d ? 'var(--c-invert-text)' : 'var(--c-text-muted)',
               border: '1px solid',
-              borderColor: selectedDecade === d ? '#1A1A1A' : '#E5E5E0',
+              borderColor: selectedDecade === d ? 'var(--c-invert-bg)' : 'var(--c-border)',
               cursor: 'pointer',
             }}
           >
@@ -111,7 +116,7 @@ export default function WorldMap() {
         ))}
       </div>
 
-      <div ref={containerRef} className="relative" onClick={(e) => {
+      <div ref={containerRef} className="relative world-map" onClick={(e) => {
         // click on map background dismisses tooltip
         if (e.target.tagName === 'svg' || e.target.tagName === 'rect') setTooltip(null)
       }}>
@@ -121,8 +126,8 @@ export default function WorldMap() {
         >
           <Geographies geography={GEO_URL}>
             {({ geographies }) =>
-              geographies.filter(geo => geo.properties?.ISO_A2 !== 'AQ').map((geo) => {
-                const iso = geo.properties?.ISO_A2
+              geographies.filter(geo => getIso(geo) !== 'AQ').map((geo) => {
+                const iso = getIso(geo)
                 const isVisited = iso && visitedISOs.has(iso)
                 const isSelected = iso && tooltip?.country.iso === iso
                 const countryDecades = iso ? isoToDecades[iso] : null
@@ -130,20 +135,20 @@ export default function WorldMap() {
 
                 let fill
                 if (isSelected) {
-                  fill = '#FC4C02'
+                  fill = 'var(--c-map-selected)'
                 } else if (selectedDecade === null) {
-                  fill = isVisited ? '#1A1A1A' : '#E5E5E0'
+                  fill = isVisited ? 'var(--c-map-visited)' : 'var(--c-map-unvisited)'
                 } else {
-                  fill = isThisDecade ? '#1A1A1A' : isVisited ? '#D0D0C8' : '#E5E5E0'
+                  fill = isThisDecade ? 'var(--c-map-visited)' : isVisited ? 'var(--c-map-dim)' : 'var(--c-map-unvisited)'
                 }
 
                 let hoverFill
                 if (isSelected) {
-                  hoverFill = '#FC4C02'
+                  hoverFill = 'var(--c-map-selected)'
                 } else if (selectedDecade === null) {
-                  hoverFill = isVisited ? '#4A4A4A' : '#D0D0C8'
+                  hoverFill = isVisited ? 'var(--c-text-body)' : 'var(--c-map-dim)'
                 } else {
-                  hoverFill = isThisDecade ? '#4A4A4A' : isVisited ? '#D0D0C8' : '#D0D0C8'
+                  hoverFill = isThisDecade ? 'var(--c-text-body)' : isVisited ? 'var(--c-map-dim)' : 'var(--c-map-unvisited)'
                 }
 
                 return (
@@ -172,8 +177,8 @@ export default function WorldMap() {
             style={{
               left: tooltip.x + 12,
               top: tooltip.y + 12,
-              backgroundColor: '#1A1A1A',
-              color: '#FFFFFF',
+              backgroundColor: 'var(--c-text)',
+              color: 'var(--c-bg)',
               minWidth: '160px',
               maxWidth: '240px',
             }}
@@ -184,11 +189,11 @@ export default function WorldMap() {
                 const cities = v.cities?.filter(c => c).join(', ')
                 return (
                   <div key={i}>
-                    <span className="text-xs tabular-nums" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                    <span className="text-xs tabular-nums" style={{ color: 'var(--c-text-muted)' }}>
                       {yearLabel(v)}{v.type === 'lived' ? ' · lived' : ''}
                     </span>
                     {cities && (
-                      <p className="text-xs" style={{ color: 'rgba(255,255,255,0.85)' }}>{cities}</p>
+                      <p className="text-xs" style={{ color: 'var(--c-bg)' }}>{cities}</p>
                     )}
                   </div>
                 )
