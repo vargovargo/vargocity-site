@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import SectionHeader from '../components/shared/SectionHeader'
 import ThemeCards from '../components/research/ThemeCards'
 import ScholarStats from '../components/research/ScholarStats'
@@ -37,6 +38,7 @@ export default function ResearchPage() {
       {/* Page jump links */}
       <div className="flex gap-5 mb-12 -mt-4">
         <a href="#media" className="text-xs hover:underline" style={{ color: 'var(--c-text-muted)' }}>↓ Media & Press</a>
+        <a href="#independent" className="text-xs hover:underline" style={{ color: 'var(--c-text-muted)' }}>↓ Independent Work</a>
       </div>
 
       {/* Research Themes */}
@@ -61,6 +63,22 @@ export default function ResearchPage() {
           Selected Publications
         </h2>
         <PublicationList activeTag={activeTag} onTagChange={setActiveTag} />
+      </section>
+
+      {/* Independent Research */}
+      <section id="independent" className="mb-14">
+        <h2 className="text-xs font-medium uppercase tracking-wider mb-4" style={{ color: 'var(--c-text-muted)' }}>
+          Independent Work
+        </h2>
+        <div style={{ border: '1px solid var(--c-border)', backgroundColor: 'var(--c-surface)' }} className="px-5 py-4">
+          <p className="text-xs mb-1" style={{ color: 'var(--c-text-muted)' }}>March 2026 · Work in progress</p>
+          <Link to="/writing/blog/2026-03-13-aei-longitudinal" className="text-sm hover:underline" style={{ color: 'var(--c-text)' }}>
+            AI Use in Lower-Income Worker Occupations
+          </Link>
+          <p className="text-sm mt-1.5" style={{ color: 'var(--c-text-body)' }}>
+            A longitudinal panel of the Anthropic Economic Index, cross-walked to Kneebone & Holmes (2025). AI task share is growing in LMI-high occupations — and shifting toward automation.
+          </p>
+        </div>
       </section>
 
       {/* Media */}
