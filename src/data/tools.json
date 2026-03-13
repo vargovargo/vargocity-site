@@ -32,6 +32,14 @@
     "status": "live"
   },
   {
+    "id": "strava-print",
+    "name": "Strava Print",
+    "description": "Pulls GPS and elevation data from Strava and exports it as a 3D-printable STL. The primary form is a descent asymmetry object — a tent-shaped solid where the front face encodes gradient on the climb and the back face encodes speed on the descent. Mountain routes have a narrative arc; this tries to make that arc holdable.",
+    "url": "",
+    "tech": ["Ruby", "Strava API", "STL / 3D Print"],
+    "status": "in-progress"
+  },
+  {
     "id": "campsite-dashboard",
     "name": "Campsite Dashboard",
     "description": "A planning dashboard for backcountry camping trips — tracking permits, gear checklists, and route data.",

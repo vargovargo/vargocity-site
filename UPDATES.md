@@ -45,7 +45,7 @@ _Last updated: March 13, 2026_
 - [x] Register vargo.city and configure GitHub Pages
 - [x] Group peaks timeline by year
 - [ ] Update citation counts
-- [ ] Submit sitemap to Google Search Console
+- [x] Submit sitemap to Google Search Console
 
 ---
 
