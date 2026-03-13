@@ -113,6 +113,18 @@ The site was significantly reframed in early March 2026. Key decisions to preser
 
 ---
 
+## Voice skill
+
+A detailed voice and style guide derived from real edited drafts lives at:
+
+```
+~/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/19ccde2b-e3ed-4a47-8e7c-bb05af836a8a/fcf8b961-94ea-4a53-9afe-9452a93fe7a2/skills/jason-vargo-voice/SKILL.md
+```
+
+Read it before writing or editing any copy for the site. It covers motivation framing, credential style, pronoun choices, structural habits, and a table of Claude default habits to edit out. The notes below are a complement, not a replacement.
+
+---
+
 ## Writing voice & tone
 
 ### The problem to avoid
