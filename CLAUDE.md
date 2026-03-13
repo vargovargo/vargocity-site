@@ -188,6 +188,7 @@ Hosted on GitHub Pages at **vargo.city** (custom domain, registered at Porkbun M
 - `VITE_BASE_URL` is set to `/` in the deploy workflow (not `/vargocity-site/`)
 - HTTPS enforced via GitHub Pages TLS provisioning
 - A `404.html` redirect hack is in place to support React Router's client-side routing on direct URL access and refresh (see `public/404.html` and the script in `index.html`)
+- **`segmentsToKeep = 0`** in `404.html` — must stay `0` because the site is at the root of a custom domain. Setting it to `1` causes an infinite redirect loop that appends `~and~` segments to the URL on every refresh.
 
 ## Writing section
 
