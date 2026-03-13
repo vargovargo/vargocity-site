@@ -116,11 +116,6 @@ export default function PeakTimeline() {
                     />
                   )}
                 </div>
-                {peak.routes?.length > 0 && (
-                  <p className="text-xs mt-0.5" style={{ color: 'var(--c-text-body)' }}>
-                    {peak.routes.map(r => r.description).join(' · ')}
-                  </p>
-                )}
                 {ascent.notes && (
                   <p className="text-xs mt-1.5 leading-relaxed" style={{ color: 'var(--c-text-body)' }}>
                     {ascent.notes}
