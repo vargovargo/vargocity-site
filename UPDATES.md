@@ -43,15 +43,16 @@ Add and contextualize press coverage from **vargocity.com**:
 
 ***Ahead of vargo.city launch*** 
 While i have been careful in sharing the sote so far, i am moving toward a broader roll out. I am thinking that producing an independent research piece (economic-index-trends) would be a nice piece to feature as the sote rolls out. it and pieces like it could be the focus of the hidden 'writing' section. before thst i have some items to tackle
-- france not showing up in the map
+- france not showing up in the map (done)
 - update citation counts
-- should articles on research page sort by release or number of citations?
-- develop alternative CSS (dark) to test
-- add SEO
-- add gratitude-app card to making page
-- more design items?
-- register vargo.city and update github
-- group peaks timeline by year, climbing has a season and the timeline can refelect that
+- should articles on research page sort by release or number of citations? (not needed)
+- develop alternative CSS (dark) to test (almost done)
+- - need to make sre css updates on writing page (at a minimum dark font in 'alpine' needs to be fixed) writing in the warmth and alpine themes should behave as they do on other pages. 
+- add SEO (priority)
+- add gratitude-app card to making page (done)
+- add strava print card to making page (done)
+- register vargo.city and update github (done)
+- group peaks timeline by year, climbing has a season and the timeline can refelect that (done)
 
 ---
 
