@@ -28,7 +28,7 @@ The [Anthropic Economic Index](https://huggingface.co/datasets/Anthropic/Economi
 
 - **Task share (SOC rollup):** AEI reports the share of Claude interactions that map to each task. Tasks are distributed equally across all SOC major groups the task spans (via O\*NET crosswalk), then re-normalized to 100%. This is the most conservative, assumption-free allocation: if a task belongs to three SOC groups, each gets one-third. When SOC 43's share shifts from 7.87% to 8.35%, that is a real change in Claude usage — not an artifact of allocation rules.
 - **Temporal comparability:** The four releases differ in denominator definitions and data structure. V1 figures are conditional on the 84.21% of interactions that were classifiable; V4 ships raw intermediate files only and carries additional derivation uncertainty. This analysis tracks directional change across releases rather than fitting trend lines.
-- **LMI exposure flags:** Applied directly from Kneebone & Holmes (2025) without modification.
+- **LMI exposure flags:** Kneebone & Holmes (2025) identify SOC groups 31, 41, 43, and 53 as overrepresented among LMI high-exposure workers. Here it is extended into a four-category ordinal flag (high/moderate/low/none) by also categorizing groups K&H describe as underrepresented-but-present (low) and secondarily mentioned (moderate). This extension is a new construction and should not be attributed to K&H.
 
 **LMI exposure by SOC group:**
 
@@ -86,7 +86,7 @@ The table below shows all 23 SOC groups across all four releases with LMI flags,
 
 ## What This Adds
 
-This is, to our knowledge, the first attempt to track the AEI's actual-use signal longitudinally across multiple releases and cross-walk it to the Kneebone & Holmes LMI exposure framework. The finding that AI is being applied most actively to occupations where it estimates lower success raises questions about who benefits when AI engagement grows — and whether growth in AI use in lower-income worker occupations translates to worker benefit, employer efficiency, or neither.
+This is, to my knowledge, the first attempt to track the AEI's actual-use signal longitudinally across multiple releases and cross-walk it to the Kneebone & Holmes LMI exposure framework. The finding that AI is being applied most actively to occupations where it estimates lower success raises questions about who benefits when AI engagement grows — and whether growth in AI use in lower-income worker occupations translates to worker benefit, employer efficiency, or neither.
 
 ---
 
