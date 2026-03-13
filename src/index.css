@@ -110,6 +110,27 @@
 /* hover color that respects theme */
 .theme-hover:hover { color: var(--c-text) !important; }
 
+/* ── Prose (writing page) — theme-aware ──────────────────── */
+.themed-prose {
+  --tw-prose-body: var(--c-text-body);
+  --tw-prose-headings: var(--c-text);
+  --tw-prose-lead: var(--c-text-body);
+  --tw-prose-links: var(--c-accent);
+  --tw-prose-bold: var(--c-text);
+  --tw-prose-counters: var(--c-text-muted);
+  --tw-prose-bullets: var(--c-text-muted);
+  --tw-prose-hr: var(--c-border);
+  --tw-prose-quotes: var(--c-text-body);
+  --tw-prose-quote-borders: var(--c-border);
+  --tw-prose-captions: var(--c-text-muted);
+  --tw-prose-code: var(--c-text);
+  --tw-prose-pre-code: var(--c-text-body);
+  --tw-prose-pre-bg: var(--c-surface);
+  --tw-prose-th-borders: var(--c-border);
+  --tw-prose-td-borders: var(--c-border);
+  color: var(--c-text-body);
+}
+
 h1, h2, h3, h4 {
   font-family: var(--c-font-heading);
 }

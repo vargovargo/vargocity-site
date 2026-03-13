@@ -17,7 +17,7 @@ export default function SiteNav() {
       className="sticky top-0 z-50">
       <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between">
         <Link to="/" className="text-sm font-semibold tracking-tight" style={{ color: 'var(--c-text)' }}>
-          Jason Vargo
+          vargocity
         </Link>
 
         {/* Desktop nav */}

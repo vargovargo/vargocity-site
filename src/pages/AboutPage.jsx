@@ -4,11 +4,13 @@ import remarkGfm from 'remark-gfm'
 import SectionHeader from '../components/shared/SectionHeader'
 import CareerTimeline from '../components/about/CareerTimeline'
 import TEDxSpotlight from '../components/about/TEDxSpotlight'
+import usePageTitle from '../lib/usePageTitle'
 
 // Import the about markdown as raw text via Vite's ?raw suffix
 import aboutRaw from '../content/about.md?raw'
 
 export default function AboutPage() {
+  usePageTitle('About')
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
       <SectionHeader label="About" title="In Motion" />

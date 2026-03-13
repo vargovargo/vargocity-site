@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import SectionHeader from '../components/shared/SectionHeader'
+import usePageTitle from '../lib/usePageTitle'
 import TabBar from '../components/shared/TabBar'
 import ToolCard from '../components/making/ToolCard'
 import FurnitureCard from '../components/making/FurnitureCard'
@@ -12,6 +13,7 @@ const tabs = [
 ]
 
 export default function MakingPage() {
+  usePageTitle('Making')
   const [tab, setTab] = useState('software')
 
   return (

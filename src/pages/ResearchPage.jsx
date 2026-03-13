@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SectionHeader from '../components/shared/SectionHeader'
+import usePageTitle from '../lib/usePageTitle'
 import ThemeCards from '../components/research/ThemeCards'
 import ScholarStats from '../components/research/ScholarStats'
 import PublicationList from '../components/research/PublicationList'
@@ -21,6 +22,7 @@ const media = [
 ]
 
 export default function ResearchPage() {
+  usePageTitle('Research')
   const [activeTag, setActiveTag] = useState(null)
 
   const filteredMedia = activeTag
@@ -90,8 +92,8 @@ export default function ResearchPage() {
         <div className="space-y-0" style={{ border: '1px solid var(--c-border)' }}>
           {filteredMedia.map((m, i) => (
             <div key={i}
-              style={{ borderBottom: i < filteredMedia.length - 1 ? '1px solid var(--c-border)' : 'none' }}
-              className="px-5 py-4" style={{ backgroundColor: 'var(--c-surface)' }}>
+              className="px-5 py-4"
+              style={{ borderBottom: i < filteredMedia.length - 1 ? '1px solid var(--c-border)' : 'none', backgroundColor: 'var(--c-surface)' }}>
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-xs font-medium mb-0.5" style={{ color: 'var(--c-text-muted)' }}>{m.outlet}</p>

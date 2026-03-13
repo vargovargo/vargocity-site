@@ -5,6 +5,7 @@ import TabBar from '../components/shared/TabBar'
 import PostCard from '../components/writing/PostCard'
 import MarkdownPost from '../components/writing/MarkdownPost'
 import { loadBlogPosts, loadNewsletterPosts, loadVreadingsPosts } from '../lib/loadContent'
+import usePageTitle from '../lib/usePageTitle'
 
 const tabs = [
   { id: 'blog', label: 'Blog' },
@@ -25,6 +26,7 @@ function PostList({ posts, basePath, loading }) {
 }
 
 function WritingIndex() {
+  usePageTitle('Writing')
   const [tab, setTab] = useState('blog')
   const [blog, setBlog] = useState([])
   const [newsletter, setNewsletter] = useState([])
@@ -61,6 +63,7 @@ function WritingIndex() {
 function SinglePost({ source, backPath, backLabel, loader }) {
   const { slug } = useParams()
   const [post, setPost] = useState(null)
+  usePageTitle(post?.title || null)
 
   useEffect(() => {
     loader().then(posts => {

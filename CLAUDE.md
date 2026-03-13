@@ -40,6 +40,22 @@ vargocity-site/        ← repo root (also git root)
 
 Unmatched paths redirect to `/`.
 
+## Styling rules
+
+**Never hardcode hex color values in components.** Always use CSS custom properties so all three themes (default, warm, alpine) work correctly.
+
+| Instead of | Use |
+|------------|-----|
+| `color: '#1A1A1A'` | `color: 'var(--c-text)'` |
+| `color: '#4A4A4A'` | `color: 'var(--c-text-body)'` |
+| `color: '#8A8A8A'` | `color: 'var(--c-text-muted)'` |
+| `borderColor: '#E5E5E0'` | `borderColor: 'var(--c-border)'` |
+| `backgroundColor: '#FFFFFF'` | `backgroundColor: 'var(--c-surface)'` |
+
+All theme tokens are defined in `src/index.css` under `:root`, `[data-theme="warm"]`, and `[data-theme="alpine"]`. For prose/markdown content, use the `.themed-prose` class (also in `index.css`) instead of relying on Tailwind Typography's defaults.
+
+---
+
 ## Key tech
 
 - **React 19** with React Router v7
