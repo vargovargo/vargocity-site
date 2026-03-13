@@ -181,4 +181,22 @@ Located at `src/data/sps-peaks.json`. Structure:
 
 ## Deployment
 
-Hosted on GitHub Pages. A `404.html` redirect hack is in place to support React Router's client-side routing on direct URL access and refresh (see `public/404.html` and the script in `index.html`).
+Hosted on GitHub Pages at **vargo.city** (custom domain, registered at Porkbun March 2026).
+
+- DNS A records point to GitHub Pages IPs (185.199.108–111.153), configured at Porkbun
+- `public/CNAME` contains `vargo.city`
+- `VITE_BASE_URL` is set to `/` in the deploy workflow (not `/vargocity-site/`)
+- HTTPS enforced via GitHub Pages TLS provisioning
+- A `404.html` redirect hack is in place to support React Router's client-side routing on direct URL access and refresh (see `public/404.html` and the script in `index.html`)
+
+## Writing section
+
+Writing is live in the nav (between Research and Adventures). Routes: `/writing/blog/:slug`, `/writing/newsletter/:slug`, `/writing/reading/:slug`.
+
+**Real content as of 2026-03:**
+- `src/content/blog/2014-03-15-metro-sapiens.md` — full text of "Metro Sapiens: An Urban Species", J Environ Stud Sci 2014
+- `src/content/blog/2026-03-13-aei-longitudinal.md` — independent analysis of Anthropic Economic Index longitudinal panel; cross-walked to Kneebone & Holmes (2025) LMI exposure framework. Work in progress. GitHub repo: [vargovargo/economic-index-trends](https://github.com/vargovargo/economic-index-trends). Plot images expected at `public/plots/` (4 PNGs: `task_pct_trends.png`, `automation_augmentation_trends.png`, `primitives_scatter.png`, `soc_summary_table.png`).
+
+Newsletter and Reading tabs exist but have no content yet.
+
+The Research page has an "Independent Work" section linking to the AEI piece (added 2026-03).
