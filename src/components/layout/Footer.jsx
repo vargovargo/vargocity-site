@@ -4,7 +4,7 @@ export default function Footer({ theme, themes, onThemeChange }) {
       className="mt-24 py-10">
       <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <p className="text-sm font-medium" style={{ color: 'var(--c-text)' }}>Jason Vargo</p>
+          <p className="text-sm font-medium" style={{ color: 'var(--c-text)' }}>vargocity</p>
           <p className="text-xs mt-0.5" style={{ color: 'var(--c-text-muted)' }}>measuring my own rate of change</p>
         </div>
         <div className="flex items-center gap-6">
