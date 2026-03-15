@@ -64,6 +64,7 @@ All theme tokens are defined in `src/index.css` under `:root`, `[data-theme="war
 - **react-markdown** + **remark-gfm** for rendering markdown content
 - **gray-matter** (available but markdown parsing is currently done manually in `loadContent.js`)
 - **react-simple-maps** for map components
+- **@observablehq/plot** for data visualization (AEI charts in the writing section)
 
 ## Content authoring
 
@@ -224,8 +225,23 @@ Writing is live in the nav (between Research and Adventures). Routes: `/writing/
 
 **Real content as of 2026-03:**
 - `src/content/blog/2014-03-15-metro-sapiens.md` — full text of "Metro Sapiens: An Urban Species", J Environ Stud Sci 2014
-- `src/content/blog/2026-03-13-aei-longitudinal.md` — independent analysis of Anthropic Economic Index longitudinal panel; cross-walked to Kneebone & Holmes (2025) LMI exposure framework. Work in progress. GitHub repo: [vargovargo/economic-index-trends](https://github.com/vargovargo/economic-index-trends). Plot images expected at `public/plots/` (4 PNGs: `task_pct_trends.png`, `automation_augmentation_trends.png`, `primitives_scatter.png`, `soc_summary_table.png`).
+- `src/content/blog/2026-03-13-aei-longitudinal.md` — independent analysis of Anthropic Economic Index longitudinal panel; cross-walked to Kneebone & Holmes (2025) LMI exposure framework. Work in progress. GitHub repo: [vargovargo/economic-index-trends](https://github.com/vargovargo/economic-index-trends).
 
 Newsletter and Reading tabs exist but have no content yet.
 
 The Research page has an "Independent Work" section linking to the AEI piece (added 2026-03).
+
+## AEI interactive charts
+
+The AEI blog post uses Observable Plot charts instead of static images. Architecture:
+
+- **Data**: `src/data/aei-panel.json` — 92-row panel (23 SOC groups × 4 releases) derived directly from `/Users/lauren/economic_index_trends/data/processed/unified_task_panel.csv`. Do not hand-edit; regenerate from the source CSV using `economic_index_trends/make_site_writeup.md`.
+- **Components**: `src/components/writing/AEICharts.jsx` — exports `AEITaskTrends`, `AEICollabTrends`, `AEIPrimitivesScatter`, `AEISummaryTable`. All four read from `aei-panel.json`.
+- **Injection**: `MarkdownPost.jsx` overrides ReactMarkdown's `img` renderer. When it sees one of the four `/plots/*.png` paths from the markdown, it substitutes the corresponding chart component. The PNG files in `public/plots/` still exist as fallbacks.
+- **Markdown image paths are the lookup keys** — do not rename them:
+  - `/plots/task_pct_trends.png` → `AEITaskTrends`
+  - `/plots/automation_augmentation_trends.png` → `AEICollabTrends`
+  - `/plots/primitives_scatter.png` → `AEIPrimitivesScatter`
+  - `/plots/soc_summary_table.png` → `AEISummaryTable`
+
+**When a new AEI release drops**: follow `economic_index_trends/make_site_writeup.md`. The short version: regenerate `aei-panel.json` from the updated CSV, then add the new release date to the `ticks` arrays and `tickFormat` lookups in `AEICharts.jsx` (two places each in `AEITaskTrends` and `AEICollabTrends`).
