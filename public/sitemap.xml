@@ -13,17 +13,17 @@
   <url>
     <loc>https://vargo.city/research</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://vargo.city/making</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://vargo.city/adventures</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://vargo.city/writing</loc>
@@ -31,13 +31,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vargo.city/writing/blog/2014-03-15-metro-sapiens</loc>
+    <loc>https://vargo.city/writing/blog/metro-sapiens</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://vargo.city/writing/blog/2026-03-13-aei-longitudinal</loc>
+    <loc>https://vargo.city/writing/blog/aei-longitudinal</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 </urlset>
