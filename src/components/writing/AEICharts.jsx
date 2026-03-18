@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import * as Plot from '@observablehq/plot'
 import panelData from '../../data/aei-panel.json'
+import subgroupData from '../../data/soc43-subgroup.json'
 
 const LMI_COLORS = {
   high:     '#C0583A',
@@ -459,6 +460,139 @@ export function AEISummaryTable() {
         Task share = % of Claude interactions. LMI-flagged rows highlighted.
         Trend: ↑↑/↓↓ = &gt;2pp change (Feb→Jan); ↑/↓ = 0.25–2pp; opacity reflects monotonicity across all 4 releases. Hover for exact values.
         Autonomy and Success: Claude self-assessed (V4 only, 0–4 and % scales). Military (SOC 55) excluded.
+      </ChartCaption>
+    </div>
+  )
+}
+
+// ── Chart 5: SOC 43 subgroup — task share + automation slope ────────────────
+export function SOC43SubgroupChart() {
+  const [containerRef, width] = useContainerWidth()
+
+  const data = subgroupData.subgroups
+  const MAIN_GROUPS = ['43-9', '43-4', '43-6']
+  const GROUP_COLORS = {
+    '43-9': '#6B52A0',
+    '43-4': '#C0583A',
+    '43-6': '#2E7A9E',
+  }
+  const groupColor = (g) => GROUP_COLORS[g] ?? '#AAAAAA'
+  const isMain = (g) => MAIN_GROUPS.includes(g)
+
+  const sorted = [...data].sort((a, b) => b.share_of_soc43_v4 - a.share_of_soc43_v4)
+
+  const slopeData = data.flatMap(d => [
+    { broad_group: d.broad_group, broad_title: d.broad_title, release: 'Sep 2025', automation_pct: d.automation_pct_v3 },
+    { broad_group: d.broad_group, broad_title: d.broad_title, release: 'Jan 2026', automation_pct: d.automation_pct_v4 },
+  ])
+
+  const barRef = usePlot({
+    width,
+    height: 195,
+    marginLeft: 155,
+    marginRight: 55,
+    style: PLOT_STYLE,
+    x: {
+      label: 'Share of SOC 43 task interactions (V4, %)',
+      domain: [0, 65],
+    },
+    y: { label: null },
+    marks: [
+      Plot.barX(sorted, {
+        x: 'share_of_soc43_v4',
+        y: 'broad_title',
+        fill: d => groupColor(d.broad_group),
+        fillOpacity: d => isMain(d.broad_group) ? 0.75 : 0.35,
+        sort: { y: '-x' },
+      }),
+      Plot.text(sorted, {
+        x: 'share_of_soc43_v4',
+        y: 'broad_title',
+        text: d => d.share_of_soc43_v4.toFixed(1) + '%',
+        dx: 5,
+        textAnchor: 'start',
+        fontSize: 10,
+        fill: d => groupColor(d.broad_group),
+        fillOpacity: d => isMain(d.broad_group) ? 1 : 0.6,
+        sort: { y: '-x' },
+      }),
+    ],
+  }, [width])
+
+  const slopeRef = usePlot({
+    width,
+    height: 230,
+    marginRight: 110,
+    style: PLOT_STYLE,
+    x: {
+      label: null,
+      domain: ['Sep 2025', 'Jan 2026'],
+      padding: 0.5,
+    },
+    y: {
+      label: 'Automation-type interactions (%)',
+      grid: true,
+      tickFormat: d => d + '%',
+      domain: [22, 62],
+    },
+    marks: [
+      Plot.line(slopeData, {
+        x: 'release',
+        y: 'automation_pct',
+        z: 'broad_group',
+        stroke: d => groupColor(d.broad_group),
+        strokeWidth: d => isMain(d.broad_group) ? 2 : 1.2,
+        strokeOpacity: d => isMain(d.broad_group) ? 0.85 : 0.4,
+      }),
+      Plot.dot(slopeData, {
+        x: 'release',
+        y: 'automation_pct',
+        fill: d => groupColor(d.broad_group),
+        r: d => isMain(d.broad_group) ? 4 : 3,
+        fillOpacity: d => isMain(d.broad_group) ? 0.85 : 0.4,
+      }),
+      Plot.text(slopeData.filter(d => d.release === 'Jan 2026'), {
+        x: 'release',
+        y: 'automation_pct',
+        text: 'broad_group',
+        textAnchor: 'start',
+        dx: 8,
+        fill: d => groupColor(d.broad_group),
+        fillOpacity: d => isMain(d.broad_group) ? 1 : 0.55,
+        fontSize: 11,
+      }),
+    ],
+  }, [width])
+
+  return (
+    <div ref={containerRef} className="my-6">
+      <p className="text-xs font-medium mb-1" style={{ color: 'var(--c-text-muted)' }}>
+        Task share within SOC 43 (V4, Jan 2026)
+      </p>
+      <div ref={barRef} />
+      <p className="text-xs font-medium mt-5 mb-1" style={{ color: 'var(--c-text-muted)' }}>
+        Automation rate shift, Sep 2025 → Jan 2026
+      </p>
+      <div ref={slopeRef} />
+      <div className="flex flex-wrap gap-4 mt-2">
+        {[
+          ['43-9', 'Other Office & Admin (43-9)'],
+          ['43-4', 'Info & Record Clerks (43-4)'],
+          ['43-6', 'Secretaries & Admin (43-6)'],
+        ].map(([g, label]) => (
+          <span key={g} className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+            <span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: '50%', background: GROUP_COLORS[g] }} />
+            {label}
+          </span>
+        ))}
+        <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+          <span style={{ display: 'inline-block', width: 10, height: 10, borderRadius: '50%', background: '#AAAAAA', opacity: 0.5 }} />
+          Small-n subgroups (43-1, 43-2, 43-3, 43-5)
+        </span>
+      </div>
+      <ChartCaption>
+        Task share: V4 raw intermediate (Jan 2026), US geography. Automation rate: count-weighted from global collaboration data, V3 (Sep 2025) and V4 (Jan 2026).
+        Denominator includes not_classified and none interactions. Small-n subgroups (&le;10 tasks, &lt;5% share) are indicative only.
       </ChartCaption>
     </div>
   )

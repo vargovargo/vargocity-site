@@ -1,0 +1,88 @@
+{
+  "subgroups": [
+    {
+      "broad_group": "43-9",
+      "broad_title": "Other Office & Admin",
+      "task_count_v4": 39,
+      "share_of_soc43_v4": 57.63,
+      "automation_pct_v3": 41.6,
+      "augmentation_pct_v3": 55.0,
+      "other_pct_v3": 3.4,
+      "automation_pct_v4": 29.5,
+      "augmentation_pct_v4": 65.7,
+      "other_pct_v4": 4.9
+    },
+    {
+      "broad_group": "43-4",
+      "broad_title": "Info & Record Clerks",
+      "task_count_v4": 44,
+      "share_of_soc43_v4": 17.34,
+      "automation_pct_v3": 46.6,
+      "augmentation_pct_v3": 38.8,
+      "other_pct_v3": 14.6,
+      "automation_pct_v4": 40.2,
+      "augmentation_pct_v4": 44.5,
+      "other_pct_v4": 15.3
+    },
+    {
+      "broad_group": "43-6",
+      "broad_title": "Secretaries & Admin",
+      "task_count_v4": 19,
+      "share_of_soc43_v4": 16.08,
+      "automation_pct_v3": 56.8,
+      "augmentation_pct_v3": 31.7,
+      "other_pct_v3": 11.5,
+      "automation_pct_v4": 42.9,
+      "augmentation_pct_v4": 45.9,
+      "other_pct_v4": 11.1
+    },
+    {
+      "broad_group": "43-1",
+      "broad_title": "Supervisors",
+      "task_count_v4": 5,
+      "share_of_soc43_v4": 4.54,
+      "automation_pct_v3": 33.9,
+      "augmentation_pct_v3": 56.7,
+      "other_pct_v3": 9.5,
+      "automation_pct_v4": 28.4,
+      "augmentation_pct_v4": 62.4,
+      "other_pct_v4": 9.1
+    },
+    {
+      "broad_group": "43-3",
+      "broad_title": "Financial Clerks",
+      "task_count_v4": 10,
+      "share_of_soc43_v4": 2.52,
+      "automation_pct_v3": 41.2,
+      "augmentation_pct_v3": 28.4,
+      "other_pct_v3": 30.4,
+      "automation_pct_v4": 38.1,
+      "augmentation_pct_v4": 37.5,
+      "other_pct_v4": 24.4
+    },
+    {
+      "broad_group": "43-5",
+      "broad_title": "Material Recording",
+      "task_count_v4": 6,
+      "share_of_soc43_v4": 1.54,
+      "automation_pct_v3": 44.6,
+      "augmentation_pct_v3": 28.2,
+      "other_pct_v3": 27.2,
+      "automation_pct_v4": 32.7,
+      "augmentation_pct_v4": 30.5,
+      "other_pct_v4": 36.7
+    },
+    {
+      "broad_group": "43-2",
+      "broad_title": "Comm. Equipment",
+      "task_count_v4": 2,
+      "share_of_soc43_v4": 0.33,
+      "automation_pct_v3": 39.9,
+      "augmentation_pct_v3": 39.4,
+      "other_pct_v3": 20.8,
+      "automation_pct_v4": 37.6,
+      "augmentation_pct_v4": 39.4,
+      "other_pct_v4": 22.9
+    }
+  ]
+}
