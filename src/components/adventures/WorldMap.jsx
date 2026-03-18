@@ -4,7 +4,7 @@ import countries from '../../data/countries.json'
 
 // Natural Earth GeoJSON — separates overseas territories (French Guiana, etc.)
 // Uses ISO_A2 property directly, no numeric ID lookup needed
-const GEO_URL = 'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_110m_admin_0_countries.geojson'
+const GEO_URL = 'https://cdn.jsdelivr.net/gh/nvkelso/natural-earth-vector@v5.1.2/geojson/ne_110m_admin_0_map_units.geojson'
 
 const visitedISOs = new Set(countries.map(c => c.iso).filter(Boolean))
 
@@ -57,7 +57,8 @@ function yearLabel(v) {
 
 function getIso(geo) {
   const iso = geo.properties?.ISO_A2
-  return (iso && iso !== '-99') ? iso : (geo.properties?.ISO_A2_EH ?? null)
+  const result = (iso && iso !== '-99') ? iso : (geo.properties?.ISO_A2_EH ?? null)
+  return result
 }
 
 export default function WorldMap() {

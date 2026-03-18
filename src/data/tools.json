@@ -1,11 +1,19 @@
 [
   {
-    "id": "workout-tracker",
-    "name": "Workout Tracker",
-    "description": "A PWA for tracking weekly workouts across strength, cardio, mobility, and mindfulness. Multi-user, real-time sync via Firebase, with streak tracking and celebration animations.",
-    "url": "https://vargovargo.github.io/workout-tracker/",
-    "tech": ["React", "Firebase", "Tailwind", "PWA"],
+    "id": "fitness-tracker",
+    "name": "Fitness Tracker",
+    "description": "A PWA for tracking weekly workouts across strength, cardio, mobility, and mindfulness — built for our whole family of four. Multi-user, real-time Firebase sync, AI-powered goal setting with a physiology-informed dashboard, ACWR load monitoring, and streak tracking. Live at fitness.vargo.city.",
+    "url": "https://fitness.vargo.city",
+    "tech": ["React", "Firebase", "Claude API", "PWA"],
     "status": "live"
+  },
+  {
+    "id": "sierra-pulse",
+    "name": "Sierra Pulse",
+    "description": "A living portrait of the Sierra Nevada, updated daily. Synthesizes snowpack, streamflow, weather, fire, road access, Strava trail traffic, and permit availability into a single decision-support view for backcountry travelers — flagging the moment when conditions, air quality, and logistics align.",
+    "url": "",
+    "tech": ["React", "Supabase", "Mapbox", "Edge Functions"],
+    "status": "in-progress"
   },
   {
     "id": "bread-planner",

@@ -14,5 +14,29 @@
     "materials": ["reclaimed ash", "salvaged hairpin legs"],
     "notes": "The wood came from trees that fell in storms and was given away as slabs at the 2014 Atwood Festival in Madison. I dried it in my garage for two years before building. The hairpin legs came off a tiled table I found on the street. It ended up taller than I intended — works well as a TV stand.",
     "photos": []
+  },
+  {
+    "id": "city-and-coming-climate",
+    "name": "The City and Coming Climate — Figures",
+    "year": 2011,
+    "materials": ["Adobe Illustrator", "print"],
+    "notes": "Led graphics production for Brian Stone's book published by Cambridge University Press. Produced and reproduced all scientific figures — maps, charts, and diagrams — translating climate research into visual arguments. Working at that scale with a serious academic audience taught me that design isn't decoration; it's how ideas reach people.",
+    "photos": []
+  },
+  {
+    "id": "madison-bcycle",
+    "name": "Madison B-Cycle T-Shirt",
+    "year": 2013,
+    "materials": ["Adobe Illustrator", "screen print"],
+    "notes": "Competition entry for Madison's bike share launch. Abstracted the shapes of Mendota and Monona into a single graphic, then overlaid the station network — names tilted at 45° in the style of a subway map. Tried to make the case that B-Cycle belonged in the same conversation as transit, not just leisure.",
+    "photos": []
+  },
+  {
+    "id": "ivpod",
+    "name": "i(V)Pod",
+    "year": 2004,
+    "materials": ["Adobe Illustrator"],
+    "notes": "Personal project riffing on Apple's iconic silhouette ad campaign. The iPod was everywhere that year — it felt like the first time a piece of consumer technology had a genuine visual identity, not just a product. This was a response to that moment, and probably the start of paying serious attention to design as communication.",
+    "photos": []
   }
 ]
