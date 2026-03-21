@@ -16,7 +16,7 @@
     "year": 2012,
     "venue": "Landscape and Urban Planning",
     "url": "",
-    "citations": 322,
+    "citations": 324,
     "tags": ["climate", "policy", "cities"]
   },
   {
@@ -106,7 +106,7 @@
     "year": 2015,
     "venue": "Natural Hazards",
     "url": "",
-    "citations": 395,
+    "citations": 398,
     "tags": ["climate"]
   },
   {
@@ -196,7 +196,7 @@
     "year": 2018,
     "venue": "PLOS Medicine",
     "url": "",
-    "citations": 204,
+    "citations": 205,
     "tags": ["air-quality", "health"]
   },
   {
@@ -236,7 +236,7 @@
     "year": 2019,
     "venue": "Social Science & Medicine",
     "url": "",
-    "citations": 98,
+    "citations": 99,
     "tags": ["climate", "health"]
   },
   {
@@ -246,7 +246,7 @@
     "year": 2020,
     "venue": "Journal of the American Heart Association",
     "url": "",
-    "citations": 109,
+    "citations": 110,
     "tags": ["air-quality", "health"]
   },
   {
@@ -256,7 +256,7 @@
     "year": 2020,
     "venue": "Frontiers in Public Health",
     "url": "",
-    "citations": 24,
+    "citations": 26,
     "tags": ["air-quality", "health"]
   },
   {
@@ -266,7 +266,7 @@
     "year": 2021,
     "venue": "JAMA Dermatology",
     "url": "",
-    "citations": 133,
+    "citations": 134,
     "tags": ["air-quality", "health"]
   },
   {
@@ -366,7 +366,7 @@
     "year": 2022,
     "venue": "International Journal of Environmental Research and Public Health",
     "url": "",
-    "citations": 30,
+    "citations": 31,
     "tags": ["climate", "health", "policy", "cities"]
   },
   {
@@ -393,10 +393,10 @@
     "id": "stone2023urban",
     "title": "Urban heat management in Louisville, Kentucky: A framework for climate adaptation planning",
     "authors": ["Brian Stone Jr", "Kevin Lanza", "Evan Mallen", "Jason Vargo", "Armistead Russell"],
-    "year": 2019,
+    "year": 2023,
     "venue": "Journal of Planning Education and Research",
     "url": "",
-    "citations": 68,
+    "citations": 71,
     "tags": ["climate", "policy", "cities"]
   },
   {
@@ -406,7 +406,7 @@
     "year": 2023,
     "venue": "American Journal of Public Health",
     "url": "",
-    "citations": 45,
+    "citations": 51,
     "tags": ["air-quality", "climate", "health"]
   },
   {
@@ -416,7 +416,7 @@
     "year": 2024,
     "venue": "Atmosphere",
     "url": "",
-    "citations": 3,
+    "citations": 4,
     "tags": ["air-quality"]
   },
   {
@@ -436,7 +436,7 @@
     "year": 2025,
     "venue": "Earth's Future",
     "url": "",
-    "citations": 1,
+    "citations": 2,
     "tags": ["air-quality", "climate"]
   },
   {
@@ -446,7 +446,7 @@
     "year": 2025,
     "venue": "GeoHealth",
     "url": "",
-    "citations": 3,
+    "citations": 4,
     "tags": ["air-quality", "climate", "health"]
   },
   {
