@@ -210,14 +210,14 @@ Located at `src/data/sps-peaks.json`. Structure:
 
 ## Deployment
 
-Hosted on GitHub Pages at **vargo.city** (custom domain, registered at Porkbun March 2026).
+Hosted on **Cloudflare Pages** at **vargo.city** (migrated from GitHub Pages March 2026; domain registered at Porkbun).
 
-- DNS A records point to GitHub Pages IPs (185.199.108–111.153), configured at Porkbun
-- `public/CNAME` contains `vargo.city`
-- `VITE_BASE_URL` is set to `/` in the deploy workflow (not `/vargocity-site/`)
-- HTTPS enforced via GitHub Pages TLS provisioning
-- A `404.html` redirect hack is in place to support React Router's client-side routing on direct URL access and refresh (see `public/404.html` and the script in `index.html`)
-- **`segmentsToKeep = 0`** in `404.html` — must stay `0` because the site is at the root of a custom domain. Setting it to `1` causes an infinite redirect loop that appends `~and~` segments to the URL on every refresh.
+- Cloudflare Pages project: `vargocity-site` (auto-deploys from `main` branch)
+- Custom domains `vargo.city` and `www.vargo.city` are configured in Cloudflare Pages → Settings → Custom Domains
+- DNS is managed by Cloudflare (nameservers point to Cloudflare, not Porkbun) — both domains use a CNAME to `vargocity-site.pages.dev`
+- Do not touch Porkbun DNS — Cloudflare controls the records
+- **SPA routing**: `public/_redirects` was removed (Cloudflare rejected `/* /index.html 200` as an infinite loop). Instead, the build script copies `dist/index.html` → `dist/404.html` so Cloudflare serves the React app for unmatched routes
+- `VITE_BASE_URL` is `/`; build command is `npm install --legacy-peer-deps && npm run build`; output dir is `dist`
 
 ## Writing section
 
