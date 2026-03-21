@@ -11,7 +11,7 @@
     "id": "sierra-pulse",
     "name": "Sierra Pulse",
     "description": "A living portrait of the Sierra Nevada, updated daily. Synthesizes snowpack, streamflow, weather, fire, road access, Strava trail traffic, and permit availability into a single decision-support view for backcountry travelers — flagging the moment when conditions, air quality, and logistics align.",
-    "url": "",
+    "url": "https://sierra-pulse.vercel.app",
     "tech": ["React", "Supabase", "Mapbox", "Edge Functions"],
     "status": "in-progress"
   },
