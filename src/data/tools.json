@@ -40,6 +40,14 @@
     "status": "live"
   },
   {
+    "id": "hopkins",
+    "name": "Hopkins Street",
+    "description": "A scrollytelling data story making the case for a Vision Zero redesign of Hopkins Street in Berkeley. Combines collision records, StreetLight pedestrian and bike volumes, speed data, and community survey results into an interactive narrative — the kind of evidence that belongs in a planning meeting, packaged so a neighbor can read it.",
+    "url": "https://hopkins-sage.vercel.app",
+    "tech": ["React", "Scrollama", "D3", "StreetLight Data"],
+    "status": "live"
+  },
+  {
     "id": "strava-print",
     "name": "Strava Print",
     "description": "Pulls GPS and elevation data from Strava and exports it as a 3D-printable STL. The primary form is a descent asymmetry object — a tent-shaped solid where the front face encodes gradient on the climb and the back face encodes speed on the descent. Mountain routes have a narrative arc; this tries to make that arc holdable.",
