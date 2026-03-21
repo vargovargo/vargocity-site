@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { AEITaskTrends, AEICollabTrends, AEIPrimitivesScatter, AEISummaryTable } from './AEICharts'
+import { AEITaskTrends, AEICollabTrends, AEIPrimitivesScatter, AEISummaryTable, SOC43SubgroupChart } from './AEICharts'
 
 const AEI_CHARTS = {
   '/plots/task_pct_trends.png':              AEITaskTrends,
   '/plots/automation_augmentation_trends.png': AEICollabTrends,
   '/plots/primitives_scatter.png':           AEIPrimitivesScatter,
   '/plots/soc_summary_table.png':            AEISummaryTable,
+  '/plots/soc43_subgroup.png':               SOC43SubgroupChart,
 }
 
 function PostImage({ src, alt }) {
