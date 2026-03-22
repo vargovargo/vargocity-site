@@ -28,10 +28,17 @@ export default function AboutPage() {
 
         {/* Timeline sidebar */}
         <div className="lg:col-span-2">
-          <h2 className="text-sm font-semibold mb-6 uppercase tracking-wider"
-            style={{ color: 'var(--c-text-muted)' }}>
-            Career
-          </h2>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-sm font-semibold uppercase tracking-wider"
+              style={{ color: 'var(--c-text-muted)' }}>
+              Career
+            </h2>
+            <a href="/jason_vargo_resume.pdf" target="_blank" rel="noopener noreferrer"
+              className="text-xs font-medium uppercase tracking-wider"
+              style={{ color: 'var(--c-text-muted)' }}>
+              Résumé ↓
+            </a>
+          </div>
           <CareerTimeline />
         </div>
       </div>
