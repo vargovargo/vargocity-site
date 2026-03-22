@@ -33,10 +33,10 @@ export default function AboutPage() {
               style={{ color: 'var(--c-text-muted)' }}>
               Career
             </h2>
-            <a href="/jason_vargo_resume.pdf" target="_blank" rel="noopener noreferrer"
+            <a href="/jason_vargo_cv.pdf" target="_blank" rel="noopener noreferrer"
               className="text-xs font-medium uppercase tracking-wider"
               style={{ color: 'var(--c-text-muted)' }}>
-              Résumé ↓
+              CV ↓
             </a>
           </div>
           <CareerTimeline />
