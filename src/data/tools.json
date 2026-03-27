@@ -36,13 +36,14 @@
     "name": "Gratitude Text App",
     "description": "A family SMS service for building a daily gratitude practice together. Sends a rotating morning prompt, collects replies, tracks streaks, and cheers milestones — all over text, no app required.",
     "url": "https://github.com/vargovargo/gratitude-app",
+    "signup_url": "https://gratitude-app-production.up.railway.app/signup",
     "tech": ["Node.js", "Twilio", "SMS"],
     "status": "live"
   },
   {
     "id": "hopkins",
     "name": "Hopkins Street",
-    "description": "A scrollytelling data story making the case for a Vision Zero redesign of Hopkins Street in Berkeley. Combines collision records, StreetLight pedestrian and bike volumes, speed data, and community survey results into an interactive narrative — the kind of evidence that belongs in a planning meeting, packaged so a neighbor can read it.",
+    "description": "A scrollytelling data story making the case for a Vision Zero redesign of Hopkins Street in Berkeley. Contested street safety projects stall when the planning case isn't made clearly and publicly, and this one has been stalled for nearly a decade. This is a digital planning report: collision records, pedestrian and bike volumes, speed data, and community workshop feedback in an interactive narrative that belongs in a planning meeting and a neighbor's living room.",
     "url": "https://hopkins.vargo.city",
     "tech": ["React", "Scrollama", "D3", "StreetLight Data"],
     "status": "live"

@@ -15,12 +15,42 @@ export default function GratitudeOptInPage() {
         Opt-in information for Twilio toll-free verification
       </p>
 
+      <section style={{
+        marginBottom: '2rem',
+        padding: '1.25rem 1.5rem',
+        border: '1px solid var(--c-border)',
+        backgroundColor: 'var(--c-surface)',
+      }}>
+        <h2 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.5rem' }}>Interested in joining?</h2>
+        <p style={{ marginBottom: '1rem' }}>
+          You can submit your contact information to express interest — but this is <strong>not a web-based opt-in</strong>.
+          The program administrator will follow up directly to obtain verbal consent before adding anyone.
+          No one is enrolled from this form alone.
+        </p>
+        <a
+          href="https://gratitude-app-production.up.railway.app/signup"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'inline-block',
+            padding: '0.5rem 1.25rem',
+            backgroundColor: 'var(--c-text)',
+            color: 'var(--c-bg)',
+            fontSize: '0.9rem',
+            fontWeight: '500',
+            textDecoration: 'none',
+          }}
+        >
+          Express interest →
+        </a>
+      </section>
+
       <section style={{ marginBottom: '2rem' }}>
         <h2 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.5rem' }}>What is this?</h2>
         <p>
           A private family SMS program that sends one daily gratitude prompt. This is not a public
           service — members are added directly by the program administrator after giving their
-          consent. There is no public sign-up form.
+          verbal consent.
         </p>
       </section>
 

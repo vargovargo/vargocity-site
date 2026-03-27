@@ -22,13 +22,22 @@ export default function ToolCard({ tool }) {
           </span>
         ))}
       </div>
-      {tool.url && (
-        <a href={tool.url} target="_blank" rel="noopener noreferrer"
-          className="text-xs transition-colors"
-          style={{ color: 'var(--c-text-muted)' }}>
-          Open app →
-        </a>
-      )}
+      <div className="flex gap-4">
+        {tool.url && (
+          <a href={tool.url} target="_blank" rel="noopener noreferrer"
+            className="text-xs transition-colors"
+            style={{ color: 'var(--c-text-muted)' }}>
+            Open app →
+          </a>
+        )}
+        {tool.signup_url && (
+          <a href={tool.signup_url} target="_blank" rel="noopener noreferrer"
+            className="text-xs transition-colors"
+            style={{ color: 'var(--c-text-muted)' }}>
+            Express interest →
+          </a>
+        )}
+      </div>
     </div>
   )
 }
