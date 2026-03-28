@@ -479,11 +479,12 @@ export function SOC43SubgroupChart() {
   const groupColor = (g) => GROUP_COLORS[g] ?? '#AAAAAA'
   const isMain = (g) => MAIN_GROUPS.includes(g)
 
-  const sorted = [...data].sort((a, b) => b.share_of_soc43_v4 - a.share_of_soc43_v4)
+  const sorted = [...data].sort((a, b) => b.share_of_soc43_v5 - a.share_of_soc43_v5)
 
   const slopeData = data.flatMap(d => [
     { broad_group: d.broad_group, broad_title: d.broad_title, release: 'Sep 2025', automation_pct: d.automation_pct_v3 },
     { broad_group: d.broad_group, broad_title: d.broad_title, release: 'Jan 2026', automation_pct: d.automation_pct_v4 },
+    { broad_group: d.broad_group, broad_title: d.broad_title, release: 'Mar 2026', automation_pct: d.automation_pct_v5 },
   ])
 
   const barRef = usePlot({
@@ -493,22 +494,22 @@ export function SOC43SubgroupChart() {
     marginRight: 55,
     style: PLOT_STYLE,
     x: {
-      label: 'Share of SOC 43 task interactions (V4, %)',
+      label: 'Share of SOC 43 task interactions (V5, %)',
       domain: [0, 65],
     },
     y: { label: null },
     marks: [
       Plot.barX(sorted, {
-        x: 'share_of_soc43_v4',
+        x: 'share_of_soc43_v5',
         y: 'broad_title',
         fill: d => groupColor(d.broad_group),
         fillOpacity: d => isMain(d.broad_group) ? 0.75 : 0.35,
         sort: { y: '-x' },
       }),
       Plot.text(sorted, {
-        x: 'share_of_soc43_v4',
+        x: 'share_of_soc43_v5',
         y: 'broad_title',
-        text: d => d.share_of_soc43_v4.toFixed(1) + '%',
+        text: d => d.share_of_soc43_v5.toFixed(1) + '%',
         dx: 5,
         textAnchor: 'start',
         fontSize: 10,
@@ -526,7 +527,7 @@ export function SOC43SubgroupChart() {
     style: PLOT_STYLE,
     x: {
       label: null,
-      domain: ['Sep 2025', 'Jan 2026'],
+      domain: ['Sep 2025', 'Jan 2026', 'Mar 2026'],
       padding: 0.5,
     },
     y: {
@@ -551,7 +552,7 @@ export function SOC43SubgroupChart() {
         r: d => isMain(d.broad_group) ? 4 : 3,
         fillOpacity: d => isMain(d.broad_group) ? 0.85 : 0.4,
       }),
-      Plot.text(slopeData.filter(d => d.release === 'Jan 2026'), {
+      Plot.text(slopeData.filter(d => d.release === 'Mar 2026'), {
         x: 'release',
         y: 'automation_pct',
         text: 'broad_group',
@@ -567,11 +568,11 @@ export function SOC43SubgroupChart() {
   return (
     <div ref={containerRef} className="my-6">
       <p className="text-xs font-medium mb-1" style={{ color: 'var(--c-text-muted)' }}>
-        Task share within SOC 43 (V4, Jan 2026)
+        Task share within SOC 43 (V5, Mar 2026)
       </p>
       <div ref={barRef} />
       <p className="text-xs font-medium mt-5 mb-1" style={{ color: 'var(--c-text-muted)' }}>
-        Automation rate shift, Sep 2025 → Jan 2026
+        Automation rate shift, Sep 2025 → Jan 2026 → Mar 2026
       </p>
       <div ref={slopeRef} />
       <div className="flex flex-wrap gap-4 mt-2">
@@ -591,8 +592,8 @@ export function SOC43SubgroupChart() {
         </span>
       </div>
       <ChartCaption>
-        Task share: V4 raw intermediate (Jan 2026), US geography. Automation rate: count-weighted from global collaboration data, V3 (Sep 2025) and V4 (Jan 2026).
-        Denominator includes not_classified and none interactions. Small-n subgroups (&le;10 tasks, &lt;5% share) are indicative only.
+        Task share: V5 raw (Mar 2026), US geography. Automation rate: count-weighted from global collaboration data across V3 (Sep 2025), V4 (Jan 2026), and V5 (Mar 2026).
+        Denominator includes not_classified and none interactions. Task corpus changed between releases — V4→V5 automation shifts for 43-4, 43-3, 43-5 reflect both behavioral change and task-set composition change. Small-n subgroups (&lt;5% share) are indicative only.
       </ChartCaption>
     </div>
   )
