@@ -27,7 +27,7 @@ export default function ToolCard({ tool }) {
           <a href={tool.url} target="_blank" rel="noopener noreferrer"
             className="text-xs transition-colors"
             style={{ color: 'var(--c-text-muted)' }}>
-            Open app →
+            {tool.url_label || 'Open app'} →
           </a>
         )}
         {tool.signup_url && (
