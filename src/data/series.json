@@ -1,0 +1,11 @@
+{
+  "aei": {
+    "title": "Anthropic Economic Index",
+    "description": "Longitudinal panel tracking AI task share and automation rates across occupation groups — with focus on where lower-income workers are concentrated.",
+    "github": "https://github.com/vargovargo/economic-index-trends"
+  },
+  "sbi": {
+    "title": "Survival Budget Index",
+    "description": "A county-level cost-of-sufficiency index: what it actually costs to not be poor in western states, built from three independent budget calculators."
+  }
+}

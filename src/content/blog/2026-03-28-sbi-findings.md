@@ -3,11 +3,13 @@ title: "What It Costs to Not Be Poor in Idaho and Nevada"
 date: "2026-03-28"
 tags: ["research", "housing", "labor", "policy", "west"]
 excerpt: "In every county studied — four counties across two western states — two adults working full-time at minimum wage cannot cover the basic cost of sufficiency. Not poverty. Not comfort. The floor."
+series_slug: "sbi"
+series_order: 1
 ---
 
 **Pilot findings · March 2026 · Survival Budget Index**
 
-> These are findings from a four-county pilot study in Idaho and Nevada. The methodology and data sources are described in a companion piece: [Building a Survival Budget Index](/writing/blog/2026-03-28-sbi-methods).
+> These are findings from a four-county pilot study in Idaho and Nevada. The methodology and data sources are described in a companion piece: [Building a Survival Budget Index](/lab/posts/2026-03-28-sbi-methods).
 
 ---
 
@@ -103,6 +105,6 @@ A pipeline built alongside this pilot pulls monthly proxy signals — current re
 
 ## A note on methodology
 
-Three anchor sources underpin every number in this piece: the Self-Sufficiency Standard (UW Pearce Institute), the MIT Living Wage Calculator, and the EPI Family Budget Calculator. They measure related but distinct things — basic needs versus modest adequacy — and they don't always agree. Their disagreement is treated as an uncertainty band rather than averaged away. The floor of every range is the most conservative estimate; the ceiling is the most generous. Full methodology, source descriptions, and data quality notes are in the companion piece: [Building a Survival Budget Index](/writing/blog/2026-03-28-sbi-methods).
+Three anchor sources underpin every number in this piece: the Self-Sufficiency Standard (UW Pearce Institute), the MIT Living Wage Calculator, and the EPI Family Budget Calculator. They measure related but distinct things — basic needs versus modest adequacy — and they don't always agree. Their disagreement is treated as an uncertainty band rather than averaged away. The floor of every range is the most conservative estimate; the ceiling is the most generous. Full methodology, source descriptions, and data quality notes are in the companion piece: [Building a Survival Budget Index](/lab/posts/2026-03-28-sbi-methods).
 
 The data and code are open: [github.com/vargovargo/cost-of-living](https://github.com/vargovargo/cost-of-living).

@@ -74,7 +74,7 @@ export default function ResearchPage() {
         </h2>
         <div style={{ border: '1px solid var(--c-border)', backgroundColor: 'var(--c-surface)' }} className="px-5 py-4">
           <p className="text-xs mb-1" style={{ color: 'var(--c-text-muted)' }}>March 2026 · Work in progress</p>
-          <Link to="/writing/blog/2026-03-13-aei-longitudinal" className="text-sm hover:underline" style={{ color: 'var(--c-text)' }}>
+          <Link to="/lab/posts/2026-03-13-aei-longitudinal" className="text-sm hover:underline" style={{ color: 'var(--c-text)' }}>
             AI Use in Lower-Income Worker Occupations
           </Link>
           <p className="text-sm mt-1.5" style={{ color: 'var(--c-text-body)' }}>

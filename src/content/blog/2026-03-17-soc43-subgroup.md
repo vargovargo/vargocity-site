@@ -3,11 +3,13 @@ title: "Where Within Office Work Is AI Actually Landing?"
 date: "2026-03-17"
 tags: ["AI", "labor", "research", "anthropic"]
 excerpt: "Data entry keyers, word processors, and office machine operators account for 57.6% of SOC 43's AI task share — despite being the most routine, substitutable work in the group. A breakdown of AI engagement across the seven occupational subgroups within Office and Administrative Support, and how that's shifting."
+series_slug: "aei"
+series_order: 2
 ---
 
 Data entry keyers, word processors, and office machine operators — the most routine and substitutable work in SOC 43 — account for 57.6% of the occupation group's AI task share. That's the catch-all bucket, the residual category. Its dominance in actual AI use is itself the finding.
 
-SOC 43 — Office and Administrative Support — appears throughout the [main longitudinal analysis](/writing/blog/2026-03-13-aei-longitudinal) as the occupation group with the highest AI task share among those where lower-income workers are most concentrated: 8.35% of all Claude interactions in the most recent release. But SOC 43 is not one thing. This analysis drills into the seven O\*NET broad groups that make up the major group — from supervisors to data entry workers to switchboard operators — to ask where within SOC 43 AI use is actually concentrated, and how the automation/augmentation character of that use varies across subgroups.
+SOC 43 — Office and Administrative Support — appears throughout the [main longitudinal analysis](/lab/posts/2026-03-13-aei-longitudinal) as the occupation group with the highest AI task share among those where lower-income workers are most concentrated: 8.35% of all Claude interactions in the most recent release. But SOC 43 is not one thing. This analysis drills into the seven O\*NET broad groups that make up the major group — from supervisors to data entry workers to switchboard operators — to ask where within SOC 43 AI use is actually concentrated, and how the automation/augmentation character of that use varies across subgroups.
 
 ---
 

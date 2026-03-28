@@ -3,6 +3,8 @@ title: "AI Use in Lower-Income Worker Occupations"
 date: "2026-03-13"
 tags: ["AI", "labor", "research", "anthropic"]
 excerpt: "A longitudinal panel of the Anthropic Economic Index shows AI task share growing in occupations where lower-income workers are concentrated — and shifting toward automation. Preliminary findings from an independent replication."
+series_slug: "aei"
+series_order: 1
 ---
 
 ## Preliminary Findings from a Longitudinal Panel of the Anthropic Economic Index
@@ -47,7 +49,7 @@ The [Anthropic Economic Index](https://huggingface.co/datasets/Anthropic/Economi
 
 Measured as the share of Claude interactions that map to each SOC group, AI usage is increasing in occupations where lower-income workers are most concentrated. Office and Administrative Support (SOC 43) shows a consistent upward trend across all four releases. Educational Instruction and Library (SOC 25, moderate) also shows elevated and growing task share.
 
-*For a closer look at where within SOC 43 that usage falls — across the seven occupational subgroups, from secretaries to data entry workers — see [Where Within Office Work Is AI Actually Landing?](/writing/blog/2026-03-17-soc43-subgroup)*
+*For a closer look at where within SOC 43 that usage falls — across the seven occupational subgroups, from secretaries to data entry workers — see [Where Within Office Work Is AI Actually Landing?](/lab/posts/2026-03-17-soc43-subgroup)*
 
 ![Task share trends by SOC group and LMI flag, Feb 2025–Jan 2026](/plots/task_pct_trends.png)
 

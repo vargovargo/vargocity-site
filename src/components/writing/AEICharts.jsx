@@ -276,6 +276,7 @@ export function AEIPrimitivesScatter() {
     width,
     height: 300,
     marginRight: 20,
+    marginBottom: 45,
     style: PLOT_STYLE,
     x: {
       label: 'Avg. education years (SOC group)',
@@ -492,6 +493,7 @@ export function SOC43SubgroupChart() {
     height: 195,
     marginLeft: 155,
     marginRight: 55,
+    marginBottom: 45,
     style: PLOT_STYLE,
     x: {
       label: 'Share of SOC 43 task interactions (V5, %)',

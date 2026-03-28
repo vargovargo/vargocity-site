@@ -3,11 +3,13 @@ title: "Survival Budget Index: Data, Sources, and Lessons Learned"
 date: "2026-03-28"
 tags: ["research", "methods", "data", "housing", "labor", "west"]
 excerpt: "A methods and data note for the Survival Budget Index pilot — four counties in Idaho and Nevada. What sources were used, how they disagree, where the data holds, and what national replication would require."
+series_slug: "sbi"
+series_order: 2
 ---
 
 **Methods note · March 2026 · Survival Budget Index pilot**
 
-> This is the methods companion to [What It Costs to Not Be Poor in Idaho and Nevada](/writing/blog/2026-03-28-sbi-findings). Read that piece first for the findings. Read this one for how it was built, where the data is strong, and where it isn't.
+> This is the methods companion to [What It Costs to Not Be Poor in Idaho and Nevada](/lab/posts/2026-03-28-sbi-findings). Read that piece first for the findings. Read this one for how it was built, where the data is strong, and where it isn't.
 
 ---
 

@@ -14,6 +14,12 @@ const cards = [
     description: 'Find the signal. Cut the noise. Make it beautiful enough that people can\'t ignore it. Cities, climate, health, opportunity.',
   },
   {
+    to: '/lab',
+    label: 'Lab',
+    title: 'Self-Assigned Problems',
+    description: 'Datasets that needed someone to look at them. AI and labor markets. The cost of not being poor. Streets and cities. The research that starts before anyone thought to ask for it.',
+  },
+  {
     to: '/adventures',
     label: 'Adventures',
     title: 'Sierra Peaks & Far Places',
@@ -32,11 +38,11 @@ export default function SectionCards() {
     <section className="py-16">
       <div className="max-w-5xl mx-auto px-6">
         <div className="grid sm:grid-cols-2 gap-px" style={{ border: '1px solid var(--c-border)', backgroundColor: 'var(--c-border)' }}>
-          {cards.map(({ to, label, title, description }) => (
+          {cards.map(({ to, label, title, description }, i) => (
             <Link
               key={to}
               to={to}
-              className="group block p-8 transition-colors"
+              className={`group block p-8 transition-colors${i === cards.length - 1 && cards.length % 2 !== 0 ? ' sm:col-span-2' : ''}`}
               style={{ backgroundColor: 'var(--c-surface)' }}
               onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--c-card-hover)'}
               onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--c-surface)'}

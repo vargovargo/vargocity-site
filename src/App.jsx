@@ -7,7 +7,7 @@ import AboutPage from './pages/AboutPage'
 import ResearchPage from './pages/ResearchPage'
 import MakingPage from './pages/MakingPage'
 import AdventuresPage from './pages/AdventuresPage'
-import WritingPage from './pages/WritingPage'
+import LabPage from './pages/LabPage'
 import GratitudeOptInPage from './pages/GratitudeOptInPage'
 
 const themes = [
@@ -50,7 +50,7 @@ export default function App() {
           <Route path="/research" element={<ResearchPage />} />
           <Route path="/making" element={<MakingPage />} />
           <Route path="/adventures" element={<AdventuresPage />} />
-          <Route path="/writing/*" element={<WritingPage />} />
+          <Route path="/lab/*" element={<LabPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

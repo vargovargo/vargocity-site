@@ -5,6 +5,7 @@ tags: ["urbanism", "research", "sustainability"]
 excerpt: "A major step in our evolution occurred when we first began to organize and settle in cities. With more than half of the world's population living in cities, we are now very much the dominant habitat for our species."
 source: "Journal of Environmental Studies and Sciences, 4:360–363 (2014)"
 source_url: "https://doi.org/10.1007/s13412-014-0195-7"
+type: "published"
 ---
 
 *Originally published in Journal of Environmental Studies and Sciences, 4:360–363 (2014). DOI: [10.1007/s13412-014-0195-7](https://doi.org/10.1007/s13412-014-0195-7)*

@@ -53,6 +53,10 @@ async function loadAll(modules) {
       source: frontmatter.source || '',
       book: frontmatter.book || '',
       book_author: frontmatter.book_author || '',
+      series_slug: frontmatter.series_slug || '',
+      series_order: frontmatter.series_order ? parseInt(frontmatter.series_order, 10) : 0,
+      type: frontmatter.type || '',
+      link: frontmatter.link || '',
     })
   }
   return posts.sort((a, b) => b.date.localeCompare(a.date))
