@@ -1,0 +1,37 @@
+{
+  "anchor_totals": [
+    { "fips": "16001", "county": "Ada County", "state": "ID", "family_type": "2a_0c",        "floor": 4892.53,  "ceiling": 6310.07,  "mean": 5764.59 },
+    { "fips": "16001", "county": "Ada County", "state": "ID", "family_type": "2a_1c_infant", "floor": 7200.63,  "ceiling": 8656.67,  "mean": 8162.18 },
+    { "fips": "16001", "county": "Ada County", "state": "ID", "family_type": "2a_2c_school", "floor": 8904.19,  "ceiling": 10563.58, "mean": 9978.23 },
+    { "fips": "16027", "county": "Canyon County", "state": "ID", "family_type": "2a_0c",        "floor": 4454.31,  "ceiling": 5816.68,  "mean": 5345.44 },
+    { "fips": "16027", "county": "Canyon County", "state": "ID", "family_type": "2a_1c_infant", "floor": 6389.67,  "ceiling": 7915.50,  "mean": 7327.11 },
+    { "fips": "16027", "county": "Canyon County", "state": "ID", "family_type": "2a_2c_school", "floor": 7816.42,  "ceiling": 9357.83,  "mean": 8757.06 },
+    { "fips": "32003", "county": "Clark County",  "state": "NV", "family_type": "2a_0c",        "floor": 5313.23,  "ceiling": 5681.84,  "mean": 5517.41 },
+    { "fips": "32003", "county": "Clark County",  "state": "NV", "family_type": "2a_1c_infant", "floor": 7949.08,  "ceiling": 8248.34,  "mean": 8106.96 },
+    { "fips": "32003", "county": "Clark County",  "state": "NV", "family_type": "2a_2c_school", "floor": 9674.19,  "ceiling": 10158.68, "mean": 9903.15 },
+    { "fips": "32031", "county": "Washoe County", "state": "NV", "family_type": "2a_0c",        "floor": 5151.32,  "ceiling": 5899.93,  "mean": 5619.25 },
+    { "fips": "32031", "county": "Washoe County", "state": "NV", "family_type": "2a_1c_infant", "floor": 7951.96,  "ceiling": 8622.02,  "mean": 8267.74 },
+    { "fips": "32031", "county": "Washoe County", "state": "NV", "family_type": "2a_2c_school", "floor": 9437.41,  "ceiling": 10469.35, "mean": 9991.92 }
+  ],
+  "wage_gap": [
+    { "fips": "16001", "county": "Ada County",    "state": "ID", "family_type": "2a_0c",        "min_wage": 7.25,  "required_floor": 14.11, "required_ceiling": 18.20, "gap_floor": 6.86,  "dual_covers": false, "h0485_gap": 2.11,  "h0485_covers": false },
+    { "fips": "16001", "county": "Ada County",    "state": "ID", "family_type": "2a_1c_infant", "min_wage": 7.25,  "required_floor": 20.77, "required_ceiling": 24.97, "gap_floor": 13.52, "dual_covers": false, "h0485_gap": 8.77,  "h0485_covers": false },
+    { "fips": "16001", "county": "Ada County",    "state": "ID", "family_type": "2a_2c_school", "min_wage": 7.25,  "required_floor": 25.69, "required_ceiling": 30.47, "gap_floor": 18.44, "dual_covers": false, "h0485_gap": 13.69, "h0485_covers": false },
+    { "fips": "16027", "county": "Canyon County", "state": "ID", "family_type": "2a_0c",        "min_wage": 7.25,  "required_floor": 12.85, "required_ceiling": 16.78, "gap_floor": 5.60,  "dual_covers": false, "h0485_gap": 0.85,  "h0485_covers": false },
+    { "fips": "16027", "county": "Canyon County", "state": "ID", "family_type": "2a_1c_infant", "min_wage": 7.25,  "required_floor": 18.43, "required_ceiling": 22.83, "gap_floor": 11.18, "dual_covers": false, "h0485_gap": 6.43,  "h0485_covers": false },
+    { "fips": "16027", "county": "Canyon County", "state": "ID", "family_type": "2a_2c_school", "min_wage": 7.25,  "required_floor": 22.55, "required_ceiling": 26.99, "gap_floor": 15.30, "dual_covers": false, "h0485_gap": 10.55, "h0485_covers": false },
+    { "fips": "32003", "county": "Clark County",  "state": "NV", "family_type": "2a_0c",        "min_wage": 12.00, "required_floor": 15.33, "required_ceiling": 16.39, "gap_floor": 3.33,  "dual_covers": false, "h0485_gap": null,  "h0485_covers": null },
+    { "fips": "32003", "county": "Clark County",  "state": "NV", "family_type": "2a_1c_infant", "min_wage": 12.00, "required_floor": 22.93, "required_ceiling": 23.79, "gap_floor": 10.93, "dual_covers": false, "h0485_gap": null,  "h0485_covers": null },
+    { "fips": "32003", "county": "Clark County",  "state": "NV", "family_type": "2a_2c_school", "min_wage": 12.00, "required_floor": 27.91, "required_ceiling": 29.30, "gap_floor": 15.91, "dual_covers": false, "h0485_gap": null,  "h0485_covers": null },
+    { "fips": "32031", "county": "Washoe County", "state": "NV", "family_type": "2a_0c",        "min_wage": 12.00, "required_floor": 14.86, "required_ceiling": 17.02, "gap_floor": 2.86,  "dual_covers": false, "h0485_gap": null,  "h0485_covers": null },
+    { "fips": "32031", "county": "Washoe County", "state": "NV", "family_type": "2a_1c_infant", "min_wage": 12.00, "required_floor": 22.94, "required_ceiling": 24.87, "gap_floor": 10.94, "dual_covers": false, "h0485_gap": null,  "h0485_covers": null },
+    { "fips": "32031", "county": "Washoe County", "state": "NV", "family_type": "2a_2c_school", "min_wage": 12.00, "required_floor": 27.22, "required_ceiling": 30.20, "gap_floor": 15.22, "dual_covers": false, "h0485_gap": null,  "h0485_covers": null }
+  ],
+  "min_wages": { "ID": 7.25, "NV": 12.00 },
+  "family_type_labels": {
+    "2a_0c":        "Couple",
+    "2a_1c_infant": "New Family",
+    "2a_2c_school": "School-Age Family"
+  },
+  "county_order": ["16001", "16027", "32003", "32031"]
+}
