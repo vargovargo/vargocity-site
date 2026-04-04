@@ -49,11 +49,11 @@
     "status": "in-progress"
   },
   {
-    "id": "campsite-dashboard",
-    "name": "Campsite Dashboard",
-    "description": "A planning dashboard for backcountry camping trips — tracking permits, gear checklists, and route data.",
+    "id": "threadline",
+    "name": "Threadline",
+    "description": "A shared narrative game delivered over SMS. A group of players receives one daily challenge, replies privately, and gets a shared evening reveal — a story beat synthesized from everyone's choices by Claude. The story builds over a 14 or 21-day arc and can be archived as a private web page when complete. Web for managing the team. SMS for playing the game.",
     "url": "",
-    "tech": ["React", "Tailwind"],
+    "tech": ["React", "Node.js", "Supabase", "Twilio", "Claude API"],
     "status": "in-progress"
   }
 ]
