@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Three-Day Job</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #141413; --surface: #1e1e1c; --card: #252523;
+    --text: #e8e4db; --muted: #8a9a78; --green: #4a7c59; --amber: #c4713b;
+    --border: rgba(255,255,255,0.06);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-size: 1.05rem; line-height: 1.75; font-weight: 300; }
+  .story-header { max-width: 680px; margin: 0 auto; padding: 4rem 1.5rem 2.5rem; border-bottom: 1px solid var(--border); }
+  .genre-tag { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 1.25rem; }
+  h1 { font-family: var(--serif); font-size: clamp(2.2rem, 6vw, 3.2rem); line-height: 1.1; color: var(--text); margin-bottom: 0.75rem; }
+  .subtitle { font-size: 1rem; color: var(--muted); font-style: italic; font-weight: 300; margin-bottom: 2rem; }
+  .meta-row { display: flex; gap: 1.5rem; flex-wrap: wrap; align-items: center; }
+  .meta-item { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+  .meta-item span { color: var(--text); font-weight: 500; }
+  .audio-card { max-width: 680px; margin: 2rem auto 0; padding: 1.25rem 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 4px; display: flex; align-items: center; gap: 1rem; }
+  .audio-icon { width: 40px; height: 40px; background: var(--green); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; cursor: pointer; transition: background 0.15s ease; }
+  .audio-icon:hover { background: #5d8a6b; }
+  .audio-icon svg { fill: #e8e4db; width: 16px; height: 16px; margin-left: 3px; }
+  .audio-label { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); }
+  .audio-title { font-size: 0.9rem; color: var(--text); font-weight: 500; margin-top: 0.2rem; }
+  .story-body { max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem; }
+  .act-header { margin: 4rem 0 2rem; padding-top: 2.5rem; border-top: 1px solid var(--border); }
+  .act-header.first { margin-top: 0; border-top: none; padding-top: 0; }
+  .act-number { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green); margin-bottom: 0.4rem; }
+  .act-title { font-family: var(--serif); font-size: 1.65rem; color: var(--text); line-height: 1.2; }
+  p { margin-bottom: 1.4rem; color: var(--text); }
+  p:last-child { margin-bottom: 0; }
+  .drop-cap::first-letter { font-family: var(--serif); font-size: 3.6rem; line-height: 0.75; float: left; margin-right: 0.1em; margin-top: 0.12em; color: var(--green); }
+  .scene-break { text-align: center; color: var(--muted); font-size: 0.85rem; letter-spacing: 0.3em; margin: 2.5rem 0; user-select: none; }
+  blockquote { border-left: 2px solid var(--green); margin: 2.5rem 0; padding: 0.5rem 0 0.5rem 1.5rem; font-family: var(--serif); font-size: 1.15rem; color: var(--muted); font-style: italic; line-height: 1.6; }
+  em { font-style: italic; }
+  .notes-section { max-width: 680px; margin: 0 auto; padding: 3rem 1.5rem 5rem; border-top: 1px solid var(--border); }
+  .notes-header { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--amber); margin-bottom: 0.5rem; }
+  .notes-title { font-family: var(--serif); font-size: 1.4rem; color: var(--text); margin-bottom: 2rem; }
+  .note { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+  .note-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+  .note p { font-size: 0.9rem; line-height: 1.65; color: #b8b4ac; margin-bottom: 0; }
+  .note p + p { margin-top: 0.75rem; }
+  @media (max-width: 640px) {
+    .story-header, .story-body, .notes-section { padding-left: 1.25rem; padding-right: 1.25rem; }
+    h1 { font-size: 2rem; }
+    .audio-card { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<header class="story-header">
+  <div class="genre-tag">Fiction &nbsp;·&nbsp; Short Story</div>
+  <h1>The Three-Day Job</h1>
+  <p class="subtitle">A story in three acts &nbsp;·&nbsp; New Mexico, 1974</p>
+  <div class="meta-row">
+    <div class="meta-item">New Mexico &nbsp;<span>1974</span></div>
+  </div>
+  <div class="audio-card">
+    <div class="audio-icon">
+      <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+    </div>
+    <div>
+      <div class="audio-label">Audio version</div>
+      <div class="audio-title">The Three-Day Job — listen (~42 min)</div>
+    </div>
+  </div>
+</header>
+
+<main class="story-body">
+
+<div class="act-header first">
+  <div class="act-number">Act One</div>
+  <div class="act-title">The Last Supper at the Roadrunner Motor Lodge</div>
+</div>
+
+<p class="drop-cap">The pie arrived and Eli said: "You know what pie is?"</p>
+
+<p>Nobody answered. They had all been present the last four times Eli had started a sentence this way and understood that answering was not the architecture of the thing. Mary refilled her coffee from the carafe and looked out the window at the parking lot, where somewhere between thirty-eight and forty-five people — she had lost count after the van from Flagstaff — were arranged in sleeping bags and lawn chairs in the specific posture of people waiting for something they couldn't name.</p>
+
+<p>"Pie," Eli said, "is an act of faith in the harvest." He cut a slice and passed it to Simon, who received it with the expression of a man calculating how far faith went. "You put fruit in a crust and you trust it. That's the whole thing."</p>
+
+<p>"It's also dessert," Thomas said.</p>
+
+<p>"It's dessert and a philosophy."</p>
+
+<p>"It's dessert that you've been talking about for twenty minutes."</p>
+
+<p>Eli pointed at him with the plastic knife. "See, that's the problem with you. You think the talking is separate from the thing."</p>
+
+<p>"In the case of pie," Thomas said, "I believe that's correct."</p>
+
+<p>"You believe. Progress."</p>
+
+<p>Mary had watched this particular argument begin forty times in three years and it always ended the same way: Thomas would construct a tighter and tighter logical case, Eli would find an angle Thomas hadn't accounted for, Thomas would recognize the angle was good, and both of them would be satisfied in opposite ways. It was the most functional relationship she had seen between two people who couldn't stand each other. It was, she had decided, the whole movement in miniature.</p>
+
+<p>There were twelve of them at the table. Four diner pies split thirteen ways. Someone was going to be short, and it was always Simon — a man built for abundance who kept ending up at tables of scarcity, which was either tragic or instructive depending on the week.</p>
+
+<p>"The thing about pie," Eli continued — to the table and also to the window and also to something past the window, in the way he had that Mary had spent three years trying to describe to people who hadn't seen it — "is that there's never enough and somehow everyone still gets fed." He looked at Simon's fraction. "Eat it slow."</p>
+
+<p>Simon ate it slow. He had the look of a man receiving a sacrament. This was the thing that was impossible to convey about Eli: not the talking, which could run long and frequently did, but the fact that the talking felt specifically about you, your particular hunger, your fraction. Mary had watched journalists try to diagnose it as technique for three years and fail, because technique is something you could locate, and Eli's attention had no mechanism she could find. It was either his greatest quality or the most dangerous thing about him, and she had never fully settled which.</p>
+
+<p>The lawyers from Santa Fe had been here. That was what she kept returning to. Four days ago, Joseph's people — two men in a rented Buick with Maricopa County plates — had spent ninety minutes with Eli in the back room of the diner, and he had come out with a quiet she hadn't seen in him before. He had looked at the Jemez going pink in the late afternoon and she had said: <em>what did they want.</em> And he had said: <em>the usual.</em> And she had said: <em>which is.</em> And he had said: <em>they want to know how this ends.</em></p>
+
+<p>Seventy-two hours later, on Route 68, it had ended.</p>
+
+<p>A blown tire. A dry road in good weather, no other traffic, a manner of departure that did what it did. Mary had looked at the tire afterward. She wasn't a mechanic. She was a woman who had spent four years watching things and calling them by their right names. The name she had for that tire was not accident, and she had been carrying that name in a locked drawer in her chest for five days, and tonight she was going to open it.</p>
+
+<div class="scene-break">· · ·</div>
+
+<p>Joseph Arimathea was what happened when money decided it approved of a movement.</p>
+
+<p>He had arrived eight months ago in a sand-colored Mercedes, wearing a bolo tie with a piece of Bisbee turquoise the size of a golf ball and a linen shirt purchased at a boutique in Santa Fe that sold linen shirts to people who wanted to look like they had stopped caring about linen shirts. He had a ranch outside the city — forty acres, a main house with a wraparound portal, three adobe workshops, a meditation garden designed by someone who charged for that. He had bought the land in 1962 from a family named Ortega who had ranched it since 1887. He called this convergence of stewardship.</p>
+
+<p>He had renamed the property the Arimathea Center for Contemplative Dialogue. Workshops on consciousness ran three hundred dollars a weekend. The brochures were beautiful. The pie was excellent, which was the one thing Mary could not take from him.</p>
+
+<p>When Eli died, Joseph had moved in one efficient motion: a signed document from six months prior naming him next of kin and executor, a document none of them had known about, executed in the same month Joseph had begun referring to the movement as "Eli's ministry" in print. He claimed the body. He placed it in the mausoleum on his ranch — marble floors, climate control, the best lock money could buy — hired a security firm named Mesa Security Solutions, run by a man named Dave, and posted two guards on rotating shifts. He held a press conference at which he wept with the specific fluency of a man who had considered weeping as an option in advance and found it workable.</p>
+
+<p>He announced the Eli Charitable Foundation. Sole director: Joseph Arimathea. Filed as a nonprofit the previous week. Commemorative gathering to follow, suggested donation forty dollars, details forthcoming.</p>
+
+<p>Mary had watched this on a black-and-white television in the Roadrunner lobby and felt something settle in her chest like a stone finding the bottom of still water.</p>
+
+<div class="scene-break">· · ·</div>
+
+<p>She waited until the pie was gone and the diner had cleared to just the twelve of them and the night cook, who was watching a game show through the pass-through and had the good judgment not to pay attention.</p>
+
+<p>"We're going to get him back," she said.</p>
+
+<p>The table arranged its faces. Peter — large, bearded, with the emotional regulation of a golden retriever in a thunderstorm — said: "What do you mean, get him back."</p>
+
+<p>"I mean take him from Joseph's mausoleum and put him somewhere Joseph doesn't own."</p>
+
+<p>A silence. Then Thomas: "The mausoleum has a Kwikset commercial deadbolt, a Yale No. 3 padlock as secondary, motion-sensitive exterior lighting on a dedicated circuit, and two guards from Mesa Security on four-hour rotating shifts." A pause. "I've been thinking about it since Tuesday."</p>
+
+<p>"And?"</p>
+
+<p>"I cannot get past the Yale."</p>
+
+<p>"Andrew can," Mary said.</p>
+
+<p>Andrew — Thomas's younger brother, three years following the Grateful Dead before three years following Eli, a man who considered both experiences equivalent in spiritual instruction — raised one finger from the table. "I know a guy in Chimayó. He does doors."</p>
+
+<p>"Does doors," Peter repeated.</p>
+
+<p>"Opens them. Professionally."</p>
+
+<p>Peter looked at his coffee cup. "Is this legal."</p>
+
+<p>"Which part," said Philip, from the end of the table. Philip had been a line cook in Gallup before this and briefly involved in things he described only as a previous chapter, and he had the manner of a man who had stopped being surprised by questions. "None of it is legal," he said. "That's probably fine."</p>
+
+<p>"Legally," Mary said, looking at Philip.</p>
+
+<p>"Sure," Philip said.</p>
+
+<p>"Philip."</p>
+
+<p>"Adjacent," he said. "Nobody gets hurt."</p>
+
+<p>Thad — twenty-two, still learning which questions to ask out loud — said: "Why are we doing this."</p>
+
+<p>Mary looked at him. He was young enough that the answer wasn't obvious yet, which meant she had to find it rather than reach for it.</p>
+
+<p>"Because Joseph is going to turn everything Eli built into a mailing list," she said. "Because the foundation he filed has himself as sole director. Because he's going to hold gatherings at forty dollars a head and charge admission to a man he had nothing to do with making." She stopped. "And because the body is Eli's and Joseph has no right to it."</p>
+
+<p>The table was quiet.</p>
+
+<p>"Peter," she said. "What would Eli say about this plan?"</p>
+
+<p>Peter thought about it with his whole face. "He'd say it was the only move." He paused. "He'd also say we were going to mess it up and then it would work anyway, because that's how things work."</p>
+
+<p>"Thomas."</p>
+
+<p>Thomas had the spoon. He put it down. "He'd say the goal was correct and every single tactical element needed revision." He picked it back up. "He'd be right."</p>
+
+<p>"Andrew," Mary said. "What do you think he'd say?"</p>
+
+<p>Andrew was quiet for a moment. Andrew's Eli was a man who had once sat in a truck on a two-track outside Mora for three hours, going nowhere, just talking — about music and about what Andrew owed his brother and about whether the thing Andrew had been running from for four years was actually behind him or whether he was just faster than it — and who had never told Andrew what to decide, only that the decision was real and so was Andrew, which had turned out to be enough. Andrew had never been able to explain this to anyone satisfactorily.</p>
+
+<p>"He'd say go," Andrew said quietly. "He'd say go and figure it out on the way."</p>
+
+<blockquote>"He used to say every ending was someone else's beginning," Andrew added. "He said you couldn't stop that even if you tried. He said the only question was who got to tell it."</blockquote>
+
+<p>Outside, the parking lot held its people in sleeping bags and lawn chairs, and they were waiting, as they always waited, for something to come clear.</p>
+
+<p>Mary thought: <em>I'm going to try.</em></p>
+
+<p>"Two nights from now," she said. "New moon."</p>
+
+<div class="act-header">
+  <div class="act-number">Act Two</div>
+  <div class="act-title">The Arimathea Center for Contemplative Dialogue (After Hours)</div>
+</div>
+
+<p class="drop-cap">The plan had several problems, which revealed themselves in the order that plans always reveal their problems: first in theory, then in logistics, then on the ground in the dark when it was too late to do anything but continue.</p>
+
+<p>The theoretical problem was Thomas's. He had spent two days producing a diagram of the mausoleum approach on a legal pad, identifying what he called nineteen discrete failure points, which he presented to Mary over breakfast on the morning of the second day with the expression of a man who had done his due diligence and was prepared to be ignored.</p>
+
+<p>"Nineteen," Mary said.</p>
+
+<p>"Conservatively."</p>
+
+<p>"How many does a good plan have?"</p>
+
+<p>Thomas considered. "Three. Maybe four."</p>
+
+<p>"How many did Eli have in any plan he ever made?"</p>
+
+<p>Thomas put down his pen. "Eli didn't make plans."</p>
+
+<p>"He made plans constantly. He called them something else."</p>
+
+<p>"He called them what was going to happen."</p>
+
+<p>"Right," Mary said. "So this is what's going to happen. Eat your eggs."</p>
+
+<p>The logistics problem was the fence. Philip had described it as having a gate, which it did, bolted from the inside, which was the load-bearing detail Philip had not considered load-bearing. They came in through the back boundary at 12:40 a.m. along a fire road three-quarters of a mile east of the property, and the barbed wire had opinions about all of them.</p>
+
+<p>"You said gate," Thomas said, extracting his jacket from the third strand.</p>
+
+<p>"There is a gate," Philip said. "I said there was a gate."</p>
+
+<p>"An unlocked gate was implied."</p>
+
+<p>"In retrospect," Philip said, "yes."</p>
+
+<p>Peter went over the fence without incident, having grown up on a ranch in the San Luis Valley where barbed wire was a condition of existence rather than an obstacle. Andrew went over it with less grace and equivalent commitment. Celestino — the man from Chimayó who did doors, who turned out to be fifty-three years old with large quiet hands and the manner of a retired professor of something precise — went over it with the deliberateness of a man who had decided to be somewhere and was going to get there.</p>
+
+<p>Mary went last. She landed on the desert on the other side and stood still for a moment. Piñon. Cold stone. The particular silence of high desert at 1 a.m. that wasn't silence at all but a sound so consistent it had become invisible, like the hum of something enormous at rest.</p>
+
+<p>Eli had loved this land with an attention that embarrassed people who had never bothered to look at it. He had taken her to a canyon east of Abiquiú three years ago, early, before the parking lots and the vans from Flagstaff, and he had said nothing about it for two hours, and that was when she had understood he was the real thing. Anyone could talk about a canyon. Only certain people could just look at one.</p>
+
+<p>She filed the thought. Later.</p>
+
+<div class="scene-break">· · ·</div>
+
+<p>The guards were named Gary and Russell. Gary was a retired Bernalillo County deputy who had transferred his professional seriousness intact from law enforcement to private security, the way certain men carry a posture through every room they enter regardless of what the room requires. Russell was Gary's nephew. Russell read paperback westerns on shift.</p>
+
+<p>Philip's strategy was this: at 12:50 a.m., a catering van from a company called Sunrise Provisions would arrive at the front gate with a delivery. The driver was Philip's cousin Marta. She had an invoice, a foil pan of green chile egg casserole, and a story about Joseph's standing Thursday order — an order Philip had invented on Tuesday by calling Joseph's assistant's office, identifying himself as someone from the Santa Fe attorney's office, which he considered technically defensible, and leaving a detailed message about a breakfast arrangement Joseph had apparently made. The assistant had written it down because that was her job and the message had been specific.</p>
+
+<p>At 12:58, Marta buzzed the gate. Gary answered. Gary, whose commitment to verification was the kind that costs people sleep, called Joseph's assistant at home. The assistant confirmed the Thursday order — she had the note right here. The gate opened. Gary walked to the kitchen to receive the casserole in person, because Gary did not leave deliveries unverified. This removed Gary from the white pickup for eleven minutes.</p>
+
+<p>Thomas, crouched at the fuse box on the east side of the main house, found the circuit. The mausoleum lamp went dark.</p>
+
+<p>Russell, sitting in the pickup, watched the catering van with the expression of someone performing math he hadn't been asked to do. He was looking at the wrong thing, which was the thing Philip had built the whole operation around — the reliable human tendency to watch what's moving and miss what isn't. Most locks don't fail at the mechanism. They fail at the attention.</p>
+
+<div class="scene-break">· · ·</div>
+
+<p>Celestino looked at the deadbolt. He looked at the Yale. He unrolled a canvas case of tools with the calm of a man who had arrived exactly where he expected to arrive. He worked by touch in the dark, by some interior knowledge Mary couldn't locate the mechanism of, and after eleven minutes the door swung inward.</p>
+
+<p>"Commercial grade," Thomas said quietly, behind her.</p>
+
+<p>"He's good," Andrew said.</p>
+
+<p>"He's very good," Thomas said, in a tone Mary recognized: he was revising an estimate.</p>
+
+<p>The mausoleum was cool and dark and smelled of cut stone and lilies — Joseph's touch, the lilies, and not an unthoughtful touch, which was the most complicated thing about Joseph, that he was not without feeling, only without scruple about what feeling could be made to accomplish. A single bier in the center of the room. A plain wooden casket, unvarnished, which surprised her until it didn't: Eli's preferences were well known enough that even Joseph had to honor them, or appear to.</p>
+
+<p>Peter stepped past her and put his right hand flat on top of the casket. Not bowing his head. Not closing his eyes. Just his hand there, the way you'd put a hand on the shoulder of someone you'd worked alongside for three years. Mary looked away to give him the room of it.</p>
+
+<p>Peter's Eli had been a man who fixed things — not only metaphorically, though he did that too, but actually, with his hands. He had spent a winter helping Peter re-roof a barn in Mora County, working harder than any hired hand Peter had brought in, complaining about the coffee without once complaining about the work, and on the last day he had told Peter that his instinct for what mattered was the best thing about him and that he trusted it more than Peter did, and Peter had been trying to live up to that assessment ever since with uneven results. The compliment had been real. The standard it set had been Eli's specific kind of generosity: enormous, and non-negotiable.</p>
+
+<p>Peter picked up his end of the casket and nodded at Andrew. They moved.</p>
+
+<div class="scene-break">· · ·</div>
+
+<p>They were forty yards from the fence when Russell got out of the pickup.</p>
+
+<p>He needed to stretch. That was all — a physiological necessity that had nothing to do with professional alertness — and he had walked around the vehicle and looked at the night, which was a good night, cold and clear, Orion tilted toward the Jemez, and he had happened to look toward the mausoleum, and what was different was the door.</p>
+
+<p>He said: "Hey."</p>
+
+<p>They stopped.</p>
+
+<p>Russell walked toward them with his flashlight. Twenty-four years old. Canvas jacket with the Mesa Security patch. The expression of a man who had encountered a situation his training had not precisely addressed.</p>
+
+<p>Mary walked toward him. They met in the middle, thirty feet from the fence, and Russell shone the flashlight at the casket and then at Mary and then turned it off, because the flashlight was making him feel more official than he currently was.</p>
+
+<p>"I'm going to need to—" he started.</p>
+
+<p>"I know," Mary said.</p>
+
+<p>They stood in the dark. The coyotes were working somewhere to the south, a long exchange. The stars in the high desert don't compete with anything. They just stay.</p>
+
+<p>"He spoke in Las Vegas," Russell said. Las Vegas, New Mexico, not the other one. "Last March. I wasn't supposed to be there. Gary didn't know."</p>
+
+<p>"What did he say." Mary genuinely wanted to know. She hadn't made the Las Vegas talk — she'd been with the water rights people in Taos.</p>
+
+<p>Russell looked at the ground. He was choosing, the way people choose when something has been sitting with them and the moment to say it has finally arrived.</p>
+
+<p>"He said the most dangerous thing a person could do was decide they already knew what mattered. He said once you do that, something closes." He paused. "And things that are closed can't—"</p>
+
+<p>"Can't grow," Mary said.</p>
+
+<p>"He said it differently."</p>
+
+<p>"He always said it differently," she said. "But that was it."</p>
+
+<p>The night was very still.</p>
+
+<p>"Gary's going to find the door open," Russell said.</p>
+
+<p>"Yes."</p>
+
+<p>"He's going to—"</p>
+
+<p>"Yes."</p>
+
+<p>Russell looked at the casket. At Peter and Andrew crouched beside it in the dark. At the fence. At the sky.</p>
+
+<p>He put the flashlight in his pocket. He walked back to the white pickup and got in on the passenger side and found his book — <em>Hondo</em>, Louis L'Amour, a man in the desert who keeps his word even when it costs him something — and he opened it to page 112 and read with great concentration until Gary came back from the kitchen twenty minutes later carrying a foil pan and a mild, growing confusion.</p>
+
+<p>"Right here the whole time," Russell said, which was true.</p>
+
+<div class="act-header">
+  <div class="act-number">Act Three</div>
+  <div class="act-title">What Mary Said</div>
+</div>
+
+<p class="drop-cap">They drove north through the dark.</p>
+
+<p>The valley between the Jemez and the Sangres held the towns asleep — Nambé, Pojoaque, Española's one stoplight blinking yellow at nothing — and nobody spoke for most of it. Some things need the road and the dark and the absence of explanation.</p>
+
+<p>They turned off 84 onto the track Eli had shown Mary a year before. Unmarked, the kind that appears only when you already know to look. Two miles through chamisa and piñon. The canyon opened below them without announcement: red sandstone, the Rio Chama threading silver in the dark, fifty million years of patience made visible. The sky to the east was beginning its first negotiations with the sunrise.</p>
+
+<p>They carried him down to the ledge.</p>
+
+<p>It was wide and red and flat, a shelf above the river where you could sit and see thirty miles of country without a single human thing in it. Eli had come here. Mary didn't know how she knew this — he had never said so directly — but she knew.</p>
+
+<p>The ground was harder than they'd planned for. They worked in shifts. An hour. The sky moved from black through deep blue toward the color that has no name, the color that precedes light.</p>
+
+<p>They put him in the ground.</p>
+
+<p>Peter said some words. Not formal — the kind that come from knowing where someone kept his coffee and what he looked like when he was genuinely afraid, which was rarely, but Peter had seen it once, in a courtroom in Albuquerque, when Eli had been afraid for all of them and not for himself, and Peter had never told anyone because it wasn't his to tell.</p>
+
+<p>Thomas stood with his eyes closed. Thomas's Eli had been a man who was wrong about small things constantly — wrong about directions, quantities, the load-bearing capacity of arguments he was sure he'd already won — and right about large things with a regularity that Thomas had spent three years trying to disprove. He was standing in the desert before dawn at the grave of a man he had argued with four hundred times. He was not sure what that demonstrated. He was still thinking about it.</p>
+
+<p>Andrew played something on a harmonica. It went up into the canyon walls and the walls held it the way sandstone holds warmth — slowly, completely, giving it back in its own time.</p>
+
+<p>Mary stood at the edge of the ledge and looked at the country.</p>
+
+<p>She did not speak. She had been saying things to Eli and for him and because of him for four years. She had quit a job and driven a van across three states and slept in parking lots and argued with county commissioners and learned which gas stations had decent coffee and which stretches of 84 were bad at night. She had done it because what he was pointing at was real, and because someone had to handle the logistics, and because she was, finally, a person who believed that what you did with your time was the only biography that counted.</p>
+
+<p><em>He looked at exactly this.</em></p>
+
+<p>The river made its sound. The canyon held the dark a little longer than the sky above it. First light came the way it always comes in the desert — not arriving, just becoming, the red walls finding their color from some interior source, remembering it.</p>
+
+<p>They climbed back up.</p>
+
+<div class="scene-break">· · ·</div>
+
+<p>They were back in Española by seven. The Roadrunner parking lot had more people in it than when they'd left — word traveled in ways Mary had stopped trying to track — and someone had made coffee, which it always did. This had been one of Eli's genuine organizational achievements: make sure there is always coffee and let the rest work itself out. She had thought it was a joke the first time he said it. Three years later she understood it was a policy.</p>
+
+<p>She stood on the running board of Philip's truck. Eighteen inches of elevation. Forty-some faces in the early light — people from Flagstaff and Albuquerque and Las Vegas and places she didn't know, people who had been waiting for four days for someone to say what was true.</p>
+
+<p>She thought briefly about the sensible thing to say.</p>
+
+<p>Then she said the true thing instead.</p>
+
+<p>"He's not at Joseph's ranch," she said. "He's not anywhere Joseph Arimathea can sell a ticket to. He's in the ground in a place Joseph doesn't own and won't find, and that's the way it's going to stay." She paused. "Everything Eli said to you — that hasn't gone anywhere. It doesn't live in a mausoleum. It doesn't need a foundation to keep it alive. It lives in what you do with it. That's yours. Joseph cannot file that as a nonprofit."</p>
+
+<p>The parking lot was still. A mockingbird started up somewhere in the scrub along the highway, running through its repertoire — twelve birds in one, none of them quite itself, all of them real.</p>
+
+<p>"What do we do now?" A woman near the back Mary didn't recognize, who had arrived in the night.</p>
+
+<p>"Same as before," Mary said. "You go home. You tell people what you know. You keep the door open."</p>
+
+<p>"What if people don't believe us?" someone said.</p>
+
+<p>Mary looked at him. Maybe thirty. The expression of a man building in the contingency of disappointment, the way people do when they have been disappointed before and want credit for anticipating it.</p>
+
+<p>"Some won't," she said. "That's not the point. The point is that you know. You were there, or you talked to someone who was there, or you felt it when you heard him and you recognized it, and none of that requires Joseph's permission to be real." She stepped down. "Go home."</p>
+
+<div class="scene-break">· · ·</div>
+
+<p>Joseph Arimathea discovered the empty mausoleum at 7:47 a.m. He called the Santa Fe Police, who were careful and cooperative and had no leads. He called Dave at Mesa Security, who had Gary, who had no explanation. He held a press conference at noon at which he was furious — genuinely, visibly, authentically furious — and in the course of his authenticity he said several things about Eli's followers that were accurate in their particulars and disastrous in their optics, and the television crews who had arrived for a story about grave desecration stayed for a story about a man in a turquoise bolo tie shouting at poor people on camera, which was a better story, and they used it.</p>
+
+<p>The <em>Santa Fe New Mexican</em> ran it above the fold. The wires picked it up by afternoon. A reporter called Mary and she said Eli's community was grieving and had nothing to add at this time, and she hung up and sat on the hood of her car in the Roadrunner parking lot in the early afternoon and let herself, at last, feel the thing she had been keeping in a drawer for six days.</p>
+
+<p>It arrived the way grief does when you've been managing it: all at once, without courtesy, the whole weight of it at the same time. She let it. The Jemez were there when it passed, pink and enormous and patient. Eli had once said that mountains weren't indifferent — that patience and indifference looked the same from a distance but were different things entirely, and that the difference was whether something was waiting for you. She had argued with him about it at the time. She didn't anymore.</p>
+
+<p>Thomas sat on the hood beside her after a while and didn't speak.</p>
+
+<p>"You think we did the right thing," he said eventually. Not quite a question.</p>
+
+<p>"I think we did the true thing," Mary said. "I think those are the same thing."</p>
+
+<p>Thomas turned this over with the instrument of his doubt. "There's no proof of that."</p>
+
+<p>"No."</p>
+
+<p>"I don't have a counter-argument either."</p>
+
+<p>"That's usually where it starts," she said.</p>
+
+<p>He put down whatever he'd been holding. They sat on the hood and looked at the mountains, which looked back with their patience, and said nothing more, which was enough.</p>
+
+<div class="scene-break">· · ·</div>
+
+<p>Three weeks later, someone spray-painted <em>ELI LIVES</em> on the water tower in Española. The city painted over it. The next morning it was back. This happened four times before the city moved its attention to other problems, of which there were several, and the water tower was left to its conviction.</p>
+
+<p>Joseph held his commemorative gathering six weeks later. Thirty-five dollars a head. He spoke for ninety minutes — legacy, stewardship, the archive, the scholarship fund, the speaker series, the publications program. He said "stewardship" fourteen times. A woman in the third row raised her hand and asked where the body was.</p>
+
+<p>Joseph said it was a spiritual question as much as a physical one.</p>
+
+<p>The woman said she hadn't asked a spiritual question.</p>
+
+<p>Joseph said the two could not be meaningfully separated at a moment like this.</p>
+
+<p>The woman said she thought they could and she had a follow-up.</p>
+
+<p>Joseph's assistant redirected the floor to a man with a more workable question.</p>
+
+<p>The Foundation operated three more years and dissolved in a financial reorganization. The Center for Contemplative Dialogue pivoted to corporate retreats. The turquoise jewelry endured.</p>
+
+<p>Mary drove east toward Abiquiú once a month, on no schedule, alone. She sat on the red ledge above the river for an hour, sometimes two. She did not tell people where she went. They asked. She said: out in the canyon. They said: which one. She said: one I know.</p>
+
+<p>People who had known Eli understood there was nothing further to ask. People who hadn't sometimes drove out along 84 on their own, pulling over at the turnouts, getting out to stand at the edge of the land and look at what there was to see.</p>
+
+<p>Which was, she thought, close enough.</p>
+
+<p>The door, as far as she could tell, stayed open.</p>
+
+</main>
+
+<!-- ══ ARCHIVE PROMPT ══ -->
+
+<div id="archive-prompt" style="
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 1rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  pointer-events: none;
+">
+  <div style="
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    margin-bottom: 1.5rem;
+  ">· · ·</div>
+  <button id="archive-btn" style="
+    background: none;
+    border: none;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    cursor: pointer;
+    padding: 0.5rem 0;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  ">
+    from the archive
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="6,9 12,15 18,9"/>
+    </svg>
+  </button>
+</div>
+
+<!-- ══ ARCHIVE SECTION ══ -->
+
+<section id="archive-section" style="
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 5rem;
+  display: none;
+">
+  <div style="
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  ">From the Archive</div>
+  <div style="
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--text);
+    margin-bottom: 2rem;
+  ">Notes on the Historical Record</div>
+
+  <div class="note archive-card" style="opacity:0; transform: translateY(10px); transition: opacity 0.6s ease, transform 0.6s ease;">
+    <div class="note-label">On Joseph of Arimathea</div>
+    <p>In all four Gospels, it is Joseph of Arimathea — a wealthy member of the Sanhedrin, the council that prosecuted Jesus — who claims the body and seals it in a new, private tomb. He is described as "a disciple in secret" and "a good and righteous man." He appears nowhere else in any Gospel. What he expected to happen next is unrecorded. What he stood to gain from a sealed tomb is a question the texts do not ask.</p>
+  </div>
+
+  <div class="note archive-card" style="opacity:0; transform: translateY(10px); transition: opacity 0.6s ease, transform 0.6s ease;">
+    <div class="note-label">On the Empty Tomb</div>
+    <p>The empty tomb appears in all four Gospel accounts without meaningful contradiction. What differs is who found it, in what order, and what they found when they arrived. John's account specifies that the burial linens were folded neatly inside — a detail no one in the story explains, and no one returns to. The Roman authorities' official response was to circulate the claim that the disciples had stolen the body, a story Matthew reports as still being "told among the Jews to this day." This story takes that accusation seriously.</p>
+  </div>
+
+  <div class="note archive-card" style="opacity:0; transform: translateY(10px); transition: opacity 0.6s ease, transform 0.6s ease;">
+    <div class="note-label">On Mary Magdalene</div>
+    <p>In every Gospel, Mary Magdalene arrives at the empty tomb first — ahead of Peter, ahead of the other disciples, ahead of everyone. In John's account she is also the first to encounter the risen figure in the garden, initially taking him for a groundskeeper. She has been interpreted across two thousand years as penitent, apostle, consort, fraud, and saint. What she was before any of those interpretations arrived was the one who went first and stayed longest. That detail is consistent across every version of the record.</p>
+  </div>
+
+  <div class="note archive-card" style="opacity:0; transform: translateY(10px); transition: opacity 0.6s ease, transform 0.6s ease;">
+    <div class="note-label">On the Guards</div>
+    <p>The Roman guards at the tomb appear only in Matthew. They are absent from Mark, Luke, and John — a discrepancy scholars have examined for centuries. Matthew includes them specifically to preempt the body-theft narrative; their absence from the other three Gospels leaves the security arrangements of the tomb usefully uncertain. This story reads that uncertainty as an invitation.</p>
+  </div>
+
+  <div class="note archive-card" style="opacity:0; transform: translateY(10px); transition: opacity 0.6s ease, transform 0.6s ease;">
+    <div class="note-label">On What Survives</div>
+    <p>The movement that began in first-century Palestine had no institutions, no property, no established clergy, and no legal standing for most of its first three hundred years. What it had was people who kept telling each other what they had seen or heard — in private, at some personal risk, without any formal mechanism for verifying that they were getting it right. Whether the story that survived those three hundred years is the same story that began them is a question historians and theologians have spent careers on. It remains open.</p>
+  </div>
+
+  <div class="note archive-card" style="opacity:0; transform: translateY(10px); transition: opacity 0.6s ease, transform 0.6s ease;">
+    <div class="note-label">On Russell</div>
+    <p>Russell is not in the Bible. But someone had to be standing there. Someone always is.</p>
+  </div>
+
+</section>
+
+<script>
+  // Step 1: after 4 seconds, fade in the prompt
+  const prompt = document.getElementById('archive-prompt');
+  const btn = document.getElementById('archive-btn');
+  const section = document.getElementById('archive-section');
+  const cards = document.querySelectorAll('.archive-card');
+
+  // Use IntersectionObserver to start the timer only when
+  // the reader actually reaches the end of the story
+  const endMarker = document.querySelector('main p:last-of-type');
+
+  let triggered = false;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !triggered) {
+        triggered = true;
+        // Wait 4 seconds after last line comes into view
+        setTimeout(() => {
+          prompt.style.opacity = '1';
+          prompt.style.pointerEvents = 'auto';
+        }, 4000);
+      }
+    });
+  }, { threshold: 0.8 });
+
+  if (endMarker) observer.observe(endMarker);
+
+  // Hover state on button
+  btn.addEventListener('mouseenter', () => btn.style.opacity = '1');
+  btn.addEventListener('mouseleave', () => btn.style.opacity = '0.7');
+
+  // Step 2: on click, show section and stagger cards
+  btn.addEventListener('click', () => {
+    // Fade out the prompt
+    prompt.style.opacity = '0';
+    prompt.style.pointerEvents = 'none';
+
+    // Show the section
+    section.style.display = 'block';
+
+    // Scroll smoothly to it
+    setTimeout(() => {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 150);
+
+    // Stagger the cards
+    cards.forEach((card, i) => {
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 300 + (i * 250));
+    });
+  });
+</script>
+
+</body>
+</html>
