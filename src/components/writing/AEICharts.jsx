@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react'
 import * as Plot from '@observablehq/plot'
 import panelData from '../../data/aei-panel.json'
 import subgroupData from '../../data/soc43-subgroup.json'
+import statePanelData from '../../data/aei-state-panel.json'
 
 const LMI_COLORS = {
   high:     '#C0583A',
@@ -596,6 +597,222 @@ export function SOC43SubgroupChart() {
       <ChartCaption>
         Task share: V5 raw (Mar 2026), US geography. Automation rate: count-weighted from global collaboration data across V3 (Sep 2025), V4 (Jan 2026), and V5 (Mar 2026).
         Denominator includes not_classified and none interactions. Task corpus changed between releases — V4→V5 automation shifts for 43-4, 43-3, 43-5 reflect both behavioral change and task-set composition change. Small-n subgroups (&lt;5% share) are indicative only.
+      </ChartCaption>
+    </div>
+  )
+}
+
+// ── State scatter: two-mode geographic explorer ────────────────────────────
+const LMI_HIGH_CODES = new Set([31, 41, 43, 53])
+const COMP_CODE = 15
+
+// States worth labeling in Mode 1 (tell the story)
+const LABEL_STATES = new Set(['CT','NV','WA','LA','FL','TX','CA','NY','UT','MA','OR'])
+
+export function StateScatter() {
+  const [containerRef, width] = useContainerWidth()
+  const [selectedState, setSelectedState] = useState(null)
+  const overviewRef = useRef()
+  const parityRef = useRef()
+
+  const { state_soc, national_v5 } = statePanelData
+
+  // ── Derived: per-state aggregates for Mode 1 ──────────────────────────────
+  const stateMap = {}
+  for (const row of state_soc) {
+    if (!stateMap[row.geo_id]) {
+      stateMap[row.geo_id] = {
+        geo_id: row.geo_id, state_name: row.state_name,
+        n_soc: row.n_soc, comp_share: null, lmi_high_share: 0,
+        automation_pct: row.automation_pct,
+      }
+    }
+    if (row.soc_major_code === COMP_CODE) stateMap[row.geo_id].comp_share = row.task_pct
+    if (LMI_HIGH_CODES.has(row.soc_major_code)) stateMap[row.geo_id].lmi_high_share += (row.task_pct || 0)
+  }
+  const stateData = Object.values(stateMap).filter(d => d.comp_share != null)
+
+  // National reference values
+  const natComp = national_v5.find(d => d.soc_major_code === COMP_CODE)?.task_pct ?? 32.2
+  const natLmiHigh = national_v5
+    .filter(d => LMI_HIGH_CODES.has(d.soc_major_code))
+    .reduce((s, d) => s + (d.task_pct || 0), 0)
+
+  // ── Mode 1: overview scatter ───────────────────────────────────────────────
+  useEffect(() => {
+    if (!overviewRef.current || selectedState) return
+    overviewRef.current.innerHTML = ''
+    const labeled = stateData.filter(d => LABEL_STATES.has(d.geo_id))
+    const chart = Plot.plot({
+      width,
+      height: 320,
+      marginLeft: 55,
+      marginBottom: 45,
+      marginRight: 20,
+      marginTop: 12,
+      style: PLOT_STYLE,
+      x: { label: 'Computer & Math task share (%)', tickSize: 0, grid: true },
+      y: { label: 'LMI-high task share (%)', tickSize: 0, grid: true },
+      marks: [
+        Plot.ruleX([natComp], { stroke: 'var(--c-border)', strokeDasharray: '4,3' }),
+        Plot.ruleY([natLmiHigh], { stroke: 'var(--c-border)', strokeDasharray: '4,3' }),
+        // Low-coverage states (grayed)
+        Plot.dot(stateData.filter(d => d.n_soc < 5), {
+          x: 'comp_share', y: 'lmi_high_share',
+          fill: '#CCCCCC', stroke: '#BBBBBB', r: 4, fillOpacity: 0.5,
+        }),
+        // Full-coverage states
+        Plot.dot(stateData.filter(d => d.n_soc >= 5), {
+          x: 'comp_share', y: 'lmi_high_share',
+          fill: d => d.lmi_high_share > natLmiHigh ? LMI_COLORS.high : LMI_COLORS.low,
+          fillOpacity: 0.75, r: 5,
+          title: d => `${d.state_name}\nLMI-high: ${d.lmi_high_share.toFixed(1)}%\nComp & Math: ${d.comp_share.toFixed(1)}%\n(${d.n_soc} occupation groups tracked)`,
+          tip: true,
+        }),
+        // Labels for notable states
+        Plot.text(labeled, {
+          x: 'comp_share', y: 'lmi_high_share',
+          text: 'geo_id', dx: 7, fontSize: 10,
+          fill: 'var(--c-text-muted)',
+        }),
+      ],
+    })
+    overviewRef.current.appendChild(chart)
+  }, [width, selectedState, stateData, natComp, natLmiHigh])
+
+  // ── Mode 2: parity scatter for selected state ──────────────────────────────
+  const parityData = selectedState
+    ? (() => {
+        const natMap = Object.fromEntries(national_v5.map(d => [d.soc_major_code, d]))
+        const stateRows = state_soc.filter(d => d.geo_id === selectedState)
+        return stateRows.map(d => ({
+          ...d,
+          national_pct: natMap[d.soc_major_code]?.task_pct ?? null,
+        })).filter(d => d.national_pct != null)
+      })()
+    : []
+
+  useEffect(() => {
+    if (!parityRef.current || !selectedState) return
+    parityRef.current.innerHTML = ''
+    if (parityData.length === 0) return
+    const maxVal = Math.max(...parityData.flatMap(d => [d.task_pct, d.national_pct])) * 1.1
+    const labelDots = parityData.filter(d =>
+      d.lmi_flag === 'high' || Math.abs((d.task_pct - d.national_pct)) > 2.5
+    )
+    const chart = Plot.plot({
+      width,
+      height: 320,
+      marginLeft: 55,
+      marginBottom: 45,
+      marginRight: 20,
+      marginTop: 12,
+      style: PLOT_STYLE,
+      x: { label: 'National task share (%)', tickSize: 0, grid: true, domain: [0, maxVal] },
+      y: { label: `${stateMap[selectedState]?.state_name ?? selectedState} task share (%)`, tickSize: 0, grid: true, domain: [0, maxVal] },
+      marks: [
+        Plot.line([[0, 0], [maxVal, maxVal]], { stroke: 'var(--c-border)', strokeDasharray: '4,3' }),
+        Plot.dot(parityData, {
+          x: 'national_pct', y: 'task_pct',
+          fill: d => LMI_COLORS[d.lmi_flag],
+          fillOpacity: 0.8, r: 5,
+          title: d => `${d.soc_label}\nNational: ${d.national_pct.toFixed(1)}%\n${stateMap[selectedState]?.state_name ?? selectedState}: ${d.task_pct.toFixed(1)}%\nΔ ${(d.task_pct - d.national_pct) > 0 ? '+' : ''}${(d.task_pct - d.national_pct).toFixed(1)}pp`,
+          tip: true,
+        }),
+        Plot.text(labelDots, {
+          x: 'national_pct', y: 'task_pct',
+          text: 'soc_label', dy: -10, fontSize: 10,
+          fill: d => LMI_COLORS[d.lmi_flag],
+        }),
+      ],
+    })
+    parityRef.current.appendChild(chart)
+  }, [width, selectedState, parityData])
+
+  // States with n_soc >= 5, for dropdown
+  const comparableStates = [...new Set(state_soc.filter(d => d.n_soc >= 5).map(d => d.geo_id))]
+    .map(id => ({ id, name: stateMap[id]?.state_name ?? id }))
+    .sort((a, b) => a.name.localeCompare(b.name))
+
+  return (
+    <div ref={containerRef} className="my-6">
+      {/* Controls */}
+      <div className="flex items-center gap-3 mb-4 flex-wrap">
+        <label className="text-xs" style={{ color: 'var(--c-text-muted)' }}>
+          Compare a state:
+        </label>
+        <select
+          value={selectedState ?? ''}
+          onChange={e => setSelectedState(e.target.value || null)}
+          className="text-xs rounded px-2 py-1"
+          style={{
+            border: '1px solid var(--c-border)',
+            background: 'var(--c-surface)',
+            color: 'var(--c-text-body)',
+          }}
+        >
+          <option value=''>— Overview: all states —</option>
+          {comparableStates.map(s => (
+            <option key={s.id} value={s.id}>{s.name}</option>
+          ))}
+        </select>
+        {selectedState && (
+          <button
+            onClick={() => setSelectedState(null)}
+            className="text-xs"
+            style={{ color: 'var(--c-text-muted)' }}
+          >
+            ← All states
+          </button>
+        )}
+      </div>
+
+      {/* Charts */}
+      {!selectedState && <div ref={overviewRef} />}
+      {selectedState && <div ref={parityRef} />}
+
+      {/* Legend */}
+      <div className="flex flex-wrap gap-4 mt-2">
+        {!selectedState ? (
+          <>
+            <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+              <span style={{ display:'inline-block', width:10, height:10, borderRadius:'50%', background: LMI_COLORS.high, opacity:0.75 }} />
+              Above national LMI-high average
+            </span>
+            <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+              <span style={{ display:'inline-block', width:10, height:10, borderRadius:'50%', background: LMI_COLORS.low, opacity:0.75 }} />
+              Below national LMI-high average
+            </span>
+            <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+              <span style={{ display:'inline-block', width:10, height:10, borderRadius:'50%', background:'#CCC', opacity:0.75 }} />
+              Fewer than 5 occupation groups tracked
+            </span>
+          </>
+        ) : (
+          Object.entries(LMI_LABELS).map(([flag, label]) => (
+            <span key={flag} className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+              <span style={{ display:'inline-block', width:10, height:10, borderRadius:'50%', background: LMI_COLORS[flag], opacity:0.8 }} />
+              {label}
+            </span>
+          ))
+        )}
+        {!selectedState && (
+          <span className="text-xs" style={{ color: 'var(--c-text-muted)' }}>
+            · Dashed lines = national averages. Hover for details.
+          </span>
+        )}
+        {selectedState && (
+          <span className="text-xs" style={{ color: 'var(--c-text-muted)' }}>
+            · Dashed line = parity. Above = over-represented vs. national. Hover for details.
+          </span>
+        )}
+      </div>
+
+      <ChartCaption>
+        {!selectedState
+          ? `V5 (Mar 2026). LMI-high = Office & Admin (43), Sales (41), Healthcare Support (31), Transportation (53). States with fewer than 5 occupation groups above Anthropic's conversation threshold are grayed — their profiles reflect exclusion, not true absence. Select a state from the dropdown to compare its occupation mix against the national distribution.`
+          : `V5 (Mar 2026). Each dot is a major occupation group. Above the parity line = that occupation accounts for a larger share of AI usage in ${stateMap[selectedState]?.state_name ?? selectedState} than nationally. ${comparableStates.length - (stateMap[selectedState]?.n_soc ?? 0) > 0 ? `${23 - (stateMap[selectedState]?.n_soc ?? 0)} of 23 occupation groups are below Anthropic's conversation threshold for this state and not shown.` : ''}`
+        }
       </ChartCaption>
     </div>
   )

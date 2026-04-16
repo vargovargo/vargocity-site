@@ -1,0 +1,4007 @@
+{
+  "state_soc": [
+    {
+      "geo_id": "AL",
+      "state_name": "Alabama",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 39.4,
+      "automation_pct": 46.36,
+      "n_soc": 6
+    },
+    {
+      "geo_id": "AL",
+      "state_name": "Alabama",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 5.99,
+      "automation_pct": 46.36,
+      "n_soc": 6
+    },
+    {
+      "geo_id": "AL",
+      "state_name": "Alabama",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 19.95,
+      "automation_pct": 46.36,
+      "n_soc": 6
+    },
+    {
+      "geo_id": "AL",
+      "state_name": "Alabama",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 18.45,
+      "automation_pct": 46.36,
+      "n_soc": 6
+    },
+    {
+      "geo_id": "AL",
+      "state_name": "Alabama",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 11.97,
+      "automation_pct": 46.36,
+      "n_soc": 6
+    },
+    {
+      "geo_id": "AL",
+      "state_name": "Alabama",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 4.24,
+      "automation_pct": 46.36,
+      "n_soc": 6
+    },
+    {
+      "geo_id": "AR",
+      "state_name": "Arkansas",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 68.63,
+      "automation_pct": 46.09,
+      "n_soc": 2
+    },
+    {
+      "geo_id": "AR",
+      "state_name": "Arkansas",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 31.37,
+      "automation_pct": 46.09,
+      "n_soc": 2
+    },
+    {
+      "geo_id": "AZ",
+      "state_name": "Arizona",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 1.07,
+      "automation_pct": 42.87,
+      "n_soc": 10
+    },
+    {
+      "geo_id": "AZ",
+      "state_name": "Arizona",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 40.31,
+      "automation_pct": 42.87,
+      "n_soc": 10
+    },
+    {
+      "geo_id": "AZ",
+      "state_name": "Arizona",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 1.14,
+      "automation_pct": 42.87,
+      "n_soc": 10
+    },
+    {
+      "geo_id": "AZ",
+      "state_name": "Arizona",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 2.5,
+      "automation_pct": 42.87,
+      "n_soc": 10
+    },
+    {
+      "geo_id": "AZ",
+      "state_name": "Arizona",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 7.29,
+      "automation_pct": 42.87,
+      "n_soc": 10
+    },
+    {
+      "geo_id": "AZ",
+      "state_name": "Arizona",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 18.23,
+      "automation_pct": 42.87,
+      "n_soc": 10
+    },
+    {
+      "geo_id": "AZ",
+      "state_name": "Arizona",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 13.72,
+      "automation_pct": 42.87,
+      "n_soc": 10
+    },
+    {
+      "geo_id": "AZ",
+      "state_name": "Arizona",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 3.93,
+      "automation_pct": 42.87,
+      "n_soc": 10
+    },
+    {
+      "geo_id": "AZ",
+      "state_name": "Arizona",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 10.22,
+      "automation_pct": 42.87,
+      "n_soc": 10
+    },
+    {
+      "geo_id": "AZ",
+      "state_name": "Arizona",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.57,
+      "automation_pct": 42.87,
+      "n_soc": 10
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 4.01,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 5.15,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 28.03,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 1.05,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 7.21,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 4.98,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 23,
+      "soc_label": "Legal",
+      "lmi_flag": "none",
+      "task_pct": 0.45,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 14.6,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 10.77,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 3.07,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 31,
+      "soc_label": "Healthcare Support",
+      "lmi_flag": "high",
+      "task_pct": 0.23,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 33,
+      "soc_label": "Protective Services",
+      "lmi_flag": "none",
+      "task_pct": 0.47,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.83,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 37,
+      "soc_label": "Bldg & Grounds",
+      "lmi_flag": "none",
+      "task_pct": 0.3,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 1.29,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 5.99,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.86,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 0.96,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 49,
+      "soc_label": "Installation & Repair",
+      "lmi_flag": "none",
+      "task_pct": 0.33,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 51,
+      "soc_label": "Production",
+      "lmi_flag": "none",
+      "task_pct": 0.37,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CA",
+      "state_name": "California",
+      "soc_major_code": 53,
+      "soc_label": "Transportation",
+      "lmi_flag": "high",
+      "task_pct": 0.06,
+      "automation_pct": 38.99,
+      "n_soc": 21
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 4.42,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 2.27,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 34.23,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 0.83,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 5.17,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 5.79,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 13.85,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 13.27,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 1.07,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.79,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 0.62,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 3.84,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 12.24,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CO",
+      "state_name": "Colorado",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.61,
+      "automation_pct": 40.7,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "CT",
+      "state_name": "Connecticut",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 30.41,
+      "automation_pct": 41.66,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "CT",
+      "state_name": "Connecticut",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 2.6,
+      "automation_pct": 41.66,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "CT",
+      "state_name": "Connecticut",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 10.08,
+      "automation_pct": 41.66,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "CT",
+      "state_name": "Connecticut",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 23.09,
+      "automation_pct": 41.66,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "CT",
+      "state_name": "Connecticut",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 13.82,
+      "automation_pct": 41.66,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "CT",
+      "state_name": "Connecticut",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 2.93,
+      "automation_pct": 41.66,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "CT",
+      "state_name": "Connecticut",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 13.82,
+      "automation_pct": 41.66,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "CT",
+      "state_name": "Connecticut",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 3.25,
+      "automation_pct": 41.66,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "DC",
+      "state_name": "D.C.",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 39.13,
+      "automation_pct": 37.83,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "DC",
+      "state_name": "D.C.",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 13.77,
+      "automation_pct": 37.83,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "DC",
+      "state_name": "D.C.",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 23.55,
+      "automation_pct": 37.83,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "DC",
+      "state_name": "D.C.",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 15.4,
+      "automation_pct": 37.83,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "DC",
+      "state_name": "D.C.",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 8.15,
+      "automation_pct": 37.83,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "DE",
+      "state_name": "Delaware",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 100.0,
+      "automation_pct": 43.98,
+      "n_soc": 1
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 3.85,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 3.65,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 34.5,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 0.43,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 4.19,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 3.9,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 23,
+      "soc_label": "Legal",
+      "lmi_flag": "none",
+      "task_pct": 0.26,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 15.21,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 13.04,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 1.5,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 33,
+      "soc_label": "Protective Services",
+      "lmi_flag": "none",
+      "task_pct": 0.45,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.72,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 1.04,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 5.27,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 10.34,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 0.91,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 49,
+      "soc_label": "Installation & Repair",
+      "lmi_flag": "none",
+      "task_pct": 0.49,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "FL",
+      "state_name": "Florida",
+      "soc_major_code": 51,
+      "soc_label": "Production",
+      "lmi_flag": "none",
+      "task_pct": 0.24,
+      "automation_pct": 43.79,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 3.52,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 0.91,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 37.47,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 0.52,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 5.61,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 5.92,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 18.96,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 11.89,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 0.46,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.91,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 0.52,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 3.43,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 8.5,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "GA",
+      "state_name": "Georgia",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.4,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "HI",
+      "state_name": "Hawaii",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 54.55,
+      "automation_pct": 39.1,
+      "n_soc": 2
+    },
+    {
+      "geo_id": "HI",
+      "state_name": "Hawaii",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 45.45,
+      "automation_pct": 39.1,
+      "n_soc": 2
+    },
+    {
+      "geo_id": "IA",
+      "state_name": "Iowa",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 55.0,
+      "automation_pct": 44.72,
+      "n_soc": 4
+    },
+    {
+      "geo_id": "IA",
+      "state_name": "Iowa",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 26.11,
+      "automation_pct": 44.72,
+      "n_soc": 4
+    },
+    {
+      "geo_id": "IA",
+      "state_name": "Iowa",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 10.0,
+      "automation_pct": 44.72,
+      "n_soc": 4
+    },
+    {
+      "geo_id": "IA",
+      "state_name": "Iowa",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 8.89,
+      "automation_pct": 44.72,
+      "n_soc": 4
+    },
+    {
+      "geo_id": "ID",
+      "state_name": "Idaho",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 48.7,
+      "automation_pct": 39.62,
+      "n_soc": 4
+    },
+    {
+      "geo_id": "ID",
+      "state_name": "Idaho",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 25.22,
+      "automation_pct": 39.62,
+      "n_soc": 4
+    },
+    {
+      "geo_id": "ID",
+      "state_name": "Idaho",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 13.04,
+      "automation_pct": 39.62,
+      "n_soc": 4
+    },
+    {
+      "geo_id": "ID",
+      "state_name": "Idaho",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 13.04,
+      "automation_pct": 39.62,
+      "n_soc": 4
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 2.7,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 1.88,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 33.82,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 0.66,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 5.63,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 5.83,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 19.45,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 11.84,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 1.21,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 33,
+      "soc_label": "Protective Services",
+      "lmi_flag": "none",
+      "task_pct": 0.44,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.41,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 1.39,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 3.47,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.74,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IL",
+      "state_name": "Illinois",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.57,
+      "automation_pct": 40.38,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "IN",
+      "state_name": "Indiana",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 40.5,
+      "automation_pct": 43.49,
+      "n_soc": 6
+    },
+    {
+      "geo_id": "IN",
+      "state_name": "Indiana",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 8.08,
+      "automation_pct": 43.49,
+      "n_soc": 6
+    },
+    {
+      "geo_id": "IN",
+      "state_name": "Indiana",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 26.02,
+      "automation_pct": 43.49,
+      "n_soc": 6
+    },
+    {
+      "geo_id": "IN",
+      "state_name": "Indiana",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 11.44,
+      "automation_pct": 43.49,
+      "n_soc": 6
+    },
+    {
+      "geo_id": "IN",
+      "state_name": "Indiana",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 1.78,
+      "automation_pct": 43.49,
+      "n_soc": 6
+    },
+    {
+      "geo_id": "IN",
+      "state_name": "Indiana",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 12.17,
+      "automation_pct": 43.49,
+      "n_soc": 6
+    },
+    {
+      "geo_id": "KS",
+      "state_name": "Kansas",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 41.36,
+      "automation_pct": 43.04,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "KS",
+      "state_name": "Kansas",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 10.0,
+      "automation_pct": 43.04,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "KS",
+      "state_name": "Kansas",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 19.09,
+      "automation_pct": 43.04,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "KS",
+      "state_name": "Kansas",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 22.27,
+      "automation_pct": 43.04,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "KS",
+      "state_name": "Kansas",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 7.27,
+      "automation_pct": 43.04,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "KY",
+      "state_name": "Kentucky",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 49.39,
+      "automation_pct": 46.72,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "KY",
+      "state_name": "Kentucky",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 6.88,
+      "automation_pct": 46.72,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "KY",
+      "state_name": "Kentucky",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 18.22,
+      "automation_pct": 46.72,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "KY",
+      "state_name": "Kentucky",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 17.41,
+      "automation_pct": 46.72,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "KY",
+      "state_name": "Kentucky",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 8.1,
+      "automation_pct": 46.72,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "LA",
+      "state_name": "Louisiana",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 42.91,
+      "automation_pct": 43.82,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "LA",
+      "state_name": "Louisiana",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 7.09,
+      "automation_pct": 43.82,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "LA",
+      "state_name": "Louisiana",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 25.59,
+      "automation_pct": 43.82,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "LA",
+      "state_name": "Louisiana",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 17.72,
+      "automation_pct": 43.82,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "LA",
+      "state_name": "Louisiana",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 6.69,
+      "automation_pct": 43.82,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 3.23,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 1.12,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 29.03,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 0.64,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 6.44,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 6.78,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 23.34,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 10.82,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 0.5,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 33,
+      "soc_label": "Protective Services",
+      "lmi_flag": "none",
+      "task_pct": 0.56,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.5,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 1.17,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 4.38,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.76,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MA",
+      "state_name": "Massachusetts",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.73,
+      "automation_pct": 38.94,
+      "n_soc": 15
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 1.03,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 1.03,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 34.06,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 1.09,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 4.95,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 8.1,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 16.32,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 14.91,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 0.96,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.96,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 2.25,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 3.79,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.0,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "MD",
+      "state_name": "Maryland",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.54,
+      "automation_pct": 41.49,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "ME",
+      "state_name": "Maine",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 50.0,
+      "automation_pct": 37.59,
+      "n_soc": 2
+    },
+    {
+      "geo_id": "ME",
+      "state_name": "Maine",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 50.0,
+      "automation_pct": 37.59,
+      "n_soc": 2
+    },
+    {
+      "geo_id": "MI",
+      "state_name": "Michigan",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 0.89,
+      "automation_pct": 43.02,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "MI",
+      "state_name": "Michigan",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 39.74,
+      "automation_pct": 43.02,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "MI",
+      "state_name": "Michigan",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 5.07,
+      "automation_pct": 43.02,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "MI",
+      "state_name": "Michigan",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 6.03,
+      "automation_pct": 43.02,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "MI",
+      "state_name": "Michigan",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 17.72,
+      "automation_pct": 43.02,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "MI",
+      "state_name": "Michigan",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 13.72,
+      "automation_pct": 43.02,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "MI",
+      "state_name": "Michigan",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 1.19,
+      "automation_pct": 43.02,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "MI",
+      "state_name": "Michigan",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 0.95,
+      "automation_pct": 43.02,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "MI",
+      "state_name": "Michigan",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 3.4,
+      "automation_pct": 43.02,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "MI",
+      "state_name": "Michigan",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.84,
+      "automation_pct": 43.02,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "MI",
+      "state_name": "Michigan",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.43,
+      "automation_pct": 43.02,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "MN",
+      "state_name": "Minnesota",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 44.3,
+      "automation_pct": 43.01,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "MN",
+      "state_name": "Minnesota",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 1.63,
+      "automation_pct": 43.01,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "MN",
+      "state_name": "Minnesota",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 6.3,
+      "automation_pct": 43.01,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "MN",
+      "state_name": "Minnesota",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 19.65,
+      "automation_pct": 43.01,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "MN",
+      "state_name": "Minnesota",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 15.96,
+      "automation_pct": 43.01,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "MN",
+      "state_name": "Minnesota",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 1.95,
+      "automation_pct": 43.01,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "MN",
+      "state_name": "Minnesota",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 8.14,
+      "automation_pct": 43.01,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "MN",
+      "state_name": "Minnesota",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 2.06,
+      "automation_pct": 43.01,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "MO",
+      "state_name": "Missouri",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 45.27,
+      "automation_pct": 40.67,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "MO",
+      "state_name": "Missouri",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 6.58,
+      "automation_pct": 40.67,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "MO",
+      "state_name": "Missouri",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 20.3,
+      "automation_pct": 40.67,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "MO",
+      "state_name": "Missouri",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 10.43,
+      "automation_pct": 40.67,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "MO",
+      "state_name": "Missouri",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 3.16,
+      "automation_pct": 40.67,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "MO",
+      "state_name": "Missouri",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 11.25,
+      "automation_pct": 40.67,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "MO",
+      "state_name": "Missouri",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 3.02,
+      "automation_pct": 40.67,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "MS",
+      "state_name": "Mississippi",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 100.0,
+      "automation_pct": 50.88,
+      "n_soc": 1
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 3.34,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 1.19,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 35.77,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 4.16,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 5.71,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 20.77,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 12.38,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 1.45,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.59,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 0.63,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 3.6,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.21,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NC",
+      "state_name": "North Carolina",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.19,
+      "automation_pct": 42.94,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NE",
+      "state_name": "Nebraska",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 61.54,
+      "automation_pct": 43.77,
+      "n_soc": 2
+    },
+    {
+      "geo_id": "NE",
+      "state_name": "Nebraska",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 38.46,
+      "automation_pct": 43.77,
+      "n_soc": 2
+    },
+    {
+      "geo_id": "NH",
+      "state_name": "New Hampshire",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 38.36,
+      "automation_pct": 41.7,
+      "n_soc": 4
+    },
+    {
+      "geo_id": "NH",
+      "state_name": "New Hampshire",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 30.14,
+      "automation_pct": 41.7,
+      "n_soc": 4
+    },
+    {
+      "geo_id": "NH",
+      "state_name": "New Hampshire",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 20.55,
+      "automation_pct": 41.7,
+      "n_soc": 4
+    },
+    {
+      "geo_id": "NH",
+      "state_name": "New Hampshire",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 10.96,
+      "automation_pct": 41.7,
+      "n_soc": 4
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 3.57,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 2.29,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 33.95,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 4.27,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 7.22,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 19.64,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 11.21,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 1.24,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.66,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 0.66,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 3.49,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 10.17,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NJ",
+      "state_name": "New Jersey",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.63,
+      "automation_pct": 41.62,
+      "n_soc": 13
+    },
+    {
+      "geo_id": "NV",
+      "state_name": "Nevada",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 43.14,
+      "automation_pct": 44.1,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "NV",
+      "state_name": "Nevada",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 4.9,
+      "automation_pct": 44.1,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "NV",
+      "state_name": "Nevada",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 18.63,
+      "automation_pct": 44.1,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "NV",
+      "state_name": "Nevada",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 12.5,
+      "automation_pct": 44.1,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "NV",
+      "state_name": "Nevada",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 4.41,
+      "automation_pct": 44.1,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "NV",
+      "state_name": "Nevada",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 12.5,
+      "automation_pct": 44.1,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "NV",
+      "state_name": "Nevada",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 3.92,
+      "automation_pct": 44.1,
+      "n_soc": 7
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 3.74,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 5.7,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 28.91,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 0.47,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 6.83,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 5.46,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 23,
+      "soc_label": "Legal",
+      "lmi_flag": "none",
+      "task_pct": 0.21,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 15.95,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 11.95,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 2.04,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 33,
+      "soc_label": "Protective Services",
+      "lmi_flag": "none",
+      "task_pct": 0.38,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.69,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 37,
+      "soc_label": "Bldg & Grounds",
+      "lmi_flag": "none",
+      "task_pct": 0.31,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 1.14,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 5.38,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.16,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.15,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 49,
+      "soc_label": "Installation & Repair",
+      "lmi_flag": "none",
+      "task_pct": 0.34,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "NY",
+      "state_name": "New York",
+      "soc_major_code": 51,
+      "soc_label": "Production",
+      "lmi_flag": "none",
+      "task_pct": 0.21,
+      "automation_pct": 39.27,
+      "n_soc": 19
+    },
+    {
+      "geo_id": "OH",
+      "state_name": "Ohio",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 0.81,
+      "automation_pct": 47.32,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "OH",
+      "state_name": "Ohio",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 0.76,
+      "automation_pct": 47.32,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "OH",
+      "state_name": "Ohio",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 50.36,
+      "automation_pct": 47.32,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "OH",
+      "state_name": "Ohio",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 3.09,
+      "automation_pct": 47.32,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "OH",
+      "state_name": "Ohio",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 3.9,
+      "automation_pct": 47.32,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "OH",
+      "state_name": "Ohio",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 15.17,
+      "automation_pct": 47.32,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "OH",
+      "state_name": "Ohio",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 12.13,
+      "automation_pct": 47.32,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "OH",
+      "state_name": "Ohio",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.71,
+      "automation_pct": 47.32,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "OH",
+      "state_name": "Ohio",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 2.9,
+      "automation_pct": 47.32,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "OH",
+      "state_name": "Ohio",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.27,
+      "automation_pct": 47.32,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "OH",
+      "state_name": "Ohio",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 0.9,
+      "automation_pct": 47.32,
+      "n_soc": 11
+    },
+    {
+      "geo_id": "OK",
+      "state_name": "Oklahoma",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 47.24,
+      "automation_pct": 45.67,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "OK",
+      "state_name": "Oklahoma",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 6.55,
+      "automation_pct": 45.67,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "OK",
+      "state_name": "Oklahoma",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 25.52,
+      "automation_pct": 45.67,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "OK",
+      "state_name": "Oklahoma",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 13.1,
+      "automation_pct": 45.67,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "OK",
+      "state_name": "Oklahoma",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 7.59,
+      "automation_pct": 45.67,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "OR",
+      "state_name": "Oregon",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 41.75,
+      "automation_pct": 40.36,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "OR",
+      "state_name": "Oregon",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 2.18,
+      "automation_pct": 40.36,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "OR",
+      "state_name": "Oregon",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 7.65,
+      "automation_pct": 40.36,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "OR",
+      "state_name": "Oregon",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 16.5,
+      "automation_pct": 40.36,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "OR",
+      "state_name": "Oregon",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 14.81,
+      "automation_pct": 40.36,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "OR",
+      "state_name": "Oregon",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 3.03,
+      "automation_pct": 40.36,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "OR",
+      "state_name": "Oregon",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 12.26,
+      "automation_pct": 40.36,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "OR",
+      "state_name": "Oregon",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.82,
+      "automation_pct": 40.36,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 2.45,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 1.68,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 33.77,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 0.41,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 5.59,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 6.3,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 23.07,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 10.43,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 0.72,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.52,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 1.1,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 2.86,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.72,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PA",
+      "state_name": "Pennsylvania",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.38,
+      "automation_pct": 42.82,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "PR",
+      "state_name": "Puerto Rico",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 100.0,
+      "automation_pct": 44.09,
+      "n_soc": 1
+    },
+    {
+      "geo_id": "RI",
+      "state_name": "Rhode Island",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 37.62,
+      "automation_pct": 39.34,
+      "n_soc": 3
+    },
+    {
+      "geo_id": "RI",
+      "state_name": "Rhode Island",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 20.79,
+      "automation_pct": 39.34,
+      "n_soc": 3
+    },
+    {
+      "geo_id": "RI",
+      "state_name": "Rhode Island",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 41.58,
+      "automation_pct": 39.34,
+      "n_soc": 3
+    },
+    {
+      "geo_id": "SC",
+      "state_name": "South Carolina",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 53.96,
+      "automation_pct": 43.62,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "SC",
+      "state_name": "South Carolina",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 6.1,
+      "automation_pct": 43.62,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "SC",
+      "state_name": "South Carolina",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 18.9,
+      "automation_pct": 43.62,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "SC",
+      "state_name": "South Carolina",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 14.02,
+      "automation_pct": 43.62,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "SC",
+      "state_name": "South Carolina",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 7.01,
+      "automation_pct": 43.62,
+      "n_soc": 5
+    },
+    {
+      "geo_id": "TN",
+      "state_name": "Tennessee",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 42.43,
+      "automation_pct": 42.59,
+      "n_soc": 9
+    },
+    {
+      "geo_id": "TN",
+      "state_name": "Tennessee",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 1.74,
+      "automation_pct": 42.59,
+      "n_soc": 9
+    },
+    {
+      "geo_id": "TN",
+      "state_name": "Tennessee",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 7.23,
+      "automation_pct": 42.59,
+      "n_soc": 9
+    },
+    {
+      "geo_id": "TN",
+      "state_name": "Tennessee",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 18.42,
+      "automation_pct": 42.59,
+      "n_soc": 9
+    },
+    {
+      "geo_id": "TN",
+      "state_name": "Tennessee",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 16.01,
+      "automation_pct": 42.59,
+      "n_soc": 9
+    },
+    {
+      "geo_id": "TN",
+      "state_name": "Tennessee",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 1.83,
+      "automation_pct": 42.59,
+      "n_soc": 9
+    },
+    {
+      "geo_id": "TN",
+      "state_name": "Tennessee",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 1.54,
+      "automation_pct": 42.59,
+      "n_soc": 9
+    },
+    {
+      "geo_id": "TN",
+      "state_name": "Tennessee",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.16,
+      "automation_pct": 42.59,
+      "n_soc": 9
+    },
+    {
+      "geo_id": "TN",
+      "state_name": "Tennessee",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.64,
+      "automation_pct": 42.59,
+      "n_soc": 9
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 3.79,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 4.0,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 33.28,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 0.57,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 5.25,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 5.22,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 23,
+      "soc_label": "Legal",
+      "lmi_flag": "none",
+      "task_pct": 0.29,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 16.96,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 10.82,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 1.39,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 31,
+      "soc_label": "Healthcare Support",
+      "lmi_flag": "high",
+      "task_pct": 0.15,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 33,
+      "soc_label": "Protective Services",
+      "lmi_flag": "none",
+      "task_pct": 0.29,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.57,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 1.11,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 5.16,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.74,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 0.99,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "TX",
+      "state_name": "Texas",
+      "soc_major_code": 49,
+      "soc_label": "Installation & Repair",
+      "lmi_flag": "none",
+      "task_pct": 0.44,
+      "automation_pct": 42.72,
+      "n_soc": 18
+    },
+    {
+      "geo_id": "UT",
+      "state_name": "Utah",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 3.96,
+      "automation_pct": 43.15,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "UT",
+      "state_name": "Utah",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 45.26,
+      "automation_pct": 43.15,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "UT",
+      "state_name": "Utah",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 6.39,
+      "automation_pct": 43.15,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "UT",
+      "state_name": "Utah",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 14.65,
+      "automation_pct": 43.15,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "UT",
+      "state_name": "Utah",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 11.12,
+      "automation_pct": 43.15,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "UT",
+      "state_name": "Utah",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 4.52,
+      "automation_pct": 43.15,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "UT",
+      "state_name": "Utah",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 12.33,
+      "automation_pct": 43.15,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "UT",
+      "state_name": "Utah",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.76,
+      "automation_pct": 43.15,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 2.31,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 1.77,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 39.81,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 0.45,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 5.94,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 5.35,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 18.15,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 10.24,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 0.65,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.65,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 0.7,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 3.18,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.93,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VA",
+      "state_name": "Virginia",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 0.87,
+      "automation_pct": 42.94,
+      "n_soc": 14
+    },
+    {
+      "geo_id": "VT",
+      "state_name": "Vermont",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 100.0,
+      "automation_pct": 42.41,
+      "n_soc": 1
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 3.0,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 3.25,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 36.34,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 0.57,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 5.03,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 7.66,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 13.98,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 10.36,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 0.97,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 33,
+      "soc_label": "Protective Services",
+      "lmi_flag": "none",
+      "task_pct": 0.4,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.57,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 0.97,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 3.4,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 11.38,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 1.76,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WA",
+      "state_name": "Washington",
+      "soc_major_code": 49,
+      "soc_label": "Installation & Repair",
+      "lmi_flag": "none",
+      "task_pct": 0.37,
+      "automation_pct": 38.79,
+      "n_soc": 16
+    },
+    {
+      "geo_id": "WI",
+      "state_name": "Wisconsin",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 38.71,
+      "automation_pct": 40.98,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "WI",
+      "state_name": "Wisconsin",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 7.84,
+      "automation_pct": 40.98,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "WI",
+      "state_name": "Wisconsin",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 23.04,
+      "automation_pct": 40.98,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "WI",
+      "state_name": "Wisconsin",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 12.85,
+      "automation_pct": 40.98,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "WI",
+      "state_name": "Wisconsin",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 2.35,
+      "automation_pct": 40.98,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "WI",
+      "state_name": "Wisconsin",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 2.82,
+      "automation_pct": 40.98,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "WI",
+      "state_name": "Wisconsin",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.87,
+      "automation_pct": 40.98,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "WI",
+      "state_name": "Wisconsin",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 2.51,
+      "automation_pct": 40.98,
+      "n_soc": 8
+    },
+    {
+      "geo_id": "WY",
+      "state_name": "Wyoming",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 24.68,
+      "automation_pct": 52.94,
+      "n_soc": 2
+    },
+    {
+      "geo_id": "WY",
+      "state_name": "Wyoming",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 75.32,
+      "automation_pct": 52.94,
+      "n_soc": 2
+    }
+  ],
+  "national_v5": [
+    {
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "lmi_flag": "low",
+      "task_pct": 4.28,
+      "soc_automation_pct": 38.4
+    },
+    {
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "lmi_flag": "low",
+      "task_pct": 4.78,
+      "soc_automation_pct": 39.39
+    },
+    {
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "lmi_flag": "low",
+      "task_pct": 32.23,
+      "soc_automation_pct": 54.79
+    },
+    {
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "lmi_flag": "low",
+      "task_pct": 2.07,
+      "soc_automation_pct": 38.51
+    },
+    {
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "lmi_flag": "none",
+      "task_pct": 6.32,
+      "soc_automation_pct": 36.69
+    },
+    {
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "lmi_flag": "none",
+      "task_pct": 3.22,
+      "soc_automation_pct": 28.65
+    },
+    {
+      "soc_major_code": 23,
+      "soc_label": "Legal",
+      "lmi_flag": "none",
+      "task_pct": 0.6,
+      "soc_automation_pct": 40.73
+    },
+    {
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "lmi_flag": "moderate",
+      "task_pct": 13.48,
+      "soc_automation_pct": 35.15
+    },
+    {
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "lmi_flag": "none",
+      "task_pct": 10.43,
+      "soc_automation_pct": 41.29
+    },
+    {
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "lmi_flag": "none",
+      "task_pct": 3.03,
+      "soc_automation_pct": 27.44
+    },
+    {
+      "soc_major_code": 31,
+      "soc_label": "Healthcare Support",
+      "lmi_flag": "high",
+      "task_pct": 0.32,
+      "soc_automation_pct": 37.13
+    },
+    {
+      "soc_major_code": 33,
+      "soc_label": "Protective Services",
+      "lmi_flag": "none",
+      "task_pct": 0.45,
+      "soc_automation_pct": 40.87
+    },
+    {
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "lmi_flag": "none",
+      "task_pct": 0.74,
+      "soc_automation_pct": 54.5
+    },
+    {
+      "soc_major_code": 37,
+      "soc_label": "Bldg & Grounds",
+      "lmi_flag": "none",
+      "task_pct": 0.21,
+      "soc_automation_pct": 55.77
+    },
+    {
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "lmi_flag": "none",
+      "task_pct": 1.17,
+      "soc_automation_pct": 50.79
+    },
+    {
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "lmi_flag": "high",
+      "task_pct": 4.94,
+      "soc_automation_pct": 50.29
+    },
+    {
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "lmi_flag": "high",
+      "task_pct": 9.44,
+      "soc_automation_pct": 55.81
+    },
+    {
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "lmi_flag": "none",
+      "task_pct": 0.47,
+      "soc_automation_pct": 41.34
+    },
+    {
+      "soc_major_code": 47,
+      "soc_label": "Construction",
+      "lmi_flag": "none",
+      "task_pct": 0.24,
+      "soc_automation_pct": 52.72
+    },
+    {
+      "soc_major_code": 49,
+      "soc_label": "Installation & Repair",
+      "lmi_flag": "none",
+      "task_pct": 0.66,
+      "soc_automation_pct": 62.01
+    },
+    {
+      "soc_major_code": 51,
+      "soc_label": "Production",
+      "lmi_flag": "none",
+      "task_pct": 0.69,
+      "soc_automation_pct": 61.18
+    },
+    {
+      "soc_major_code": 53,
+      "soc_label": "Transportation",
+      "lmi_flag": "high",
+      "task_pct": 0.25,
+      "soc_automation_pct": 49.33
+    },
+    {
+      "soc_major_code": 55,
+      "soc_label": "Military",
+      "lmi_flag": "none",
+      "task_pct": null,
+      "soc_automation_pct": null
+    }
+  ]
+}
