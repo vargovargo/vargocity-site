@@ -607,7 +607,21 @@ const LMI_HIGH_CODES = new Set([31, 41, 43, 53])
 const COMP_CODE = 15
 
 // States worth labeling in Mode 1 (tell the story)
-const LABEL_STATES = new Set(['CT','NV','WA','LA','FL','TX','CA','NY','UT','MA','OR'])
+// UT and OR dropped — they cluster with NV on the right; left cluster (CT/CA/NY/MA) needs per-state offsets
+const LABEL_STATES = new Set(['CT','NV','WA','LA','FL','TX','CA','NY','MA'])
+
+// Per-state label offsets to prevent collision in the left (CA/CT/NY/MA) and right (NV) clusters
+const LABEL_OFFSETS = {
+  CT: { dx:  7, dy: -9  },  // top of left cluster
+  CA: { dx:  7, dy:  9  },  // just below CT (same X band)
+  NY: { dx: -26, dy:  6 },  // anchor left so it doesn't crowd MA
+  MA: { dx:  7, dy:  0  },
+  NV: { dx:  7, dy: -8  },  // nudge up from NV dot
+  WA: { dx:  7, dy:  0  },
+  FL: { dx:  7, dy: -8  },
+  TX: { dx:  7, dy:  8  },
+  LA: { dx:  7, dy:  0  },
+}
 
 export function StateScatter() {
   const [containerRef, width] = useContainerWidth()
@@ -669,10 +683,13 @@ export function StateScatter() {
           title: d => `${d.state_name}\nLMI-high: ${d.lmi_high_share.toFixed(1)}%\nComp & Math: ${d.comp_share.toFixed(1)}%\n(${d.n_soc} occupation groups tracked)`,
           tip: true,
         }),
-        // Labels for notable states
+        // Labels for notable states (per-state offsets to avoid collisions)
         Plot.text(labeled, {
           x: 'comp_share', y: 'lmi_high_share',
-          text: 'geo_id', dx: 7, fontSize: 10,
+          text: 'geo_id',
+          dx: d => LABEL_OFFSETS[d.geo_id]?.dx ?? 7,
+          dy: d => LABEL_OFFSETS[d.geo_id]?.dy ?? 0,
+          fontSize: 10,
           fill: 'var(--c-text-muted)',
         }),
       ],
@@ -813,6 +830,216 @@ export function StateScatter() {
           ? `V5 (Mar 2026). LMI-high = Office & Admin (43), Sales (41), Healthcare Support (31), Transportation (53). States with fewer than 5 occupation groups above Anthropic's conversation threshold are grayed — their profiles reflect exclusion, not true absence. Select a state from the dropdown to compare its occupation mix against the national distribution.`
           : `V5 (Mar 2026). Each dot is a major occupation group. Above the parity line = that occupation accounts for a larger share of AI usage in ${stateMap[selectedState]?.state_name ?? selectedState} than nationally. ${comparableStates.length - (stateMap[selectedState]?.n_soc ?? 0) > 0 ? `${23 - (stateMap[selectedState]?.n_soc ?? 0)} of 23 occupation groups are below Anthropic's conversation threshold for this state and not shown.` : ''}`
         }
+      </ChartCaption>
+    </div>
+  )
+}
+
+// ── SOC 43 by state: horizontal bar chart ─────────────────────────────────
+const SOC43_NATIONAL = 9.44  // V5 national SOC 43 task share
+
+export function StateSOC43Bar() {
+  const [containerRef, width] = useContainerWidth()
+
+  const data = statePanelData.state_soc
+    .filter(d => d.soc_major_code === 43 && d.task_pct != null)
+    .sort((a, b) => b.task_pct - a.task_pct)
+
+  const plotRef = usePlot({
+    width,
+    height: data.length * 16 + 60,
+    marginLeft: 130,
+    marginRight: 55,
+    marginBottom: 40,
+    marginTop: 10,
+    style: PLOT_STYLE,
+    x: {
+      label: 'SOC 43 share of AI task usage (%)',
+      tickSize: 0,
+      grid: true,
+      domain: [0, Math.ceil(Math.max(...data.map(d => d.task_pct)) / 2) * 2 + 1],
+    },
+    y: { label: null, tickSize: 0 },
+    marks: [
+      // National reference line
+      Plot.ruleX([SOC43_NATIONAL], {
+        stroke: 'var(--c-text-muted)',
+        strokeDasharray: '4,3',
+        strokeWidth: 1.5,
+      }),
+      // Bars
+      Plot.barX(data, {
+        x: 'task_pct',
+        y: 'state_name',
+        fill: d => d.n_soc < 5 ? '#CCCCCC' : d.task_pct >= SOC43_NATIONAL ? LMI_COLORS.high : '#8BACC8',
+        fillOpacity: d => d.n_soc < 5 ? 0.45 : 0.75,
+        sort: { y: '-x' },
+      }),
+      // Value labels at bar end
+      Plot.text(data, {
+        x: 'task_pct',
+        y: 'state_name',
+        text: d => d.task_pct.toFixed(1) + '%',
+        dx: 4,
+        textAnchor: 'start',
+        fontSize: 9.5,
+        fill: d => d.n_soc < 5 ? '#999' : 'var(--c-text-body)',
+        sort: { y: '-x' },
+      }),
+      // "National" label on reference line
+      Plot.text([{ x: SOC43_NATIONAL, label: 'National\n9.4%' }], {
+        x: 'x',
+        y: data[data.length - 1]?.state_name,
+        text: 'label',
+        dy: 22,
+        fontSize: 9,
+        fill: 'var(--c-text-muted)',
+        textAnchor: 'middle',
+        lineWidth: 8,
+      }),
+    ],
+  }, [width])
+
+  return (
+    <div ref={containerRef} className="my-6">
+      <div ref={plotRef} />
+      <div className="flex flex-wrap gap-4 mt-2">
+        <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+          <span style={{ display: 'inline-block', width: 12, height: 10, background: LMI_COLORS.high, opacity: 0.75, borderRadius: 1 }} />
+          Above national average
+        </span>
+        <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+          <span style={{ display: 'inline-block', width: 12, height: 10, background: '#8BACC8', opacity: 0.75, borderRadius: 1 }} />
+          Below national average
+        </span>
+        <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+          <span style={{ display: 'inline-block', width: 12, height: 10, background: '#CCC', opacity: 0.5, borderRadius: 1 }} />
+          Fewer than 5 occupation groups tracked (low confidence)
+        </span>
+      </div>
+      <ChartCaption>
+        V5 (Mar 2026). Office and Administrative Support (SOC 43) task share among all AI interactions attributed to that state.
+        Dashed line = national average (9.4%). States with fewer than 5 major occupation groups tracked above threshold are shown at reduced opacity — their SOC 43 figures may reflect threshold exclusion rather than true concentration.
+      </ChartCaption>
+    </div>
+  )
+}
+
+// ── Threshold diagnostic: n_soc vs CS and SOC43 shares ────────────────────
+// Shows that CS share is a coverage artifact but SOC43 geographic variation is real
+
+function ols(xs, ys) {
+  const n = xs.length
+  const mx = xs.reduce((a, b) => a + b, 0) / n
+  const my = ys.reduce((a, b) => a + b, 0) / n
+  const slope = xs.reduce((s, x, i) => s + (x - mx) * (ys[i] - my), 0) /
+                xs.reduce((s, x) => s + (x - mx) ** 2, 0)
+  const intercept = my - slope * mx
+  const fitted = xs.map(x => intercept + slope * x)
+  const ssTot = ys.reduce((s, y) => s + (y - my) ** 2, 0)
+  const ssRes = ys.reduce((s, y, i) => s + (y - fitted[i]) ** 2, 0)
+  return { slope, intercept, r2: 1 - ssRes / ssTot, r: Math.sqrt(1 - ssRes / ssTot) * (slope < 0 ? -1 : 1) }
+}
+
+const CS_LABEL_STATES  = new Set(['CT', 'OH', 'DE', 'WA', 'CA', 'NY'])
+const SOC43_LABEL_STATES = new Set(['CT', 'LA', 'CO', 'WA', 'CA'])
+
+export function StateThresholdChart() {
+  const [containerRef, width] = useContainerWidth()
+  const { state_soc } = statePanelData
+
+  // Build per-state lookup
+  const sm = {}
+  for (const r of state_soc) {
+    if (!sm[r.geo_id]) sm[r.geo_id] = { geo_id: r.geo_id, state_name: r.state_name, n_soc: r.n_soc }
+    if (r.soc_major_code === 15 && r.task_pct != null) sm[r.geo_id].cs = r.task_pct
+    if (r.soc_major_code === 43 && r.task_pct != null) sm[r.geo_id].soc43 = r.task_pct
+  }
+  const csData   = Object.values(sm).filter(d => d.cs   != null)
+  const s43Data  = Object.values(sm).filter(d => d.soc43 != null)
+
+  const csStats  = ols(csData.map(d => d.n_soc),  csData.map(d => d.cs))
+  const s43Stats = ols(s43Data.map(d => d.n_soc), s43Data.map(d => d.soc43))
+
+  // Regression line endpoints for each panel
+  const nMin = 1, nMax = 22
+  const csLine  = [{ n: nMin, y: csStats.intercept  + csStats.slope  * nMin },
+                   { n: nMax, y: csStats.intercept  + csStats.slope  * nMax }]
+  const s43Line = [{ n: nMin, y: s43Stats.intercept + s43Stats.slope * nMin },
+                   { n: nMax, y: s43Stats.intercept + s43Stats.slope * nMax }]
+
+  const panelH = 195
+  const panelOpts = { width, height: panelH, marginLeft: 55, marginBottom: 40, marginTop: 10, marginRight: 20, style: PLOT_STYLE }
+
+  const csRef = usePlot({
+    ...panelOpts,
+    x: { label: 'Occupation groups above threshold', tickSize: 0, grid: true, domain: [0, nMax + 1] },
+    y: { label: 'Computer & Math share (%)', tickSize: 0, grid: true },
+    marks: [
+      Plot.line(csLine, { x: 'n', y: 'y', stroke: LMI_COLORS.low, strokeWidth: 1.5, strokeDasharray: '4,3' }),
+      Plot.dot(csData, {
+        x: 'n_soc', y: 'cs',
+        fill: d => CS_LABEL_STATES.has(d.geo_id) ? LMI_COLORS.low : '#CCCCCC',
+        fillOpacity: d => CS_LABEL_STATES.has(d.geo_id) ? 0.9 : 0.5,
+        r: d => CS_LABEL_STATES.has(d.geo_id) ? 5 : 3.5,
+      }),
+      Plot.text(csData.filter(d => CS_LABEL_STATES.has(d.geo_id)), {
+        x: 'n_soc', y: 'cs', text: 'geo_id',
+        dy: d => ['CT','DE'].includes(d.geo_id) ? -10 : 10,
+        dx: d => ['NY','CA'].includes(d.geo_id) ? -14 : 0,
+        fontSize: 10, fill: LMI_COLORS.low,
+      }),
+      Plot.text([{ x: nMax - 1, y: csStats.intercept + csStats.slope * (nMax - 1) + 4 }], {
+        x: 'x', y: 'y',
+        text: () => `r = ${csStats.r.toFixed(2)}`,
+        fontSize: 10, fill: LMI_COLORS.low, textAnchor: 'end',
+      }),
+    ],
+  }, [width])
+
+  const s43Ref = usePlot({
+    ...panelOpts,
+    x: { label: 'Occupation groups above threshold', tickSize: 0, grid: true, domain: [0, nMax + 1] },
+    y: { label: 'Office & Admin share (%)', tickSize: 0, grid: true },
+    marks: [
+      Plot.line(s43Line, { x: 'n', y: 'y', stroke: LMI_COLORS.high, strokeWidth: 1.5, strokeDasharray: '4,3' }),
+      Plot.dot(s43Data, {
+        x: 'n_soc', y: 'soc43',
+        fill: d => SOC43_LABEL_STATES.has(d.geo_id) ? LMI_COLORS.high : '#CCCCCC',
+        fillOpacity: d => SOC43_LABEL_STATES.has(d.geo_id) ? 0.9 : 0.5,
+        r: d => SOC43_LABEL_STATES.has(d.geo_id) ? 5 : 3.5,
+      }),
+      Plot.text(s43Data.filter(d => SOC43_LABEL_STATES.has(d.geo_id)), {
+        x: 'n_soc', y: 'soc43', text: 'geo_id',
+        dy: d => ['CT','CO'].includes(d.geo_id) ? -10 : 10,
+        dx: d => ['CA'].includes(d.geo_id) ? -14 : 0,
+        fontSize: 10, fill: LMI_COLORS.high,
+      }),
+      Plot.text([{ x: nMax - 1, y: s43Stats.intercept + s43Stats.slope * (nMax - 1) + 0.8 }], {
+        x: 'x', y: 'y',
+        text: () => `r = ${s43Stats.r.toFixed(2)}`,
+        fontSize: 10, fill: LMI_COLORS.high, textAnchor: 'end',
+      }),
+    ],
+  }, [width])
+
+  return (
+    <div ref={containerRef} className="my-6">
+      <p className="text-xs font-medium mb-1" style={{ color: 'var(--c-text-muted)' }}>
+        Computer &amp; Math share — declines with coverage (threshold artifact)
+      </p>
+      <div ref={csRef} />
+      <p className="text-xs font-medium mt-5 mb-1" style={{ color: 'var(--c-text-muted)' }}>
+        Office &amp; Admin share — flat across coverage levels (genuine geography)
+      </p>
+      <div ref={s43Ref} />
+      <ChartCaption>
+        Each dot = one state, V5 (Mar 2026). X-axis = number of major occupation groups above
+        Anthropic&apos;s conversation threshold. Top panel: Computer &amp; Math share falls sharply
+        as more groups appear (r = {csStats.r.toFixed(2)}) — states with thin coverage show inflated CS
+        share because CS clears the threshold first. Bottom panel: Office &amp; Admin share is
+        essentially flat (r ≈ {s43Stats.r.toFixed(2)}) — its geographic variation is independent of
+        how many groups a state has above threshold.
       </ChartCaption>
     </div>
   )

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { AEITaskTrends, AEICollabTrends, AEIPrimitivesScatter, AEISummaryTable, SOC43SubgroupChart, StateScatter } from './AEICharts'
+import { AEITaskTrends, AEICollabTrends, AEIPrimitivesScatter, AEISummaryTable, SOC43SubgroupChart, StateScatter, StateSOC43Bar, StateThresholdChart } from './AEICharts'
 import { SBIWageGap, SBIMonthlyCost, SBICostOfChild } from './SBICharts'
 
 const AEI_CHARTS = {
@@ -11,6 +11,8 @@ const AEI_CHARTS = {
   '/plots/soc_summary_table.png':            AEISummaryTable,
   '/plots/soc43_subgroup.png':               SOC43SubgroupChart,
   '/plots/state_scatter.png':                StateScatter,
+  '/plots/state_soc43_bar.png':              StateSOC43Bar,
+  '/plots/state_threshold.png':              StateThresholdChart,
   '/plots/sbi_wage_gap.png':                 SBIWageGap,
   '/plots/sbi_monthly_cost.png':             SBIMonthlyCost,
   '/plots/sbi_cost_of_child.png':            SBICostOfChild,
