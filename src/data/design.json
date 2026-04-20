@@ -32,6 +32,15 @@
     "photos": []
   },
   {
+    "id": "greenway-effect",
+    "name": "The Greenway Effect",
+    "year": 2026,
+    "materials": ["data art", "D3 / SVG", "Google Forms"],
+    "notes": "My kid posted a QR code flier on the Albany Greenway asking cyclists to rate their mood before, during, and after biking on a 1–5 scale. 51 riders responded over 16 collection days. Average mood before: 3.1. After: 4.4. Not one rider finished below a 4. The responses became a data art poster — a spoke wheel where each spoke is a rider, with rings marking mood scores and alternating day bands as a bezel. A science project and a community one.",
+    "url": "/greenway/index.html",
+    "url_label": "View poster"
+  },
+  {
     "id": "ivpod",
     "name": "i(V)Pod",
     "year": 2004,

@@ -41,6 +41,24 @@ export default function FurnitureCard({ item }) {
           ))}
         </div>
       )}
+      {(item.url || item.pdf_url) && (
+        <div className="flex gap-4 mt-4">
+          {item.url && (
+            <a href={item.url} target="_blank" rel="noopener noreferrer"
+              className="text-xs transition-colors"
+              style={{ color: 'var(--c-text-muted)' }}>
+              {item.url_label || 'View'} →
+            </a>
+          )}
+          {item.pdf_url && (
+            <a href={item.pdf_url} target="_blank" rel="noopener noreferrer"
+              className="text-xs transition-colors"
+              style={{ color: 'var(--c-text-muted)' }}>
+              Download PDF →
+            </a>
+          )}
+        </div>
+      )}
     </div>
   )
 }

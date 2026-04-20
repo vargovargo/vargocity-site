@@ -16,7 +16,7 @@
     "year": 2012,
     "venue": "Landscape and Urban Planning",
     "url": "",
-    "citations": 324,
+    "citations": 325,
     "tags": ["climate", "policy", "cities"]
   },
   {
@@ -56,7 +56,7 @@
     "year": 2013,
     "venue": "Journal of Environmental Management",
     "url": "",
-    "citations": 81,
+    "citations": 82,
     "tags": ["climate", "cities"]
   },
   {
@@ -96,7 +96,7 @@
     "year": 2014,
     "venue": "PLOS ONE",
     "url": "",
-    "citations": 224,
+    "citations": 225,
     "tags": ["climate", "health", "policy"]
   },
   {
@@ -106,7 +106,7 @@
     "year": 2015,
     "venue": "Natural Hazards",
     "url": "",
-    "citations": 398,
+    "citations": 402,
     "tags": ["climate"]
   },
   {
@@ -156,7 +156,7 @@
     "year": 2017,
     "venue": "Accident Analysis & Prevention",
     "url": "",
-    "citations": 29,
+    "citations": 30,
     "tags": ["transportation", "health"]
   },
   {
@@ -196,7 +196,7 @@
     "year": 2018,
     "venue": "PLOS Medicine",
     "url": "",
-    "citations": 205,
+    "citations": 207,
     "tags": ["air-quality", "health"]
   },
   {
@@ -216,7 +216,7 @@
     "year": 2019,
     "venue": "Traffic Injury Prevention",
     "url": "",
-    "citations": 18,
+    "citations": 19,
     "tags": ["transportation", "health"]
   },
   {
@@ -236,7 +236,7 @@
     "year": 2019,
     "venue": "Social Science & Medicine",
     "url": "",
-    "citations": 99,
+    "citations": 100,
     "tags": ["climate", "health"]
   },
   {
@@ -246,7 +246,7 @@
     "year": 2020,
     "venue": "Journal of the American Heart Association",
     "url": "",
-    "citations": 110,
+    "citations": 112,
     "tags": ["air-quality", "health"]
   },
   {
@@ -256,7 +256,7 @@
     "year": 2020,
     "venue": "Frontiers in Public Health",
     "url": "",
-    "citations": 26,
+    "citations": 27,
     "tags": ["air-quality", "health"]
   },
   {
@@ -286,7 +286,7 @@
     "year": 2021,
     "venue": "Open Forum Infectious Diseases",
     "url": "",
-    "citations": 11,
+    "citations": 12,
     "tags": ["covid", "policy", "modeling"]
   },
   {
@@ -296,7 +296,7 @@
     "year": 2021,
     "venue": "Journal of the Air & Waste Management Association",
     "url": "",
-    "citations": 50,
+    "citations": 51,
     "tags": ["air-quality", "health"]
   },
   {
@@ -306,7 +306,7 @@
     "year": 2021,
     "venue": "Health Affairs",
     "url": "",
-    "citations": 170,
+    "citations": 171,
     "tags": ["covid", "health"]
   },
   {
@@ -328,6 +328,16 @@
     "url": "",
     "citations": 0,
     "tags": ["air-quality"]
+  },
+  {
+    "id": "casillas2022color",
+    "title": "The color of a pandemic: the association between historical residential redlining and COVID-19 outcomes in California",
+    "authors": ["Erika Casillas", "Magali Ye", "Jason Vargo", "Anthony L Nardone", "Priya B Shete", "Neha Thakur"],
+    "year": 2022,
+    "venue": "American Thoracic Society (conference abstract)",
+    "url": "",
+    "citations": 4,
+    "tags": ["covid", "health"]
   },
   {
     "id": "fadadu2022older-adults",
@@ -366,7 +376,7 @@
     "year": 2022,
     "venue": "International Journal of Environmental Research and Public Health",
     "url": "",
-    "citations": 31,
+    "citations": 32,
     "tags": ["climate", "health", "policy", "cities"]
   },
   {
@@ -396,7 +406,7 @@
     "year": 2023,
     "venue": "Journal of Planning Education and Research",
     "url": "",
-    "citations": 71,
+    "citations": 72,
     "tags": ["climate", "policy", "cities"]
   },
   {
@@ -406,7 +416,7 @@
     "year": 2023,
     "venue": "American Journal of Public Health",
     "url": "",
-    "citations": 51,
+    "citations": 54,
     "tags": ["air-quality", "climate", "health"]
   },
   {
@@ -466,7 +476,7 @@
     "year": 2025,
     "venue": "American Journal of Epidemiology",
     "url": "",
-    "citations": 2,
+    "citations": 3,
     "tags": ["covid", "policy", "health"]
   },
   {
