@@ -1,4 +1,8 @@
 {
+  "heat": {
+    "title": "Shock, Stress, Opportunity",
+    "description": "A framework for classifying climate pressure across Western counties — shock, stress, and opportunity — and what each trajectory means for labor, health, energy, infrastructure, and agriculture."
+  },
   "aei": {
     "title": "Anthropic Economic Index",
     "description": "Longitudinal panel tracking AI task share and automation rates across occupation groups — with focus on where lower-income workers are concentrated.",
