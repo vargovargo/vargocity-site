@@ -26,3 +26,6 @@ dist-ssr
 *.sln
 *.sw?
 .gstack/
+
+# Large data files not suitable for git
+public/data/*.geojson

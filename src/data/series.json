@@ -1,6 +1,10 @@
 {
+  "social-fabric": {
+    "title": "Social Fabric",
+    "description": "A county-level measure of social capital infrastructure — civic organizations, libraries, nonprofits, congregations — and what its erosion does to communities over time."
+  },
   "heat": {
-    "title": "Shock, Stress, Opportunity",
+    "title": "Shock, Stress, Shift",
     "description": "A framework for classifying climate pressure across Western counties — shock, stress, and opportunity — and what each trajectory means for labor, health, energy, infrastructure, and agriculture."
   },
   "aei": {

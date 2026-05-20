@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { AEITaskTrends, AEICollabTrends, AEIPrimitivesScatter, AEISummaryTable, SOC43SubgroupChart, StateScatter, StateSOC43Bar, StateThresholdChart } from './AEICharts'
 import { SBIWageGap, SBIMonthlyCost, SBICostOfChild } from './SBICharts'
+import { ChettyScatter } from './SocialFabricCharts'
 
 const AEI_CHARTS = {
   '/plots/task_pct_trends.png':              AEITaskTrends,
@@ -16,6 +17,7 @@ const AEI_CHARTS = {
   '/plots/sbi_wage_gap.png':                 SBIWageGap,
   '/plots/sbi_monthly_cost.png':             SBIMonthlyCost,
   '/plots/sbi_cost_of_child.png':            SBICostOfChild,
+  '/plots/chetty_scatter.png':               ChettyScatter,
 }
 
 function PostImage({ src, alt }) {

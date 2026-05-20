@@ -6,6 +6,7 @@ import PostCard from '../components/writing/PostCard'
 import SeriesCard from '../components/writing/SeriesCard'
 import MarkdownPost from '../components/writing/MarkdownPost'
 import { loadBlogPosts } from '../lib/loadContent'
+import { loadHeatTypologyData } from '../lib/heat-data'
 import seriesData from '../data/series.json'
 import usePageTitle from '../lib/usePageTitle'
 
@@ -117,11 +118,94 @@ function SinglePost() {
   )
 }
 
+// ---------------------------------------------------------------------------
+// /lab/heat — Phase B placeholder (data proof-of-life; UI in Phase C)
+// ---------------------------------------------------------------------------
+
+function HeatTypologyDraft() {
+  usePageTitle('Heat Typology (draft)')
+  const [status, setStatus] = useState('loading')
+  const [preview, setPreview] = useState(null)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    loadHeatTypologyData()
+      .then(data => {
+        const sample = data.counties.slice(0, 5).map(c => ({
+          fips: c.county_fips,
+          name: `${c.name}, ${c.state}`,
+          dominant: c.hazards.heat.dominant,
+          confidence: c.hazards.heat.confidence.toFixed(2),
+        }))
+        setPreview({ total: data.counties.length, schema_version: data.schema_version, sample })
+        setStatus('ok')
+      })
+      .catch(err => {
+        setError(err.message)
+        setStatus('error')
+      })
+  }, [])
+
+  return (
+    <div className="max-w-5xl mx-auto px-6 py-16">
+      <div className="mb-2 text-xs font-mono px-2 py-0.5 rounded inline-block" style={{ backgroundColor: 'var(--c-border)', color: 'var(--c-text-muted)' }}>
+        draft — Phase C pending
+      </div>
+      <h1 className="text-3xl font-bold mt-3 mb-2" style={{ color: 'var(--c-text)' }}>
+        Heat Typology Explorer
+      </h1>
+      <p className="text-base mb-10" style={{ color: 'var(--c-text-body)' }}>
+        Shock, stress, and shift — three shapes of heat trajectory across U.S. counties.
+        Interactive maps and charts coming in Phase C.
+      </p>
+
+      <div className="rounded-lg border p-5 font-mono text-sm" style={{ borderColor: 'var(--c-border)', backgroundColor: 'var(--c-surface)', color: 'var(--c-text-body)' }}>
+        <p className="font-semibold mb-3" style={{ color: 'var(--c-text)' }}>Data probe</p>
+
+        {status === 'loading' && <p style={{ color: 'var(--c-text-muted)' }}>Loading heat-counties-panel.json…</p>}
+
+        {status === 'error' && (
+          <p style={{ color: '#c0392b' }}>Error: {error}</p>
+        )}
+
+        {status === 'ok' && preview && (
+          <>
+            <p>schema_version: <span style={{ color: 'var(--c-text)' }}>{preview.schema_version}</span></p>
+            <p className="mt-1">county count: <span style={{ color: 'var(--c-text)' }}>{preview.total.toLocaleString()}</span></p>
+            <p className="mt-3 mb-1" style={{ color: 'var(--c-text-muted)' }}>first 5 counties:</p>
+            <table className="w-full text-left text-xs">
+              <thead>
+                <tr style={{ color: 'var(--c-text-muted)' }}>
+                  <th className="pr-4">FIPS</th>
+                  <th className="pr-4">Name</th>
+                  <th className="pr-4">Dominant</th>
+                  <th>Confidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                {preview.sample.map(row => (
+                  <tr key={row.fips}>
+                    <td className="pr-4">{row.fips}</td>
+                    <td className="pr-4">{row.name}</td>
+                    <td className="pr-4">{row.dominant}</td>
+                    <td>{row.confidence}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export default function LabPage() {
   return (
     <Routes>
       <Route index element={<LabIndex />} />
       <Route path="posts/:slug" element={<SinglePost />} />
+      <Route path="heat" element={<HeatTypologyDraft />} />
     </Routes>
   )
 }
