@@ -30,6 +30,18 @@ export default function SeriesCard({ series, posts, defaultOpen = false }) {
               <span className="text-xs" style={{ color: 'var(--c-text-muted)' }}>
                 {posts.length} {posts.length === 1 ? 'post' : 'posts'} · Last updated {lastUpdated}
               </span>
+              {series.tool && (
+                <Link
+                  to={series.tool}
+                  onClick={e => e.stopPropagation()}
+                  className="text-xs transition-colors"
+                  style={{ color: 'var(--c-text-muted)' }}
+                  onMouseEnter={e => e.currentTarget.style.color = 'var(--c-text)'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'var(--c-text-muted)'}
+                >
+                  {series.tool_label || 'Tool'} →
+                </Link>
+              )}
               {series.github && (
                 <a
                   href={series.github}
