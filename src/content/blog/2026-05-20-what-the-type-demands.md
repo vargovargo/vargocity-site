@@ -19,6 +19,8 @@ This post tries to make that concrete. The [interactive tool](/lab/heat) assigns
 
 ## Clackamas County, Oregon: shock means building what wasn't there
 
+![Clackamas County heat typology panel](/plots/heat-panel-clackamas.png)
+
 Clackamas County sits south of Portland — suburban in its northwest corner, quickly rural heading east, with small cities that mostly grew up around timber, agriculture, and the mild climate the Pacific Northwest has always offered. In June 2021, its northern neighborhoods recorded temperatures above 110°F. The county's emergency management plan had no heat annex. Most of its housing was built without air conditioning because the climate didn't historically require it. The older stock — much of it rental, much of it upstairs units under flat roofs — had no cross-ventilation, no AC rough-in, no way to stay cool when the outside temperature exceeded the interior even at midnight.
 
 Shock is defined by the absence of prior design. The danger isn't that the cooling system was overwhelmed. It's that there was no cooling system to overwhelm.
@@ -33,6 +35,8 @@ Shock places have time before the next event — usually, not always — and the
 
 ## Maricopa County, Arizona: stress means extending past the envelope
 
+![Maricopa County heat typology panel](/plots/heat-panel-maricopa.png)
+
 Maricopa County knows heat. Phoenix has been managing extreme summer temperature for decades — the built environment is organized around it. The grid is enormous, run hard, and deeply understood. Outdoor work in construction and agriculture has established schedules, shade requirements, hydration stations. The cooling center map exists and is updated annually. The county health department tracks heat-related mortality and has since the 1990s.
 
 What Maricopa is discovering is that the adaptations built for the heat they had are being pushed past the assumptions they were built for.
@@ -45,11 +49,13 @@ The equity question in stress counties is not primarily about access to the infr
 
 ---
 
-## Cascade County, Montana: shift means navigating ambivalence
+## Yellowstone County, Montana: shift means navigating ambivalence
 
-Cascade County — Great Falls, in north-central Montana — is a different kind of challenge. It's not primarily a story of heat arriving or heat exceeding limits. It's a story of a climate envelope that is reorganizing: growing seasons extending, frost dates shifting, crop viability maps moving north and upward, outdoor work windows that once ended in September lasting later into the fall.
+![Yellowstone County heat typology panel](/plots/heat-panel-yellowstone.png)
 
-From one angle, that looks like opportunity. Montana's wheat and barley economy has long operated at the edge of viable growing seasons. A longer, warmer window should translate to higher yields — and for some crops and some years, it does. From another angle, it looks like compounding risk: the water that the growing season depends on is a function of snowpack that is also declining, the smoke from wildfires across the mountain West has been blanketing Montana's summers with air quality that limits outdoor work and outdoor recreation, and the same dynamics that are making Montana more attractive to some in-migrants are driving housing costs in ways that existing residents feel sharply.
+Yellowstone County — Billings, Montana's largest city, at the edge of the high plains — is a different kind of challenge. It's not primarily a story of heat arriving or heat exceeding limits. It's a story of a climate envelope that is reorganizing: growing seasons extending, frost dates shifting, crop viability maps moving north and upward, outdoor work windows that once ended in September lasting later into the fall.
+
+From one angle, that looks like opportunity. Montana's wheat, barley, and cattle economy has long operated at the edge of viable growing seasons. A longer, warmer window should translate to higher yields — and for some crops and some years, it does. From another angle, it looks like compounding risk: the water that the growing season depends on is a function of Yellowstone River snowpack that is also declining, the smoke from wildfires across the mountain West has been blanketing Montana's summers with air quality that limits outdoor work and outdoor recreation, and the same dynamics that are making Montana more attractive to some in-migrants are driving housing costs in ways that existing residents feel sharply.
 
 Shift is the type most resistant to a clean response portfolio, because shift is fundamentally about ambivalence. The same trajectory that opens one window closes another. What's required is not building something new or extending something existing, but repositioning — and repositioning requires a view of where you are going, which requires decisions that communities are only beginning to make.
 
