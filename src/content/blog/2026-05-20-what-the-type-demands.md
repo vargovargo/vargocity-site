@@ -1,5 +1,5 @@
 ---
-title: "What the Type Demands"
+title: "Three Counties, Three Playbooks"
 date: "2026-05-20"
 tags: ["climate", "heat", "policy", "tool", "labor", "adaptation"]
 excerpt: "Three counties, three shapes of heat pressure, three different conversations about what to build next — and a tool to find yours."

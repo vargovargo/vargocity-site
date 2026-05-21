@@ -1,9 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { AEITaskTrends, AEICollabTrends, AEIPrimitivesScatter, AEISummaryTable, SOC43SubgroupChart, StateScatter, StateSOC43Bar, StateThresholdChart } from './AEICharts'
 import { SBIWageGap, SBIMonthlyCost, SBICostOfChild } from './SBICharts'
 import { ChettyScatter } from './SocialFabricCharts'
+
+const SERIES_LABELS = {
+  'heat':          'Heat in the West',
+  'aei':           'Anthropic Economic Index',
+  'sbi':           'Survival Budget Index',
+  'social-fabric': 'Social Fabric & Infrastructure',
+}
 
 const AEI_CHARTS = {
   '/plots/task_pct_trends.png':              AEITaskTrends,
@@ -36,7 +43,71 @@ function PostParagraph({ children, ...props }) {
   return <p {...props}>{children}</p>
 }
 
-export default function MarkdownPost({ post, backPath, backLabel }) {
+function SeriesNav({ post, seriesPosts }) {
+  const location = useLocation()
+  if (!seriesPosts || seriesPosts.length < 2) return null
+
+  const basePath = location.pathname.replace(/\/[^/]+$/, '')
+  const idx = seriesPosts.findIndex(p => p.slug === post.slug)
+  const prev = idx > 0 ? seriesPosts[idx - 1] : null
+  const next = idx < seriesPosts.length - 1 ? seriesPosts[idx + 1] : null
+  const label = SERIES_LABELS[post.series_slug] || post.series_slug
+
+  return (
+    <div className="mt-12 pt-8" style={{ borderTop: '1px solid var(--c-border)' }}>
+      <p className="text-xs font-medium uppercase tracking-widest mb-4" style={{ color: 'var(--c-text-muted)' }}>
+        {label} · Part {post.series_order} of {seriesPosts.length}
+      </p>
+      <ol className="space-y-1 mb-6">
+        {seriesPosts.map((p, i) => (
+          <li key={p.slug} className="flex items-baseline gap-2">
+            <span className="text-xs tabular-nums w-4 shrink-0 text-right" style={{ color: 'var(--c-text-muted)' }}>{i + 1}.</span>
+            {p.slug === post.slug ? (
+              <span className="text-sm font-medium" style={{ color: 'var(--c-text)' }}>{p.title}</span>
+            ) : (
+              <Link
+                to={`${basePath}/${p.slug}`}
+                className="text-sm transition-colors"
+                style={{ color: 'var(--c-text-muted)' }}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--c-text)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--c-text-muted)'}>
+                {p.title}
+              </Link>
+            )}
+          </li>
+        ))}
+      </ol>
+      {(prev || next) && (
+        <div className="flex justify-between gap-4">
+          {prev ? (
+            <Link
+              to={`${basePath}/${prev.slug}`}
+              className="flex-1 text-sm transition-colors group"
+              style={{ color: 'var(--c-text-muted)' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--c-text)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--c-text-muted)'}>
+              <span className="text-xs block mb-0.5">← Previous</span>
+              <span>{prev.title}</span>
+            </Link>
+          ) : <div className="flex-1" />}
+          {next ? (
+            <Link
+              to={`${basePath}/${next.slug}`}
+              className="flex-1 text-sm text-right transition-colors"
+              style={{ color: 'var(--c-text-muted)' }}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--c-text)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--c-text-muted)'}>
+              <span className="text-xs block mb-0.5">Next →</span>
+              <span>{next.title}</span>
+            </Link>
+          ) : <div className="flex-1" />}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default function MarkdownPost({ post, backPath, backLabel, seriesPosts }) {
   if (!post) return <p className="text-sm" style={{ color: 'var(--c-text-muted)' }}>Post not found.</p>
   return (
     <article className="max-w-2xl">
@@ -58,6 +129,11 @@ export default function MarkdownPost({ post, backPath, backLabel }) {
         </div>
       )}
 
+      {seriesPosts && seriesPosts.length > 1 && (
+        <p className="text-xs font-medium uppercase tracking-widest mb-3" style={{ color: 'var(--c-text-muted)' }}>
+          {SERIES_LABELS[post.series_slug] || post.series_slug} · Part {post.series_order} of {seriesPosts.length}
+        </p>
+      )}
       <h1 className="text-2xl font-semibold mb-2 tracking-tight" style={{ color: 'var(--c-text)' }}>
         {post.title}
       </h1>
@@ -72,6 +148,8 @@ export default function MarkdownPost({ post, backPath, backLabel }) {
           {post.content}
         </ReactMarkdown>
       </div>
+
+      <SeriesNav post={post} seriesPosts={seriesPosts} />
     </article>
   )
 }
