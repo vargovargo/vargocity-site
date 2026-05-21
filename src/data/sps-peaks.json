@@ -6793,7 +6793,17 @@
                   "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1779329859/IMG_4427_uo58mu.jpg",
                   "caption": "The approach to Castle Peak"
                 }
-              ]
+              ],
+              "strava": {
+                "activity_id": "11189833296",
+                "distance_miles": 9.3,
+                "elevation_gain_ft": 2669,
+                "moving_time_hms": "4:11:04",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/11189833296.svg",
+                "fetched_at": "2026-05-21"
+              }
             },
             {
               "date": "2021-04-28",
@@ -6812,7 +6822,17 @@
                   "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1779329803/IMG_0921_l3vthd.jpg",
                   "caption": "Dadvax Trip"
                 }
-              ]
+              ],
+              "strava": {
+                "activity_id": "5210541407",
+                "distance_miles": 9.5,
+                "elevation_gain_ft": 2435,
+                "moving_time_hms": "4:22:08",
+                "avg_heart_rate": null,
+                "max_heart_rate": null,
+                "sparkline_svg": "/strava/5210541407.svg",
+                "fetched_at": "2026-05-21"
+              }
             }
           ]
         },
