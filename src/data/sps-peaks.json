@@ -6821,7 +6821,26 @@
               "scrambling_rating": "S-1.2"
             }
           ],
-          "ascents": []
+          "ascents": [
+            {
+              "date": "2024-04-11",
+              "notes": "Midweek escape to snowshow and tag Castle plus Basin and Andesite",
+              "strava_url": "https://www.strava.com/activities/11189833296",
+              "photos": [
+                {
+                  "url": "",
+                  "caption": ""
+                }, 
+                 {
+              "date": "2021-04-28",
+              "notes": "Newly vaccinated against COVID, we escaped to the Soda Springs rental for an end of the snow season romp.",
+              "strava_url": "https://www.strava.com/activities/5210541407",
+              "photos": [
+                {
+                  "url": "",
+                  "caption": ""
+                }
+          ]
         },
         {
           "id": "24.6",
