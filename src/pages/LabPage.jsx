@@ -103,17 +103,27 @@ function LabIndex() {
 function SinglePost() {
   const { slug } = useParams()
   const [post, setPost] = useState(null)
+  const [seriesPosts, setSeriesPosts] = useState([])
   usePageTitle(post?.title || null)
 
   useEffect(() => {
     loadBlogPosts().then(posts => {
-      setPost(posts.find(p => p.slug === slug) || null)
+      const found = posts.find(p => p.slug === slug) || null
+      setPost(found)
+      if (found?.series_slug) {
+        const peers = posts
+          .filter(p => p.series_slug === found.series_slug)
+          .sort((a, b) => a.series_order - b.series_order)
+        setSeriesPosts(peers)
+      } else {
+        setSeriesPosts([])
+      }
     })
   }, [slug])
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
-      <MarkdownPost post={post} backPath="/lab" backLabel="Lab" />
+      <MarkdownPost post={post} backPath="/lab" backLabel="Lab" seriesPosts={seriesPosts} />
     </div>
   )
 }
