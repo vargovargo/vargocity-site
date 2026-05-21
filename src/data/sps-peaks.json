@@ -6828,20 +6828,36 @@
               "strava_url": "https://www.strava.com/activities/11189833296",
               "photos": [
                 {
-                  "url": "",
-                  "caption": ""
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1779329360/wjdBW6dpS3GTKKkFpAYH80MYS2SJ-YWrp6oNaeVZLB0-2048x1536_uwdgir.jpg",
+                  "caption": "Trudging up the final peak of the day"
                 }, 
+                {
+                   "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1779329859/IMG_4427_uo58mu.jpg",
+                  "caption": "The approach to Castle Peak"
+                }
+              ],
+            },
                  {
               "date": "2021-04-28",
               "notes": "Newly vaccinated against COVID, we escaped to the Soda Springs rental for an end of the snow season romp.",
               "strava_url": "https://www.strava.com/activities/5210541407",
               "photos": [
                 {
-                  "url": "",
-                  "caption": ""
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1779329793/IMG_0857_eknsui.jpg",
+                  "caption": "rejoicing in being outside and being together"
+                },
+                 {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1779329765/IMG_0882_tp5ibi.jpg",
+                  "caption": "Atop Castle Peak"
+                },
+                 {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1779329803/IMG_0921_l3vthd.jpg",
+                  "caption": "Dadvax Trip"
                 }
           ]
-        },
+        }
+          ]
+        }
         {
           "id": "24.6",
           "name": "English Mountain",
