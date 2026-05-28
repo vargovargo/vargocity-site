@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vietnam by Bike — vargo.city</title>
+  <meta name="description" content="Hanoi to Ho Chi Minh City by bicycle — two, three, and four week itineraries on the Soma Wolverine, hotel to hotel." />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #141413;
+      --bg-nav:   #1a1a18;
+      --bg-card:  #252523;
+      --bg-card2: #1e2115;
+      --text:     #e8e4db;
+      --text-dim: #8a9a78;
+      --text-mid: #b8b4ab;
+      --green:    #4a7c59;
+      --amber:    #c4713b;
+      --blue:     #6a9bcc;
+      --sage:     #8a9a78;
+      --border:   rgba(255,255,255,0.06);
+      --border-g: rgba(74,124,89,0.25);
+      --serif:    'DM Serif Display', Georgia, serif;
+      --sans:     'DM Sans', system-ui, sans-serif;
+      --mono:     'JetBrains Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    nav {
+      background: var(--bg-nav);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      height: 52px;
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--green);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      margin-left: 0.5rem;
+    }
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 0.35rem 0.85rem;
+      transition: color 0.15s ease;
+      position: relative;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active {
+      color: var(--text);
+    }
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0.85rem;
+      right: 0.85rem;
+      height: 2px;
+      background: var(--green);
+      border-radius: 1px;
+    }
+    .nav-spacer { flex: 1; }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      background: var(--bg-nav);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2rem 2.5rem;
+    }
+    .hero-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    .hero-sub {
+      font-size: 0.95rem;
+      color: var(--text-mid);
+      max-width: 540px;
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    /* ─── DURATION TABS ───────────────────────────────────── */
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .tab-btn {
+      padding: 0.45rem 1.2rem;
+      border-radius: 3px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: transparent;
+      color: var(--text-dim);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tab-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .tab-btn.active {
+      background: var(--green);
+      border-color: var(--green);
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ─── MAIN LAYOUT ─────────────────────────────────────── */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 2rem 4rem;
+    }
+
+    /* ─── STATS CARD ──────────────────────────────────────── */
+    .stats-card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border-g);
+      border-radius: 4px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .stats-route {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.1rem;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1.25rem 1.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .stat-block {}
+    .stat-value-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.2rem;
+    }
+    .stat-value {
+      font-family: var(--mono);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1;
+    }
+    .stat-unit {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    .stat-label {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 0.25rem;
+    }
+    .stats-style {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    /* ─── ITINERARY ───────────────────────────────────────── */
+    .itinerary-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.75rem;
+    }
+    .segments { display: flex; flex-direction: column; gap: 0.5rem; }
+    .segment-row {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 0.75rem;
+      align-items: stretch;
+    }
+    .segment-day {
+      padding-top: 1rem;
+      text-align: right;
+    }
+    .segment-day span {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: #5a5a52;
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+    .segment-card {
+      border-radius: 4px;
+      padding: 0.9rem 1.1rem;
+    }
+    .segment-card.type-ride   { background: #1e2e24; border: 1px solid var(--green); border-left: 3px solid var(--green); }
+    .segment-card.type-rest   { background: #2a2320; border: 1px solid var(--amber); border-left: 3px solid var(--amber); }
+    .segment-card.type-transit{ background: #1e2328; border: 1px solid var(--blue);  border-left: 3px solid var(--blue);  }
+
+    .seg-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+    .seg-location {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .seg-icon { font-size: 0.95rem; }
+    .seg-badges { display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; }
+    .badge {
+      font-family: var(--mono);
+      font-size: 0.56rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+    }
+    .badge-type-ride   { color: var(--green); border: 1px solid var(--green); }
+    .badge-type-rest   { color: var(--amber); border: 1px solid var(--amber); }
+    .badge-type-transit{ color: var(--blue);  border: 1px solid var(--blue);  }
+
+    .seg-stats {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .seg-km {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--green);
+    }
+    .seg-km span { font-size: 0.65rem; font-weight: 400; color: var(--text-dim); }
+    .elev-bar { display: flex; align-items: center; gap: 0.4rem; }
+    .elev-track {
+      width: 60px; height: 4px;
+      background: #252523; border-radius: 2px; overflow: hidden;
+    }
+    .elev-fill { height: 100%; background: var(--green); border-radius: 2px; }
+    .elev-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--text-dim);
+    }
+    .seg-notes {
+      font-size: 0.83rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    /* ─── REGION BADGE COLORS ─────────────────────────────── */
+    .region-north       { color: var(--blue);   border-color: rgba(106,155,204,0.3); }
+    .region-north-central { color: #8a9a78; border-color: rgba(138,154,120,0.3); }
+    .region-central     { color: var(--green);  border-color: rgba(74,124,89,0.3); }
+    .region-south-central { color: var(--amber); border-color: rgba(196,113,59,0.3); }
+    .region-highlands   { color: #9a8a70;  border-color: rgba(154,138,112,0.3); }
+    .region-south       { color: #d4a574;  border-color: rgba(212,165,116,0.3); }
+
+    /* ─── LOGISTICS ───────────────────────────────────────── */
+    .logistics {
+      margin-top: 2.5rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+    }
+    .logistics-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1rem;
+    }
+    .logistics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      font-size: 0.83rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .logistics-grid strong { color: var(--text); font-weight: 500; }
+    .alert-card {
+      border-radius: 3px;
+      padding: 0.9rem 1.1rem;
+      margin-top: 0.75rem;
+    }
+    .alert-amber {
+      background: #2a2115;
+      border: 1px solid rgba(196,113,59,0.3);
+      border-left: 3px solid var(--amber);
+    }
+    .alert-green {
+      background: #1e2420;
+      border: 1px solid rgba(74,124,89,0.2);
+      border-left: 3px solid var(--green);
+    }
+    .alert-label {
+      font-family: var(--mono);
+      font-size: 0.59rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+    }
+    .alert-amber .alert-label { color: var(--amber); }
+    .alert-green .alert-label { color: var(--green); }
+    .alert-body {
+      font-size: 0.83rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+    .alert-body em { color: var(--text); font-style: normal; }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    footer span {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: #4a4a44;
+      letter-spacing: 0.06em;
+    }
+    footer a { color: var(--green); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .hero { padding: 2rem 1.25rem 1.75rem; }
+      main  { padding: 1.5rem 1.25rem 3rem; }
+      .logistics-grid { grid-template-columns: 1fr; }
+      .nav-inner { gap: 1rem; padding: 0 1.25rem; }
+      .stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .segment-row { grid-template-columns: 40px 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">vargo.city</a>
+    <ul class="nav-links">
+      <li><a href="/about">About</a></li>
+      <li><a href="/research">Research</a></li>
+      <li><a href="/lab" class="active">Lab</a></li>
+      <li><a href="/adventures">Adventures</a></li>
+      <li><a href="/making">Making</a></li>
+    </ul>
+    <div class="nav-spacer"></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Hanoi → Ho Chi Minh City &nbsp;·&nbsp; Planning Document</div>
+    <h1>Vietnam by Bike</h1>
+    <p class="hero-sub">
+      A north-to-south touring route on the Soma Wolverine, hotel-to-hotel. Three itineraries — same spine, different pace. The difference is how many train gaps you take and how many detours you earn.
+    </p>
+    <div class="tabs">
+      <button class="tab-btn" data-weeks="2">2 Weeks</button>
+      <button class="tab-btn active" data-weeks="3">3 Weeks</button>
+      <button class="tab-btn" data-weeks="4">4 Weeks</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+
+  <!-- STATS -->
+  <div class="stats-card">
+    <div class="stats-route" id="stats-route"></div>
+    <div class="stats-grid" id="stats-grid"></div>
+    <div class="stats-style" id="stats-style"></div>
+  </div>
+
+  <!-- ITINERARY -->
+  <div class="itinerary-label">Day-by-Day Itinerary</div>
+  <div class="segments" id="segments"></div>
+
+  <!-- LOGISTICS -->
+  <div class="logistics">
+    <div class="logistics-label">Logistics &amp; Kit — Soma Wolverine · Hotel-to-Hotel</div>
+    <div class="logistics-grid">
+      <div>
+        <strong>Best season:</strong> Oct–Feb (north cooler, central dry). Avoid May–Oct for the typhoon corridor through the central region.<br><br>
+        <strong>Bike:</strong> The Wolverine is well-suited hotel-to-hotel — faster on the long coastal flats, more rewarding on climbs like Hải Vân and the Đà Lạt approach. 700c fine throughout; pick your line on the rougher DMZ and Ho Chi Minh Road sections.<br><br>
+        <strong>Navigation:</strong> Maps.me offline + Komoot for route building. Vietnamese road signage is inconsistent. Download everything before leaving Hanoi.
+      </div>
+      <div>
+        <strong>Train gaps:</strong> Vietnam Railways takes bikes in luggage cars for ~$5–10. Book 48h ahead. Essential tool for leapfrogging the flat, high-traffic Hwy 1 sections without losing days.<br><br>
+        <strong>Accommodation:</strong> Mini-hotels (nhà nghỉ) run $10–20/night, almost always with a room secure enough for the bike. No need to book ahead outside Hội An and Hanoi.<br><br>
+        <strong>Food &amp; water:</strong> Never more than 30 km between roadside stalls. Bánh mì is your long-ride fuel. Iced cà phê sữa at every stop.
+      </div>
+    </div>
+
+    <div class="alert-card alert-amber">
+      <div class="alert-label">⚠ Hydraulic Brake Serviceability</div>
+      <div class="alert-body">
+        Parts for hydraulic systems are scarce outside Hanoi, Đà Nẵng, and HCMC. Pack accordingly:
+        <em>Bleed kit</em> for your specific system (Shimano mineral oil or SRAM DOT) ·
+        <em>Extra fluid</em> (small bottle) ·
+        <em>2 spare pad sets minimum</em> — heat on Hải Vân and the Đà Lạt descent will eat pads faster than flatland riding.
+        A well-maintained hydraulic system rarely fails catastrophically; the risks are pad wear and slow fluid loss, both manageable with this kit.
+      </div>
+    </div>
+
+    <div class="alert-card alert-green">
+      <div class="alert-label">Bag Setup · No Racks Needed</div>
+      <div class="alert-body">
+        Hotel-to-hotel you're running light.
+        <em>Frame bag</em> + <em>top tube bag</em> + <em>medium saddle bag</em> carries a 3–4 day kit between laundry stops — all you need.
+        Keep the saddle bag under 3 kg to avoid sway on rough sections.
+        Total carry weight target: under 5 kg.
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span><a href="/lab">← lab</a> &nbsp;·&nbsp; vargo.city &nbsp;·&nbsp; last updated May 2026</span>
+</footer>
+
+<script>
+const TRIPS = {
+  2: {
+    label: "2 Weeks",
+    km: 1050, elevation: 8400, riding_days: 8,
+    rest_days: 6, train_gaps: 3, avg_daily_km: 131,
+    style: "Hanoi → HCMC in 14 days means leaning hard on the train. You ride the unmissable sections — Ninh Bình karst, the DMZ coast, Hải Vân Pass, the Mũi Né run — and bridge the long flat slogs by rail. Aggressive but very doable for a strong rider who accepts the trade.",
+    segments: [
+      { day:"1", location:"Hanoi", km:0, elev:0, type:"transit", region:"north",
+        icon:"🏙️", notes:"Arrive, assemble bike, Old Quarter orientation. Tây Hồ loop optional (30 km) if arriving early. Bún chả dinner." },
+      { day:"2–3", location:"Hanoi → Ninh Bình → Đồng Hới", km:0, elev:0, type:"transit", region:"north",
+        icon:"🚂", notes:"Train to Ninh Bình. Half-day: Tràng An boat loop and Hoa Lư karst by bike (30 km). Re-box, train to Đồng Hới overnight — skips 300 km of flat Hwy 1." },
+      { day:"4", location:"Phong Nha detour", km:50, elev:200, type:"ride", region:"north-central",
+        icon:"🕳️", notes:"Ride west into Phong Nha-Kẻ Bàng NP. Karst valley loop, Phong Nha cave by boat. Non-negotiable stop. Return to Đồng Hới." },
+      { day:"5–6", location:"Đồng Hới → Hué", km:170, elev:1400, type:"ride", region:"central",
+        icon:"🏯", notes:"Cross the DMZ — Ben Hai River, Khe Sanh, Vinh Mốc tunnels. Ride into Hué. Imperial Citadel that evening. Bún bò Hué." },
+      { day:"7–8", location:"Hué → Hội An (via Hải Vân)", km:150, elev:2400, type:"ride", region:"central",
+        icon:"⛰️", notes:"The centerpiece. Hải Vân Pass (496m) — take your time on top. Descend to Lăng Cô, swim, then coast south through Đà Nẵng to Hội An." },
+      { day:"9", location:"Hội An rest", km:30, elev:0, type:"rest", region:"central",
+        icon:"🏮", notes:"One full day. Thu Bon river loop by bike. Tailors, lanterns, last bánh mì. Box bike for train." },
+      { day:"10", location:"Hội An → Nha Trang (train)", km:0, elev:0, type:"transit", region:"south-central",
+        icon:"🚂", notes:"Train from Đà Nẵng → Nha Trang (scenic coastal rail, ~10 hrs). Skips 500 km of south-central coast. Arrive evening." },
+      { day:"11–12", location:"Nha Trang → Mũi Né", km:250, elev:1800, type:"ride", region:"south",
+        icon:"🏜️", notes:"Two solid days south on the coast road. Cam Ranh Bay, Phan Rang, Cà Ná fishing villages. Arrive Mũi Né — sand dunes, red canyon, kite surfers." },
+      { day:"13", location:"Mũi Né → HCMC (bus)", km:0, elev:0, type:"transit", region:"south",
+        icon:"🚌", notes:"Bus to Hồ Chí Minh City (4 hrs). Reunification Palace, War Remnants Museum, Bến Thành market." },
+      { day:"14", location:"Ho Chi Minh City", km:0, elev:0, type:"rest", region:"south",
+        icon:"✈️", notes:"Depart Tân Sơn Nhất. Mekong Delta day trip if flight is late — worth it." }
+    ]
+  },
+  3: {
+    label: "3 Weeks",
+    km: 1380, elevation: 12200, riding_days: 14,
+    rest_days: 7, train_gaps: 2, avg_daily_km: 99,
+    style: "The sweet spot. Two strategic train gaps free up enough days to ride the good stuff — the DMZ, Hải Vân, the south-central coast — without grinding the flat sections. Comfortable 90–110 km riding days throughout.",
+    segments: [
+      { day:"1–2", location:"Hanoi", km:60, elev:300, type:"transit", region:"north",
+        icon:"🏙️", notes:"Arrive, assemble. Day 2: Perfume Pagoda day loop (60 km, river crossing by ferry). Shake legs, dial fit. Bún chả and Hồ Tây sunset." },
+      { day:"3–4", location:"Hanoi → Ninh Bình", km:130, elev:600, type:"ride", region:"north",
+        icon:"🚴", notes:"Ride south via Hwy 1 alternate through Red River delta villages. Arrive Ninh Bình — Hoa Lư ancient capital, Tràng An karst by boat." },
+      { day:"5", location:"Ninh Bình → Đồng Hới (train)", km:0, elev:0, type:"transit", region:"north-central",
+        icon:"🚂", notes:"Morning train south — skips 280 km of flat, high-traffic Hwy 1 through Thanh Hóa and Nghệ An. Arrive Đồng Hới afternoon." },
+      { day:"6", location:"Phong Nha", km:60, elev:300, type:"rest", region:"north-central",
+        icon:"🕳️", notes:"Ride west into Phong Nha-Kẻ Bàng NP. Cave by boat, karst valley loop. Do not skip this. Return to Đồng Hới." },
+      { day:"7–9", location:"Đồng Hới → Hué", km:200, elev:2000, type:"ride", region:"central",
+        icon:"🌿", notes:"Best riding of the north segment. Ho Chi Minh Road option through A Lưới valley — jungle, minimal traffic. Cross DMZ. Ben Hai River. Arrive Hué." },
+      { day:"10", location:"Hué rest", km:55, elev:400, type:"rest", region:"central",
+        icon:"🏯", notes:"Royal tomb loop — Minh Mạng, Tự Đức, Khải Định — 55 km on quiet back roads. Thien Mu Pagoda. Bún bò Hué for every meal." },
+      { day:"11–12", location:"Hué → Hội An (via Hải Vân)", km:150, elev:2400, type:"ride", region:"central",
+        icon:"⛰️", notes:"Hải Vân Pass (496m). Take your time on the summit — best views of the trip. Lăng Cô beach descent. Đà Nẵng coastal road into Hội An." },
+      { day:"13", location:"Hội An rest", km:0, elev:0, type:"rest", region:"central",
+        icon:"🏮", notes:"Full rest. Lantern market, Thu Bon river loop, Mỹ Sơn Cham ruins day trip optional. Eat piled cao lầu." },
+      { day:"14–16", location:"Hội An → Quy Nhơn", km:240, elev:2200, type:"ride", region:"south-central",
+        icon:"🌊", notes:"South on the lonely coast. Chu Lai, Sa Huỳnh pink lake, Bình Định Cham towers. Quy Nhơn is underrated — excellent seafood, quiet beach, no tourists." },
+      { day:"17", location:"Quy Nhơn → Nha Trang (train)", km:0, elev:0, type:"transit", region:"south-central",
+        icon:"🚂", notes:"Train south (scenic coastal rail, ~3 hrs). Saves a flat, high-traffic slog through Phú Yên. Arrive Nha Trang with full legs." },
+      { day:"18–19", location:"Nha Trang → Mũi Né", km:250, elev:1800, type:"ride", region:"south",
+        icon:"🏜️", notes:"Two days south on the coast. Cam Ranh Bay, Phan Rang, Cà Ná fishing villages and dramatic coastal cliffs. Mũi Né: dunes, red canyon, kite surfers." },
+      { day:"20", location:"Mũi Né → HCMC (bus)", km:0, elev:0, type:"transit", region:"south",
+        icon:"🚌", notes:"Bus to HCMC (4 hrs). Reunification Palace, War Remnants Museum, Bến Thành market. Box bike." },
+      { day:"21", location:"Ho Chi Minh City", km:0, elev:0, type:"rest", region:"south",
+        icon:"✈️", notes:"Depart Tân Sơn Nhất. Mekong Delta day trip if flight allows." }
+    ]
+  },
+  4: {
+    label: "4 Weeks",
+    km: 1750, elevation: 17200, riding_days: 20,
+    rest_days: 8, train_gaps: 1, avg_daily_km: 88,
+    style: "The full narrative. One train gap to skip the worst of the flat north-central coast, then ride everything else — including the Ho Chi Minh Road, Đà Lạt highlands, and the long descent to the south. You earn this one.",
+    segments: [
+      { day:"1–2", location:"Hanoi", km:60, elev:200, type:"transit", region:"north",
+        icon:"🏙️", notes:"Arrive, assemble. Day 2: Perfume Pagoda loop (60 km, river crossing by boat). Optional: add 3 pre-trip days to Hà Giang for the northern loop — the most dramatic riding in Vietnam." },
+      { day:"3–6", location:"Hanoi → Ninh Bình → Vinh", km:310, elev:1400, type:"ride", region:"north",
+        icon:"🚴", notes:"Ride south on Hwy 15A — quieter than Hwy 1, more villages. Ninh Bình karst and Tam Cốc. Push through Thanh Hóa into Nghệ An — birthplace of Hồ Chí Minh. Visit Làng Sen." },
+      { day:"7", location:"Vinh → Đồng Hới (train)", km:0, elev:0, type:"transit", region:"north-central",
+        icon:"🚂", notes:"One train gap — skips 160 km of flat, exposed Hà Tĩnh coast. The single concession to practicality on this trip. Arrive Đồng Hới with fresh legs for the best section." },
+      { day:"8–9", location:"Phong Nha", km:80, elev:400, type:"rest", region:"north-central",
+        icon:"🕳️", notes:"Two days in Phong Nha-Kẻ Bàng. Day 1: Dark Cave (zipline + kayak). Day 2: Phong Nha cave by boat, evening karst valley ride. Don't compress this into one day." },
+      { day:"10–13", location:"Đồng Hới → Hué (Ho Chi Minh Road)", km:280, elev:3200, type:"ride", region:"central",
+        icon:"🌿", notes:"The best riding of the trip. Ho Chi Minh Road west — dense jungle, minimal traffic, former Trường Sơn wartime supply route. Khe Sanh, A Lưới valley, full DMZ immersion. Descend to Hué." },
+      { day:"14–15", location:"Hué", km:80, elev:600, type:"rest", region:"central",
+        icon:"🏯", notes:"Two full days. Citadel, royal tombs by bike, Thien Mu Pagoda, Thuận An Beach. Cook class. Bún bò Hué." },
+      { day:"16–17", location:"Hué → Hội An (Hải Vân)", km:150, elev:2400, type:"ride", region:"central",
+        icon:"⛰️", notes:"Hải Vân Pass. Take your time on top — lunch at the summit fort. Descend to Lăng Cô for a swim. Đà Nẵng → Hội An coastal road." },
+      { day:"18", location:"Hội An rest", km:40, elev:0, type:"rest", region:"central",
+        icon:"🏮", notes:"Full rest day. Mỹ Sơn Cham ruins by bike (40 km round trip through Thu Bon valley) or Cù Lao Chàm island by boat." },
+      { day:"19–21", location:"Hội An → Quy Nhơn", km:240, elev:2200, type:"ride", region:"south-central",
+        icon:"🌊", notes:"South on the lonely coast. Chu Lai, Sa Huỳnh pink lake, Bình Định Cham towers. Excellent seafood at every stop. Arrive Quy Nhơn beach." },
+      { day:"22–23", location:"Quy Nhơn → Đà Lạt", km:160, elev:4200, type:"ride", region:"highlands",
+        icon:"🌲", notes:"Bus west to highland base, then ride up to Đà Lạt (1,500m). The biggest climbing day of the trip. Pine forests, waterfalls, cool air. French colonial architecture at altitude — surreal after weeks on the coast." },
+      { day:"24", location:"Đà Lạt rest", km:60, elev:700, type:"rest", region:"highlands",
+        icon:"☕", notes:"Explore by bike. Trúc Lâm Monastery and lake loop. Night market. Artichoke tea and Đà Lạt wine. Rest legs before the big descent." },
+      { day:"25–26", location:"Đà Lạt → Mũi Né", km:230, elev:2000, type:"ride", region:"south",
+        icon:"🏜️", notes:"The descent you've been waiting for — 1,500m dropped over 80 km to the coast. One of the best descents in SE Asia on a gravel-capable bike. Mũi Né: dunes, red canyon, kite surfers." },
+      { day:"27", location:"Mũi Né → HCMC (bus)", km:0, elev:0, type:"transit", region:"south",
+        icon:"🚌", notes:"Bus to Hồ Chí Minh City (4 hrs). Box bike. Reunification Palace, War Remnants Museum, Bến Thành market. Bánh mì Huỳnh Hoa." },
+      { day:"28", location:"Ho Chi Minh City", km:0, elev:0, type:"rest", region:"south",
+        icon:"✈️", notes:"Depart Tân Sơn Nhất. Mekong Delta day trip if your flight allows — the contrast with the north is worth it." }
+    ]
+  }
+};
+
+const TYPE_LABELS = {
+  ride:    "Riding",
+  rest:    "Rest / Explore",
+  transit: "Transit"
+};
+
+let currentWeeks = 3;
+
+function regionClass(r) {
+  return 'region-' + r.toLowerCase().replace(/\s+/g, '-');
+}
+function regionLabel(r) {
+  const map = {
+    'north': 'North', 'north-central': 'North-Central',
+    'central': 'Central', 'south-central': 'South-Central',
+    'highlands': 'Highlands', 'south': 'South'
+  };
+  return map[r] || r;
+}
+
+function renderStats(trip) {
+  document.getElementById('stats-route').textContent =
+    `Hanoi → Ho Chi Minh City · ${trip.label}`;
+
+  const stats = [
+    { value: trip.km.toLocaleString(), unit: 'km',   label: 'Ridden Distance' },
+    { value: trip.elevation.toLocaleString(), unit: 'm', label: 'Elevation Gain' },
+    { value: trip.riding_days, unit: 'days', label: 'On Bike' },
+    { value: trip.rest_days,   unit: 'days', label: 'Rest / Explore' },
+    { value: trip.train_gaps,  unit: 'gaps', label: 'Train Bridges' },
+    { value: trip.avg_daily_km, unit: 'km/d', label: 'Avg Riding Day' },
+  ];
+
+  document.getElementById('stats-grid').innerHTML = stats.map(s => `
+    <div class="stat-block">
+      <div class="stat-value-row">
+        <span class="stat-value">${s.value}</span>
+        <span class="stat-unit">${s.unit}</span>
+      </div>
+      <div class="stat-label">${s.label}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('stats-style').textContent = trip.style;
+}
+
+function renderSegments(trip) {
+  const maxElev = Math.max(...trip.segments.map(s => s.elev));
+
+  document.getElementById('segments').innerHTML = trip.segments.map(seg => {
+    const pct = seg.elev > 0 ? Math.max(5, Math.round((seg.elev / maxElev) * 100)) : 0;
+    const elevHtml = seg.elev > 0 ? `
+      <div class="elev-bar">
+        <div class="elev-track"><div class="elev-fill" style="width:${pct}%"></div></div>
+        <span class="elev-label">${seg.elev.toLocaleString()}m ↑</span>
+      </div>` : '';
+
+    const statsHtml = seg.km > 0 ? `
+      <div class="seg-stats">
+        <div class="seg-km">${seg.km}<span> km</span></div>
+        ${elevHtml}
+      </div>` : '';
+
+    return `
+      <div class="segment-row">
+        <div class="segment-day"><span>Day<br>${seg.day}</span></div>
+        <div class="segment-card type-${seg.type}">
+          <div class="seg-header">
+            <div class="seg-location">
+              <span class="seg-icon">${seg.icon}</span>
+              ${seg.location}
+            </div>
+            <div class="seg-badges">
+              <span class="badge badge-type-${seg.type}">${TYPE_LABELS[seg.type]}</span>
+              <span class="badge ${regionClass(seg.region)}">${regionLabel(seg.region)}</span>
+            </div>
+          </div>
+          ${statsHtml}
+          <p class="seg-notes">${seg.notes}</p>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function render(weeks) {
+  const trip = TRIPS[weeks];
+  renderStats(trip);
+  renderSegments(trip);
+}
+
+// Tab switching
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentWeeks = parseInt(btn.dataset.weeks);
+    render(currentWeeks);
+  });
+});
+
+// Initial render
+render(currentWeeks);
+</script>
+
+</body>
+</html>
