@@ -15,6 +15,10 @@ const SERIES_LABELS = {
   'social-fabric': 'Social Fabric & Infrastructure',
 }
 
+const SERIES_TOOLS = {
+  'heat': { path: '/lab/heat', label: 'Heat Typology Tool' },
+}
+
 const AEI_CHARTS = {
   '/plots/task_pct_trends.png':              AEITaskTrends,
   '/plots/automation_augmentation_trends.png': AEICollabTrends,
@@ -125,6 +129,19 @@ export default function MarkdownPost({ post, backPath, backLabel, seriesPosts })
           onMouseLeave={e => e.currentTarget.style.color = 'var(--c-text-muted)'}>
           ← {backLabel}
         </Link>
+        {SERIES_TOOLS[post.series_slug] && (
+          <Link
+            to={SERIES_TOOLS[post.series_slug].path}
+            className="ml-3 inline-flex items-center text-xs px-2.5 py-1 rounded-full border transition-opacity hover:opacity-70"
+            style={{
+              color: 'var(--c-text-muted)',
+              borderColor: 'var(--c-border)',
+              backgroundColor: 'var(--c-surface)',
+            }}
+          >
+            {SERIES_TOOLS[post.series_slug].label} →
+          </Link>
+        )}
       </div>
 
       {post.book && (
