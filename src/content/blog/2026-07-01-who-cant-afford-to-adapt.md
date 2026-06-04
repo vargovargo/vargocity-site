@@ -7,13 +7,17 @@ series_slug: "heat"
 series_order: 4
 ---
 
-*Shock, stress, and shift each carry a different equity problem. What they share is a gap between where adaptation is most needed and where the capacity to deliver it lives.*
+*On what the three shapes of heat each reveal about who adaptation is designed for — and who it misses.*
 
 ---
 
 Post 2 in this series made the within-county argument: inside a county, the heat wave is shared and the suffering isn't. The warehouse worker and the remote manager are on the same hot day, in the same county, and they are not in the same situation.
 
 This post is at a different scale. Which counties face the worst combination of exposure and adaptive capacity? And what does that actually look like — because the answer changes depending on which shape the heat pressure takes. Shock, stress, and shift each carry a different equity problem. The places where those problems are worst are not the same places. And whether the adaptation that exists reaches those places depends on getting that distinction right.
+
+The relationship between heat type and adaptive capacity is visible across all 2,992 counties in the panel.
+
+![Heat type score vs. vulnerability scatter](/plots/heat-scatter-toggle.png)
 
 ---
 
@@ -40,6 +44,8 @@ That is the within-stress-place equity problem. The across-place problem is more
 The equity analysis runs against all 2,992 counties in the panel. The correlation between a county's stress score and its FEMA Social Vulnerability Index is +0.45. Between stress score and FEMA Community Resilience: -0.36. Stress-dominant counties have a median resilience score of 31 — against 70 for shock counties and 55 for shift counties. They have a median social vulnerability index of 76, against 41 for shock and 41 for shift. Their weighted-median household income is $68,000, against $83,000 for shock and shift counties.
 
 The counties most urgently in need of extending their heat infrastructure past its design limits are also the least positioned to do it.
+
+![Heat type double-burden map](/plots/heat-map-toggle.png)
 
 Three hundred and five counties meet all three thresholds simultaneously — stress score ≥ 0.5, SoVI ≥ 70, resilience ≤ 40. The geography is not random. Madison Parish, Louisiana: stress 0.99, SoVI 99 out of 100, resilience 35, median income $34,508. East Carroll Parish: stress 0.96, SoVI 99, income $30,856. Wilkinson County, Mississippi: stress 0.95, SoVI 100, income $34,928. The top counties by stress score are overwhelmingly Louisiana, Mississippi, and Texas, with Imperial County, California at the western edge — stress 0.91, SoVI 85, resilience 2, an agricultural economy built on farmworkers who labor in conditions that kill people in counties with higher scores.
 

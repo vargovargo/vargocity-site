@@ -38,6 +38,12 @@
   --c-map-selected: #FC4C02;
   --c-font-heading: 'Inter', system-ui, sans-serif;
   --c-font-mono: ui-monospace, monospace;
+  --c-heat-shock: #C0583A;
+  --c-heat-stress: #D4813B;
+  --c-heat-shift: #4B7CB8;
+  --c-heat-shock-bg: rgba(192, 88, 58, 0.133);
+  --c-heat-stress-bg: rgba(212, 129, 59, 0.133);
+  --c-heat-shift-bg: rgba(75, 124, 184, 0.133);
 }
 
 [data-theme="warm"] {

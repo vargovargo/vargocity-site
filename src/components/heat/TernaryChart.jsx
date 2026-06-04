@@ -1,6 +1,17 @@
-import { useRef, useEffect, useState, useMemo } from 'react'
+import { useRef, useEffect, useState, useMemo, useCallback } from 'react'
 
 /** @import { CountyRecord } from '../../types/heat-typology.js' */
+
+const STATE_ABBR = {
+  '01':'AL','02':'AK','04':'AZ','05':'AR','06':'CA','08':'CO','09':'CT',
+  '10':'DE','11':'DC','12':'FL','13':'GA','15':'HI','16':'ID','17':'IL',
+  '18':'IN','19':'IA','20':'KS','21':'KY','22':'LA','23':'ME','24':'MD',
+  '25':'MA','26':'MI','27':'MN','28':'MS','29':'MO','30':'MT','31':'NE',
+  '32':'NV','33':'NH','34':'NJ','35':'NM','36':'NY','37':'NC','38':'ND',
+  '39':'OH','40':'OK','41':'OR','42':'PA','44':'RI','45':'SC','46':'SD',
+  '47':'TN','48':'TX','49':'UT','50':'VT','51':'VA','53':'WA','54':'WV',
+  '55':'WI','56':'WY',
+}
 
 const TYPE_COLORS = {
   shock:  '#C0583A',
@@ -60,6 +71,14 @@ function useContainerWidth(fallback = 520) {
  */
 export default function TernaryChart({ counties, selectedFips, onSelect }) {
   const [containerRef, width] = useContainerWidth()
+  const [hoverEntry, setHoverEntry] = useState(null)
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 })
+
+  const handleMouseMove = useCallback((e) => {
+    if (!containerRef.current) return
+    const rect = containerRef.current.getBoundingClientRect()
+    setTooltipPos({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+  }, [containerRef])
 
   const viewW = 520
   const viewH = 500
@@ -74,6 +93,7 @@ export default function TernaryChart({ counties, selectedFips, onSelect }) {
       const entry = {
         fips: c.county_fips,
         name: c.name,
+        state: c.state,
         dominant,
         x: pt.x,
         y: pt.y,
@@ -107,7 +127,7 @@ export default function TernaryChart({ counties, selectedFips, onSelect }) {
   const svgHeight = Math.round((viewH / viewW) * width)
 
   return (
-    <div ref={containerRef} className="my-6">
+    <div ref={containerRef} className="my-6 relative" onMouseMove={handleMouseMove}>
       <svg
         width={width}
         height={svgHeight}
@@ -156,9 +176,9 @@ export default function TernaryChart({ counties, selectedFips, onSelect }) {
             stroke="none"
             style={{ cursor: 'pointer' }}
             onClick={(e) => { e.stopPropagation(); onSelect(d.fips) }}
-          >
-            <title>{d.name} ({d.dominant})</title>
-          </circle>
+            onMouseEnter={() => setHoverEntry(d)}
+            onMouseLeave={() => setHoverEntry(null)}
+          />
         ))}
 
         {/* Selected county — rendered last to appear on top */}
@@ -191,6 +211,34 @@ export default function TernaryChart({ counties, selectedFips, onSelect }) {
           dot size = population (log scale)
         </text>
       </svg>
+
+      {hoverEntry && (
+        <div
+          style={{
+            position: 'absolute',
+            left: tooltipPos.x + 14,
+            top: tooltipPos.y - 36,
+            pointerEvents: 'none',
+            zIndex: 10,
+            background: 'var(--c-surface)',
+            border: '1px solid var(--c-border)',
+            borderRadius: '6px',
+            padding: '4px 10px',
+            fontSize: '12px',
+            lineHeight: '1.5',
+            whiteSpace: 'nowrap',
+            boxShadow: '0 1px 4px rgba(0,0,0,0.12)',
+          }}
+        >
+          <span style={{ color: 'var(--c-text)', fontWeight: 500 }}>
+            {hoverEntry.name}, {STATE_ABBR[hoverEntry.state] ?? hoverEntry.state}
+          </span>
+          <span style={{ color: 'var(--c-text-muted)', margin: '0 5px' }}>·</span>
+          <span style={{ color: hoverEntry.color, textTransform: 'capitalize' }}>
+            {hoverEntry.dominant}
+          </span>
+        </div>
+      )}
 
       <p className="text-xs mt-1" style={{ color: 'var(--c-text-muted)' }}>
         Each dot is a US county. Position reflects shock/stress/shift score mix; counties near a corner are dominated by that type.
