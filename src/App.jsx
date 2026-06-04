@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom'
 import SiteNav from './components/layout/SiteNav'
 import Footer from './components/layout/Footer'
 import HomePage from './pages/HomePage'
@@ -15,6 +15,12 @@ const themes = [
   { id: 'warm',    label: 'Warm',    swatch: '#F5EDE0', ring: '#B87333' },
   { id: 'alpine',  label: 'Alpine',  swatch: '#0F1621', ring: '#7AB8CC' },
 ]
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  return null
+}
 
 function SiteLayout({ theme, themes, onThemeChange }) {
   return (
@@ -42,6 +48,7 @@ export default function App() {
 
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <ScrollToTop />
       <Routes>
         <Route path="/gratitude-opt-in" element={<GratitudeOptInPage />} />
         <Route element={<SiteLayout theme={theme} themes={themes} onThemeChange={setTheme} />}>
