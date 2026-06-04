@@ -1,9 +1,17 @@
 import { useState, useEffect, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import usePageTitle from '../../lib/usePageTitle'
 import { loadHeatTypologyData } from '../../lib/heat-data'
 import HeatMap from './HeatMap'
 import CountyPanel from './CountyPanel'
 import TernaryChart from './TernaryChart'
+
+const SERIES_POSTS = [
+  { slug: '2026-04-23-two-kinds-of-summer', title: 'Two Kinds of Summer' },
+  { slug: '2026-04-23-shocked-stressed-and-shifting-who-suffers', title: 'Shocked, Stressed & Shifting' },
+  { slug: '2026-05-20-what-the-type-demands', title: 'Three Counties, Three Playbooks' },
+  { slug: '2026-07-01-who-cant-afford-to-adapt', title: "Who Can't Afford to Adapt" },
+]
 
 const TYPE_META = {
   shock: {
@@ -21,6 +29,28 @@ const TYPE_META = {
     color: '#4B7CB8',
     desc: 'Heat envelope reorganizing viable activity — who can work, live, and move outdoors is changing.',
   },
+}
+
+function SeriesLinks() {
+  return (
+    <div className="flex flex-wrap items-center gap-2 mt-4 mb-6">
+      <span className="text-xs" style={{ color: 'var(--c-text-muted)' }}>In the series:</span>
+      {SERIES_POSTS.map(({ slug, title }) => (
+        <Link
+          key={slug}
+          to={`/lab/posts/${slug}`}
+          className="text-xs px-2.5 py-1 rounded-full border transition-opacity hover:opacity-70"
+          style={{
+            color: 'var(--c-text-muted)',
+            borderColor: 'var(--c-border)',
+            backgroundColor: 'var(--c-surface)',
+          }}
+        >
+          {title}
+        </Link>
+      ))}
+    </div>
+  )
 }
 
 function TypeExplainer() {
@@ -100,6 +130,7 @@ export default function HeatTypologyPage() {
           Three shapes of heat trajectory across U.S. counties — each with different implications
           for infrastructure, labor, and community adaptation.
         </p>
+        <SeriesLinks />
       </div>
 
       {/* Type explainer */}
