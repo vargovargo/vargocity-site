@@ -43,6 +43,7 @@ export default function HeatMapToggle() {
     fetch('/data/heat-counties-panel.json')
       .then(r => r.json())
       .then(d => setCounties(d.counties))
+      .catch(() => setCounties([]))
   }, [])
 
   const burdenSet = useMemo(() => {

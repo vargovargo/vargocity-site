@@ -65,6 +65,7 @@ export default function HeatScatterToggle() {
     fetch('/data/heat-counties-panel.json')
       .then(r => r.json())
       .then(d => setCounties(d.counties))
+      .catch(() => setCounties([]))
   }, [])
 
   // Build plot points
