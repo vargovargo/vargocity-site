@@ -4,6 +4,9 @@ import remarkGfm from 'remark-gfm'
 import { AEITaskTrends, AEICollabTrends, AEIPrimitivesScatter, AEISummaryTable, SOC43SubgroupChart, StateScatter, StateSOC43Bar, StateThresholdChart } from './AEICharts'
 import { SBIWageGap, SBIMonthlyCost, SBICostOfChild } from './SBICharts'
 import { ChettyScatter } from './SocialFabricCharts'
+import { SocialFabricMap } from './SocialFabricMap'
+import HeatMapToggle from './HeatMapToggle'
+import HeatScatterToggle from './HeatScatterToggle'
 
 const SERIES_LABELS = {
   'heat':          'Heat in the West',
@@ -25,6 +28,9 @@ const AEI_CHARTS = {
   '/plots/sbi_monthly_cost.png':             SBIMonthlyCost,
   '/plots/sbi_cost_of_child.png':            SBICostOfChild,
   '/plots/chetty_scatter.png':               ChettyScatter,
+  '/plots/social_fabric_map.png':            SocialFabricMap,
+  '/plots/heat-map-toggle.png':             HeatMapToggle,
+  '/plots/heat-scatter-toggle.png':         HeatScatterToggle,
 }
 
 function PostImage({ src, alt }) {
