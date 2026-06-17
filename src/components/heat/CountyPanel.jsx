@@ -126,6 +126,11 @@ export default function CountyPanel({ county, onClose }) {
           <ScoreBar type="shock"  score={scores.shock} />
           <ScoreBar type="stress" score={scores.stress} />
           <ScoreBar type="shift"  score={scores.shift} />
+          {dominant !== 'shock' && scores.shock >= 0.25 && (
+            <p className="text-xs mt-2" style={{ color: 'var(--c-text-muted)' }}>
+              {Math.round(scores.shock * 100)}% shock weight — some baseline cooling infrastructure still applies.
+            </p>
+          )}
         </div>
 
         {/* Key metrics */}

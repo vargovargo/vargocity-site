@@ -20,10 +20,19 @@ const STATE_ABBR = {
   '55':'WI','56':'WY',
 }
 
+function countyMatchesFilter(county, filter) {
+  if (!filter) return true
+  const m = county.hazards.heat.metrics
+  if (filter === 'high-sovi')      return m.sovi_score >= 70
+  if (filter === 'low-resilience') return m.resl_score <= 40
+  if (filter === 'double-burden')  return county.hazards.heat.scores.stress >= 0.5 && m.sovi_score >= 70 && m.resl_score <= 40
+  return true
+}
+
 /**
- * @param {{ counties: import('../../types/heat-typology').CountyRecord[]|null, selectedFips: string|null, onSelect: (fips: string|null) => void }} props
+ * @param {{ counties: import('../../types/heat-typology').CountyRecord[]|null, selectedFips: string|null, onSelect: (fips: string|null) => void, overlayFilter: string|null }} props
  */
-export default function HeatMap({ counties, selectedFips, onSelect }) {
+export default function HeatMap({ counties, selectedFips, onSelect, overlayFilter = null }) {
   const containerRef = useRef(null)
   const [hoveredFips, setHoveredFips] = useState(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
@@ -79,7 +88,10 @@ export default function HeatMap({ counties, selectedFips, onSelect }) {
               if (county) {
                 const { dominant, confidence } = county.hazards.heat
                 fill = TYPE_COLORS[dominant]
-                fillOpacity = Math.min(0.92, 0.22 + confidence * 1.0)
+                const matches = countyMatchesFilter(county, overlayFilter)
+                fillOpacity = matches
+                  ? Math.min(0.92, 0.22 + confidence * 1.0)
+                  : 0.06
               }
 
               return (

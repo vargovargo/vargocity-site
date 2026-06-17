@@ -13,6 +13,49 @@ const SERIES_POSTS = [
   { slug: '2026-07-01-who-cant-afford-to-adapt', title: "Who Can't Afford to Adapt" },
 ]
 
+const OVERLAY_FILTERS = [
+  { id: null,             label: 'All counties',    note: null },
+  { id: 'high-sovi',     label: 'SoVI ≥ 70',       note: 'High social vulnerability' },
+  { id: 'low-resilience',label: 'Resilience ≤ 40', note: 'Low community resilience' },
+  { id: 'double-burden', label: 'Double burden',    note: 'Stress ≥ 0.5 · SoVI ≥ 70 · Resilience ≤ 40' },
+]
+
+function OverlayFilterBar({ value, onChange, count }) {
+  return (
+    <div className="flex flex-wrap items-center gap-2 mb-4">
+      <span className="text-xs" style={{ color: 'var(--c-text-muted)' }}>Show:</span>
+      {OVERLAY_FILTERS.map(({ id, label, note }) => {
+        const active = value === id
+        return (
+          <button
+            key={String(id)}
+            onClick={() => onChange(id)}
+            title={note ?? undefined}
+            style={{
+              fontSize: '11px',
+              padding: '2px 10px',
+              borderRadius: '999px',
+              border: '1px solid',
+              borderColor: active ? 'var(--c-text)' : 'var(--c-border)',
+              backgroundColor: active ? 'var(--c-text)' : 'transparent',
+              color: active ? 'var(--c-bg)' : 'var(--c-text-muted)',
+              cursor: 'pointer',
+              transition: 'all 0.12s',
+            }}
+          >
+            {label}
+          </button>
+        )
+      })}
+      {count != null && (
+        <span className="text-xs" style={{ color: 'var(--c-text-muted)' }}>
+          — {count.toLocaleString()} counties
+        </span>
+      )}
+    </div>
+  )
+}
+
 const TYPE_META = {
   shock: {
     label: 'Shock',
@@ -92,6 +135,7 @@ export default function HeatTypologyPage() {
   const [counties, setCounties] = useState(null)
   const [error, setError] = useState(null)
   const [selectedFips, setSelectedFips] = useState(null)
+  const [overlayFilter, setOverlayFilter] = useState(null)
 
   useEffect(() => {
     loadHeatTypologyData()
@@ -100,6 +144,13 @@ export default function HeatTypologyPage() {
   }, [])
 
   const handleSelect = useCallback((fips) => setSelectedFips(fips), [])
+
+  const filterCount = counties && overlayFilter ? (() => {
+    const m = { 'high-sovi': c => c.hazards.heat.metrics.sovi_score >= 70,
+                 'low-resilience': c => c.hazards.heat.metrics.resl_score <= 40,
+                 'double-burden': c => c.hazards.heat.scores.stress >= 0.5 && c.hazards.heat.metrics.sovi_score >= 70 && c.hazards.heat.metrics.resl_score <= 40 }
+    return counties.filter(m[overlayFilter] ?? (() => true)).length
+  })() : null
 
   const selectedCounty = counties && selectedFips
     ? counties.find(c => c.county_fips === selectedFips) ?? null
@@ -136,6 +187,9 @@ export default function HeatTypologyPage() {
       {/* Type explainer */}
       <TypeExplainer />
 
+      {/* Overlay filter */}
+      <OverlayFilterBar value={overlayFilter} onChange={setOverlayFilter} count={filterCount} />
+
       {/* Map + Panel */}
       <div className="flex flex-col sm:flex-row gap-4 items-start">
         <div className="min-w-0" style={{ flex: selectedCounty ? '1 1 0%' : '1 1 100%' }}>
@@ -143,6 +197,7 @@ export default function HeatTypologyPage() {
             counties={counties}
             selectedFips={selectedFips}
             onSelect={handleSelect}
+            overlayFilter={overlayFilter}
           />
           <ConfidenceNote />
         </div>
