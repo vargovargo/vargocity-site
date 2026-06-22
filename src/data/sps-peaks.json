@@ -5902,7 +5902,11 @@
               "date": "2026-06-21",
               "notes": "On the way home from Bishop, we tried to squeeze in another peak before heading home for Father's Day. Got up in about 1.5hr and back to the car with enough time to jump in Tenaya and make it home in time for dinner.",
               "strava_url": "https://www.strava.com/activities/19016446998",
-              "photos": [],
+              "photos": [
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140477/IMG_1314_yxvczj.heic", "caption": "" },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140470/IMG_1323_zuzdpa.heic", "caption": "" },
+                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140470/IMG_1318_et16ey.heic", "caption": "" }
+              ],
               "strava": {
                 "activity_id": "19016446998",
                 "distance_miles": 5.7,
