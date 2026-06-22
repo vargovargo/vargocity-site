@@ -155,12 +155,12 @@ export default function SierraNevadaReliefMap() {
   // Z=10 overlay fades in from scale 1.5 → 3
   const z10Opacity = Math.min(1, Math.max(0, (xfm.scale - 1.5) / 1.5))
 
-  // Constant-screen-size markers: target 7px radius (normal), 11px (selected).
-  // Divide by (ppp × scale) to convert screen pixels → SVG canvas units.
+  // Constant-screen-size markers. Touch devices get larger targets.
+  const isTouch = window.matchMedia('(pointer: coarse)').matches
   const containerW = containerRef.current?.offsetWidth ?? 460
   const ppp = containerW / CANVAS_W
-  const mR  = 5  / (ppp * xfm.scale)   // normal marker radius in canvas units
-  const mRS = 9  / (ppp * xfm.scale)   // selected marker radius
+  const mR  = (isTouch ? 9  : 5)  / (ppp * xfm.scale)   // normal marker radius in canvas units
+  const mRS = (isTouch ? 14 : 9)  / (ppp * xfm.scale)   // selected marker radius
   const mSW = 1.5 / (ppp * xfm.scale)  // normal stroke width
   const mSSW = 2  / (ppp * xfm.scale)  // selected stroke width
 
@@ -259,8 +259,8 @@ export default function SierraNevadaReliefMap() {
                   const rect = svgEl.getBoundingClientRect()
                   const svgX = (e.clientX - rect.left) / rect.width * CANVAS_W
                   const svgY = (e.clientY - rect.top) / rect.height * CANVAS_H
-                  // 12px screen threshold, converted to canvas units at current zoom
-                  const threshold = 12 * CANVAS_W / rect.width
+                  // threshold in canvas units — wider on touch to compensate for finger imprecision
+                  const threshold = (isTouch ? 20 : 12) * CANVAS_W / rect.width
                   const nearby = mappable
                     .filter(p => {
                       const [px, py] = geoToCanvas(p.lng, p.lat)
@@ -291,10 +291,17 @@ export default function SierraNevadaReliefMap() {
       </div>
     </div>{/* end map viewport */}
 
-      {/* Peak detail panel */}
+      {/* Peak detail panel — floats right on desktop, expands below map on mobile */}
       {selected && (
         <div
-          style={{
+          style={window.innerWidth < 600 ? {
+            marginTop: 8,
+            width: '100%',
+            backgroundColor: 'var(--c-surface)',
+            border: '1px solid var(--c-border)',
+            borderRadius: 4,
+            padding: '12px 14px',
+          } : {
             position: 'absolute',
             top: 0,
             left: 'calc(100% + 16px)',
