@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-Generate Sierra Nevada hillshade PNG for the Adventures map.
+Generate Sierra Nevada hillshade WebP for the Adventures map.
 
 Downloads SRTM elevation tiles (Terrarium format) from AWS and computes
-a hillshade with a blue-gray hypsometric color ramp. Output is clipped
-to the Sierra Nevada boundary polygon.
+a hillshade with a blue-gray color ramp.  The alpha channel is a
+Gaussian-blurred version of the boundary mask, so the range fades
+softly into the page background — no hard clip line.
 
 Usage: python3 scripts/generate-sierra-hillshade.py
-Output: public/sierra-hillshade.png   (1024×1280, RGBA)
-        public/sierra-nevada-boundary.geojson  (if not already present)
+Output: public/sierra-hillshade.webp  (1024×1280, RGBA)
 """
 
 import io
@@ -16,7 +16,7 @@ import json
 import math
 import urllib.request
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageFilter
 
 # ── Tile parameters ──────────────────────────────────────────────────────────
 
@@ -122,43 +122,36 @@ def compute_hillshade(elev, cell_size_m=490.0, azimuth_deg=315.0, altitude_deg=4
 
 # ── Color ramp ────────────────────────────────────────────────────────────────
 
-# Maps normalized hillshade (0=shadow, 1=lit) to RGBA.
-# Dark navy in shadow → icy white on fully lit faces.
-# This matches the blue-gray minimalist aesthetic of the reference image.
+# Maps normalized hillshade (0=shadow, 1=lit) to RGB.
+# Deep shadow → dark navy; illuminated face → near-white.
+# The steep curve at both ends makes the contrast crisp.
 COLOR_RAMP = [
-    (0.00, (10,  30,  50,  255)),  # deep shadow → dark navy
-    (0.20, (35,  75, 110,  255)),  # mid shadow  → dark teal
-    (0.42, (75, 125, 160,  255)),  # partial light → steel blue
-    (0.62, (140, 180, 205, 255)),  # mostly lit   → light blue
-    (0.80, (200, 220, 232, 255)),  # bright       → pale blue
-    (1.00, (240, 245, 248, 255)),  # fully lit    → near white
+    (0.00, (6,   18,  38)),   # deep shadow  → near black navy
+    (0.14, (22,  58,  95)),   # heavy shadow → dark teal
+    (0.32, (52, 102, 145)),   # mid shadow   → steel blue
+    (0.54, (105, 155, 190)),  # midtone      → medium blue
+    (0.76, (175, 210, 228)),  # soft light   → pale blue
+    (1.00, (238, 244, 248)),  # full light   → near white
 ]
 
-def shade_to_rgba(shade_val):
+def shade_to_rgb(shade_val):
     """Interpolate through COLOR_RAMP for a scalar shade value 0–1."""
     for i in range(1, len(COLOR_RAMP)):
         t0, c0 = COLOR_RAMP[i - 1]
         t1, c1 = COLOR_RAMP[i]
         if shade_val <= t1:
-            alpha = (shade_val - t0) / (t1 - t0)
-            return tuple(int(c0[k] + (c1[k] - c0[k]) * alpha) for k in range(4))
+            a = (shade_val - t0) / (t1 - t0)
+            return tuple(int(c0[k] + (c1[k] - c0[k]) * a) for k in range(3))
     return COLOR_RAMP[-1][1]
 
 def apply_color_ramp(shade):
-    """Vectorised color ramp application. Returns H×W×4 uint8 RGBA array."""
-    h, w = shade.shape
-    rgba = np.zeros((h, w, 4), dtype=np.uint8)
-
-    # Build lookup table (1000 steps for smooth interpolation)
+    """Vectorised color ramp → H×W×3 uint8 RGB array."""
     LUT_SIZE = 1000
-    lut = np.zeros((LUT_SIZE, 4), dtype=np.uint8)
+    lut = np.zeros((LUT_SIZE, 3), dtype=np.uint8)
     for i in range(LUT_SIZE):
-        t = i / (LUT_SIZE - 1)
-        lut[i] = shade_to_rgba(t)
-
+        lut[i] = shade_to_rgb(i / (LUT_SIZE - 1))
     indices = np.clip((shade * (LUT_SIZE - 1)).astype(np.int32), 0, LUT_SIZE - 1)
-    rgba[:, :, :] = lut[indices]
-    return rgba
+    return lut[indices]
 
 # ── Boundary masking ──────────────────────────────────────────────────────────
 
@@ -217,21 +210,41 @@ def main():
     print(f"   Shade range: {shade.min():.3f} – {shade.max():.3f}")
 
     print("\n3. Applying blue-gray color ramp...")
-    rgba = apply_color_ramp(shade)
+    rgb = apply_color_ramp(shade)
 
-    print("\n4. Loading Sierra Nevada boundary and creating mask...")
+    print("\n4. Building soft alpha channel (feathered boundary)...")
     pixel_rings = [polygon_to_pixels(ring) for ring in load_boundary()]
-
-    print("   Rasterizing boundary polygon (this may take a moment)...")
     mask = rasterize_polygon(pixel_rings, CANVAS_W, CANVAS_H)
-    print(f"   Masked pixels: {mask.sum():,} / {CANVAS_W * CANVAS_H:,}")
 
-    # Apply mask: set alpha=0 outside boundary
-    rgba[:, :, 3] = np.where(mask, 255, 0)
+    # Gaussian blur on the binary mask creates a smooth fade at the edges.
+    # Radius 40px ≈ 20 km at 490 m/px — wide enough to lose the polygon outline.
+    BLUR_RADIUS = 40
+    mask_img = Image.fromarray((mask.astype(np.uint8) * 255), "L")
+    blurred = mask_img.filter(ImageFilter.GaussianBlur(BLUR_RADIUS))
+    soft_alpha = np.array(blurred, dtype=np.float32) / 255.0
+
+    # Additionally taper via elevation: flatten valley floors within the clip.
+    # Pixels below ~600 m that happen to be inside the polygon fade out naturally.
+    ELEV_LOW  = 400.0   # fully transparent below this
+    ELEV_HIGH = 900.0   # fully opaque above this
+    elev_fade = np.clip((elev - ELEV_LOW) / (ELEV_HIGH - ELEV_LOW), 0.0, 1.0)
+
+    # Combine: boundary feathering controls the outer edge;
+    # elevation fade softens any flat inland valley floors inside the clip.
+    alpha = soft_alpha * elev_fade
+    # Slightly boost so the main mountain body stays fully opaque.
+    alpha = np.clip(alpha * 1.4, 0.0, 1.0)
+
+    # Assemble RGBA
+    rgba = np.zeros((CANVAS_H, CANVAS_W, 4), dtype=np.uint8)
+    rgba[:, :, :3] = rgb
+    rgba[:, :, 3] = (alpha * 255).astype(np.uint8)
+
+    print(f"   Opaque pixels (alpha>200): {(rgba[:,:,3]>200).sum():,} / {CANVAS_W * CANVAS_H:,}")
 
     print(f"\n5. Saving to {OUTPUT_PATH}...")
     img = Image.fromarray(rgba, "RGBA")
-    img.save(OUTPUT_PATH, "WEBP", quality=85)
+    img.save(OUTPUT_PATH, "WEBP", quality=85, lossless=False)
     print(f"   Saved {img.width}×{img.height} RGBA WEBP")
 
     print("\nDone.")
