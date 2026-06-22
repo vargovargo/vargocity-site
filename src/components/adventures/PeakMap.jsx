@@ -15,6 +15,7 @@ function formatDate(dateStr) {
 export default function PeakMap() {
   const [selected, setSelected] = useState(null)
   const [lightbox, setLightbox] = useState(null)
+  const [tooltip, setTooltip] = useState(null)
 
   const mappable = climbedPeaks.filter(p => p.lat && p.lng)
 
@@ -51,7 +52,6 @@ export default function PeakMap() {
           const isSelected = selected?.name === peak.name
           return (
             <Marker key={peak.id || peak.name} coordinates={[peak.lng, peak.lat]}>
-              <title>{peak.name}</title>
               <circle
                 r={isSelected ? 7 : 5}
                 fill={isSelected ? '#e05c2d' : 'var(--c-invert-bg, #1a1a1a)'}
@@ -59,6 +59,9 @@ export default function PeakMap() {
                 strokeWidth={1.5}
                 style={{ cursor: 'pointer' }}
                 onClick={e => { e.stopPropagation(); setSelected(isSelected ? null : peak) }}
+                onMouseEnter={e => setTooltip({ name: peak.name, x: e.clientX, y: e.clientY })}
+                onMouseMove={e => setTooltip(t => t ? { ...t, x: e.clientX, y: e.clientY } : null)}
+                onMouseLeave={() => setTooltip(null)}
               />
             </Marker>
           )
@@ -168,6 +171,28 @@ export default function PeakMap() {
               </div>
             ))}
           </div>
+        </div>
+      )}
+
+      {tooltip && (
+        <div
+          style={{
+            position: 'fixed',
+            left: tooltip.x + 12,
+            top: tooltip.y - 10,
+            pointerEvents: 'none',
+            zIndex: 20,
+            backgroundColor: 'var(--c-surface)',
+            border: '1px solid var(--c-border)',
+            borderRadius: '3px',
+            padding: '3px 8px',
+            fontSize: '11px',
+            fontWeight: 500,
+            color: 'var(--c-text)',
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {tooltip.name}
         </div>
       )}
 
