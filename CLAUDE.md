@@ -204,9 +204,18 @@ Located at `src/data/sps-peaks.json`. Structure:
 ```
 
 - 248 total peaks across 24 regions
-- 14 peaks ascended as of 2026-03 (each with date, notes, optional Strava link)
 - `ascents` is an array — multiple summit dates per peak are supported
 - The Adventures page reads this data to display a checklist/map of summits
+
+### Adding a new ascent
+
+1. Add an entry to the peak's `ascents` array in `src/data/sps-peaks.json` with `date`, `notes`, `strava_url`, and optionally `photos` (array of `{ url, caption }` Cloudinary objects).
+2. Run the enrich script to fetch Strava stats and generate the SVG elevation sparkline:
+   ```bash
+   node scripts/enrich-peaks.js
+   ```
+   This hits the Strava API (credentials in `.env`), writes the SVG to `public/strava/<activity_id>.svg`, and adds a `strava` object back onto the ascent in `sps-peaks.json` with distance, elevation gain, time, and the sparkline path. It skips already-enriched entries, so it's safe to run incrementally.
+3. The home page peak counter and timeline update automatically — no other changes needed.
 
 ## Deployment
 

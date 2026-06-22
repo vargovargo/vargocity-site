@@ -4394,7 +4394,41 @@
               "scrambling_rating": "S-4.1"
             }
           ],
-          "ascents": []
+          "ascents": [
+            {
+              "date": "2026-06-20",
+              "notes": "Ben and I headed to Upper Buttermilk for an early season attempt at Humphrey's which we had planned twice before and never got to start on account of weather and such. This attempt was almost thwarted by an illness the weekend before but we adjusted and made it. We were totally alone up there, had a lot of self-owning by carrying axes, crampons, and pro and never using it. Luckily we got to use a brand new rope for one repel on the way down. Awesome day culminated with a burger at the bowling alley.",
+              "strava_url": "https://www.strava.com/activities/19016441323",
+              "photos": [
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782089897/IMG_5447_zekbun.jpg",
+                  "caption": ""
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782089942/IMG_1290_lv7gy2.heic",
+                  "caption": ""
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782089898/IMG_1276_gyoolm.heic",
+                  "caption": ""
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782089892/IMG_1305_dtog6r.heic",
+                  "caption": ""
+                }
+              ],
+              "strava": {
+                "activity_id": "19016441323",
+                "distance_miles": 8.6,
+                "elevation_gain_ft": 5866,
+                "moving_time_hms": "6:15:50",
+                "avg_heart_rate": 131,
+                "max_heart_rate": 162,
+                "sparkline_svg": "/strava/19016441323.svg",
+                "fetched_at": "2026-06-22"
+              }
+            }
+          ]
         },
         {
           "id": "16.4",
@@ -5863,7 +5897,24 @@
               "scrambling_rating": "S-3.1"
             }
           ],
-          "ascents": []
+          "ascents": [
+            {
+              "date": "2026-06-21",
+              "notes": "On the way home from Bishop, we tried to squeeze in another peak before heading home for Father's Day. Got up in about 1.5hr and back to the car with enough time to jump in Tenaya and make it home in time for dinner.",
+              "strava_url": "https://www.strava.com/activities/19016446998",
+              "photos": [],
+              "strava": {
+                "activity_id": "19016446998",
+                "distance_miles": 5.7,
+                "elevation_gain_ft": 3038,
+                "moving_time_hms": "1:59:51",
+                "avg_heart_rate": 141,
+                "max_heart_rate": 175,
+                "sparkline_svg": "/strava/19016446998.svg",
+                "fetched_at": "2026-06-22"
+              }
+            }
+          ]
         }
       ]
     },
