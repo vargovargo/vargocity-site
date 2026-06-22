@@ -17,18 +17,18 @@ const tabs = [
 ]
 
 const peakViews = [
-  { id: 'grid', label: 'Grid' },
+  { id: 'map', label: 'Map' },
   { id: 'timeline', label: 'Timeline' },
+  { id: 'grid', label: 'Grid' },
   { id: 'chart', label: 'Elevation' },
   { id: 'region', label: 'By Region' },
-  { id: 'map', label: 'Map' },
 ]
 
 export default function AdventuresPage() {
   usePageTitle('Adventures')
   const [searchParams] = useSearchParams()
   const [tab, setTab] = useState(searchParams.get('tab') || 'peaks')
-  const [peakView, setPeakView] = useState('grid')
+  const [peakView, setPeakView] = useState('map')
 
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
