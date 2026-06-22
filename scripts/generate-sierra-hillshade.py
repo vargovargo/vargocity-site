@@ -230,7 +230,19 @@ def main():
 
     # Combine: boundary feathering controls the outer edge;
     # elevation fade softens any flat inland valley floors inside the clip.
-    alpha = soft_alpha * elev_fade
+    # Edge-margin fade: linearly taper alpha to 0 within EDGE_MARGIN pixels of
+    # all four canvas edges.  This prevents a hard line when the boundary polygon
+    # sits very close to the canvas edge and the Gaussian blur gets clipped there.
+    EDGE_MARGIN = 80
+    ey = np.ones(CANVAS_H, dtype=np.float32)
+    ey[:EDGE_MARGIN] = np.linspace(0, 1, EDGE_MARGIN)
+    ey[-EDGE_MARGIN:] = np.linspace(1, 0, EDGE_MARGIN)
+    ex = np.ones(CANVAS_W, dtype=np.float32)
+    ex[:EDGE_MARGIN] = np.linspace(0, 1, EDGE_MARGIN)
+    ex[-EDGE_MARGIN:] = np.linspace(1, 0, EDGE_MARGIN)
+    edge_fade = ey[:, np.newaxis] * ex[np.newaxis, :]
+
+    alpha = soft_alpha * elev_fade * edge_fade
     # Slightly boost so the main mountain body stays fully opaque.
     alpha = np.clip(alpha * 1.4, 0.0, 1.0)
 
