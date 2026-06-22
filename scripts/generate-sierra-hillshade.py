@@ -122,16 +122,15 @@ def compute_hillshade(elev, cell_size_m=490.0, azimuth_deg=315.0, altitude_deg=4
 
 # ── Color ramp ────────────────────────────────────────────────────────────────
 
-# Maps normalized hillshade (0=shadow, 1=lit) to RGB.
-# Deep shadow → dark navy; illuminated face → near-white.
-# The steep curve at both ends makes the contrast crisp.
+# Warm-neutral ramp: shadow → site ink (#1A1A1A family), lit → site bg (#FAFAF8).
+# No hue shift — the terrain "comes out of" the page background.
 COLOR_RAMP = [
-    (0.00, (6,   18,  38)),   # deep shadow  → near black navy
-    (0.14, (22,  58,  95)),   # heavy shadow → dark teal
-    (0.32, (52, 102, 145)),   # mid shadow   → steel blue
-    (0.54, (105, 155, 190)),  # midtone      → medium blue
-    (0.76, (175, 210, 228)),  # soft light   → pale blue
-    (1.00, (238, 244, 248)),  # full light   → near white
+    (0.00, (18,  18,  14)),   # deep shadow  → near-ink
+    (0.22, (66,  62,  52)),   # heavy shadow → warm dark
+    (0.45, (140, 134, 118)),  # midtone      → warm gray
+    (0.68, (206, 201, 188)),  # soft lit     → warm light
+    (0.86, (232, 228, 218)),  # bright       → near cream
+    (1.00, (247, 244, 238)),  # full light   → site bg cream
 ]
 
 def shade_to_rgb(shade_val):

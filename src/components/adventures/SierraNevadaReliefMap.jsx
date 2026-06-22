@@ -26,6 +26,14 @@ function formatDate(dateStr) {
   })
 }
 
+// Cloudinary serves HEIC as JPEG/WebP when f_auto is present.
+// Without it, non-Safari browsers silently blank on .heic uploads.
+function cdnAuto(url) {
+  if (!url?.includes('cloudinary.com')) return url
+  if (url.includes('/upload/f_auto')) return url  // already transformed
+  return url.replace('/upload/', '/upload/f_auto,q_auto/')
+}
+
 export default function SierraNevadaReliefMap() {
   const [selected, setSelected] = useState(null)
   const [tooltip, setTooltip] = useState(null)
@@ -35,7 +43,7 @@ export default function SierraNevadaReliefMap() {
 
   return (
     <div
-      style={{ position: 'relative', maxWidth: 500, margin: '0 auto' }}
+      style={{ position: 'relative', maxWidth: 460 }}
       onClick={() => setSelected(null)}
     >
       {/*
@@ -185,7 +193,11 @@ export default function SierraNevadaReliefMap() {
                       {ascent.photos.map((photo, pi) => (
                         <button
                           key={pi}
-                          onClick={() => setLightbox({ photos: ascent.photos, peakName: selected.name, startIndex: pi })}
+                          onClick={() => setLightbox({
+                            photos: ascent.photos.map(p => ({ ...p, url: cdnAuto(p.url) })),
+                            peakName: selected.name,
+                            startIndex: pi,
+                          })}
                           style={{
                             width: 44, height: 44, borderRadius: 3, overflow: 'hidden',
                             flexShrink: 0, padding: 0, border: '1px solid var(--c-border)',
@@ -193,7 +205,7 @@ export default function SierraNevadaReliefMap() {
                           }}
                         >
                           <img
-                            src={photo.url}
+                            src={cdnAuto(photo.url)}
                             alt={photo.caption || selected.name}
                             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                           />
