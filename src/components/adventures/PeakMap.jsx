@@ -140,7 +140,7 @@ export default function PeakMap() {
                       href={ascent.strava_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ fontSize: '11px', color: 'var(--c-text-muted)', textDecoration: 'underline', textUnderlineOffset: '2px' }}
+                      style={{ fontSize: '11px', color: '#FC4C02', textDecoration: 'underline', textUnderlineOffset: '2px' }}
                     >
                       Strava
                     </a>
