@@ -291,10 +291,17 @@ export default function SierraNevadaReliefMap() {
       </div>
     </div>{/* end map viewport */}
 
-      {/* Peak detail panel */}
+      {/* Peak detail panel — floats right on desktop, expands below map on mobile */}
       {selected && (
         <div
-          style={{
+          style={window.innerWidth < 600 ? {
+            marginTop: 8,
+            width: '100%',
+            backgroundColor: 'var(--c-surface)',
+            border: '1px solid var(--c-border)',
+            borderRadius: 4,
+            padding: '12px 14px',
+          } : {
             position: 'absolute',
             top: 0,
             left: 'calc(100% + 16px)',
