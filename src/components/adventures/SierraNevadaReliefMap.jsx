@@ -139,29 +139,18 @@ export default function SierraNevadaReliefMap() {
   }
 
   function handleDoubleClick() {
-    resetZoom()
+    // Toggle: zoom in from full extent, or reset when already zoomed
+    if (xfmRef.current.scale <= 1.05) {
+      zoomToDetail()
+    } else {
+      resetZoom()
+    }
   }
 
   // Z=10 overlay opacity: fades in from scale 1.5 → 3
   const z10Opacity = Math.min(1, Math.max(0, (xfm.scale - 1.5) / 1.5))
 
   const isAtFullExtent = xfm.scale <= 1.05
-
-  const pillStyle = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    padding: '4px 11px',
-    background: 'var(--c-surface)',
-    border: '1px solid var(--c-border)',
-    borderRadius: 12,
-    cursor: 'pointer',
-    fontSize: 11,
-    fontWeight: 500,
-    color: 'var(--c-text-muted)',
-    letterSpacing: '0.02em',
-    userSelect: 'none',
-    whiteSpace: 'nowrap',
-  }
 
   return (
     <div style={{ position: 'relative', maxWidth: 460 }}>
@@ -245,10 +234,10 @@ export default function SierraNevadaReliefMap() {
                 key={peak.name}
                 cx={cx}
                 cy={cy}
-                r={isSel ? 14 : 8}
+                r={(isSel ? 14 : 8) / xfm.scale}
                 fill={isSel ? 'var(--c-accent, #FC4C02)' : 'rgba(255,255,255,0.88)'}
                 stroke={isSel ? 'white' : 'rgba(20,50,70,0.5)'}
-                strokeWidth={isSel ? 2.5 : 1.5}
+                strokeWidth={(isSel ? 2.5 : 1.5) / xfm.scale}
                 style={{ cursor: 'pointer', pointerEvents: 'all' }}
                 onClick={e => {
                   e.stopPropagation()
@@ -287,19 +276,23 @@ export default function SierraNevadaReliefMap() {
         </svg>
       </div>
 
-      {/* Zoom pill — bottom-left corner */}
+      {/* Hint label — fades out once the user has zoomed */}
       <div
-        style={{ position: 'absolute', bottom: 10, left: 10, zIndex: 10 }}
-        onClick={e => e.stopPropagation()}
-        onMouseDown={e => e.stopPropagation()}
+        style={{
+          position: 'absolute',
+          top: 10,
+          left: 10,
+          zIndex: 10,
+          fontSize: 10,
+          color: 'var(--c-text-muted)',
+          letterSpacing: '0.03em',
+          pointerEvents: 'none',
+          opacity: isAtFullExtent ? 0.75 : 0,
+          transition: 'opacity 0.4s ease',
+          userSelect: 'none',
+        }}
       >
-        <button
-          style={pillStyle}
-          onClick={() => isAtFullExtent ? zoomToDetail() : resetZoom()}
-          aria-label={isAtFullExtent ? 'Zoom to detail' : 'Reset to full extent'}
-        >
-          {isAtFullExtent ? 'Zoom' : 'Full Extent'}
-        </button>
+        double click to zoom
       </div>
     </div>{/* end map viewport */}
 
