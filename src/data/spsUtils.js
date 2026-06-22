@@ -10,10 +10,15 @@ export const allPeaks = spsData.regions.flatMap(r =>
 // Peaks the user has summited (at least one ascent entry)
 export const climbedPeaks = allPeaks.filter(p => p.ascents?.length > 0)
 
-// Every individual ascent, annotated with its peak, sorted oldest → newest
+// Every individual ascent, annotated with its peak, sorted oldest → newest.
+// Same-day ascents with a `sequence` field are ordered by that field.
 export const allAscents = climbedPeaks
   .flatMap(p => p.ascents.map(a => ({ ...a, peak: p })))
-  .sort((a, b) => new Date(a.date) - new Date(b.date))
+  .sort((a, b) => {
+    const d = new Date(a.date) - new Date(b.date)
+    if (d !== 0) return d
+    return (a.sequence ?? 0) - (b.sequence ?? 0)
+  })
 
 // All peaks sorted by elevation descending (for the elevation chart)
 export const peaksByElevation = [...allPeaks].sort((a, b) => b.elevation - a.elevation)

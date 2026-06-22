@@ -2,6 +2,12 @@ import { useState } from 'react'
 import { allAscents } from '../../data/spsUtils'
 import Lightbox from './Lightbox'
 
+function cdnAuto(url) {
+  if (!url?.includes('cloudinary.com')) return url
+  if (url.includes('/upload/f_auto')) return url
+  return url.replace('/upload/', '/upload/f_auto,q_auto/')
+}
+
 function StravaLink({ url }) {
   if (!url) return null
   return (
@@ -127,10 +133,14 @@ export default function PeakTimeline() {
                     {ascent.photos.map((photo, pi) => (
                       <img
                         key={pi}
-                        src={photo.url}
+                        src={cdnAuto(photo.url)}
                         alt={photo.caption || `${peak.name} photo`}
                         className="h-32 w-auto rounded object-cover cursor-pointer"
-                        onClick={() => setLightbox({ photos: ascent.photos, peakName: peak.name, startIndex: pi })}
+                        onClick={() => setLightbox({
+                          photos: ascent.photos.map(p => ({ ...p, url: cdnAuto(p.url) })),
+                          peakName: peak.name,
+                          startIndex: pi,
+                        })}
                       />
                     ))}
                   </div>

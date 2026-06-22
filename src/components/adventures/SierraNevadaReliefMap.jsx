@@ -159,8 +159,8 @@ export default function SierraNevadaReliefMap() {
   // Divide by (ppp × scale) to convert screen pixels → SVG canvas units.
   const containerW = containerRef.current?.offsetWidth ?? 460
   const ppp = containerW / CANVAS_W
-  const mR  = 7  / (ppp * xfm.scale)   // normal marker radius in canvas units
-  const mRS = 11 / (ppp * xfm.scale)   // selected marker radius
+  const mR  = 5  / (ppp * xfm.scale)   // normal marker radius in canvas units
+  const mRS = 9  / (ppp * xfm.scale)   // selected marker radius
   const mSW = 1.5 / (ppp * xfm.scale)  // normal stroke width
   const mSSW = 2  / (ppp * xfm.scale)  // selected stroke width
 
@@ -192,8 +192,8 @@ export default function SierraNevadaReliefMap() {
           transformOrigin: '0 0',
           willChange: 'transform',
           position: 'relative',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 5%)',
-          maskImage: 'linear-gradient(to bottom, transparent 0%, black 5%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 91%)',
+          maskImage: 'linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 91%)',
           transition: animating ? 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
         }}
       >
@@ -440,12 +440,21 @@ export default function SierraNevadaReliefMap() {
       )}
 
       {/* Disambiguation popup */}
-      {disambig && (
+      {disambig && (() => {
+        const popupW = 180
+        const popupH = disambig.peaks.length * 30 + 20
+        const popupLeft = disambig.clientX + 10 + popupW > window.innerWidth
+          ? Math.max(4, disambig.clientX - popupW)
+          : disambig.clientX + 10
+        const popupTop = disambig.clientY + 10 + popupH > window.innerHeight
+          ? Math.max(4, disambig.clientY - popupH)
+          : disambig.clientY + 10
+        return (
         <div
           style={{
             position: 'fixed',
-            left: disambig.clientX + 10,
-            top: disambig.clientY + 10,
+            left: popupLeft,
+            top: popupTop,
             zIndex: 50,
             backgroundColor: 'var(--c-surface)',
             border: '1px solid var(--c-border)',
@@ -480,7 +489,8 @@ export default function SierraNevadaReliefMap() {
             </button>
           ))}
         </div>
-      )}
+        )
+      })()}
     </div>
   )
 }
