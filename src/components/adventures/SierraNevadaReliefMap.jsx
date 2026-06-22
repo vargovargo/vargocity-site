@@ -131,11 +131,13 @@ export default function SierraNevadaReliefMap() {
   }
 
   return (
+    // Outer wrapper: position:relative so the popup can anchor here without
+    // being clipped — the inner map div owns overflow:hidden for zoom/pan.
+    <div style={{ position: 'relative', maxWidth: 460 }}>
     <div
       ref={containerRef}
       style={{
         position: 'relative',
-        maxWidth: 460,
         overflow: 'hidden',
         aspectRatio: `${CANVAS_W} / ${VISIBLE_H}`,
         cursor: isDragging ? 'grabbing' : (xfm.scale > 1 ? 'grab' : 'default'),
@@ -217,9 +219,9 @@ export default function SierraNevadaReliefMap() {
         </svg>
       </div>
 
-      {/* Zoom controls */}
+      {/* Zoom controls — top left */}
       <div
-        style={{ position: 'absolute', bottom: 10, left: 10, zIndex: 10, display: 'flex', flexDirection: 'column', gap: 2 }}
+        style={{ position: 'absolute', top: 10, left: 10, zIndex: 10, display: 'flex', flexDirection: 'column', gap: 2 }}
         onClick={e => e.stopPropagation()}
         onMouseDown={e => e.stopPropagation()}
       >
@@ -234,24 +236,24 @@ export default function SierraNevadaReliefMap() {
           aria-label="Zoom out"
         >−</button>
       </div>
+    </div>{/* end map viewport */}
 
-      {/* Peak detail panel — not transformed, stays fixed at top-right */}
+      {/* Peak detail panel — anchored to outer wrapper, floats right of the map */}
       {selected && (
         <div
           style={{
             position: 'absolute',
-            top: 12,
-            right: 12,
+            top: 0,
+            left: 'calc(100% + 16px)',
             width: 264,
             zIndex: 10,
             backgroundColor: 'var(--c-surface)',
             border: '1px solid var(--c-border)',
             borderRadius: 4,
             padding: '12px 14px',
-            maxHeight: '80%',
+            maxHeight: '100%',
             overflowY: 'auto',
           }}
-          onClick={e => e.stopPropagation()}
         >
           <button
             onClick={() => setSelected(null)}
