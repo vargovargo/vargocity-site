@@ -4,11 +4,12 @@ Generate Sierra Nevada detail hillshade WebP for the Adventures map zoom=10 view
 
 Downloads SRTM elevation tiles (Terrarium format, zoom=10) from AWS and computes
 a hillshade with the same warm-earthy color ramp used in the z=8 overview image.
-The output covers the core High Sierra (Conness south through Tyndall/Whitney),
-1024×1792 px — 4× the linear resolution of the z=8 overview.
+The output covers all 17 climbed SPS peaks (Castle Peak at 39.45°N through
+Mt Tyndall at 36.59°N, Castle Peak to Mt Whitney), 1792×3328 px — 4× the
+linear resolution of the z=8 overview.
 
 Usage: python3 scripts/generate-sierra-hillshade-z10.py
-Output: public/sierra-hillshade-z10.webp  (1024×1792, RGBA)
+Output: public/sierra-hillshade-z10.webp  (1792×3328, RGBA)
 """
 
 import io
@@ -20,20 +21,20 @@ from PIL import Image, ImageFilter
 
 # ── Tile parameters ───────────────────────────────────────────────────────────
 # Zoom 10 = 4× linear detail vs zoom 8.
-# Geographic coverage: -119.53°W to -118.13°W, 38.26°N to 35.89°N
-# Includes all core High Sierra SPS peaks (Conness, Dana, Palisades, Whitney…)
+# Geographic coverage: -120.59°W to -118.13°W, 39.9°N to 35.9°N
+# Covers all 17 climbed SPS peaks including Castle Peak (39.45°N, -120.37°W)
 
 ZOOM = 10
 
-TILE_X_MIN = 172   # left edge  ≈ −119.53 °W
+TILE_X_MIN = 169   # left edge  ≈ −120.59 °W
 TILE_X_MAX = 175   # right edge ≈ −118.13 °W  (inclusive)
-TILE_Y_MIN = 394   # top edge   ≈   38.26 °N
-TILE_Y_MAX = 400   # bottom edge ≈  35.89 °N  (inclusive)
+TILE_Y_MIN = 388   # top edge   ≈   39.9  °N  (aligns exactly with z=8 top)
+TILE_Y_MAX = 400   # bottom edge ≈  35.9  °N  (inclusive)
 
-TILE_COLS = TILE_X_MAX - TILE_X_MIN + 1  # 4
-TILE_ROWS = TILE_Y_MAX - TILE_Y_MIN + 1  # 7
-CANVAS_W = TILE_COLS * 256  # 1024
-CANVAS_H = TILE_ROWS * 256  # 1792
+TILE_COLS = TILE_X_MAX - TILE_X_MIN + 1  # 7
+TILE_ROWS = TILE_Y_MAX - TILE_Y_MIN + 1  # 13
+CANVAS_W = TILE_COLS * 256  # 1792
+CANVAS_H = TILE_ROWS * 256  # 3328
 
 TERRARIUM_URL = "https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png"
 
