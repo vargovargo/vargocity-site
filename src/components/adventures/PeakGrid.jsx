@@ -2,6 +2,12 @@ import { useState } from 'react'
 import { allAscents } from '../../data/spsUtils'
 import Lightbox from './Lightbox'
 
+function cdnAuto(url) {
+  if (!url?.includes('cloudinary.com')) return url
+  if (url.includes('/upload/f_auto')) return url
+  return url.replace('/upload/', '/upload/f_auto,q_auto/')
+}
+
 // One entry per ascent, newest first
 const ascentsNewestFirst = [...allAscents].reverse()
 
@@ -78,7 +84,7 @@ export default function PeakGrid() {
               key={`${peak.id}-${ascent.date}-${idx}`}
               className="relative overflow-hidden flex cursor-pointer"
               style={{ backgroundColor: 'var(--c-surface)' }}
-              onClick={() => photos.length > 0 && setLightbox({ photos, peakName: peak.name })}
+              onClick={() => photos.length > 0 && setLightbox({ photos: photos.map(p => ({ ...p, url: cdnAuto(p.url) })), peakName: peak.name })}
             >
               <div className="p-5 flex flex-col h-full">
                 <div className="flex items-start justify-between gap-2">
