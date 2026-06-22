@@ -8,7 +8,7 @@ import PeakGrid from '../components/adventures/PeakGrid'
 import PeakTimeline from '../components/adventures/PeakTimeline'
 import ElevationChart from '../components/adventures/ElevationChart'
 import PeakRegionList from '../components/adventures/PeakRegionList'
-import PeakMap from '../components/adventures/PeakMap'
+import SierraNevadaReliefMap from '../components/adventures/SierraNevadaReliefMap'
 import WorldMap from '../components/adventures/WorldMap'
 
 const tabs = [
@@ -78,7 +78,7 @@ export default function AdventuresPage() {
           {peakView === 'timeline' && <PeakTimeline />}
           {peakView === 'chart' && <ElevationChart />}
           {peakView === 'region' && <PeakRegionList />}
-          {peakView === 'map' && <PeakMap />}
+          {peakView === 'map' && <SierraNevadaReliefMap />}
         </div>
       )}
 
