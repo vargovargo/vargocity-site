@@ -1,13 +1,10 @@
 import { useState } from 'react'
-import { MapContainer, TileLayer, CircleMarker, Tooltip } from 'react-leaflet'
-import 'leaflet/dist/leaflet.css'
+import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps'
 import { climbedPeaks } from '../../data/spsUtils'
 import Lightbox from './Lightbox'
 
+const GEO_URL = 'https://cdn.jsdelivr.net/gh/PublicaMundi/MappingAPI@master/data/geojson/us-states.json'
 const BASE_URL = import.meta.env.BASE_URL || '/'
-
-// Bounds that frame all 17 climbed peaks with breathing room
-const SIERRA_BOUNDS = [[36.3, -120.7], [39.7, -117.8]]
 
 function formatDate(dateStr) {
   return new Date(dateStr + 'T12:00:00').toLocaleDateString('en-US', {
@@ -23,45 +20,50 @@ export default function PeakMap() {
 
   return (
     <div style={{ position: 'relative' }}>
-      <MapContainer
-        bounds={SIERRA_BOUNDS}
-        style={{ height: '560px', width: '100%', borderRadius: '4px' }}
-        scrollWheelZoom={true}
+      <ComposableMap
+        projection="geoMercator"
+        projectionConfig={{ center: [-119.5, 37.5], scale: 3200 }}
+        style={{ width: '100%', height: 'auto', cursor: 'pointer' }}
         onClick={() => setSelected(null)}
       >
-        <TileLayer
-          url="https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}"
-          attribution='<a href="https://www.usgs.gov/">USGS</a>'
-          maxZoom={16}
-        />
+        <Geographies geography={GEO_URL}>
+          {({ geographies }) =>
+            geographies
+              .filter(geo => geo.properties.name === 'California')
+              .map(geo => (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  fill="var(--c-surface)"
+                  stroke="var(--c-border)"
+                  strokeWidth={1}
+                  style={{
+                    default: { outline: 'none' },
+                    hover:   { outline: 'none' },
+                    pressed: { outline: 'none' },
+                  }}
+                />
+              ))
+          }
+        </Geographies>
 
         {mappable.map(peak => {
           const isSelected = selected?.name === peak.name
           return (
-            <CircleMarker
-              key={peak.name}
-              center={[peak.lat, peak.lng]}
-              radius={isSelected ? 8 : 6}
-              pathOptions={{
-                fillColor: isSelected ? '#e05c2d' : '#1a1a1a',
-                fillOpacity: 1,
-                color: '#ffffff',
-                weight: 1.5,
-              }}
-              eventHandlers={{
-                click: (e) => {
-                  e.originalEvent.stopPropagation()
-                  setSelected(selected?.name === peak.name ? null : peak)
-                },
-              }}
-            >
-              <Tooltip direction="top" offset={[0, -8]} opacity={1}>
-                <span style={{ fontSize: '12px', fontWeight: 500 }}>{peak.name}</span>
-              </Tooltip>
-            </CircleMarker>
+            <Marker key={peak.id || peak.name} coordinates={[peak.lng, peak.lat]}>
+              <title>{peak.name}</title>
+              <circle
+                r={isSelected ? 7 : 5}
+                fill={isSelected ? '#e05c2d' : 'var(--c-invert-bg, #1a1a1a)'}
+                stroke="var(--c-bg, #fff)"
+                strokeWidth={1.5}
+                style={{ cursor: 'pointer' }}
+                onClick={e => { e.stopPropagation(); setSelected(isSelected ? null : peak) }}
+              />
+            </Marker>
           )
         })}
-      </MapContainer>
+      </ComposableMap>
 
       {selected && (
         <div
@@ -69,17 +71,28 @@ export default function PeakMap() {
             position: 'absolute',
             top: 12,
             right: 12,
-            width: 272,
-            zIndex: 1000,
+            width: 264,
+            zIndex: 10,
             backgroundColor: 'var(--c-surface)',
             border: '1px solid var(--c-border)',
             borderRadius: '4px',
             padding: '12px 14px',
-            maxHeight: '520px',
+            maxHeight: '80%',
             overflowY: 'auto',
           }}
         >
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '10px' }}>
+          <button
+            onClick={() => setSelected(null)}
+            style={{
+              position: 'absolute', top: 7, right: 8,
+              background: 'none', border: 'none', cursor: 'pointer',
+              fontSize: '15px', lineHeight: 1, padding: '2px 4px',
+              color: 'var(--c-text-muted)',
+            }}
+            aria-label="close"
+          >×</button>
+
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '10px', paddingRight: '16px' }}>
             <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--c-text)' }}>
               {selected.name}
             </span>
@@ -108,7 +121,7 @@ export default function PeakMap() {
                   <img
                     src={BASE_URL + ascent.strava.sparkline_svg.replace(/^\//, '')}
                     alt="elevation profile"
-                    style={{ height: '28px', width: 'auto', opacity: 0.65, marginBottom: '6px', display: 'block' }}
+                    style={{ height: '28px', width: 'auto', opacity: 0.65, marginBottom: '4px', display: 'block' }}
                   />
                 )}
 
@@ -137,15 +150,9 @@ export default function PeakMap() {
                           key={pi}
                           onClick={() => setLightbox({ photos: ascent.photos, peakName: selected.name, startIndex: pi })}
                           style={{
-                            width: '48px',
-                            height: '48px',
-                            borderRadius: '3px',
-                            overflow: 'hidden',
-                            flexShrink: 0,
-                            border: '1px solid var(--c-border)',
-                            padding: 0,
-                            cursor: 'pointer',
-                            background: 'none',
+                            width: '44px', height: '44px', borderRadius: '3px',
+                            overflow: 'hidden', flexShrink: 0, padding: 0,
+                            border: '1px solid var(--c-border)', cursor: 'pointer', background: 'none',
                           }}
                         >
                           <img
@@ -161,25 +168,6 @@ export default function PeakMap() {
               </div>
             ))}
           </div>
-
-          <button
-            onClick={() => setSelected(null)}
-            style={{
-              position: 'absolute',
-              top: '8px',
-              right: '8px',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              fontSize: '14px',
-              color: 'var(--c-text-muted)',
-              lineHeight: 1,
-              padding: '2px 4px',
-            }}
-            aria-label="close"
-          >
-            ×
-          </button>
         </div>
       )}
 
