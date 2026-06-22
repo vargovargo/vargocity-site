@@ -13,9 +13,11 @@
   "dependencies": {
     "@observablehq/plot": "^0.6.17",
     "gray-matter": "^4.0.3",
+    "leaflet": "^1.9.4",
     "prop-types": "^15.8.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-leaflet": "^5.0.0",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.13.1",
     "react-simple-maps": "^3.0.0",
