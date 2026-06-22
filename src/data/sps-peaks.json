@@ -1301,7 +1301,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 36.5868,
+          "lng": -118.3621
         },
         {
           "id": "5.9",
@@ -3257,7 +3259,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 37.0545,
+          "lng": -118.4986
         },
         {
           "id": "12.9",
@@ -3703,7 +3707,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 37.0941,
+          "lng": -118.5133
         },
         {
           "id": "14.4",
@@ -3756,7 +3762,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 37.104,
+          "lng": -118.5149
         },
         {
           "id": "14.5",
@@ -3799,7 +3807,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 37.0987,
+          "lng": -118.5189
         },
         {
           "id": "14.6",
@@ -4373,7 +4383,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 37.221,
+          "lng": -118.6557
         },
         {
           "id": "16.3",
@@ -4428,7 +4440,9 @@
                 "fetched_at": "2026-06-22"
               }
             }
-          ]
+          ],
+          "lat": 37.2708,
+          "lng": -118.6727
         },
         {
           "id": "16.4",
@@ -4834,7 +4848,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 37.3567,
+          "lng": -118.7284
         },
         {
           "id": "17.8",
@@ -5657,7 +5673,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 37.7618,
+          "lng": -119.5088
         }
       ]
     },
@@ -5715,7 +5733,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 37.8516,
+          "lng": -119.4012
         },
         {
           "id": "21.2",
@@ -5903,9 +5923,18 @@
               "notes": "On the way home from Bishop, we tried to squeeze in another peak before heading home for Father's Day. Got up in about 1.5hr and back to the car with enough time to jump in Tenaya and make it home in time for dinner.",
               "strava_url": "https://www.strava.com/activities/19016446998",
               "photos": [
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140477/IMG_1314_yxvczj.heic", "caption": "" },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140470/IMG_1323_zuzdpa.heic", "caption": "" },
-                { "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140470/IMG_1318_et16ey.heic", "caption": "" }
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140477/IMG_1314_yxvczj.heic",
+                  "caption": ""
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140470/IMG_1323_zuzdpa.heic",
+                  "caption": ""
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140470/IMG_1318_et16ey.heic",
+                  "caption": ""
+                }
               ],
               "strava": {
                 "activity_id": "19016446998",
@@ -5918,7 +5947,9 @@
                 "fetched_at": "2026-06-22"
               }
             }
-          ]
+          ],
+          "lat": 37.8999,
+          "lng": -119.2218
         }
       ]
     },
@@ -6044,7 +6075,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 37.9679,
+          "lng": -119.321
         },
         {
           "id": "22.3",
@@ -6121,7 +6154,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 37.9494,
+          "lng": -119.3578
         },
         {
           "id": "22.4",
@@ -6453,7 +6488,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 38.5196,
+          "lng": -119.9472
         },
         {
           "id": "23.2",
@@ -6610,7 +6647,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 38.6743,
+          "lng": -119.9018
         },
         {
           "id": "23.8",
@@ -6708,7 +6747,9 @@
                 "fetched_at": "2026-03-08"
               }
             }
-          ]
+          ],
+          "lat": 38.8472,
+          "lng": -120.145
         },
         {
           "id": "23.10",
@@ -6889,7 +6930,9 @@
                 "fetched_at": "2026-05-21"
               }
             }
-          ]
+          ],
+          "lat": 39.4465,
+          "lng": -120.3668
         },
         {
           "id": "24.4",
