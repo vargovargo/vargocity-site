@@ -439,8 +439,38 @@ export default function SierraNevadaReliefMap() {
         />
       )}
 
-      {/* Disambiguation popup */}
-      {disambig && (() => {
+      {/* Disambiguation popup — inline below map on mobile, floating on desktop */}
+      {disambig && (window.innerWidth < 600 ? (
+        <div
+          style={{
+            marginTop: 8,
+            backgroundColor: 'var(--c-surface)',
+            border: '1px solid var(--c-border)',
+            borderRadius: 4,
+            padding: '4px 0',
+          }}
+        >
+          <p style={{ fontSize: 10, color: 'var(--c-text-muted)', padding: '4px 12px 2px', margin: 0 }}>
+            Select a peak:
+          </p>
+          {disambig.peaks.map(p => (
+            <button
+              key={p.name}
+              onClick={() => { setSelected(p); setDisambig(null) }}
+              style={{
+                display: 'flex', alignItems: 'baseline', gap: 8,
+                width: '100%', textAlign: 'left', padding: '6px 12px',
+                background: 'none', border: 'none', cursor: 'pointer',
+              }}
+            >
+              <span style={{ fontSize: 12, color: 'var(--c-text)' }}>{p.name}</span>
+              <span style={{ fontSize: 11, color: 'var(--c-text-muted)' }}>
+                {parseInt(p.elevation_ft ?? p.elevation, 10).toLocaleString()} ft
+              </span>
+            </button>
+          ))}
+        </div>
+      ) : (() => {
         const popupW = 180
         const popupH = disambig.peaks.length * 30 + 20
         const popupLeft = disambig.clientX + 10 + popupW > window.innerWidth
@@ -450,47 +480,41 @@ export default function SierraNevadaReliefMap() {
           ? Math.max(4, disambig.clientY - popupH)
           : disambig.clientY + 10
         return (
-        <div
-          style={{
-            position: 'fixed',
-            left: popupLeft,
-            top: popupTop,
-            zIndex: 50,
-            backgroundColor: 'var(--c-surface)',
-            border: '1px solid var(--c-border)',
-            borderRadius: 4,
-            padding: '4px 0',
-            boxShadow: '0 2px 10px rgba(0,0,0,0.12)',
-            minWidth: 160,
-          }}
-          onClick={e => e.stopPropagation()}
-        >
-          {disambig.peaks.map(p => (
-            <button
-              key={p.name}
-              onClick={() => { setSelected(p); setDisambig(null) }}
-              style={{
-                display: 'flex',
-                alignItems: 'baseline',
-                gap: 8,
-                width: '100%',
-                textAlign: 'left',
-                padding: '5px 12px',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              <span style={{ fontSize: 11, color: 'var(--c-text)' }}>{p.name}</span>
-              <span style={{ fontSize: 10, color: 'var(--c-text-muted)' }}>
-                {parseInt(p.elevation_ft ?? p.elevation, 10).toLocaleString()} ft
-              </span>
-            </button>
-          ))}
-        </div>
+          <div
+            style={{
+              position: 'fixed',
+              left: popupLeft,
+              top: popupTop,
+              zIndex: 50,
+              backgroundColor: 'var(--c-surface)',
+              border: '1px solid var(--c-border)',
+              borderRadius: 4,
+              padding: '4px 0',
+              boxShadow: '0 2px 10px rgba(0,0,0,0.12)',
+              minWidth: 160,
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            {disambig.peaks.map(p => (
+              <button
+                key={p.name}
+                onClick={() => { setSelected(p); setDisambig(null) }}
+                style={{
+                  display: 'flex', alignItems: 'baseline', gap: 8,
+                  width: '100%', textAlign: 'left', padding: '5px 12px',
+                  background: 'none', border: 'none', cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <span style={{ fontSize: 11, color: 'var(--c-text)' }}>{p.name}</span>
+                <span style={{ fontSize: 10, color: 'var(--c-text-muted)' }}>
+                  {parseInt(p.elevation_ft ?? p.elevation, 10).toLocaleString()} ft
+                </span>
+              </button>
+            ))}
+          </div>
         )
-      })()}
+      })())}
     </div>
   )
 }
