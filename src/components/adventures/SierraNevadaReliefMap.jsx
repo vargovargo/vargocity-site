@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { climbedPeaks } from '../../data/spsUtils'
 import Lightbox from './Lightbox'
 
@@ -8,6 +8,8 @@ const TILE_X_MIN = 41
 const TILE_Y_MIN = 97
 const CANVAS_W = 1024   // 4 tiles × 256
 const CANVAS_H = 1280   // 5 tiles × 256
+const SCALE_MIN = 1
+const SCALE_MAX = 6
 
 const BASE_URL = import.meta.env.BASE_URL || '/'
 
@@ -27,10 +29,9 @@ function formatDate(dateStr) {
 }
 
 // Cloudinary serves HEIC as JPEG/WebP when f_auto is present.
-// Without it, non-Safari browsers silently blank on .heic uploads.
 function cdnAuto(url) {
   if (!url?.includes('cloudinary.com')) return url
-  if (url.includes('/upload/f_auto')) return url  // already transformed
+  if (url.includes('/upload/f_auto')) return url
   return url.replace('/upload/', '/upload/f_auto,q_auto/')
 }
 
@@ -38,72 +39,188 @@ export default function SierraNevadaReliefMap() {
   const [selected, setSelected] = useState(null)
   const [tooltip, setTooltip] = useState(null)
   const [lightbox, setLightbox] = useState(null)
+  const [xfm, setXfmState] = useState({ scale: 1, tx: 0, ty: 0 })
+  const [isDragging, setIsDragging] = useState(false)
+
+  const xfmRef = useRef({ scale: 1, tx: 0, ty: 0 })
+  const containerRef = useRef(null)
+  const dragRef = useRef(null)
+  const didDragRef = useRef(false)
 
   const mappable = climbedPeaks.filter(p => p.lat && p.lng)
 
+  // Non-passive wheel listener so we can preventDefault and prevent page scroll.
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+
+    function onWheel(e) {
+      e.preventDefault()
+      const rect = el.getBoundingClientRect()
+      const cx = e.clientX - rect.left
+      const cy = e.clientY - rect.top
+      const curr = xfmRef.current
+      const factor = e.deltaY < 0 ? 1.25 : 1 / 1.25
+      const newScale = Math.max(SCALE_MIN, Math.min(SCALE_MAX, curr.scale * factor))
+
+      // Keep the canvas point under the cursor fixed during zoom.
+      const canvasX = (cx - curr.tx) / curr.scale
+      const canvasY = (cy - curr.ty) / curr.scale
+      const rawTx = cx - canvasX * newScale
+      const rawTy = cy - canvasY * newScale
+
+      // Clamp so the image always fills the container.
+      const { width, height } = el.getBoundingClientRect()
+      const imgW = width * newScale
+      const imgH = (CANVAS_H / CANVAS_W) * width * newScale
+      const tx = Math.max(Math.min(0, width - imgW), Math.min(0, rawTx))
+      const ty = Math.max(Math.min(0, height - imgH), Math.min(0, rawTy))
+
+      const newXfm = { scale: newScale, tx, ty }
+      xfmRef.current = newXfm
+      setXfmState(newXfm)
+    }
+
+    el.addEventListener('wheel', onWheel, { passive: false })
+    return () => el.removeEventListener('wheel', onWheel)
+  }, [])
+
+  function clampXfm(scale, tx, ty) {
+    const el = containerRef.current
+    if (!el) return { scale, tx, ty }
+    const { width, height } = el.getBoundingClientRect()
+    const imgW = width * scale
+    const imgH = (CANVAS_H / CANVAS_W) * width * scale
+    return {
+      scale,
+      tx: Math.max(Math.min(0, width - imgW), Math.min(0, tx)),
+      ty: Math.max(Math.min(0, height - imgH), Math.min(0, ty)),
+    }
+  }
+
+  function handleMouseDown(e) {
+    if (e.button !== 0) return
+    e.preventDefault()
+    didDragRef.current = false
+    dragRef.current = { x: e.clientX, y: e.clientY, tx: xfmRef.current.tx, ty: xfmRef.current.ty }
+    setIsDragging(true)
+  }
+
+  function handleMouseMove(e) {
+    if (!dragRef.current) return
+    const dx = e.clientX - dragRef.current.x
+    const dy = e.clientY - dragRef.current.y
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) didDragRef.current = true
+    const curr = xfmRef.current
+    const newXfm = clampXfm(curr.scale, dragRef.current.tx + dx, dragRef.current.ty + dy)
+    xfmRef.current = newXfm
+    setXfmState(newXfm)
+  }
+
+  function handleMouseUp() {
+    dragRef.current = null
+    setIsDragging(false)
+  }
+
+  function handleClick() {
+    if (!didDragRef.current) setSelected(null)
+    didDragRef.current = false
+  }
+
+  function handleDoubleClick() {
+    const reset = { scale: 1, tx: 0, ty: 0 }
+    xfmRef.current = reset
+    setXfmState(reset)
+  }
+
   return (
     <div
-      style={{ position: 'relative', maxWidth: 460 }}
-      onClick={() => setSelected(null)}
+      ref={containerRef}
+      style={{
+        position: 'relative',
+        maxWidth: 460,
+        overflow: 'hidden',
+        cursor: isDragging ? 'grabbing' : (xfm.scale > 1 ? 'grab' : 'default'),
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
+      }}
+      onClick={handleClick}
+      onDoubleClick={handleDoubleClick}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
     >
       {/*
-        The WebP has a pre-baked feathered alpha channel — the terrain fades
-        naturally at the edges with no hard boundary line.
-        CSS drop-shadow follows the alpha shape to create the floating effect.
+        Transform target — image + SVG markers move together.
+        The mask-image gradient fades the top edge to transparent, fixing the
+        hard clipping line that appears when the boundary blur is cropped by the
+        canvas edge (northernmost point sits only ~26px from canvas top).
       */}
-      <img
-        src={BASE_URL + 'sierra-hillshade.webp'}
-        alt="Sierra Nevada relief"
+      <div
         style={{
-          display: 'block',
-          width: '100%',
-          height: 'auto',
-          filter: 'drop-shadow(3px 8px 32px rgba(0,0,0,0.18))',
-        }}
-      />
-
-      {/* SVG peak-marker overlay — same coordinate space as the image */}
-      <svg
-        viewBox={`0 0 ${CANVAS_W} ${CANVAS_H}`}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          width: '100%',
-          height: '100%',
-          overflow: 'visible',
-          pointerEvents: 'none',
+          transform: `matrix(${xfm.scale}, 0, 0, ${xfm.scale}, ${xfm.tx}, ${xfm.ty})`,
+          transformOrigin: '0 0',
+          willChange: 'transform',
+          position: 'relative',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 5%)',
+          maskImage: 'linear-gradient(to bottom, transparent 0%, black 5%)',
         }}
       >
-        {mappable.map(peak => {
-          const [cx, cy] = geoToCanvas(peak.lng, peak.lat)
-          const isSel = selected?.name === peak.name
-          return (
-            <circle
-              key={peak.name}
-              cx={cx}
-              cy={cy}
-              r={isSel ? 14 : 8}
-              fill={isSel ? 'var(--c-accent, #FC4C02)' : 'rgba(255,255,255,0.88)'}
-              stroke={isSel ? 'white' : 'rgba(20,50,70,0.5)'}
-              strokeWidth={isSel ? 2.5 : 1.5}
-              style={{ cursor: 'pointer', pointerEvents: 'all' }}
-              onClick={e => {
-                e.stopPropagation()
-                setSelected(isSel ? null : peak)
-              }}
-              onMouseEnter={e =>
-                setTooltip({ name: peak.name, x: e.clientX, y: e.clientY })
-              }
-              onMouseMove={e =>
-                setTooltip(t => (t ? { ...t, x: e.clientX, y: e.clientY } : null))
-              }
-              onMouseLeave={() => setTooltip(null)}
-            />
-          )
-        })}
-      </svg>
+        <img
+          src={BASE_URL + 'sierra-hillshade.webp'}
+          alt="Sierra Nevada relief"
+          style={{
+            display: 'block',
+            width: '100%',
+            height: 'auto',
+            filter: 'drop-shadow(3px 8px 32px rgba(0,0,0,0.18))',
+          }}
+        />
 
-      {/* Peak detail panel */}
+        {/* SVG peak-marker overlay — same coordinate space as the image */}
+        <svg
+          viewBox={`0 0 ${CANVAS_W} ${CANVAS_H}`}
+          style={{
+            position: 'absolute',
+            inset: 0,
+            width: '100%',
+            height: '100%',
+            overflow: 'visible',
+            pointerEvents: 'none',
+          }}
+        >
+          {mappable.map(peak => {
+            const [cx, cy] = geoToCanvas(peak.lng, peak.lat)
+            const isSel = selected?.name === peak.name
+            return (
+              <circle
+                key={peak.name}
+                cx={cx}
+                cy={cy}
+                r={isSel ? 14 : 8}
+                fill={isSel ? 'var(--c-accent, #FC4C02)' : 'rgba(255,255,255,0.88)'}
+                stroke={isSel ? 'white' : 'rgba(20,50,70,0.5)'}
+                strokeWidth={isSel ? 2.5 : 1.5}
+                style={{ cursor: 'pointer', pointerEvents: 'all' }}
+                onClick={e => {
+                  e.stopPropagation()
+                  if (!didDragRef.current) setSelected(isSel ? null : peak)
+                }}
+                onMouseEnter={e =>
+                  setTooltip({ name: peak.name, x: e.clientX, y: e.clientY })
+                }
+                onMouseMove={e =>
+                  setTooltip(t => (t ? { ...t, x: e.clientX, y: e.clientY } : null))
+                }
+                onMouseLeave={() => setTooltip(null)}
+              />
+            )
+          })}
+        </svg>
+      </div>
+
+      {/* Peak detail panel — not transformed, stays fixed at top-right */}
       {selected && (
         <div
           style={{
