@@ -40,6 +40,7 @@ function cdnAuto(url) {
 
 export default function SierraNevadaReliefMap() {
   const [selected, setSelected] = useState(null)
+  const [disambig, setDisambig] = useState(null)
   const [tooltip, setTooltip] = useState(null)
   const [lightbox, setLightbox] = useState(null)
   const [xfm, setXfmState] = useState({ scale: 1, tx: 0, ty: 0 })
@@ -88,6 +89,7 @@ export default function SierraNevadaReliefMap() {
     didDragRef.current = false
     dragRef.current = { x: e.clientX, y: e.clientY, tx: xfmRef.current.tx, ty: xfmRef.current.ty }
     setIsDragging(true)
+    setDisambig(null)
   }
 
   function handleMouseMove(e) {
@@ -107,7 +109,7 @@ export default function SierraNevadaReliefMap() {
   }
 
   function handleClick() {
-    if (!didDragRef.current) setSelected(null)
+    if (!didDragRef.current) { setSelected(null); setDisambig(null) }
     didDragRef.current = false
   }
 
@@ -204,7 +206,29 @@ export default function SierraNevadaReliefMap() {
                 style={{ cursor: 'pointer', pointerEvents: 'all' }}
                 onClick={e => {
                   e.stopPropagation()
-                  if (!didDragRef.current) setSelected(isSel ? null : peak)
+                  if (didDragRef.current) return
+                  // Find all peaks near the click point (screen-space threshold)
+                  const svgEl = e.currentTarget.ownerSVGElement
+                  const rect = svgEl.getBoundingClientRect()
+                  const svgX = (e.clientX - rect.left) / rect.width * CANVAS_W
+                  const svgY = (e.clientY - rect.top) / rect.height * CANVAS_H
+                  // 12px screen radius → canvas units (accounts for current zoom scale)
+                  const threshold = 12 * CANVAS_W / rect.width
+                  const nearby = mappable
+                    .filter(p => {
+                      const [px, py] = geoToCanvas(p.lng, p.lat)
+                      return Math.hypot(px - svgX, py - svgY) < threshold
+                    })
+                    .sort((a, b) =>
+                      parseInt(b.elevation_ft ?? b.elevation, 10) -
+                      parseInt(a.elevation_ft ?? a.elevation, 10)
+                    )
+                  if (nearby.length <= 1) {
+                    setSelected(isSel ? null : peak)
+                    setDisambig(null)
+                  } else {
+                    setDisambig({ peaks: nearby, clientX: e.clientX, clientY: e.clientY })
+                  }
                 }}
                 onMouseEnter={e =>
                   setTooltip({ name: peak.name, x: e.clientX, y: e.clientY })
@@ -384,6 +408,49 @@ export default function SierraNevadaReliefMap() {
           startIndex={lightbox.startIndex}
           onClose={() => setLightbox(null)}
         />
+      )}
+
+      {/* Disambiguation popup — shown when multiple peaks are within click radius */}
+      {disambig && (
+        <div
+          style={{
+            position: 'fixed',
+            left: disambig.clientX + 10,
+            top: disambig.clientY + 10,
+            zIndex: 50,
+            backgroundColor: 'var(--c-surface)',
+            border: '1px solid var(--c-border)',
+            borderRadius: 4,
+            padding: '4px 0',
+            boxShadow: '0 2px 10px rgba(0,0,0,0.12)',
+            minWidth: 160,
+          }}
+          onClick={e => e.stopPropagation()}
+        >
+          {disambig.peaks.map(p => (
+            <button
+              key={p.name}
+              onClick={() => { setSelected(p); setDisambig(null) }}
+              style={{
+                display: 'flex',
+                alignItems: 'baseline',
+                gap: 8,
+                width: '100%',
+                textAlign: 'left',
+                padding: '5px 12px',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              <span style={{ fontSize: 11, color: 'var(--c-text)' }}>{p.name}</span>
+              <span style={{ fontSize: 10, color: 'var(--c-text-muted)' }}>
+                {parseInt(p.elevation_ft ?? p.elevation, 10).toLocaleString()} ft
+              </span>
+            </button>
+          ))}
+        </div>
       )}
     </div>
   )
