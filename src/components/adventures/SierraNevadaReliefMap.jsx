@@ -159,8 +159,8 @@ export default function SierraNevadaReliefMap() {
   // Divide by (ppp × scale) to convert screen pixels → SVG canvas units.
   const containerW = containerRef.current?.offsetWidth ?? 460
   const ppp = containerW / CANVAS_W
-  const mR  = 7  / (ppp * xfm.scale)   // normal marker radius in canvas units
-  const mRS = 11 / (ppp * xfm.scale)   // selected marker radius
+  const mR  = 5  / (ppp * xfm.scale)   // normal marker radius in canvas units
+  const mRS = 9  / (ppp * xfm.scale)   // selected marker radius
   const mSW = 1.5 / (ppp * xfm.scale)  // normal stroke width
   const mSSW = 2  / (ppp * xfm.scale)  // selected stroke width
 
@@ -192,8 +192,8 @@ export default function SierraNevadaReliefMap() {
           transformOrigin: '0 0',
           willChange: 'transform',
           position: 'relative',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 5%)',
-          maskImage: 'linear-gradient(to bottom, transparent 0%, black 5%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 91%)',
+          maskImage: 'linear-gradient(to bottom, transparent 0%, black 5%, black 85%, transparent 91%)',
           transition: animating ? 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
         }}
       >
