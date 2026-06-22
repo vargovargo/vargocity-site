@@ -122,15 +122,15 @@ def compute_hillshade(elev, cell_size_m=490.0, azimuth_deg=315.0, altitude_deg=4
 
 # ── Color ramp ────────────────────────────────────────────────────────────────
 
-# Warm-neutral ramp: shadow → site ink (#1A1A1A family), lit → site bg (#FAFAF8).
-# No hue shift — the terrain "comes out of" the page background.
+# Warm-earthy ramp: shadows → dark tan-brown, lit faces → site bg cream (#FAFAF8).
+# Significant warmth (R-B gap ≈ 36-48 in midtones) so terrain reads tan, not gray.
 COLOR_RAMP = [
-    (0.00, (18,  18,  14)),   # deep shadow  → near-ink
-    (0.22, (66,  62,  52)),   # heavy shadow → warm dark
-    (0.45, (140, 134, 118)),  # midtone      → warm gray
-    (0.68, (206, 201, 188)),  # soft lit     → warm light
-    (0.86, (232, 228, 218)),  # bright       → near cream
-    (1.00, (247, 244, 238)),  # full light   → site bg cream
+    (0.00, (26,  18,  12)),   # deep shadow  → warm black
+    (0.22, (78,  60,  42)),   # heavy shadow → dark tan
+    (0.45, (150, 128, 102)),  # midtone      → warm tan
+    (0.68, (212, 196, 174)),  # soft lit     → warm sand
+    (0.86, (236, 228, 213)),  # bright       → warm cream
+    (1.00, (250, 248, 241)),  # full light   → site bg cream
 ]
 
 def shade_to_rgb(shade_val):
@@ -208,7 +208,7 @@ def main():
     shade = compute_hillshade(elev)
     print(f"   Shade range: {shade.min():.3f} – {shade.max():.3f}")
 
-    print("\n3. Applying blue-gray color ramp...")
+    print("\n3. Applying warm-earthy color ramp...")
     rgb = apply_color_ramp(shade)
 
     print("\n4. Building soft alpha channel (feathered boundary)...")

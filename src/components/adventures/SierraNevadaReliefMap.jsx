@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { climbedPeaks } from '../../data/spsUtils'
 import Lightbox from './Lightbox'
 
@@ -9,7 +9,10 @@ const TILE_Y_MIN = 97
 const CANVAS_W = 1024   // 4 tiles × 256
 const CANVAS_H = 1280   // 5 tiles × 256
 const SCALE_MIN = 1
-const SCALE_MAX = 6
+const SCALE_MAX = 5
+
+// aspectRatio clips the ~120px of transparent space below the southern boundary
+const VISIBLE_H = 1160
 
 const BASE_URL = import.meta.env.BASE_URL || '/'
 
@@ -49,42 +52,6 @@ export default function SierraNevadaReliefMap() {
 
   const mappable = climbedPeaks.filter(p => p.lat && p.lng)
 
-  // Non-passive wheel listener so we can preventDefault and prevent page scroll.
-  useEffect(() => {
-    const el = containerRef.current
-    if (!el) return
-
-    function onWheel(e) {
-      e.preventDefault()
-      const rect = el.getBoundingClientRect()
-      const cx = e.clientX - rect.left
-      const cy = e.clientY - rect.top
-      const curr = xfmRef.current
-      const factor = e.deltaY < 0 ? 1.25 : 1 / 1.25
-      const newScale = Math.max(SCALE_MIN, Math.min(SCALE_MAX, curr.scale * factor))
-
-      // Keep the canvas point under the cursor fixed during zoom.
-      const canvasX = (cx - curr.tx) / curr.scale
-      const canvasY = (cy - curr.ty) / curr.scale
-      const rawTx = cx - canvasX * newScale
-      const rawTy = cy - canvasY * newScale
-
-      // Clamp so the image always fills the container.
-      const { width, height } = el.getBoundingClientRect()
-      const imgW = width * newScale
-      const imgH = (CANVAS_H / CANVAS_W) * width * newScale
-      const tx = Math.max(Math.min(0, width - imgW), Math.min(0, rawTx))
-      const ty = Math.max(Math.min(0, height - imgH), Math.min(0, rawTy))
-
-      const newXfm = { scale: newScale, tx, ty }
-      xfmRef.current = newXfm
-      setXfmState(newXfm)
-    }
-
-    el.addEventListener('wheel', onWheel, { passive: false })
-    return () => el.removeEventListener('wheel', onWheel)
-  }, [])
-
   function clampXfm(scale, tx, ty) {
     const el = containerRef.current
     if (!el) return { scale, tx, ty }
@@ -96,6 +63,23 @@ export default function SierraNevadaReliefMap() {
       tx: Math.max(Math.min(0, width - imgW), Math.min(0, tx)),
       ty: Math.max(Math.min(0, height - imgH), Math.min(0, ty)),
     }
+  }
+
+  function zoomBy(factor) {
+    const el = containerRef.current
+    if (!el) return
+    const { width, height } = el.getBoundingClientRect()
+    const curr = xfmRef.current
+    const newScale = Math.max(SCALE_MIN, Math.min(SCALE_MAX, curr.scale * factor))
+    if (newScale === curr.scale) return
+    // Zoom toward the center of the visible container
+    const cx = width / 2
+    const cy = height / 2
+    const canvasX = (cx - curr.tx) / curr.scale
+    const canvasY = (cy - curr.ty) / curr.scale
+    const newXfm = clampXfm(newScale, cx - canvasX * newScale, cy - canvasY * newScale)
+    xfmRef.current = newXfm
+    setXfmState(newXfm)
   }
 
   function handleMouseDown(e) {
@@ -133,6 +117,19 @@ export default function SierraNevadaReliefMap() {
     setXfmState(reset)
   }
 
+  const btnStyle = {
+    width: 22, height: 22,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    background: 'var(--c-surface)',
+    border: '1px solid var(--c-border)',
+    borderRadius: 3,
+    cursor: 'pointer',
+    fontSize: 14, lineHeight: 1,
+    color: 'var(--c-text-muted)',
+    padding: 0,
+    userSelect: 'none',
+  }
+
   return (
     <div
       ref={containerRef}
@@ -140,6 +137,7 @@ export default function SierraNevadaReliefMap() {
         position: 'relative',
         maxWidth: 460,
         overflow: 'hidden',
+        aspectRatio: `${CANVAS_W} / ${VISIBLE_H}`,
         cursor: isDragging ? 'grabbing' : (xfm.scale > 1 ? 'grab' : 'default'),
         userSelect: 'none',
         WebkitUserSelect: 'none',
@@ -153,9 +151,8 @@ export default function SierraNevadaReliefMap() {
     >
       {/*
         Transform target — image + SVG markers move together.
-        The mask-image gradient fades the top edge to transparent, fixing the
-        hard clipping line that appears when the boundary blur is cropped by the
-        canvas edge (northernmost point sits only ~26px from canvas top).
+        mask-image smooths the top edge where the boundary blur is clipped by
+        the canvas edge (northernmost point sits only ~26px from canvas top).
       */}
       <div
         style={{
@@ -218,6 +215,24 @@ export default function SierraNevadaReliefMap() {
             )
           })}
         </svg>
+      </div>
+
+      {/* Zoom controls */}
+      <div
+        style={{ position: 'absolute', bottom: 10, left: 10, zIndex: 10, display: 'flex', flexDirection: 'column', gap: 2 }}
+        onClick={e => e.stopPropagation()}
+        onMouseDown={e => e.stopPropagation()}
+      >
+        <button
+          style={{ ...btnStyle, opacity: xfm.scale >= SCALE_MAX ? 0.35 : 1 }}
+          onClick={() => zoomBy(1.6)}
+          aria-label="Zoom in"
+        >+</button>
+        <button
+          style={{ ...btnStyle, opacity: xfm.scale <= SCALE_MIN ? 0.35 : 1 }}
+          onClick={() => zoomBy(1 / 1.6)}
+          aria-label="Zoom out"
+        >−</button>
       </div>
 
       {/* Peak detail panel — not transformed, stays fixed at top-right */}
