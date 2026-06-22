@@ -109,6 +109,35 @@ export default function SierraNevadaReliefMap() {
     setDisambig(null)
   }
 
+  function handleTouchStart(e) {
+    didDragRef.current = false
+    if (xfmRef.current.scale <= 1.05) return
+    if (e.touches.length !== 1) return
+    clearTimeout(animTimerRef.current)
+    setAnimating(false)
+    const t = e.touches[0]
+    dragRef.current = { x: t.clientX, y: t.clientY, tx: xfmRef.current.tx, ty: xfmRef.current.ty }
+    setIsDragging(true)
+    setDisambig(null)
+  }
+
+  function handleTouchMove(e) {
+    if (!dragRef.current || e.touches.length !== 1) return
+    const t = e.touches[0]
+    const dx = t.clientX - dragRef.current.x
+    const dy = t.clientY - dragRef.current.y
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) didDragRef.current = true
+    const curr = xfmRef.current
+    const newXfm = clampXfm(curr.scale, dragRef.current.tx + dx, dragRef.current.ty + dy)
+    xfmRef.current = newXfm
+    setXfmState(newXfm)
+  }
+
+  function handleTouchEnd() {
+    dragRef.current = null
+    setIsDragging(false)
+  }
+
   function handleMouseMove(e) {
     if (!dragRef.current) return
     const dx = e.clientX - dragRef.current.x
@@ -174,10 +203,11 @@ export default function SierraNevadaReliefMap() {
         position: 'relative',
         overflow: 'hidden',
         aspectRatio: `${CANVAS_W} / ${VISIBLE_H}`,
-        // Grab cursor only when zoomed in (panning is allowed); pointer at full extent
         cursor: isDragging ? 'grabbing' : (isZoomed ? 'grab' : 'default'),
         userSelect: 'none',
         WebkitUserSelect: 'none',
+        // Capture touch when zoomed so the browser doesn't scroll the page instead
+        touchAction: isZoomed ? 'none' : 'auto',
       }}
       onClick={handleClick}
       onDoubleClick={handleDoubleClick}
@@ -185,6 +215,9 @@ export default function SierraNevadaReliefMap() {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       <div
         style={{
