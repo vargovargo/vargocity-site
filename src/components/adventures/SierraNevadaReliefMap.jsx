@@ -17,20 +17,19 @@ const VISIBLE_H = 1160
 const BASE_URL = import.meta.env.BASE_URL || '/'
 
 // ── Z=10 detail overlay ───────────────────────────────────────────────────────
-// The z=10 image covers tiles x:172-175, y:394-400 at zoom=10.
-// In Mercator, z=10 tile (tx,ty) = z=8 tile (tx/4, ty/4).
-// So the z=10 region maps to z=8 tile columns 43.0-44.0 and rows 98.5-100.25,
-// which gives exact canvas pixel positions without any geographic reprojection.
-const Z10_X_MIN = 172, Z10_Y_MIN = 394, Z10_COLS = 4, Z10_ROWS = 7
-const z10Left   = (Z10_X_MIN / 4 - TILE_X_MIN) * 256   // 512
-const z10Top    = (Z10_Y_MIN / 4 - TILE_Y_MIN) * 256   // 384
-const z10Width  = (Z10_COLS  / 4) * 256                 // 256
-const z10Height = (Z10_ROWS  / 4) * 256                 // 448
+// Tiles x:169-175, y:388-400 at zoom=10 cover all 17 climbed SPS peaks.
+// Exact z=8 canvas position via tile-coordinate math (z10/4 = z8 tile):
+//   z10Left   = (169/4 - 41)  * 256 = 320   (31.25% of canvas width)
+//   z10Top    = (388/4 - 97)  * 256 = 0     (flush with canvas top)
+//   z10Width  = (7/4)         * 256 = 448   (43.75% of canvas width)
+//   z10Height = (13/4)        * 256 = 832   (65% of canvas height)
+const Z10_X_MIN = 169, Z10_Y_MIN = 388, Z10_COLS = 7, Z10_ROWS = 13
+const z10Left   = (Z10_X_MIN / 4 - TILE_X_MIN) * 256   // 320
+const z10Top    = (Z10_Y_MIN / 4 - TILE_Y_MIN) * 256   // 0
+const z10Width  = (Z10_COLS  / 4) * 256                 // 448
+const z10Height = (Z10_ROWS  / 4) * 256                 // 832
 
-// Detail zoom target: center on the Palisades / Evolution cluster
 const DETAIL_SCALE = 3.8
-const DETAIL_LNG = -118.6
-const DETAIL_LAT = 37.15
 
 function geoToCanvas(lng, lat) {
   const n = Math.pow(2, ZOOM)
@@ -93,25 +92,18 @@ export default function SierraNevadaReliefMap() {
     setXfmState(xfmVal)
   }
 
-  function zoomToDetail() {
-    const el = containerRef.current
-    if (!el) return
-    const { width: W, height: H } = el.getBoundingClientRect()
-    const [cx, cy] = geoToCanvas(DETAIL_LNG, DETAIL_LAT)
-    const ppp = W / CANVAS_W  // CSS pixels per canvas pixel at scale=1
-    applyXfm(clampXfm(DETAIL_SCALE, W / 2 - cx * DETAIL_SCALE * ppp, H / 2 - cy * DETAIL_SCALE * ppp), true)
-  }
-
   function resetZoom() {
     applyXfm({ scale: 1, tx: 0, ty: 0 }, true)
   }
 
   function handleMouseDown(e) {
     if (e.button !== 0) return
+    didDragRef.current = false
+    // No panning when map is at full extent — only zoom/click allowed
+    if (xfmRef.current.scale <= 1.05) return
     e.preventDefault()
     clearTimeout(animTimerRef.current)
     setAnimating(false)
-    didDragRef.current = false
     dragRef.current = { x: e.clientX, y: e.clientY, tx: xfmRef.current.tx, ty: xfmRef.current.ty }
     setIsDragging(true)
     setDisambig(null)
@@ -138,19 +130,41 @@ export default function SierraNevadaReliefMap() {
     didDragRef.current = false
   }
 
-  function handleDoubleClick() {
-    // Toggle: zoom in from full extent, or reset when already zoomed
-    if (xfmRef.current.scale <= 1.05) {
-      zoomToDetail()
-    } else {
+  function handleDoubleClick(e) {
+    const curr = xfmRef.current
+    if (curr.scale > 1.05) {
+      // Already zoomed → reset to full extent
       resetZoom()
+      return
     }
+    // At full extent → zoom in, centered exactly on the double-clicked point
+    const el = containerRef.current
+    if (!el) return
+    const { left, top, width: W, height: H } = el.getBoundingClientRect()
+    const ppp = W / CANVAS_W  // CSS px per canvas unit at scale=1
+    // Convert screen position to canvas coordinates (works for any transform state)
+    const canvasX = (e.clientX - left - curr.tx) / curr.scale / ppp
+    const canvasY = (e.clientY - top  - curr.ty) / curr.scale / ppp
+    applyXfm(clampXfm(
+      DETAIL_SCALE,
+      W / 2 - canvasX * DETAIL_SCALE * ppp,
+      H / 2 - canvasY * DETAIL_SCALE * ppp,
+    ), true)
   }
 
-  // Z=10 overlay opacity: fades in from scale 1.5 → 3
+  // Z=10 overlay fades in from scale 1.5 → 3
   const z10Opacity = Math.min(1, Math.max(0, (xfm.scale - 1.5) / 1.5))
 
-  const isAtFullExtent = xfm.scale <= 1.05
+  // Constant-screen-size markers: target 7px radius (normal), 11px (selected).
+  // Divide by (ppp × scale) to convert screen pixels → SVG canvas units.
+  const containerW = containerRef.current?.offsetWidth ?? 460
+  const ppp = containerW / CANVAS_W
+  const mR  = 7  / (ppp * xfm.scale)   // normal marker radius in canvas units
+  const mRS = 11 / (ppp * xfm.scale)   // selected marker radius
+  const mSW = 1.5 / (ppp * xfm.scale)  // normal stroke width
+  const mSSW = 2  / (ppp * xfm.scale)  // selected stroke width
+
+  const isZoomed = xfm.scale > 1.05
 
   return (
     <div style={{ position: 'relative', maxWidth: 460 }}>
@@ -160,7 +174,8 @@ export default function SierraNevadaReliefMap() {
         position: 'relative',
         overflow: 'hidden',
         aspectRatio: `${CANVAS_W} / ${VISIBLE_H}`,
-        cursor: isDragging ? 'grabbing' : (xfm.scale > 1 ? 'grab' : 'default'),
+        // Grab cursor only when zoomed in (panning is allowed); pointer at full extent
+        cursor: isDragging ? 'grabbing' : (isZoomed ? 'grab' : 'default'),
         userSelect: 'none',
         WebkitUserSelect: 'none',
       }}
@@ -194,27 +209,25 @@ export default function SierraNevadaReliefMap() {
           }}
         />
 
-        {/* Z=10 detail overlay — fades in as user zooms past 1.5×.
-            Positioned in exact z=8 canvas pixel space using tile math:
-            z10 tiles (172-175, 394-400) at zoom 10 = tiles (43-44, 98.5-100.25) at zoom 8. */}
+        {/* Z=10 detail overlay — fades in past 1.5× zoom.
+            x:169-175, y:388-400 at zoom=10 → covers all 17 climbed peaks. */}
         <img
           src={BASE_URL + 'sierra-hillshade-z10.webp'}
           alt=""
           aria-hidden="true"
           style={{
             position: 'absolute',
-            left: `${z10Left / CANVAS_W * 100}%`,
-            top: `${z10Top / CANVAS_H * 100}%`,
-            width: `${z10Width / CANVAS_W * 100}%`,
+            left:   `${z10Left   / CANVAS_W * 100}%`,
+            top:    `${z10Top    / CANVAS_H * 100}%`,
+            width:  `${z10Width  / CANVAS_W * 100}%`,
             height: `${z10Height / CANVAS_H * 100}%`,
             opacity: z10Opacity,
             transition: 'opacity 0.3s ease',
             pointerEvents: 'none',
-            imageRendering: 'auto',
           }}
         />
 
-        {/* SVG peak-marker overlay */}
+        {/* SVG peak-marker overlay — markers stay constant screen size via scaled r */}
         <svg
           viewBox={`0 0 ${CANVAS_W} ${CANVAS_H}`}
           style={{
@@ -234,10 +247,10 @@ export default function SierraNevadaReliefMap() {
                 key={peak.name}
                 cx={cx}
                 cy={cy}
-                r={(isSel ? 14 : 8) / xfm.scale}
+                r={isSel ? mRS : mR}
                 fill={isSel ? 'var(--c-accent, #FC4C02)' : 'rgba(255,255,255,0.88)'}
                 stroke={isSel ? 'white' : 'rgba(20,50,70,0.5)'}
-                strokeWidth={(isSel ? 2.5 : 1.5) / xfm.scale}
+                strokeWidth={isSel ? mSSW : mSW}
                 style={{ cursor: 'pointer', pointerEvents: 'all' }}
                 onClick={e => {
                   e.stopPropagation()
@@ -246,6 +259,7 @@ export default function SierraNevadaReliefMap() {
                   const rect = svgEl.getBoundingClientRect()
                   const svgX = (e.clientX - rect.left) / rect.width * CANVAS_W
                   const svgY = (e.clientY - rect.top) / rect.height * CANVAS_H
+                  // 12px screen threshold, converted to canvas units at current zoom
                   const threshold = 12 * CANVAS_W / rect.width
                   const nearby = mappable
                     .filter(p => {
@@ -274,25 +288,6 @@ export default function SierraNevadaReliefMap() {
             )
           })}
         </svg>
-      </div>
-
-      {/* Hint label — fades out once the user has zoomed */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 10,
-          left: 10,
-          zIndex: 10,
-          fontSize: 10,
-          color: 'var(--c-text-muted)',
-          letterSpacing: '0.03em',
-          pointerEvents: 'none',
-          opacity: isAtFullExtent ? 0.75 : 0,
-          transition: 'opacity 0.4s ease',
-          userSelect: 'none',
-        }}
-      >
-        double click to zoom
       </div>
     </div>{/* end map viewport */}
 
