@@ -28,21 +28,29 @@ export default function Footer({ theme, themes, onThemeChange }) {
               GitHub
             </a>
           </div>
-          <div className="flex gap-1.5">
+          <div className="flex gap-0.5">
             {themes.map(t => (
               <button
                 key={t.id}
                 onClick={() => onThemeChange(t.id)}
                 title={t.label}
+                aria-label={t.label}
                 style={{
+                  width: '28px', height: '28px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  background: 'none', border: 'none',
+                  cursor: 'pointer', borderRadius: '50%', padding: 0, flexShrink: 0,
+                }}
+              >
+                <span style={{
+                  display: 'block',
                   width: '14px', height: '14px',
                   backgroundColor: t.swatch,
                   border: `2px solid ${theme === t.id ? t.ring : 'var(--c-border)'}`,
-                  cursor: 'pointer',
                   borderRadius: '50%',
-                  padding: 0,
-                }}
-              />
+                  pointerEvents: 'none',
+                }} />
+              </button>
             ))}
           </div>
         </div>
