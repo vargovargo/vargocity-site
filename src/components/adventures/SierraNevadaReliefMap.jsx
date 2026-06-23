@@ -184,14 +184,9 @@ export default function SierraNevadaReliefMap() {
   // Z=10 overlay fades in from scale 1.5 → 3
   const z10Opacity = Math.min(1, Math.max(0, (xfm.scale - 1.5) / 1.5))
 
-  // Constant-screen-size markers. Touch devices get larger targets.
   const isTouch = window.matchMedia('(pointer: coarse)').matches
   const containerW = containerRef.current?.offsetWidth ?? 460
   const ppp = containerW / CANVAS_W
-  const mR  = (isTouch ? 9  : 5)  / (ppp * xfm.scale)   // normal marker radius in canvas units
-  const mRS = (isTouch ? 14 : 9)  / (ppp * xfm.scale)   // selected marker radius
-  const mSW = 1.5 / (ppp * xfm.scale)  // normal stroke width
-  const mSSW = 2  / (ppp * xfm.scale)  // selected stroke width
 
   const isZoomed = xfm.scale > 1.05
 
@@ -260,68 +255,72 @@ export default function SierraNevadaReliefMap() {
           }}
         />
 
-        {/* SVG peak-marker overlay — markers stay constant screen size via scaled r */}
-        <svg
-          viewBox={`0 0 ${CANVAS_W} ${CANVAS_H}`}
-          style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            overflow: 'visible',
-            pointerEvents: 'none',
-          }}
-        >
-          {mappable.map(peak => {
-            const [cx, cy] = geoToCanvas(peak.lng, peak.lat)
-            const isSel = selected?.name === peak.name
-            return (
-              <circle
-                key={peak.name}
-                cx={cx}
-                cy={cy}
-                r={isSel ? mRS : mR}
-                fill={isSel ? 'var(--c-accent, #FC4C02)' : 'rgba(255,255,255,0.88)'}
-                stroke={isSel ? 'white' : 'rgba(20,50,70,0.5)'}
-                strokeWidth={isSel ? mSSW : mSW}
-                style={{ cursor: 'pointer', pointerEvents: 'all' }}
-                onClick={e => {
-                  e.stopPropagation()
-                  if (didDragRef.current) return
-                  const svgEl = e.currentTarget.ownerSVGElement
-                  const rect = svgEl.getBoundingClientRect()
-                  const svgX = (e.clientX - rect.left) / rect.width * CANVAS_W
-                  const svgY = (e.clientY - rect.top) / rect.height * CANVAS_H
-                  // threshold in canvas units — wider on touch to compensate for finger imprecision
-                  const threshold = (isTouch ? 20 : 12) * CANVAS_W / rect.width
-                  const nearby = mappable
-                    .filter(p => {
-                      const [px, py] = geoToCanvas(p.lng, p.lat)
-                      return Math.hypot(px - svgX, py - svgY) < threshold
-                    })
-                    .sort((a, b) =>
-                      parseInt(b.elevation_ft ?? b.elevation, 10) -
-                      parseInt(a.elevation_ft ?? a.elevation, 10)
-                    )
-                  if (nearby.length <= 1) {
-                    setSelected(isSel ? null : peak)
-                    setDisambig(null)
-                  } else {
-                    setDisambig({ peaks: nearby, clientX: e.clientX, clientY: e.clientY })
-                  }
-                }}
-                onMouseEnter={e =>
-                  setTooltip({ name: peak.name, x: e.clientX, y: e.clientY })
-                }
-                onMouseMove={e =>
-                  setTooltip(t => (t ? { ...t, x: e.clientX, y: e.clientY } : null))
-                }
-                onMouseLeave={() => setTooltip(null)}
-              />
-            )
-          })}
-        </svg>
       </div>
+
+      {/* SVG marker overlay — lives OUTSIDE the willChange:transform div so the
+          browser renders it at native resolution rather than compositing a bitmap
+          and scaling it up, which caused blurry circles at high zoom. */}
+      <svg
+        viewBox={`0 0 ${containerW} ${containerRef.current?.offsetHeight ?? containerW * VISIBLE_H / CANVAS_W}`}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          overflow: 'hidden',
+          pointerEvents: 'none',
+        }}
+      >
+        {mappable.map(peak => {
+          const [cx, cy] = geoToCanvas(peak.lng, peak.lat)
+          // Convert canvas coords → screen coords within the container
+          const sx = cx * ppp * xfm.scale + xfm.tx
+          const sy = cy * ppp * xfm.scale + xfm.ty
+          const isSel = selected?.name === peak.name
+          const r  = isSel ? (isTouch ? 14 : 9) : (isTouch ? 9 : 5)
+          const sw = isSel ? 2 : 1.5
+          return (
+            <circle
+              key={peak.name}
+              cx={sx}
+              cy={sy}
+              r={r}
+              fill={isSel ? 'var(--c-accent, #FC4C02)' : 'rgba(255,255,255,0.88)'}
+              stroke={isSel ? 'white' : 'rgba(20,50,70,0.5)'}
+              strokeWidth={sw}
+              style={{ cursor: 'pointer', pointerEvents: 'all' }}
+              onClick={e => {
+                e.stopPropagation()
+                if (didDragRef.current) return
+                const rect = containerRef.current.getBoundingClientRect()
+                const clickX = e.clientX - rect.left
+                const clickY = e.clientY - rect.top
+                const threshold = isTouch ? 20 : 12
+                const nearby = mappable
+                  .filter(p => {
+                    const [px, py] = geoToCanvas(p.lng, p.lat)
+                    const psx = px * ppp * xfm.scale + xfm.tx
+                    const psy = py * ppp * xfm.scale + xfm.ty
+                    return Math.hypot(psx - clickX, psy - clickY) < threshold
+                  })
+                  .sort((a, b) =>
+                    parseInt(b.elevation_ft ?? b.elevation, 10) -
+                    parseInt(a.elevation_ft ?? a.elevation, 10)
+                  )
+                if (nearby.length <= 1) {
+                  setSelected(isSel ? null : peak)
+                  setDisambig(null)
+                } else {
+                  setDisambig({ peaks: nearby, clientX: e.clientX, clientY: e.clientY })
+                }
+              }}
+              onMouseEnter={e => setTooltip({ name: peak.name, x: e.clientX, y: e.clientY })}
+              onMouseMove={e => setTooltip(t => t ? { ...t, x: e.clientX, y: e.clientY } : null)}
+              onMouseLeave={() => setTooltip(null)}
+            />
+          )
+        })}
+      </svg>
     </div>{/* end map viewport */}
 
       {/* Peak detail panel — floats right on desktop, expands below map on mobile */}
