@@ -198,7 +198,7 @@ export default function SierraNevadaReliefMap() {
         position: 'relative',
         overflow: 'hidden',
         aspectRatio: `${CANVAS_W} / ${VISIBLE_H}`,
-        cursor: isDragging ? 'grabbing' : (isZoomed ? 'grab' : 'default'),
+        cursor: isDragging ? 'grabbing' : (isZoomed ? 'grab' : 'zoom-in'),
         userSelect: 'none',
         WebkitUserSelect: 'none',
         // Capture touch when zoomed so the browser doesn't scroll the page instead
@@ -323,6 +323,12 @@ export default function SierraNevadaReliefMap() {
       </svg>
     </div>{/* end map viewport */}
 
+      {!isZoomed && (
+        <p style={{ fontSize: 10, color: 'var(--c-text-muted)', marginTop: 5, marginBottom: 0, letterSpacing: '0.02em' }}>
+          Click peaks · Double-click to zoom
+        </p>
+      )}
+
       {/* Peak detail panel — floats right on desktop, expands below map on mobile */}
       {selected && (
         <div
@@ -397,7 +403,7 @@ export default function SierraNevadaReliefMap() {
                 )}
 
                 {ascent.strava?.distance_miles && (
-                  <p style={{ fontSize: 10, color: 'var(--c-text-muted)', marginBottom: 6 }}>
+                  <p style={{ fontSize: 11, color: 'var(--c-text-muted)', marginBottom: 6 }}>
                     ↑ {ascent.strava.elevation_gain_ft?.toLocaleString()} ft · {ascent.strava.distance_miles} mi · {ascent.strava.moving_time_hms}
                   </p>
                 )}
