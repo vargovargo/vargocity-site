@@ -11,20 +11,20 @@ export default function Footer({ theme, themes, onThemeChange }) {
           <div className="flex gap-5">
             <a href="https://scholar.google.com/citations?user=18KgmXAAAAAJ"
               target="_blank" rel="noopener noreferrer"
-              className="text-xs transition-colors theme-hover"
-              style={{ color: 'var(--c-text-muted)' }}>
+              className="text-sm transition-colors theme-hover"
+              style={{ color: 'var(--c-text-body)' }}>
               Scholar
             </a>
             <a href="https://www.frbsf.org/our-people/experts/jason-vargo/"
               target="_blank" rel="noopener noreferrer"
-              className="text-xs transition-colors theme-hover"
-              style={{ color: 'var(--c-text-muted)' }}>
+              className="text-sm transition-colors theme-hover"
+              style={{ color: 'var(--c-text-body)' }}>
               Fed Profile
             </a>
             <a href="https://github.com/vargovargo"
               target="_blank" rel="noopener noreferrer"
-              className="text-xs transition-colors theme-hover"
-              style={{ color: 'var(--c-text-muted)' }}>
+              className="text-sm transition-colors theme-hover"
+              style={{ color: 'var(--c-text-body)' }}>
               GitHub
             </a>
           </div>
