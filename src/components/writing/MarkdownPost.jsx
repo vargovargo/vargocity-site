@@ -118,7 +118,16 @@ function SeriesNav({ post, seriesPosts }) {
 }
 
 export default function MarkdownPost({ post, backPath, backLabel, seriesPosts }) {
-  if (!post) return <p className="text-sm" style={{ color: 'var(--c-text-muted)' }}>Post not found.</p>
+  if (!post) return (
+    <div className="max-w-2xl py-16">
+      <p className="text-sm mb-4" style={{ color: 'var(--c-text-body)' }}>That post doesn't exist — it may have moved or the URL is wrong.</p>
+      <Link to={backPath || '/lab'} className="text-sm transition-colors" style={{ color: 'var(--c-text-muted)' }}
+        onMouseEnter={e => e.currentTarget.style.color = 'var(--c-text)'}
+        onMouseLeave={e => e.currentTarget.style.color = 'var(--c-text-muted)'}>
+        ← {backLabel || 'Back to Lab'}
+      </Link>
+    </div>
+  )
   return (
     <article className="max-w-2xl">
       <div className="mb-8">
