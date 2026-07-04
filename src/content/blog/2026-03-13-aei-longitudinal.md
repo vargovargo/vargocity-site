@@ -47,7 +47,7 @@ The [Anthropic Economic Index](https://huggingface.co/datasets/Anthropic/Economi
 
 ### 1. AI task share is growing in LMI-high occupations
 
-Measured as the share of Claude interactions that map to each SOC group, AI usage is increasing in occupations where lower-income workers are most concentrated. Office and Administrative Support (SOC 43) shows a consistent upward trend across all four releases. Educational Instruction and Library (SOC 25, moderate) also shows elevated and growing task share.
+The share of Claude interactions mapping to LMI-high occupations — measured via O\*NET task crosswalk — is increasing across four releases. Office and Administrative Support (SOC 43) shows a consistent upward trend; Educational Instruction and Library (SOC 25, moderate) is elevated and also growing. This measures what tasks appear in Claude conversations, not who is bringing them — whether those are workers in those occupations, managers, or employers using AI on their behalf.
 
 *For a closer look at where within SOC 43 that usage falls — across the seven occupational subgroups, from secretaries to data entry workers — see [Where Within Office Work Is AI Actually Landing?](/lab/posts/2026-03-17-soc43-subgroup)*
 
@@ -55,7 +55,7 @@ Measured as the share of Claude interactions that map to each SOC group, AI usag
 
 ### 2. The nature of that use is shifting toward automation
 
-Per-SOC collaboration data (available from V2 onward) shows LMI-high occupations — particularly SOC 43 — moving toward automation-type interactions over time rather than augmentation. This is not simply more AI use; it is AI use of a different character.
+Per-SOC collaboration data (available from V2 onward) shows LMI-high occupations — particularly SOC 43 — moving toward automation-type interactions over time rather than augmentation. In Anthropic's classification, automation-type means directive collaboration: AI completing a task end-to-end with minimal back-and-forth. This is not simply more AI use; it is AI use of a different character.
 
 ![Automation vs. augmentation trends by LMI flag](/plots/automation_augmentation_trends.png)
 
@@ -65,9 +65,9 @@ Per-SOC collaboration data (available from V2 onward) shows LMI-high occupations
 
 The V4 release introduces capability primitives including AI autonomy and task success estimates. Across the LMI-high SOC groups, Claude's self-assessed success rate on tasks mapped to those occupations falls below the cross-occupational average in three of four cases.
 
-The pattern is not "AI is displacing these workers because it is good at their jobs." It is closer to: AI is being applied to tasks in lower-income occupations despite lower estimated capability at those tasks. A possible explanation is that office, healthcare support, and sales work is structured on its surface but depends heavily on institutional context, interpersonal relationships, and tacit knowledge — AI may engage with the form of the task while underperforming on the substance.
+The pattern is not "AI is displacing these workers because it is good at their jobs." It is closer to: tasks in lower-income occupations are appearing in Claude conversations despite the model's below-average estimated capability at those tasks. One possible explanation — not established by this data — is that office, healthcare support, and sales work is structured on its surface but depends heavily on institutional context, interpersonal relationships, and tacit knowledge; AI may engage with the form of the task while its self-assessed success rate on the substance falls below average.
 
-Within the LMI-high group, autonomy scores are higher in occupations with lower average education requirements, consistent with routine task logic. More autonomous AI engagement is concentrated where workers have fewer credentials and potentially less capacity to contest or correct AI output.
+Within the LMI-high group, autonomy scores are higher where average education requirements are lower, consistent with routine task logic — more autonomous AI engagement is concentrated in occupations with fewer credential requirements.
 
 ![AI autonomy vs. education level by SOC group (V4 primitives)](/plots/primitives_scatter.png)
 
