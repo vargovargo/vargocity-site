@@ -1,7 +1,36 @@
 import { useState } from 'react'
 import { peaksByElevation, climbedPeaks } from '../../data/spsUtils'
+import Lightbox from './Lightbox'
 
 const climbedMap = new Map(climbedPeaks.map(p => [p.id, p]))
+
+function cdnAuto(url) {
+  if (!url?.includes('cloudinary.com')) return url
+  if (url.includes('/upload/f_auto')) return url
+  return url.replace('/upload/', '/upload/f_auto,q_auto/')
+}
+
+function PhotoThumbs({ photos, peakName, onOpen }) {
+  if (!photos?.length) return null
+  return (
+    <div className="mt-1.5 flex gap-1.5 flex-wrap">
+      {photos.map((photo, pi) => (
+        <button
+          key={pi}
+          onClick={e => { e.stopPropagation(); onOpen(pi) }}
+          className="w-11 h-11 rounded overflow-hidden shrink-0 p-0 cursor-pointer"
+          style={{ border: '1px solid var(--c-border)', background: 'none' }}
+        >
+          <img
+            src={cdnAuto(photo.url)}
+            alt={photo.caption || `${peakName} photo`}
+            className="w-full h-full object-cover"
+          />
+        </button>
+      ))}
+    </div>
+  )
+}
 
 function StravaLink({ url, hasData }) {
   if (!url) return null
@@ -54,6 +83,7 @@ function StravaDetail({ strava, stravaUrl }) {
 export default function ElevationChart() {
   const [selectedId, setSelectedId] = useState(null)
   const [climbedOnly, setClimbedOnly] = useState(true)
+  const [lightbox, setLightbox] = useState(null)
 
   if (peaksByElevation.length === 0) return null
 
@@ -64,6 +94,14 @@ export default function ElevationChart() {
 
   return (
     <div>
+      {lightbox && (
+        <Lightbox
+          photos={lightbox.photos}
+          peakName={lightbox.peakName}
+          startIndex={lightbox.startIndex}
+          onClose={() => setLightbox(null)}
+        />
+      )}
       <div className="flex items-center gap-6 mb-5">
         <p className="text-xs font-medium uppercase tracking-wider" style={{ color: 'var(--c-text-muted)' }}>
           {climbedOnly
@@ -161,6 +199,15 @@ export default function ElevationChart() {
                         </p>
                       )}
                       <StravaDetail strava={ascent.strava} stravaUrl={ascent.strava_url} />
+                      <PhotoThumbs
+                        photos={ascent.photos}
+                        peakName={peak.name}
+                        onOpen={pi => setLightbox({
+                          photos: ascent.photos.map(p => ({ ...p, url: cdnAuto(p.url) })),
+                          peakName: peak.name,
+                          startIndex: pi,
+                        })}
+                      />
                     </div>
                   ))}
                 </div>
