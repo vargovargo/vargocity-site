@@ -6778,7 +6778,16 @@
               "scrambling_rating": "S-3.0"
             }
           ],
-          "ascents": []
+          "ascents": [
+            {
+              "date": "2026-07-07",
+              "sequence": 1,
+              "notes": "Paired with Mount Tallac for a Desolation Wilderness double. Dicks first.",
+              "strava_url": "https://strava.app.link/kTbnPHCuD4b"
+            }
+          ],
+          "lat": 38.8594,
+          "lng": -120.1256
         },
         {
           "id": "23.11",
@@ -6799,7 +6808,16 @@
               "scrambling_rating": "S-1.1"
             }
           ],
-          "ascents": []
+          "ascents": [
+            {
+              "date": "2026-07-07",
+              "sequence": 2,
+              "notes": "Second summit of the day after Dicks Peak.",
+              "strava_url": "https://strava.app.link/kTbnPHCuD4b"
+            }
+          ],
+          "lat": 38.9064,
+          "lng": -120.0987
         }
       ]
     },
