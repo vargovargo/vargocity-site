@@ -4417,19 +4417,19 @@
               "photos": [
                 {
                   "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782089897/IMG_5447_zekbun.jpg",
-                  "caption": ""
+                  "caption": "Eyeing our objective in the early light of the second longest day of the year."
                 },
                 {
-                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782089942/IMG_1290_lv7gy2.heic",
-                  "caption": ""
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782089942/IMG_1290_lv7gy2.jpg",
+                  "caption": "Basking in summit glory."
                 },
                 {
-                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782089898/IMG_1276_gyoolm.heic",
-                  "caption": ""
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782089898/IMG_1276_gyoolm.jpg",
+                  "caption": "The East Arete's famous walkway in the sky."
                 },
                 {
-                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782089892/IMG_1305_dtog6r.heic",
-                  "caption": ""
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782089892/IMG_1305_dtog6r.jpg",
+                  "caption": "Tidying up after this rope's inaugural use on our one rappel."
                 }
               ],
               "strava": {
@@ -5927,16 +5927,16 @@
               "strava_url": "https://www.strava.com/activities/19016446998",
               "photos": [
                 {
-                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140477/IMG_1314_yxvczj.heic",
-                  "caption": ""
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140477/IMG_1314_yxvczj.jpg",
+                  "caption": "Starting cold to go bold."
                 },
                 {
-                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140470/IMG_1323_zuzdpa.heic",
-                  "caption": ""
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140470/IMG_1323_zuzdpa.jpg",
+                  "caption": "Heading back down some icy steps."
                 },
                 {
-                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140470/IMG_1318_et16ey.heic",
-                  "caption": ""
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1782140470/IMG_1318_et16ey.jpg",
+                  "caption": "Twinning on the summit."
                 }
               ],
               "strava": {
@@ -6636,7 +6636,7 @@
                 },
                 {
                   "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1772431301/image_pobtsb.jpg",
-                  "caption": "Sliding down from the final section."
+                  "caption": "The final ridge toward the summit."
                 }
               ],
               "strava": {
@@ -6794,7 +6794,25 @@
                 "sparkline_svg": "/strava/19237901511.svg",
                 "fetched_at": "2026-07-10",
                 "source": "fit_file"
-              }
+              },
+              "photos": [
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1783660237/IMG_5660_hzbsy7.jpg",
+                  "caption": "The full crew on the way up (Garth, Ziggy, Emmett, Mercer, Sam, Buddy)."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1783660226/IMG_6254_hnmmie.jpg",
+                  "caption": "Hangin' loose at the summit."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1783660225/IMG_6241_ljn6c6.jpg",
+                  "caption": "Summit selfie, pointing back at Pyramid."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1783660224/IMG_6259_km3ewk.jpg",
+                  "caption": "Looking back at the ridge on our way down to Dicks Pass."
+                }
+              ]
             }
           ],
           "lat": 38.90049,
@@ -6835,7 +6853,25 @@
                 "sparkline_svg": "/strava/19237901511.svg",
                 "fetched_at": "2026-07-10",
                 "source": "fit_file"
-              }
+              },
+              "photos": [
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1783660231/IMG_5710_tmb6pa.jpg",
+                  "caption": "Standing atop Tallac above South Lake Tahoe."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1783660235/IMG_5712_ogo1r5.jpg",
+                  "caption": "Looking south to Aloha and the Crystal Range with Pyramid, Agassiz and Price."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1783660463/IMG_5719_dv3yf8.jpg",
+                  "caption": "Wildflowers on the way up were bonkers."
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1783660618/IMG_5724_ht887f.jpg",
+                  "caption": "Perfect spot for a refreshing swim on the descent."
+                }
+              ]
             }
           ],
           "lat": 38.90598,
