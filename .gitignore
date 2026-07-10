@@ -29,3 +29,6 @@ dist-ssr
 
 # Large data files not suitable for git
 public/data/*.geojson
+
+# Raw .fit uploads used as input for scripts/enrich-from-fit.js
+scripts/fit-imports/*.fit
