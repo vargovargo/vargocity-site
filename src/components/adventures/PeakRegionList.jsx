@@ -1,5 +1,34 @@
 import { useState } from 'react'
 import spsData from '../../data/sps-peaks.json'
+import Lightbox from './Lightbox'
+
+function cdnAuto(url) {
+  if (!url?.includes('cloudinary.com')) return url
+  if (url.includes('/upload/f_auto')) return url
+  return url.replace('/upload/', '/upload/f_auto,q_auto/')
+}
+
+function PhotoThumbs({ photos, peakName, onOpen }) {
+  if (!photos?.length) return null
+  return (
+    <div className="mt-1.5 flex gap-1.5 flex-wrap">
+      {photos.map((photo, pi) => (
+        <button
+          key={pi}
+          onClick={e => { e.stopPropagation(); onOpen(pi) }}
+          className="w-11 h-11 rounded overflow-hidden shrink-0 p-0 cursor-pointer"
+          style={{ border: '1px solid var(--c-border)', background: 'none' }}
+        >
+          <img
+            src={cdnAuto(photo.url)}
+            alt={photo.caption || `${peakName} photo`}
+            className="w-full h-full object-cover"
+          />
+        </button>
+      ))}
+    </div>
+  )
+}
 
 function StravaLink({ url }) {
   if (!url) return null
@@ -39,6 +68,7 @@ function StravaStats({ strava }) {
 export default function PeakRegionList() {
   const [selectedPeak, setSelectedPeak] = useState(null) // peak.name
   const [climbedOnly, setClimbedOnly] = useState(true)
+  const [lightbox, setLightbox] = useState(null)
 
   const regionsToShow = spsData.regions
     .map(region => {
@@ -52,6 +82,14 @@ export default function PeakRegionList() {
 
   return (
     <div>
+      {lightbox && (
+        <Lightbox
+          photos={lightbox.photos}
+          peakName={lightbox.peakName}
+          startIndex={lightbox.startIndex}
+          onClose={() => setLightbox(null)}
+        />
+      )}
       <div className="flex justify-end mb-4">
         <button
           onClick={() => { setClimbedOnly(v => !v); setSelectedPeak(null) }}
@@ -135,6 +173,15 @@ export default function PeakRegionList() {
                         {ascent.notes}
                       </p>
                     )}
+                    <PhotoThumbs
+                      photos={ascent.photos}
+                      peakName={selected.name}
+                      onOpen={pi => setLightbox({
+                        photos: ascent.photos.map(p => ({ ...p, url: cdnAuto(p.url) })),
+                        peakName: selected.name,
+                        startIndex: pi,
+                      })}
+                    />
                   </div>
                 ))}
               </div>

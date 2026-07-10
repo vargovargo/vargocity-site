@@ -17,7 +17,7 @@ const VISIBLE_H = 1160
 const BASE_URL = import.meta.env.BASE_URL || '/'
 
 // ── Z=10 detail overlay ───────────────────────────────────────────────────────
-// Tiles x:169-175, y:388-400 at zoom=10 cover all 17 climbed SPS peaks.
+// Tiles x:169-175, y:388-400 at zoom=10 cover all 19 climbed SPS peaks.
 // Exact z=8 canvas position via tile-coordinate math (z10/4 = z8 tile):
 //   z10Left   = (169/4 - 41)  * 256 = 320   (31.25% of canvas width)
 //   z10Top    = (388/4 - 97)  * 256 = 0     (flush with canvas top)
@@ -238,7 +238,7 @@ export default function SierraNevadaReliefMap() {
         />
 
         {/* Z=10 detail overlay — fades in past 1.5× zoom.
-            x:169-175, y:388-400 at zoom=10 → covers all 17 climbed peaks. */}
+            x:169-175, y:388-400 at zoom=10 → covers all 19 climbed peaks. */}
         <img
           src={BASE_URL + 'sierra-hillshade-z10.webp'}
           alt=""

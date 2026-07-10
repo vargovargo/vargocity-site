@@ -1302,8 +1302,8 @@
               }
             }
           ],
-          "lat": 36.5868,
-          "lng": -118.3621
+          "lat": 36.65583,
+          "lng": -118.33722
         },
         {
           "id": "5.9",
@@ -3260,8 +3260,8 @@
               }
             }
           ],
-          "lat": 37.0545,
-          "lng": -118.4986
+          "lat": 37.0704,
+          "lng": -118.4691
         },
         {
           "id": "12.9",
@@ -4387,8 +4387,8 @@
               }
             }
           ],
-          "lat": 37.221,
-          "lng": -118.6557
+          "lat": 37.24243,
+          "lng": -118.65428
         },
         {
           "id": "16.3",
@@ -4852,8 +4852,8 @@
               }
             }
           ],
-          "lat": 37.3567,
-          "lng": -118.7284
+          "lat": 37.36799,
+          "lng": -118.76762
         },
         {
           "id": "17.8",
@@ -5677,8 +5677,8 @@
               }
             }
           ],
-          "lat": 37.7618,
-          "lng": -119.5088
+          "lat": 37.7677,
+          "lng": -119.48933
         }
       ]
     },
@@ -5737,8 +5737,8 @@
               }
             }
           ],
-          "lat": 37.8516,
-          "lng": -119.4012
+          "lat": 37.8476,
+          "lng": -119.40584
         },
         {
           "id": "21.2",
@@ -6158,8 +6158,8 @@
               }
             }
           ],
-          "lat": 37.9796,
-          "lng": -119.3497
+          "lat": 37.98217,
+          "lng": -119.31484
         },
         {
           "id": "22.4",
@@ -6492,8 +6492,8 @@
               }
             }
           ],
-          "lat": 38.5196,
-          "lng": -119.9472
+          "lat": 38.2062,
+          "lng": -119.709
         },
         {
           "id": "23.2",
@@ -6651,8 +6651,8 @@
               }
             }
           ],
-          "lat": 38.6743,
-          "lng": -119.9018
+          "lat": 38.6635,
+          "lng": -120.0015
         },
         {
           "id": "23.8",
@@ -6751,8 +6751,8 @@
               }
             }
           ],
-          "lat": 38.8472,
-          "lng": -120.145
+          "lat": 38.84501,
+          "lng": -120.15786
         },
         {
           "id": "23.10",
@@ -6778,7 +6778,16 @@
               "scrambling_rating": "S-3.0"
             }
           ],
-          "ascents": []
+          "ascents": [
+            {
+              "date": "2026-07-07",
+              "sequence": 1,
+              "notes": "Set off from Middle Velma with a full crew including a dog. We left the trail at the end of Fontanillis and headed for the ridge. We summited from the north and descended east toward the pass.",
+              "strava_url": "https://www.strava.com/activities/19237901511"
+            }
+          ],
+          "lat": 38.90049,
+          "lng": -120.15097
         },
         {
           "id": "23.11",
@@ -6799,7 +6808,16 @@
               "scrambling_rating": "S-1.1"
             }
           ],
-          "ascents": []
+          "ascents": [
+            {
+              "date": "2026-07-07",
+              "sequence": 2,
+              "notes": "Just before Dicks Pass I decided to add on an out-and-back to Tallac. The trail up had the most amazing wildflowers and the summit is an amazing view of Lake Tahoe and the ridge with Pyramid Peak. Went back over Dicks Pass and had a dip in Fontanillis all to myself.",
+              "strava_url": "https://www.strava.com/activities/19237901511"
+            }
+          ],
+          "lat": 38.90598,
+          "lng": -120.09899
         }
       ]
     },
@@ -6934,8 +6952,8 @@
               }
             }
           ],
-          "lat": 39.4465,
-          "lng": -120.3668
+          "lat": 39.36549,
+          "lng": -120.34918
         },
         {
           "id": "24.4",
