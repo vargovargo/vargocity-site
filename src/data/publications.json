@@ -16,7 +16,7 @@
     "year": 2012,
     "venue": "Landscape and Urban Planning",
     "url": "",
-    "citations": 325,
+    "citations": 338,
     "tags": ["climate", "policy", "cities"]
   },
   {
@@ -26,7 +26,7 @@
     "year": 2012,
     "venue": "Journal of Physical Activity and Health",
     "url": "",
-    "citations": 83,
+    "citations": 84,
     "tags": ["cities", "health"]
   },
   {
@@ -46,7 +46,7 @@
     "year": 2013,
     "venue": "Environmental Science & Technology",
     "url": "",
-    "citations": 75,
+    "citations": 79,
     "tags": ["climate", "policy"]
   },
   {
@@ -56,7 +56,7 @@
     "year": 2013,
     "venue": "Journal of Environmental Management",
     "url": "",
-    "citations": 82,
+    "citations": 84,
     "tags": ["climate", "cities"]
   },
   {
@@ -96,7 +96,7 @@
     "year": 2014,
     "venue": "PLOS ONE",
     "url": "",
-    "citations": 225,
+    "citations": 227,
     "tags": ["climate", "health", "policy"]
   },
   {
@@ -106,7 +106,7 @@
     "year": 2015,
     "venue": "Natural Hazards",
     "url": "",
-    "citations": 402,
+    "citations": 417,
     "tags": ["climate"]
   },
   {
@@ -126,7 +126,7 @@
     "year": 2015,
     "venue": "Advances in Meteorology",
     "url": "",
-    "citations": 12,
+    "citations": 13,
     "tags": ["climate"]
   },
   {
@@ -136,7 +136,7 @@
     "year": 2016,
     "venue": "Sustainability",
     "url": "",
-    "citations": 40,
+    "citations": 41,
     "tags": ["climate", "health", "policy"]
   },
   {
@@ -146,7 +146,7 @@
     "year": 2016,
     "venue": "Environmental Science & Policy",
     "url": "",
-    "citations": 124,
+    "citations": 133,
     "tags": ["climate", "cities", "health"]
   },
   {
@@ -156,7 +156,7 @@
     "year": 2017,
     "venue": "Accident Analysis & Prevention",
     "url": "",
-    "citations": 30,
+    "citations": 31,
     "tags": ["transportation", "health"]
   },
   {
@@ -196,7 +196,7 @@
     "year": 2018,
     "venue": "PLOS Medicine",
     "url": "",
-    "citations": 207,
+    "citations": 218,
     "tags": ["air-quality", "health"]
   },
   {
@@ -206,7 +206,7 @@
     "year": 2018,
     "venue": "EcoHealth",
     "url": "",
-    "citations": 75,
+    "citations": 77,
     "tags": ["climate", "health"]
   },
   {
@@ -216,7 +216,7 @@
     "year": 2019,
     "venue": "Traffic Injury Prevention",
     "url": "",
-    "citations": 19,
+    "citations": 20,
     "tags": ["transportation", "health"]
   },
   {
@@ -226,7 +226,7 @@
     "year": 2019,
     "venue": "Environmental Epidemiology",
     "url": "",
-    "citations": 1,
+    "citations": 0,
     "tags": ["air-quality", "health"]
   },
   {
@@ -236,7 +236,7 @@
     "year": 2019,
     "venue": "Social Science & Medicine",
     "url": "",
-    "citations": 100,
+    "citations": 108,
     "tags": ["climate", "health"]
   },
   {
@@ -246,7 +246,7 @@
     "year": 2020,
     "venue": "Journal of the American Heart Association",
     "url": "",
-    "citations": 112,
+    "citations": 120,
     "tags": ["air-quality", "health"]
   },
   {
@@ -256,7 +256,7 @@
     "year": 2020,
     "venue": "Frontiers in Public Health",
     "url": "",
-    "citations": 27,
+    "citations": 28,
     "tags": ["air-quality", "health"]
   },
   {
@@ -266,7 +266,7 @@
     "year": 2021,
     "venue": "JAMA Dermatology",
     "url": "",
-    "citations": 134,
+    "citations": 142,
     "tags": ["air-quality", "health"]
   },
   {
@@ -296,7 +296,7 @@
     "year": 2021,
     "venue": "Journal of the Air & Waste Management Association",
     "url": "",
-    "citations": 51,
+    "citations": 55,
     "tags": ["air-quality", "health"]
   },
   {
@@ -306,7 +306,7 @@
     "year": 2021,
     "venue": "Health Affairs",
     "url": "",
-    "citations": 171,
+    "citations": 175,
     "tags": ["covid", "health"]
   },
   {
@@ -356,7 +356,7 @@
     "year": 2022,
     "venue": "Federal Reserve Bank of San Francisco Community Development Research Brief",
     "url": "https://www.frbsf.org/research-and-insights/publications/community-development-research-briefs/2022/07/residential-instability-sf-bay-area-covid-19/",
-    "citations": 32,
+    "citations": 0,
     "tags": ["covid", "cities", "health"]
   },
   {
@@ -366,7 +366,7 @@
     "year": 2022,
     "venue": "Federal Reserve Bank of San Francisco Community Development Research Brief",
     "url": "",
-    "citations": 3,
+    "citations": 5,
     "tags": ["air-quality", "climate", "health"]
   },
   {
@@ -376,7 +376,7 @@
     "year": 2022,
     "venue": "International Journal of Environmental Research and Public Health",
     "url": "",
-    "citations": 32,
+    "citations": 36,
     "tags": ["climate", "health", "policy", "cities"]
   },
   {
@@ -396,7 +396,7 @@
     "year": 2023,
     "venue": "JAMA Network Open",
     "url": "",
-    "citations": 20,
+    "citations": 22,
     "tags": ["air-quality", "health"]
   },
   {
@@ -416,7 +416,7 @@
     "year": 2023,
     "venue": "American Journal of Public Health",
     "url": "",
-    "citations": 54,
+    "citations": 67,
     "tags": ["air-quality", "climate", "health"]
   },
   {
@@ -426,7 +426,7 @@
     "year": 2024,
     "venue": "Atmosphere",
     "url": "",
-    "citations": 4,
+    "citations": 6,
     "tags": ["air-quality"]
   },
   {
@@ -446,7 +446,7 @@
     "year": 2025,
     "venue": "Earth's Future",
     "url": "",
-    "citations": 2,
+    "citations": 5,
     "tags": ["air-quality", "climate"]
   },
   {
@@ -456,7 +456,7 @@
     "year": 2025,
     "venue": "GeoHealth",
     "url": "",
-    "citations": 4,
+    "citations": 10,
     "tags": ["air-quality", "climate", "health"]
   },
   {
@@ -466,7 +466,7 @@
     "year": 2025,
     "venue": "PLOS ONE",
     "url": "",
-    "citations": 6,
+    "citations": 7,
     "tags": ["covid", "health", "policy"]
   },
   {
@@ -476,7 +476,7 @@
     "year": 2025,
     "venue": "American Journal of Epidemiology",
     "url": "",
-    "citations": 3,
+    "citations": 4,
     "tags": ["covid", "policy", "health"]
   },
   {
@@ -486,7 +486,17 @@
     "year": 2025,
     "venue": "Frontiers in Public Health",
     "url": "",
-    "citations": 0,
+    "citations": 2,
     "tags": ["covid", "policy", "modeling"]
+  },
+  {
+    "id": "vargo2026financial-inclusion",
+    "title": "Applying Federal Reserve Data to Local Financial Inclusion Efforts",
+    "authors": ["Jason Vargo", "Leilani Barnett"],
+    "year": 2026,
+    "venue": "Federal Reserve Bank of San Francisco Community Development Articles",
+    "url": "https://www.frbsf.org/research-and-insights/publications/community-development-articles/2026/07/applying-federal-reserve-data-to-local-financial-inclusion-efforts-central-valley-california/",
+    "citations": 0,
+    "tags": ["policy", "finance"]
   }
 ]
