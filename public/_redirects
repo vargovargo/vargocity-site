@@ -1,0 +1,12 @@
+# SPA fallback. Cloudflare Pages rejected this rule as an "infinite loop" in
+# March 2026 (a known platform bug, not specific to this site) and it was
+# removed in e009145 in favour of copying index.html to 404.html post-build.
+#
+# That fallback works visually but can never return 200: Pages treats a
+# 404.html file as your custom 404 page and serves it with a 404 status, so
+# every route except / reads as Not Found to a crawler.
+#
+# Retrying the rule. The 404.html copy stays in the build as a safety net, so
+# if this is ignored again the site behaves exactly as before. Verify after
+# deploy with: curl -s -o /dev/null -w "%{http_code}" https://vargo.city/lab
+/*    /index.html   200

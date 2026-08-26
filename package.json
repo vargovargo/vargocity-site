@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp dist/index.html dist/404.html",
+    "build": "node scripts/generate-sitemap.js && vite build && cp dist/index.html dist/404.html",
     "test": "vitest run",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sitemap": "node scripts/generate-sitemap.js"
   },
   "dependencies": {
     "@observablehq/plot": "^0.6.17",

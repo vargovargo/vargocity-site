@@ -16,7 +16,13 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://vargo.city/making</loc>
+    <loc>https://vargo.city/lab</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/heat</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -26,18 +32,110 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vargo.city/writing</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://vargo.city/making</loc>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vargo.city/writing/blog/2014-03-15-metro-sapiens</loc>
+    <loc>https://vargo.city/lab/posts/2026-08-12-aei-hawaii</loc>
+    <lastmod>2026-08-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vargo.city/writing/blog/2026-03-13-aei-longitudinal</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://vargo.city/lab/posts/2026-07-01-who-cant-afford-to-adapt</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-06-05-the-infrastructure-that-forgot</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-06-05-social-fabric-mapped</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-05-20-what-the-type-demands</loc>
+    <lastmod>2026-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-05-15-what-public-records-know</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-05-12-social-fabric-infrastructure</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-04-23-two-kinds-of-summer</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-04-23-shocked-stressed-and-shifting-who-suffers</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-04-15-aei-state</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-03-28-sbi-methods</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-03-28-sbi-findings</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-03-27-soc43-v5</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-03-17-soc43-subgroup</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2026-03-13-aei-longitudinal</loc>
+    <lastmod>2026-03-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2023-06-01-hopkins-street</loc>
+    <lastmod>2023-06-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vargo.city/lab/posts/2014-03-15-metro-sapiens</loc>
+    <lastmod>2014-03-15</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
 </urlset>
