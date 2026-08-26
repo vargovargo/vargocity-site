@@ -1,49 +1,12 @@
-import { useRef, useEffect, useState } from 'react'
+import { useState } from 'react'
 import * as Plot from '@observablehq/plot'
+import { PLOT_STYLE, TYPE_SCALE, usePlot, useContainerWidth } from './chartKit'
+import ChartCaption from './ChartCaption'
 import scatterData from '../../data/social-fabric-scatter.json'
-
-const PLOT_STYLE = {
-  fontFamily: 'inherit',
-  fontSize: 12,
-  color: 'var(--c-text-body)',
-  background: 'transparent',
-}
 
 const COLORS = {
   metro:    '#4a7c59',
   nonmetro: '#c4713b',
-}
-
-function usePlot(buildSpec, deps) {
-  const ref = useRef()
-  useEffect(() => {
-    if (!ref.current) return
-    const chart = Plot.plot(buildSpec())
-    ref.current.appendChild(chart)
-    return () => { if (ref.current) ref.current.innerHTML = '' }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps)
-  return ref
-}
-
-function useContainerWidth(fallback = 640) {
-  const containerRef = useRef()
-  const [width, setWidth] = useState(fallback)
-  useEffect(() => {
-    if (!containerRef.current) return
-    const obs = new ResizeObserver(([entry]) => setWidth(entry.contentRect.width))
-    obs.observe(containerRef.current)
-    return () => obs.disconnect()
-  }, [])
-  return [containerRef, width]
-}
-
-function ChartCaption({ children }) {
-  return (
-    <p className="text-xs mt-2" style={{ color: 'var(--c-text-muted)' }}>
-      {children}
-    </p>
-  )
 }
 
 function percentile(arr, p) {
@@ -134,7 +97,7 @@ export function ChettyScatter() {
           flexShrink: 0,
         }}>
           <span style={{
-            fontSize: 11,
+            fontSize: TYPE_SCALE.AXIS,
             color: 'var(--c-text-muted)',
             whiteSpace: 'nowrap',
             transform: 'rotate(-90deg)',

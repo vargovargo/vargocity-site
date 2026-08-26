@@ -1,5 +1,7 @@
-import { useRef, useEffect, useState } from 'react'
+import { useState } from 'react'
 import * as Plot from '@observablehq/plot'
+import { PLOT_STYLE, TYPE_SCALE, usePlot, useContainerWidth } from './chartKit'
+import ChartCaption from './ChartCaption'
 import sbiData from '../../data/sbi-data.json'
 
 const FAMILY_TYPES = ['2a_0c', '2a_1c_infant', '2a_2c_school']
@@ -12,45 +14,6 @@ const COLORS = {
   minwage: '#6a9bcc',
   text:    'var(--c-text-body)',
   muted:   'var(--c-text-muted)',
-}
-
-const PLOT_STYLE = {
-  fontFamily: 'inherit',
-  fontSize: 12,
-  color: 'var(--c-text-body)',
-  background: 'transparent',
-}
-
-function usePlot(specFn, deps) {
-  const ref = useRef()
-  useEffect(() => {
-    if (!ref.current) return
-    const chart = Plot.plot(specFn())
-    ref.current.appendChild(chart)
-    return () => { if (ref.current) ref.current.innerHTML = '' }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps)
-  return ref
-}
-
-function useContainerWidth(fallback = 600) {
-  const containerRef = useRef()
-  const [width, setWidth] = useState(fallback)
-  useEffect(() => {
-    if (!containerRef.current) return
-    const obs = new ResizeObserver(([entry]) => setWidth(entry.contentRect.width))
-    obs.observe(containerRef.current)
-    return () => obs.disconnect()
-  }, [])
-  return [containerRef, width]
-}
-
-function ChartCaption({ children }) {
-  return (
-    <p className="text-xs mt-2" style={{ color: 'var(--c-text-muted)' }}>
-      {children}
-    </p>
-  )
 }
 
 function FamilyTab({ label, active, onClick }) {
@@ -159,7 +122,7 @@ export function SBIWageGap() {
         text: d => `$${d.lo.toFixed(2)}`,
         textAnchor: 'end',
         dx: -6,
-        fontSize: 10,
+        fontSize: TYPE_SCALE.DATA,
         fill: COLORS.band,
       }),
     ],
@@ -257,7 +220,7 @@ export function SBIMonthlyCost() {
         text: d => '$' + Math.round(d.floor).toLocaleString(),
         textAnchor: 'end',
         dx: -6,
-        fontSize: 10,
+        fontSize: TYPE_SCALE.DATA,
         fill: COLORS.band,
       }),
       // Ceiling label
@@ -267,7 +230,7 @@ export function SBIMonthlyCost() {
         text: d => '$' + Math.round(d.ceiling).toLocaleString(),
         textAnchor: 'start',
         dx: 6,
-        fontSize: 10,
+        fontSize: TYPE_SCALE.DATA,
         fill: 'var(--c-text-muted)',
       }),
     ],
@@ -368,7 +331,7 @@ export function SBICostOfChild() {
         text: d => `+$${Math.round(d.delta).toLocaleString()}/mo`,
         textAnchor: 'start',
         dx: 6,
-        fontSize: 10,
+        fontSize: TYPE_SCALE.DATA,
         fill: d => stepColors[d.step],
       }),
     ],

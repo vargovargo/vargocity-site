@@ -3,6 +3,7 @@ import { Routes, Route, useParams } from 'react-router-dom'
 import SectionHeader from '../components/shared/SectionHeader'
 import TabBar from '../components/shared/TabBar'
 import PostCard from '../components/writing/PostCard'
+import LabDisclaimer from '../components/writing/LabDisclaimer'
 import SeriesCard from '../components/writing/SeriesCard'
 import MarkdownPost from '../components/writing/MarkdownPost'
 import { loadBlogPosts } from '../lib/loadContent'
@@ -79,6 +80,7 @@ function LabIndex() {
         title="Lab"
         description="Data pursuits, independent analyses, and published writing."
       />
+      <LabDisclaimer />
       <div className="mb-8">
         <TabBar tabs={tabs} active={tab} onChange={setTab} />
       </div>

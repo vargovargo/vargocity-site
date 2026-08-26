@@ -1,23 +1,8 @@
 import { useRef, useEffect, useState, useMemo, useCallback } from 'react'
+import { TYPE_SCALE } from '../writing/chartKit'
+import { STATE_ABBR, TYPE_COLORS, hazardState } from './hazards'
 
 /** @import { CountyRecord } from '../../types/heat-typology.js' */
-
-const STATE_ABBR = {
-  '01':'AL','02':'AK','04':'AZ','05':'AR','06':'CA','08':'CO','09':'CT',
-  '10':'DE','11':'DC','12':'FL','13':'GA','15':'HI','16':'ID','17':'IL',
-  '18':'IN','19':'IA','20':'KS','21':'KY','22':'LA','23':'ME','24':'MD',
-  '25':'MA','26':'MI','27':'MN','28':'MS','29':'MO','30':'MT','31':'NE',
-  '32':'NV','33':'NH','34':'NJ','35':'NM','36':'NY','37':'NC','38':'ND',
-  '39':'OH','40':'OK','41':'OR','42':'PA','44':'RI','45':'SC','46':'SD',
-  '47':'TN','48':'TX','49':'UT','50':'VT','51':'VA','53':'WA','54':'WV',
-  '55':'WI','56':'WY',
-}
-
-const TYPE_COLORS = {
-  shock:  '#C0583A',
-  stress: '#D4813B',
-  shift:  '#4B7CB8',
-}
 
 // Equilateral triangle vertices in viewBox space (viewBox: 0 0 520 500)
 // shock = top, stress = bottom-left, shift = bottom-right
@@ -33,20 +18,6 @@ function bary(shock, stress, shift) {
     x: shock * Ax + stress * Bx + shift * Cx,
     y: shock * Ay + stress * By + shift * Cy,
   }
-}
-
-function gridLines() {
-  const lines = []
-  for (const k of GRID_LEVELS) {
-    // Lines parallel to stress-shift base (fixed shock = k)
-    const a1 = bary(k, 1 - k, 0), a2 = bary(k, 0, 1 - k)
-    // Lines parallel to shock-shift edge (fixed stress = k)
-    const b1 = bary(1 - k, k, 0), b2 = bary(0, k, 1 - k)
-    // Lines parallel to shock-stress edge (fixed shift = k)
-    const c1 = bary(1 - k, 0, k), c2 = bary(0, 1 - k, k)
-    lines.push(a1, a2, null, b1, b2, null, c1, c2, null)
-  }
-  return lines
 }
 
 function popRadius(pop) {
@@ -67,9 +38,9 @@ function useContainerWidth(fallback = 520) {
 }
 
 /**
- * @param {{ counties: CountyRecord[]|null, selectedFips: string|null, onSelect: (fips: string|null) => void }} props
+ * @param {{ counties: CountyRecord[]|null, selectedFips: string|null, onSelect: (fips: string|null) => void, hazard: string }} props
  */
-export default function TernaryChart({ counties, selectedFips, onSelect }) {
+export default function TernaryChart({ counties, selectedFips, onSelect, hazard = 'heat' }) {
   const [containerRef, width] = useContainerWidth()
   const [hoverEntry, setHoverEntry] = useState(null)
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 })
@@ -88,7 +59,11 @@ export default function TernaryChart({ counties, selectedFips, onSelect }) {
     const reg = []
     let sel = null
     for (const c of counties) {
-      const { scores, dominant } = c.hazards.heat
+      // Typed counties only. Unclassified records still carry `scores`, but
+      // they are not meaningful, so plotting them would invent 229 positions.
+      const { state, record } = hazardState(c, hazard)
+      if (state !== 'typed') continue
+      const { scores, dominant } = record
       const pt = bary(scores.shock, scores.stress, scores.shift)
       const entry = {
         fips: c.county_fips,
@@ -107,7 +82,7 @@ export default function TernaryChart({ counties, selectedFips, onSelect }) {
       }
     }
     return { regular: reg, selected: sel }
-  }, [counties, selectedFips])
+  }, [counties, selectedFips, hazard])
 
   // SVG path for equilateral triangle
   const triPath = `M${Ax},${Ay} L${Bx},${By} L${Cx},${Cy} Z`
@@ -151,15 +126,15 @@ export default function TernaryChart({ counties, selectedFips, onSelect }) {
         ))}
 
         {/* Vertex labels */}
-        <text x={Ax} y={Ay - 18} textAnchor="middle" fontSize={12} fontWeight={600}
+        <text x={Ax} y={Ay - 18} textAnchor="middle" fontSize={TYPE_SCALE.AXIS} fontWeight={600}
           fill={TYPE_COLORS.shock}>
           Shock
         </text>
-        <text x={Bx} y={By + 24} textAnchor="middle" fontSize={12} fontWeight={600}
+        <text x={Bx} y={By + 24} textAnchor="middle" fontSize={TYPE_SCALE.AXIS} fontWeight={600}
           fill={TYPE_COLORS.stress}>
           Stress
         </text>
-        <text x={Cx} y={Cy + 24} textAnchor="middle" fontSize={12} fontWeight={600}
+        <text x={Cx} y={Cy + 24} textAnchor="middle" fontSize={TYPE_SCALE.AXIS} fontWeight={600}
           fill={TYPE_COLORS.shift}>
           Shift
         </text>
@@ -207,7 +182,7 @@ export default function TernaryChart({ counties, selectedFips, onSelect }) {
         )}
 
         {/* Scale hint */}
-        <text x={Ax} y={viewH - 8} textAnchor="middle" fontSize={9} fill="var(--c-text-muted)">
+        <text x={Ax} y={viewH - 8} textAnchor="middle" fontSize={TYPE_SCALE.MICRO} fill="var(--c-text-muted)">
           dot size = population (log scale)
         </text>
       </svg>
@@ -241,8 +216,10 @@ export default function TernaryChart({ counties, selectedFips, onSelect }) {
       )}
 
       <p className="text-xs mt-1" style={{ color: 'var(--c-text-muted)' }}>
-        Each dot is a US county. Position reflects shock/stress/shift score mix; counties near a corner are dominated by that type.
-        Dot size scales with log population. Click to select.
+        Each of the {(regular.length + (selected ? 1 : 0)).toLocaleString()} dots is a US county the
+        pipeline could classify for this hazard. Position reflects shock/stress/shift score mix;
+        counties near a corner are dominated by that type. Dot size scales with log population. Click to select.
+        {hazard === 'wildfire' && ' The wildfire cloud sits closer to the centre than the heat cloud — that is the lower confidence of the smoke layer, rendered geometrically.'}
       </p>
     </div>
   )

@@ -171,7 +171,7 @@ Use where they fit naturally — don't force them:
 
 ## SPS peaks data (`sps-peaks.json`)
 
-Located at `src/data/sps-peaks.json`. Structure:
+Located at `src/data/sps-peaks.json` — this is the only copy. Structure:
 
 ```json
 {
@@ -180,22 +180,24 @@ Located at `src/data/sps-peaks.json`. Structure:
   "legend": { ... },
   "regions": [
     {
-      "name": "Region Name",
+      "name": "Evolution Area",
       "peaks": [
         {
-          "name": "Peak Name",
-          "elevation_ft": 14000,
-          "yds_rating": "3",
-          "scrambling_rating": "S-2.1",
-          "flags": ["emblem_peak"],
+          "id": "15.4",
+          "name": "Mount Haeckel",
+          "elevation": "13418",          // string; may carry a "+" e.g. "13360+"
           "status": "active",
-          "ascents": [          ← only present if ascended
-            {
-              "date": "YYYY-MM-DD",
-              "notes": "free text trip notes",
-              "strava_url": "https://www.strava.com/activities/..."
-            }
-          ]
+          "map": "Mount Darwin",          // USGS quad
+          "flags": {                      // object, not an array
+            "emblem_peak": false,
+            "mountaineering_peak": false,
+            "vagmarten_list": true,
+            "tahoe_ogul_list": false
+          },
+          "routes": [                     // ratings live per route, not on the peak
+            { "description": "South Ridge from Northeast", "yds_rating": "3", "scrambling_rating": "S-3.1" }
+          ],
+          "ascents": []                   // always present; empty until climbed
         }
       ]
     }
@@ -203,19 +205,38 @@ Located at `src/data/sps-peaks.json`. Structure:
 }
 ```
 
+Ascent objects:
+
+```json
+{
+  "date": "2026-08-23",
+  "sequence": 1,                          // optional; order within a multi-peak day
+  "notes": "free text trip notes",
+  "strava_url": "https://www.strava.com/activities/19902958815",
+  "strava": { ... },                      // written by the enrich scripts, do not hand-edit
+  "photos": [{ "url": "...", "caption": "..." }]
+}
+```
+
 - 248 total peaks across 24 regions
 - `ascents` is an array — multiple summit dates per peak are supported
-- The Adventures page reads this data to display a checklist/map of summits
+- Only SPS peaks live here. Non-SPS Sierra climbs (Tenaya Peak, Crystal Crag) have no home in this file and are not counted in the peak stat.
+- The Adventures page reads this data for the map, timeline, grid, elevation chart, and region list
 
 ### Adding a new ascent
 
-1. Add an entry to the peak's `ascents` array in `src/data/sps-peaks.json` with `date`, `notes`, `strava_url`, and optionally `photos` (array of `{ url, caption }` Cloudinary objects).
-2. Run the enrich script to fetch Strava stats and generate the SVG elevation sparkline:
+1. Add an entry to the peak's `ascents` array with `date`, `strava_url`, `notes`, and optionally `sequence` (for multi-peak days) and `photos`.
+2. Enrich it. **`scripts/enrich-peaks.js` no longer works for new activities** — the Strava API went subscription-only in July 2026 and returns 403 (`Application/Status/Inactive`). Use the `.fit` fallback instead:
    ```bash
-   node scripts/enrich-peaks.js
+   node scripts/enrich-from-fit.js scripts/fit-imports/<file>.fit "Peak Name" ["Peak 2" ...]
    ```
-   This hits the Strava API (credentials in `.env`), writes the SVG to `public/strava/<activity_id>.svg`, and adds a `strava` object back onto the ascent in `sps-peaks.json` with distance, elevation gain, time, and the sparkline path. It skips already-enriched entries, so it's safe to run incrementally.
-3. The home page peak counter and timeline update automatically — no other changes needed.
+   Drop the exported `.fit` in `scripts/fit-imports/` (gitignored). Multiple peak names in one call means one hike — they share the activity id and sparkline. The script writes `public/strava/<activity_id>.svg` and a `strava` object onto each named peak's most recent ascent.
+
+   It reads the activity id **out of `strava_url`**, so step 1 must happen first — a peak with no `strava_url` is skipped.
+
+   The `.fit` also carries the authoritative activity date (`sessions[0].start_time`), so there's no need to ask for it separately.
+3. Photos: phone uploads are usually `.heic`, which Chrome and Firefox won't render. Swap the extension to `.jpg` in the Cloudinary URL and confirm with `curl -sI <url> | grep content-type` → `image/jpeg`.
+4. The home page peak counter and timeline update automatically — no other changes needed.
 
 ## Deployment
 
