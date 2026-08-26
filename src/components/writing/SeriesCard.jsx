@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { latestPostDate } from '../../lib/series'
 
 export default function SeriesCard({ series, posts, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen)
 
-  // Sort posts by series_order ascending
+  // Reading order is series_order; "last updated" is the newest date, which is
+  // not the same thing the moment a post is added out of order.
   const sorted = [...posts].sort((a, b) => a.series_order - b.series_order)
-  const lastUpdated = sorted[sorted.length - 1]?.date || ''
+  const lastUpdated = latestPostDate(posts)
 
   return (
     <div className="mb-4" style={{ border: '1px solid var(--c-border)' }}>

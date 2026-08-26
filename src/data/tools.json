@@ -1,5 +1,15 @@
 [
   {
+    "id": "oz2",
+    "name": "OZ 2.0",
+    "description": "A state-by-state guide to Opportunity Zones 2.0 for the people who have to act on it — county planners, EDD staff, community development directors. The 2025 OBBBA made the program permanent and reset the map, and governors nominate up to a quarter of eligible tracts in a 90-day window that opened July 1, 2026. National coverage of the policy was good. What didn't exist was anything telling a planner in a rural-eligible county which tracts they actually have, who to convene to make the nomination case, and how the new rural incentives change the math. All 50 states and DC, with case studies from the first round.",
+    "url": "https://oz2.vargo.city",
+    "url_label": "Open the resource",
+    "github": "https://github.com/vargovargo/oz2",
+    "tech": ["Astro", "MapLibre", "Tailwind", "IRS / USDA data"],
+    "status": "live"
+  },
+  {
     "id": "fitness-tracker",
     "name": "Fitness Tracker",
     "description": "A PWA for tracking weekly workouts across strength, cardio, mobility, and mindfulness — built for our whole family of four. Multi-user, real-time Firebase sync, AI-powered goal setting with a physiology-informed dashboard, ACWR load monitoring, and streak tracking. Live at fitness.vargo.city.",

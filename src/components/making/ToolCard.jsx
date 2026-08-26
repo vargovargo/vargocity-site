@@ -37,6 +37,13 @@ export default function ToolCard({ tool }) {
             Express interest →
           </a>
         )}
+        {tool.github && (
+          <a href={tool.github} target="_blank" rel="noopener noreferrer"
+            className="text-xs transition-colors"
+            style={{ color: 'var(--c-text-muted)' }}>
+            Source →
+          </a>
+        )}
       </div>
     </div>
   )
