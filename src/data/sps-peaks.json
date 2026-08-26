@@ -4052,7 +4052,25 @@
               "scrambling_rating": "S-3.2/srS-4.0"
             }
           ],
-          "ascents": []
+          "ascents": [
+            {
+              "date": "2026-08-23",
+              "sequence": 2,
+              "notes": "",
+              "strava_url": "https://www.strava.com/activities/19902958815",
+              "strava": {
+                "activity_id": "19902958815",
+                "distance_miles": 6.5,
+                "elevation_gain_ft": 4514,
+                "moving_time_hms": "13:14:36",
+                "avg_heart_rate": 115,
+                "max_heart_rate": 148,
+                "sparkline_svg": "/strava/19902958815.svg",
+                "fetched_at": "2026-08-26",
+                "source": "fit_file"
+              }
+            }
+          ]
         },
         {
           "id": "15.4",
@@ -4083,7 +4101,25 @@
               "scrambling_rating": "S-3.2"
             }
           ],
-          "ascents": []
+          "ascents": [
+            {
+              "date": "2026-08-23",
+              "sequence": 1,
+              "notes": "",
+              "strava_url": "https://www.strava.com/activities/19902958815",
+              "strava": {
+                "activity_id": "19902958815",
+                "distance_miles": 6.5,
+                "elevation_gain_ft": 4514,
+                "moving_time_hms": "13:14:36",
+                "avg_heart_rate": 115,
+                "max_heart_rate": 148,
+                "sparkline_svg": "/strava/19902958815.svg",
+                "fetched_at": "2026-08-26",
+                "source": "fit_file"
+              }
+            }
+          ]
         },
         {
           "id": "15.5",
@@ -4104,7 +4140,25 @@
               "scrambling_rating": "S-2.2"
             }
           ],
-          "ascents": []
+          "ascents": [
+            {
+              "date": "2026-08-23",
+              "sequence": 3,
+              "notes": "",
+              "strava_url": "https://www.strava.com/activities/19902958815",
+              "strava": {
+                "activity_id": "19902958815",
+                "distance_miles": 6.5,
+                "elevation_gain_ft": 4514,
+                "moving_time_hms": "13:14:36",
+                "avg_heart_rate": 115,
+                "max_heart_rate": 148,
+                "sparkline_svg": "/strava/19902958815.svg",
+                "fetched_at": "2026-08-26",
+                "source": "fit_file"
+              }
+            }
+          ]
         },
         {
           "id": "15.6",
