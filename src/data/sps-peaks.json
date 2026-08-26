@@ -4068,7 +4068,21 @@
                 "sparkline_svg": "/strava/19902958815.svg",
                 "fetched_at": "2026-08-26",
                 "source": "fit_file"
-              }
+              },
+              "photos": [
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1787723944/IMG_6152_ya0sld.jpg",
+                  "caption": ""
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1787723944/IMG_6151_rouun1.jpg",
+                  "caption": ""
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1787724100/IMG_6103_uvvmvp.jpg",
+                  "caption": ""
+                }
+              ]
             }
           ],
           "lat": 37.14676,
@@ -4119,7 +4133,25 @@
                 "sparkline_svg": "/strava/19902958815.svg",
                 "fetched_at": "2026-08-26",
                 "source": "fit_file"
-              }
+              },
+              "photos": [
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1787723945/IMG_6140_y3izhk.jpg",
+                  "caption": ""
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1787723945/IMG_6054_fuptys.jpg",
+                  "caption": ""
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1787723946/IMG_6075_zsszbs.jpg",
+                  "caption": ""
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1787723945/IMG_6068_jg8hls.jpg",
+                  "caption": ""
+                }
+              ]
             }
           ],
           "lat": 37.15099,
@@ -4160,7 +4192,21 @@
                 "sparkline_svg": "/strava/19902958815.svg",
                 "fetched_at": "2026-08-26",
                 "source": "fit_file"
-              }
+              },
+              "photos": [
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1787723944/IMG_6150_dbmwau.jpg",
+                  "caption": ""
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1787723945/IMG_6149_vwmxm1.jpg",
+                  "caption": ""
+                },
+                {
+                  "url": "https://res.cloudinary.com/dbwkloipb/image/upload/v1787723944/IMG_6152_ya0sld.jpg",
+                  "caption": ""
+                }
+              ]
             }
           ],
           "lat": 37.13666,
