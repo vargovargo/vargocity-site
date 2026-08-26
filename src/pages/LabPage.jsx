@@ -10,6 +10,7 @@ import { loadBlogPosts } from '../lib/loadContent'
 import HeatTypologyPage from '../components/heat/HeatTypologyPage'
 import seriesData from '../data/series.json'
 import usePageTitle from '../lib/usePageTitle'
+import { latestPostDate } from '../lib/series'
 
 const tabs = [
   { id: 'research', label: 'Inquiries' },
@@ -33,16 +34,13 @@ function ResearchList({ posts }) {
     }
   })
 
-  // Order series by most recent post date, descending
-  const seriesSlugs = Object.keys(grouped).sort((a, b) => {
-    const latestA = Math.max(...grouped[a].map(p => p.date))
-    const latestB = Math.max(...grouped[b].map(p => p.date))
-    return latestB > latestA ? 1 : -1
-  })
+  // Order series by most recent post, newest first. ISO dates compare as strings.
+  const seriesSlugs = Object.keys(grouped)
+    .sort((a, b) => latestPostDate(grouped[b]).localeCompare(latestPostDate(grouped[a])))
 
   return (
     <div>
-      {seriesSlugs.map((slug, i) => (
+      {seriesSlugs.map(slug => (
         <SeriesCard
           key={slug}
           series={seriesData[slug]}
