@@ -17,8 +17,8 @@ const TYPE_BG = {
 
 const TYPES = ['shock', 'stress', 'shift']
 
-// National median county household income (ACS 2023, 2,992-county panel)
-const NATIONAL_INCOME_MEDIAN = 60691
+// National median county household income (ACS 2023, 3,109-county panel)
+const NATIONAL_INCOME_MEDIAN = 60728
 
 const BURDEN = {
   shock: {
