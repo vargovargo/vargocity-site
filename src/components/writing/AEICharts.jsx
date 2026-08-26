@@ -3,6 +3,7 @@ import * as Plot from '@observablehq/plot'
 import panelData from '../../data/aei-panel.json'
 import subgroupData from '../../data/soc43-subgroup.json'
 import statePanelData from '../../data/aei-state-panel.json'
+import honoluluData from '../../data/aei-honolulu.json'
 
 const LMI_COLORS = {
   high:     '#C0583A',
@@ -1040,6 +1041,239 @@ export function StateThresholdChart() {
         share because CS clears the threshold first. Bottom panel: Office &amp; Admin share is
         essentially flat (r ≈ {s43Stats.r.toFixed(2)}) — its geographic variation is independent of
         how many groups a state has above threshold.
+      </ChartCaption>
+    </div>
+  )
+}
+
+// Two SOC labels are too long for a phone-width y-axis and get clipped;
+// abbreviate only those, only when narrow.
+const NARROW_SOC_LABELS = {
+  'Healthcare Practitioners': 'Healthcare Pract.',
+  'Healthcare Support': 'Healthcare Supp.',
+  'Installation & Repair': 'Install. & Repair',
+  'Life & Social Science': 'Life & Soc. Sci.',
+  'Business & Financial': 'Business & Fin.',
+}
+const socLabel = (name, narrow) =>
+  (narrow && NARROW_SOC_LABELS[name]) ? NARROW_SOC_LABELS[name] : name
+
+// ── Hawaii vs national task share (V6) ──────────────────────────────────────
+// Dumbbell: two series across 19 occupation groups. LMI-high marked with a
+// glyph in the tick label, so identity never rests on color alone.
+const HI_COLOR  = '#C0583A'
+const NAT_COLOR = '#4B7CB8'
+
+export function HawaiiSOCMix() {
+  const [containerRef, width] = useContainerWidth()
+
+  const narrow = width < 560
+  const rows = honoluluData.hawaii_soc.filter(
+    d => d.hi_task_pct != null && d.national_task_pct != null
+  )
+  // Label carries the LMI-high marker — secondary encoding, not color-only.
+  const data = rows.map(d => {
+    const name = socLabel(d.soc_label, narrow)
+    return { ...d, label: d.lmi_flag === 'high' ? `${name} ●` : name }
+  })
+  const order = [...data].sort((a, b) => b.hi_task_pct - a.hi_task_pct)
+                         .map(d => d.label)
+
+  const plotRef = usePlot({
+    width,
+    height: data.length * (narrow ? 26 : 22) + 60,
+    marginLeft: narrow ? 126 : 150,
+    marginRight: narrow ? 28 : 50,
+    marginBottom: 42,
+    marginTop: 10,
+    style: PLOT_STYLE,
+    x: {
+      label: narrow ? 'AI task share (%)' : 'Share of AI task usage (%)',
+      tickSize: 0,
+      grid: true,
+      domain: [0, Math.ceil(Math.max(...data.map(d => Math.max(d.hi_task_pct, d.national_task_pct))) + 2)],
+    },
+    y: { label: null, tickSize: 0, domain: order },
+    marks: [
+      // Connector encodes the gap itself
+      Plot.link(data, {
+        y: 'label',
+        x1: 'national_task_pct',
+        x2: 'hi_task_pct',
+        stroke: 'var(--c-border)',
+        strokeWidth: 2,
+      }),
+      // National is an OPEN ring: Hawaii tracks national so closely that a
+      // filled dot gets completely covered by the Hawaii dot on most rows,
+      // making the national value look absent. The ring stays visible.
+      Plot.dot(data, {
+        y: 'label',
+        x: 'national_task_pct',
+        r: 5.5,
+        fill: 'none',
+        stroke: NAT_COLOR,
+        strokeWidth: 2.5,
+        tip: true,
+        title: d => `${d.soc_label}\nNational: ${d.national_task_pct}%`,
+      }),
+      Plot.dot(data, {
+        y: 'label',
+        x: 'hi_task_pct',
+        r: 4,
+        fill: HI_COLOR,
+        stroke: 'var(--c-bg)',
+        strokeWidth: 1.5,
+        tip: true,
+        title: d => `${d.soc_label}\nHawaii: ${d.hi_task_pct}%\nNational: ${d.national_task_pct}%`,
+      }),
+      // Direct-label only the four largest groups, not every point
+      Plot.text(order.slice(0, narrow ? 2 : 4).map(l => data.find(d => d.label === l)), {
+        y: 'label',
+        x: d => Math.max(d.hi_task_pct, d.national_task_pct),
+        text: d => `${d.hi_task_pct.toFixed(1)}%`,
+        dx: 10,
+        textAnchor: 'start',
+        fontSize: 10,
+        fill: 'var(--c-text-body)',
+      }),
+    ],
+  }, [width])
+
+  return (
+    <div ref={containerRef} className="my-6">
+      <div ref={plotRef} />
+      <div className="flex flex-wrap gap-4 mt-2">
+        <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+          <span style={{ display: 'inline-block', width: 10, height: 10, background: HI_COLOR, borderRadius: 5 }} />
+          Hawaii
+        </span>
+        <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+          <span style={{ display: 'inline-block', width: 10, height: 10, border: `2px solid ${NAT_COLOR}`, borderRadius: 5 }} />
+          National
+        </span>
+        <span className="text-xs" style={{ color: 'var(--c-text-muted)' }}>
+          ● = K&amp;H LMI-high group
+        </span>
+      </div>
+      <ChartCaption>
+        AEI {honoluluData.release_label} release (v6) — the first with near-complete Hawaii
+        coverage: 19 of 23 major occupation groups above Anthropic&apos;s conversation threshold.
+        Hawaii&apos;s distribution tracks the national mix closely; LMI-high groups are
+        19.7% of Hawaii&apos;s task share against 19.9% nationally. The four groups
+        below threshold are omitted rather than shown as zero.
+      </ChartCaption>
+    </div>
+  )
+}
+
+// ── Honolulu exposure: employment mix vs national AI usage ──────────────────
+// Diverging form — the job is polarity (over/under-represented vs national),
+// so a warm/cool pair with a zero midpoint. National AI usage sets the sort
+// order and appears in the tick label; it is deliberately NOT a second axis.
+export function HonoluluExposure() {
+  const [containerRef, width] = useContainerWidth()
+
+  const narrow = width < 560
+  const rows = honoluluData.exposure
+  const us  = new Map(rows.filter(d => d.area_label === 'United States').map(d => [d.soc_major_code, d]))
+  const hon = rows.filter(d => d.area_label === 'Urban Honolulu MSA' && d.emp_share != null)
+
+  const data = hon.map(d => {
+    const usRow = us.get(d.soc_major_code)
+    const diff = usRow && usRow.emp_share != null ? d.emp_share - usRow.emp_share : null
+    return {
+      ...d,
+      us_emp_share: usRow ? usRow.emp_share : null,
+      diff,
+      label: narrow
+        ? `${socLabel(d.soc_label, true)}${d.lmi_flag === 'high' ? ' ●' : ''}`
+        : `${d.soc_label}${d.lmi_flag === 'high' ? ' ●' : ''}  ·  AI ${d.task_pct_label ?? 'n/a'}%`,
+    }
+  }).filter(d => d.diff != null)
+
+  // Sort by national AI task share, most-used at top
+  const order = [...data].sort((a, b) => (b.task_pct ?? -1) - (a.task_pct ?? -1))
+                         .map(d => d.label)
+  const maxAbs = Math.max(...data.map(d => Math.abs(d.diff)))
+  const biggest = [...data].sort((a, b) => Math.abs(b.diff) - Math.abs(a.diff))
+                           .slice(0, narrow ? 3 : 5)
+
+  const plotRef = usePlot({
+    width,
+    height: data.length * (narrow ? 24 : 20) + 70,
+    marginLeft: narrow ? 138 : 210,
+    marginRight: narrow ? 34 : 55,
+    marginBottom: 46,
+    marginTop: 10,
+    style: PLOT_STYLE,
+    x: {
+      label: narrow ? 'Honolulu − US (pp)' : 'Honolulu employment share minus US (percentage points)',
+      tickSize: 0,
+      grid: true,
+      domain: [-Math.ceil(maxAbs) - 0.5, Math.ceil(maxAbs) + 0.5],
+    },
+    y: { label: null, tickSize: 0, domain: order },
+    marks: [
+      Plot.barX(data, {
+        y: 'label',
+        x: 'diff',
+        fill: d => (d.diff >= 0 ? HI_COLOR : NAT_COLOR),
+        fillOpacity: 0.8,
+        rx: 2,
+        tip: true,
+        title: d =>
+          `${d.soc_label}\nHonolulu: ${d.emp_share}% of employment` +
+          `\nUS: ${d.us_emp_share}%\nDifference: ${d.diff >= 0 ? '+' : ''}${d.diff.toFixed(1)}pp` +
+          `\nNational AI task share: ${d.task_pct_label ? d.task_pct_label + '%' : 'n/a'}`,
+      }),
+      Plot.ruleX([0], { stroke: 'var(--c-text-muted)', strokeWidth: 1.5 }),
+      // Label only the largest gaps in each direction. dx/textAnchor are
+      // constant options in Plot, not channels — so split by sign into two
+      // marks rather than passing functions (which render as NaN transforms).
+      Plot.text(biggest.filter(d => d.diff >= 0), {
+        y: 'label',
+        x: 'diff',
+        text: d => `+${d.diff.toFixed(1)}`,
+        dx: 6,
+        textAnchor: 'start',
+        fontSize: 9.5,
+        fill: 'var(--c-text-body)',
+      }),
+      Plot.text(biggest.filter(d => d.diff < 0), {
+        y: 'label',
+        x: 'diff',
+        text: d => d.diff.toFixed(1),
+        dx: -6,
+        textAnchor: 'end',
+        fontSize: 9.5,
+        fill: 'var(--c-text-body)',
+      }),
+    ],
+  }, [width])
+
+  return (
+    <div ref={containerRef} className="my-6">
+      <div ref={plotRef} />
+      <div className="flex flex-wrap gap-4 mt-2">
+        <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+          <span style={{ display: 'inline-block', width: 12, height: 10, background: HI_COLOR, opacity: 0.8, borderRadius: 1 }} />
+          Over-represented in Honolulu
+        </span>
+        <span className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--c-text-muted)' }}>
+          <span style={{ display: 'inline-block', width: 12, height: 10, background: NAT_COLOR, opacity: 0.8, borderRadius: 1 }} />
+          Under-represented
+        </span>
+        <span className="text-xs" style={{ color: 'var(--c-text-muted)' }}>
+          ● = K&amp;H LMI-high group
+        </span>
+      </div>
+      <ChartCaption>
+        Employment: BLS OEWS {honoluluData.oews_vintage}, cross-industry, SOC major groups.
+        Rows are ordered by national AI task share (AEI {honoluluData.release_label}), highest at top
+        {narrow ? ' — hover a bar for the figure. ' : ' and shown after each label. '}
+        Honolulu is thinnest exactly where AI usage is densest (Computer &amp; Math, top)
+        and thickest where it is negligible (Food Service). Bars show percentage-point difference
+        from the US employment mix, not AI usage. Exposure is a structural implication, not observed local use.
       </ChartCaption>
     </div>
   )

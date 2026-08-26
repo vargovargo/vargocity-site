@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
-import { AEITaskTrends, AEICollabTrends, AEIPrimitivesScatter, AEISummaryTable, SOC43SubgroupChart, StateScatter, StateSOC43Bar, StateThresholdChart } from './AEICharts'
+import { AEITaskTrends, AEICollabTrends, AEIPrimitivesScatter, AEISummaryTable, SOC43SubgroupChart, StateScatter, StateSOC43Bar, StateThresholdChart, HawaiiSOCMix, HonoluluExposure } from './AEICharts'
 import { SBIWageGap, SBIMonthlyCost, SBICostOfChild } from './SBICharts'
 import { ChettyScatter } from './SocialFabricCharts'
 import { SocialFabricMap } from './SocialFabricMap'
@@ -35,6 +35,8 @@ const AEI_CHARTS = {
   '/plots/social_fabric_map.png':            SocialFabricMap,
   '/plots/heat-map-toggle.png':             HeatMapToggle,
   '/plots/heat-scatter-toggle.png':         HeatScatterToggle,
+  '/plots/hawaii_soc_mix.png':              HawaiiSOCMix,
+  '/plots/honolulu_exposure.png':           HonoluluExposure,
 }
 
 function PostImage({ src, alt }) {

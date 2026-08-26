@@ -1,0 +1,846 @@
+{
+  "release_label": "Jun 2026",
+  "oews_vintage": "May 2025",
+  "hawaii_soc": [
+    {
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "hi_task_pct": 21.49,
+      "national_task_pct": 22.11,
+      "lmi_flag": "low"
+    },
+    {
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "hi_task_pct": 13.61,
+      "national_task_pct": 13.11,
+      "lmi_flag": "none"
+    },
+    {
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "hi_task_pct": 12.28,
+      "national_task_pct": 12.25,
+      "lmi_flag": "moderate"
+    },
+    {
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "hi_task_pct": 11.12,
+      "national_task_pct": 11.16,
+      "lmi_flag": "high"
+    },
+    {
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "hi_task_pct": 7.29,
+      "national_task_pct": 7.69,
+      "lmi_flag": "high"
+    },
+    {
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "hi_task_pct": 6.36,
+      "national_task_pct": 6.38,
+      "lmi_flag": "low"
+    },
+    {
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "hi_task_pct": 6.12,
+      "national_task_pct": 5.84,
+      "lmi_flag": "low"
+    },
+    {
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "hi_task_pct": 4.65,
+      "national_task_pct": 4.19,
+      "lmi_flag": "none"
+    },
+    {
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "hi_task_pct": 4.48,
+      "national_task_pct": 4.46,
+      "lmi_flag": "none"
+    },
+    {
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "hi_task_pct": 3.08,
+      "national_task_pct": 3.21,
+      "lmi_flag": "none"
+    },
+    {
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "hi_task_pct": 2.8,
+      "national_task_pct": 3.03,
+      "lmi_flag": "low"
+    },
+    {
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "hi_task_pct": 1.45,
+      "national_task_pct": 1.26,
+      "lmi_flag": "none"
+    },
+    {
+      "soc_major_code": 23,
+      "soc_label": "Legal",
+      "hi_task_pct": 1.08,
+      "national_task_pct": 1.02,
+      "lmi_flag": "none"
+    },
+    {
+      "soc_major_code": 51,
+      "soc_label": "Production",
+      "hi_task_pct": 0.9,
+      "national_task_pct": 1.08,
+      "lmi_flag": "none"
+    },
+    {
+      "soc_major_code": 31,
+      "soc_label": "Healthcare Support",
+      "hi_task_pct": 0.85,
+      "national_task_pct": 0.67,
+      "lmi_flag": "high"
+    },
+    {
+      "soc_major_code": 49,
+      "soc_label": "Installation & Repair",
+      "hi_task_pct": 0.8,
+      "national_task_pct": 0.78,
+      "lmi_flag": "none"
+    },
+    {
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "hi_task_pct": 0.7,
+      "national_task_pct": 0.6,
+      "lmi_flag": "none"
+    },
+    {
+      "soc_major_code": 33,
+      "soc_label": "Protective Services",
+      "hi_task_pct": 0.47,
+      "national_task_pct": 0.44,
+      "lmi_flag": "none"
+    },
+    {
+      "soc_major_code": 53,
+      "soc_label": "Transportation",
+      "hi_task_pct": 0.45,
+      "national_task_pct": 0.37,
+      "lmi_flag": "high"
+    }
+  ],
+  "hawaii_coverage": [
+    {
+      "release_date": "2025-09-15",
+      "release_label": "Sep 2025",
+      "n_soc": 1
+    },
+    {
+      "release_date": "2026-01-15",
+      "release_label": "Jan 2026",
+      "n_soc": 2
+    },
+    {
+      "release_date": "2026-03-24",
+      "release_label": "Mar 2026",
+      "n_soc": 2
+    },
+    {
+      "release_date": "2026-06-26",
+      "release_label": "Jun 2026",
+      "n_soc": 19
+    }
+  ],
+  "exposure": [
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "emp_share": 6.92,
+      "task_pct": 5.84,
+      "task_pct_label": "5.8",
+      "soc_automation_pct": 45.73,
+      "lmi_flag": "low"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "emp_share": 4.83,
+      "task_pct": 6.38,
+      "task_pct_label": "6.4",
+      "soc_automation_pct": 43.53,
+      "lmi_flag": "low"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "emp_share": 1.95,
+      "task_pct": 22.11,
+      "task_pct_label": "22.1",
+      "soc_automation_pct": 65.99,
+      "lmi_flag": "low"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "emp_share": 1.48,
+      "task_pct": 3.03,
+      "task_pct_label": "3.0",
+      "soc_automation_pct": 47.41,
+      "lmi_flag": "low"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "emp_share": 1.2,
+      "task_pct": 4.46,
+      "task_pct_label": "4.5",
+      "soc_automation_pct": 40.04,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "emp_share": 1.84,
+      "task_pct": 3.21,
+      "task_pct_label": "3.2",
+      "soc_automation_pct": 39.59,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 23,
+      "soc_label": "Legal",
+      "emp_share": 0.68,
+      "task_pct": 1.02,
+      "task_pct_label": "1.0",
+      "soc_automation_pct": 32.73,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "emp_share": 6.53,
+      "task_pct": 12.25,
+      "task_pct_label": "12.2",
+      "soc_automation_pct": 44.84,
+      "lmi_flag": "moderate"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "emp_share": 1.5,
+      "task_pct": 13.11,
+      "task_pct_label": "13.1",
+      "soc_automation_pct": 32.47,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "emp_share": 5.71,
+      "task_pct": 4.19,
+      "task_pct_label": "4.2",
+      "soc_automation_pct": 42.77,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 31,
+      "soc_label": "Healthcare Support",
+      "emp_share": 3.4,
+      "task_pct": 0.67,
+      "task_pct_label": "0.7",
+      "soc_automation_pct": 41.09,
+      "lmi_flag": "high"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 33,
+      "soc_label": "Protective Services",
+      "emp_share": 3.33,
+      "task_pct": 0.44,
+      "task_pct_label": "0.4",
+      "soc_automation_pct": 80.5,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "emp_share": 13.17,
+      "task_pct": 0.6,
+      "task_pct_label": "0.6",
+      "soc_automation_pct": 52.13,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 37,
+      "soc_label": "Bldg & Grounds",
+      "emp_share": 5.24,
+      "task_pct": 0.17,
+      "task_pct_label": "0.2",
+      "soc_automation_pct": 51.95,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "emp_share": 2.85,
+      "task_pct": 1.26,
+      "task_pct_label": "1.3",
+      "soc_automation_pct": 57.7,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "emp_share": 8.13,
+      "task_pct": 11.16,
+      "task_pct_label": "11.2",
+      "soc_automation_pct": 46.35,
+      "lmi_flag": "high"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "emp_share": 11.93,
+      "task_pct": 7.69,
+      "task_pct_label": "7.7",
+      "soc_automation_pct": 59.62,
+      "lmi_flag": "high"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "emp_share": 0.23,
+      "task_pct": 0.06,
+      "task_pct_label": "0.1",
+      "soc_automation_pct": 72.24,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 47,
+      "soc_label": "Construction",
+      "emp_share": 4.72,
+      "task_pct": 0.13,
+      "task_pct_label": "0.1",
+      "soc_automation_pct": 71.47,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 49,
+      "soc_label": "Installation & Repair",
+      "emp_share": 4.17,
+      "task_pct": 0.78,
+      "task_pct_label": "0.8",
+      "soc_automation_pct": 75.42,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 51,
+      "soc_label": "Production",
+      "emp_share": 2.17,
+      "task_pct": 1.08,
+      "task_pct_label": "1.1",
+      "soc_automation_pct": 65.2,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Hawaii",
+      "soc_major_code": 53,
+      "soc_label": "Transportation",
+      "emp_share": 8.02,
+      "task_pct": 0.37,
+      "task_pct_label": "0.4",
+      "soc_automation_pct": 54.7,
+      "lmi_flag": "high"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "emp_share": 7.16,
+      "task_pct": 5.84,
+      "task_pct_label": "5.8",
+      "soc_automation_pct": 45.73,
+      "lmi_flag": "low"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "emp_share": 6.78,
+      "task_pct": 6.38,
+      "task_pct_label": "6.4",
+      "soc_automation_pct": 43.53,
+      "lmi_flag": "low"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "emp_share": 3.38,
+      "task_pct": 22.11,
+      "task_pct_label": "22.1",
+      "soc_automation_pct": 65.99,
+      "lmi_flag": "low"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "emp_share": 1.68,
+      "task_pct": 3.03,
+      "task_pct_label": "3.0",
+      "soc_automation_pct": 47.41,
+      "lmi_flag": "low"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "emp_share": 0.95,
+      "task_pct": 4.46,
+      "task_pct_label": "4.5",
+      "soc_automation_pct": 40.04,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "emp_share": 1.72,
+      "task_pct": 3.21,
+      "task_pct_label": "3.2",
+      "soc_automation_pct": 39.59,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 23,
+      "soc_label": "Legal",
+      "emp_share": 0.84,
+      "task_pct": 1.02,
+      "task_pct_label": "1.0",
+      "soc_automation_pct": 32.73,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "emp_share": 5.85,
+      "task_pct": 12.25,
+      "task_pct_label": "12.2",
+      "soc_automation_pct": 44.84,
+      "lmi_flag": "moderate"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "emp_share": 1.32,
+      "task_pct": 13.11,
+      "task_pct_label": "13.1",
+      "soc_automation_pct": 32.47,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "emp_share": 6.32,
+      "task_pct": 4.19,
+      "task_pct_label": "4.2",
+      "soc_automation_pct": 42.77,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 31,
+      "soc_label": "Healthcare Support",
+      "emp_share": 5.08,
+      "task_pct": 0.67,
+      "task_pct_label": "0.7",
+      "soc_automation_pct": 41.09,
+      "lmi_flag": "high"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 33,
+      "soc_label": "Protective Services",
+      "emp_share": 2.43,
+      "task_pct": 0.44,
+      "task_pct_label": "0.4",
+      "soc_automation_pct": 80.5,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "emp_share": 8.8,
+      "task_pct": 0.6,
+      "task_pct_label": "0.6",
+      "soc_automation_pct": 52.13,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 37,
+      "soc_label": "Bldg & Grounds",
+      "emp_share": 2.93,
+      "task_pct": 0.17,
+      "task_pct_label": "0.2",
+      "soc_automation_pct": 51.95,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "emp_share": 2.09,
+      "task_pct": 1.26,
+      "task_pct_label": "1.3",
+      "soc_automation_pct": 57.7,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "emp_share": 8.63,
+      "task_pct": 11.16,
+      "task_pct_label": "11.2",
+      "soc_automation_pct": 46.35,
+      "lmi_flag": "high"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "emp_share": 11.42,
+      "task_pct": 7.69,
+      "task_pct_label": "7.7",
+      "soc_automation_pct": 59.62,
+      "lmi_flag": "high"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "emp_share": 0.28,
+      "task_pct": 0.06,
+      "task_pct_label": "0.1",
+      "soc_automation_pct": 72.24,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 47,
+      "soc_label": "Construction",
+      "emp_share": 4.13,
+      "task_pct": 0.13,
+      "task_pct_label": "0.1",
+      "soc_automation_pct": 71.47,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 49,
+      "soc_label": "Installation & Repair",
+      "emp_share": 3.91,
+      "task_pct": 0.78,
+      "task_pct_label": "0.8",
+      "soc_automation_pct": 75.42,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 51,
+      "soc_label": "Production",
+      "emp_share": 5.51,
+      "task_pct": 1.08,
+      "task_pct_label": "1.1",
+      "soc_automation_pct": 65.2,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "United States",
+      "soc_major_code": 53,
+      "soc_label": "Transportation",
+      "emp_share": 8.8,
+      "task_pct": 0.37,
+      "task_pct_label": "0.4",
+      "soc_automation_pct": 54.7,
+      "lmi_flag": "high"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 11,
+      "soc_label": "Management",
+      "emp_share": 7.11,
+      "task_pct": 5.84,
+      "task_pct_label": "5.8",
+      "soc_automation_pct": 45.73,
+      "lmi_flag": "low"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 13,
+      "soc_label": "Business & Financial",
+      "emp_share": 5.54,
+      "task_pct": 6.38,
+      "task_pct_label": "6.4",
+      "soc_automation_pct": 43.53,
+      "lmi_flag": "low"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 15,
+      "soc_label": "Computer & Math",
+      "emp_share": 2.3,
+      "task_pct": 22.11,
+      "task_pct_label": "22.1",
+      "soc_automation_pct": 65.99,
+      "lmi_flag": "low"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 17,
+      "soc_label": "Architecture & Eng",
+      "emp_share": 1.81,
+      "task_pct": 3.03,
+      "task_pct_label": "3.0",
+      "soc_automation_pct": 47.41,
+      "lmi_flag": "low"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 19,
+      "soc_label": "Life & Social Science",
+      "emp_share": 1.26,
+      "task_pct": 4.46,
+      "task_pct_label": "4.5",
+      "soc_automation_pct": 40.04,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 21,
+      "soc_label": "Community & Social",
+      "emp_share": 1.82,
+      "task_pct": 3.21,
+      "task_pct_label": "3.2",
+      "soc_automation_pct": 39.59,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 23,
+      "soc_label": "Legal",
+      "emp_share": 0.77,
+      "task_pct": 1.02,
+      "task_pct_label": "1.0",
+      "soc_automation_pct": 32.73,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 25,
+      "soc_label": "Education & Library",
+      "emp_share": 6.75,
+      "task_pct": 12.25,
+      "task_pct_label": "12.2",
+      "soc_automation_pct": 44.84,
+      "lmi_flag": "moderate"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 27,
+      "soc_label": "Arts & Media",
+      "emp_share": 1.63,
+      "task_pct": 13.11,
+      "task_pct_label": "13.1",
+      "soc_automation_pct": 32.47,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 29,
+      "soc_label": "Healthcare Practitioners",
+      "emp_share": 6.15,
+      "task_pct": 4.19,
+      "task_pct_label": "4.2",
+      "soc_automation_pct": 42.77,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 31,
+      "soc_label": "Healthcare Support",
+      "emp_share": 3.4,
+      "task_pct": 0.67,
+      "task_pct_label": "0.7",
+      "soc_automation_pct": 41.09,
+      "lmi_flag": "high"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 33,
+      "soc_label": "Protective Services",
+      "emp_share": 3.45,
+      "task_pct": 0.44,
+      "task_pct_label": "0.4",
+      "soc_automation_pct": 80.5,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 35,
+      "soc_label": "Food Service",
+      "emp_share": 12.18,
+      "task_pct": 0.6,
+      "task_pct_label": "0.6",
+      "soc_automation_pct": 52.13,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 37,
+      "soc_label": "Bldg & Grounds",
+      "emp_share": 4.47,
+      "task_pct": 0.17,
+      "task_pct_label": "0.2",
+      "soc_automation_pct": 51.95,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 39,
+      "soc_label": "Personal Care",
+      "emp_share": 2.65,
+      "task_pct": 1.26,
+      "task_pct_label": "1.3",
+      "soc_automation_pct": 57.7,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 41,
+      "soc_label": "Sales",
+      "emp_share": 7.65,
+      "task_pct": 11.16,
+      "task_pct_label": "11.2",
+      "soc_automation_pct": 46.35,
+      "lmi_flag": "high"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 43,
+      "soc_label": "Office & Admin",
+      "emp_share": 11.85,
+      "task_pct": 7.69,
+      "task_pct_label": "7.7",
+      "soc_automation_pct": 59.62,
+      "lmi_flag": "high"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 45,
+      "soc_label": "Farming & Forestry",
+      "emp_share": 0.13,
+      "task_pct": 0.06,
+      "task_pct_label": "0.1",
+      "soc_automation_pct": 72.24,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 47,
+      "soc_label": "Construction",
+      "emp_share": 4.69,
+      "task_pct": 0.13,
+      "task_pct_label": "0.1",
+      "soc_automation_pct": 71.47,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 49,
+      "soc_label": "Installation & Repair",
+      "emp_share": 4.14,
+      "task_pct": 0.78,
+      "task_pct_label": "0.8",
+      "soc_automation_pct": 75.42,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 51,
+      "soc_label": "Production",
+      "emp_share": 2.13,
+      "task_pct": 1.08,
+      "task_pct_label": "1.1",
+      "soc_automation_pct": 65.2,
+      "lmi_flag": "none"
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "soc_major_code": 53,
+      "soc_label": "Transportation",
+      "emp_share": 8.09,
+      "task_pct": 0.37,
+      "task_pct_label": "0.4",
+      "soc_automation_pct": 54.7,
+      "lmi_flag": "high"
+    }
+  ],
+  "exposure_summary": [
+    {
+      "area_label": "Hawaii",
+      "usage_weighted_exposure": 4.62,
+      "emp_share_top_quartile_usage": 34.87,
+      "emp_share_automation_leaning": 57.78,
+      "emp_share_lmi_high": 31.48
+    },
+    {
+      "area_label": "United States",
+      "usage_weighted_exposure": 5.01,
+      "emp_share_top_quartile_usage": 37.38,
+      "emp_share_automation_leaning": 53.68,
+      "emp_share_lmi_high": 33.93
+    },
+    {
+      "area_label": "Urban Honolulu MSA",
+      "usage_weighted_exposure": 4.76,
+      "emp_share_top_quartile_usage": 35.72,
+      "emp_share_automation_leaning": 56.1,
+      "emp_share_lmi_high": 31.0
+    }
+  ]
+}
