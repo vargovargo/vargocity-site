@@ -32,3 +32,6 @@ public/data/*.geojson
 
 # Raw .fit uploads used as input for scripts/enrich-from-fit.js
 scripts/fit-imports/*.fit
+
+# Design review output — screenshots go stale as soon as the site changes
+design-audit-*/
