@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import LabDisclaimer from './LabDisclaimer'
 import { AEITaskTrends, AEICollabTrends, AEIPrimitivesScatter, AEISummaryTable, SOC43SubgroupChart, StateScatter, StateSOC43Bar, StateThresholdChart, HawaiiSOCMix, HonoluluExposure } from './AEICharts'
 import { SBIWageGap, SBIMonthlyCost, SBICostOfChild } from './SBICharts'
 import { ChettyScatter } from './SocialFabricCharts'
@@ -175,6 +176,8 @@ export default function MarkdownPost({ post, backPath, backLabel, seriesPosts })
         {post.date}
         {post.source === 'newsletter' && ' · Originally sent via TinyLetter'}
       </p>
+
+      <LabDisclaimer compact />
 
       <div className="prose prose-sm max-w-none themed-prose"
         style={{ lineHeight: '1.75' }}>

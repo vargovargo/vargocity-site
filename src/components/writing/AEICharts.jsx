@@ -1,5 +1,7 @@
-import { useRef, useEffect, useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import * as Plot from '@observablehq/plot'
+import { PLOT_STYLE, TYPE_SCALE, usePlot, useContainerWidth, topLabels } from './chartKit'
+import ChartCaption from './ChartCaption'
 import panelData from '../../data/aei-panel.json'
 import subgroupData from '../../data/soc43-subgroup.json'
 import statePanelData from '../../data/aei-state-panel.json'
@@ -17,45 +19,6 @@ const LMI_LABELS = {
   moderate: 'Moderate LMI exposure',
   low:      'Low LMI exposure',
   none:     'Not flagged',
-}
-
-const PLOT_STYLE = {
-  fontFamily: 'inherit',
-  fontSize: 12,
-  color: 'var(--c-text-body)',
-  background: 'transparent',
-}
-
-function usePlot(spec, deps) {
-  const ref = useRef()
-  useEffect(() => {
-    if (!ref.current) return
-    const chart = Plot.plot(spec)
-    ref.current.appendChild(chart)
-    return () => { if (ref.current) ref.current.innerHTML = '' }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps)
-  return ref
-}
-
-function useContainerWidth(fallback = 640) {
-  const containerRef = useRef()
-  const [width, setWidth] = useState(fallback)
-  useEffect(() => {
-    if (!containerRef.current) return
-    const obs = new ResizeObserver(([entry]) => setWidth(entry.contentRect.width))
-    obs.observe(containerRef.current)
-    return () => obs.disconnect()
-  }, [])
-  return [containerRef, width]
-}
-
-function ChartCaption({ children }) {
-  return (
-    <p className="text-xs mt-2" style={{ color: 'var(--c-text-muted)' }}>
-      {children}
-    </p>
-  )
 }
 
 // ── Chart 1: Task share trends ──────────────────────────────────────────────
@@ -126,7 +89,7 @@ export function AEITaskTrends() {
         textAnchor: 'start',
         dx: 8,
         fill: d => LMI_COLORS[d.lmi_flag],
-        fontSize: 11,
+        fontSize: TYPE_SCALE.AXIS,
       }),
       Plot.text(combinedLabel, {
         x: 'date',
@@ -136,7 +99,7 @@ export function AEITaskTrends() {
         dx: 8,
         fill: LMI_COLORS.high,
         fillOpacity: 0.7,
-        fontSize: 10,
+        fontSize: TYPE_SCALE.DATA,
         lineWidth: 12,
       }),
     ],
@@ -220,7 +183,7 @@ export function AEICollabTrends() {
         textAnchor: 'start',
         dx: 8,
         fill: '#999999',
-        fontSize: 11,
+        fontSize: TYPE_SCALE.AXIS,
       }),
       // LMI-high lines
       Plot.line(data, {
@@ -246,7 +209,7 @@ export function AEICollabTrends() {
         dx: 8,
         fill: LMI_COLORS.high,
         fillOpacity: d => d.soc_major_code === 43 ? 1 : 0.6,
-        fontSize: 11,
+        fontSize: TYPE_SCALE.AXIS,
       }),
     ],
   }, [width])
@@ -261,6 +224,51 @@ export function AEICollabTrends() {
       </ChartCaption>
     </div>
   )
+}
+
+/**
+ * Bubble radius for the primitives scatter. Shared with the label placement
+ * below so the two cannot drift apart.
+ */
+const bubbleR = d => Math.sqrt(d.task_pct) * 2.5
+
+/**
+ * Direct labels that clear their own mark.
+ *
+ * Plot treats `dy` as a constant option rather than a channel, so one offset
+ * has to be chosen for the whole mark: big enough for the largest bubble and
+ * therefore too big for the smallest. Splitting the rows into a few radius
+ * buckets and emitting one text mark per bucket gets per-point spacing back
+ * without hand-tuning offsets per label.
+ */
+function bubbleLabelMarks(rows, opts, radius, buckets = 3) {
+  if (!rows.length) return []
+  const radii = rows.map(radius)
+  const lo = Math.min(...radii), hi = Math.max(...radii)
+  const step = (hi - lo) / buckets || 1
+  const marks = []
+  for (let i = 0; i < buckets; i++) {
+    const from = lo + i * step
+    const to = i === buckets - 1 ? Infinity : lo + (i + 1) * step
+    const group = rows.filter(d => radius(d) >= from && radius(d) < to)
+    if (!group.length) continue
+    // Clear the largest dot in the bucket, plus half a line of text and a
+    // little air. Text is vertically centred on y+dy, so the offset has to
+    // cover the radius and roughly half the cap height.
+    const dy = -(Math.max(...group.map(radius)) + 9)
+    // Halo: a background-coloured stroke behind the glyphs. Direct labels in a
+    // dense scatter will cross *other* points no matter how they are offset,
+    // and this is the standard cartographic answer — the label stays readable
+    // over whatever it lands on without hiding the dot underneath.
+    marks.push(Plot.text(group, {
+      ...opts,
+      dy,
+      stroke: 'var(--c-bg)',
+      strokeWidth: 3.5,
+      paintOrder: 'stroke',
+    }))
+  }
+  return marks
 }
 
 // ── Chart 3: V4 scatter — autonomy vs education ────────────────────────────
@@ -297,7 +305,7 @@ export function AEIPrimitivesScatter() {
       Plot.dot(data, {
         x: 'mean_human_education_years',
         y: 'mean_ai_autonomy',
-        r: d => Math.sqrt(d.task_pct) * 2.5,
+        r: bubbleR,
         fill: d => LMI_COLORS[d.lmi_flag],
         fillOpacity: 0.75,
         stroke: d => LMI_COLORS[d.lmi_flag],
@@ -305,15 +313,22 @@ export function AEIPrimitivesScatter() {
         tip: true,
         title: d => `${d.soc_label}\nAutonomy: ${d.mean_ai_autonomy.toFixed(2)}\nSuccess rate: ${d.mean_task_success.toFixed(1)}%\nTask share: ${d.task_pct.toFixed(2)}%`,
       }),
-      // Labels for LMI-flagged groups
-      Plot.text(data.filter(d => d.lmi_flag === 'high' || d.lmi_flag === 'moderate'), {
-        x: 'mean_human_education_years',
-        y: 'mean_ai_autonomy',
-        text: 'soc_label',
-        dy: -10,
-        fontSize: 10,
-        fill: d => LMI_COLORS[d.lmi_flag],
-      }),
+      // Labels for LMI-flagged groups. `dy` is a constant option in Plot, not a
+      // channel, so a single offset has to clear the largest bubble — which
+      // leaves the small ones floating. Bucketing by radius instead lets every
+      // label sit just above its own dot. Office & Admin is the big one (8.35%
+      // task share, r ≈ 7px) and was having its label drawn inside the bubble.
+      ...bubbleLabelMarks(
+        data.filter(d => d.lmi_flag === 'high' || d.lmi_flag === 'moderate'),
+        {
+          x: 'mean_human_education_years',
+          y: 'mean_ai_autonomy',
+          text: 'soc_label',
+          fontSize: TYPE_SCALE.DATA,
+          fill: d => LMI_COLORS[d.lmi_flag],
+        },
+        bubbleR,
+      ),
     ],
   }, [width])
 
@@ -400,7 +415,7 @@ export function AEISummaryTable() {
 
     return (
       <span
-        className="font-mono select-none"
+        className="font-data select-none"
         style={{ color, opacity, fontWeight: isLarge ? 700 : 400, fontSize: isLarge ? '1em' : '0.85em' }}
         title={`${isUp ? '+' : ''}${delta.toFixed(2)}pp overall · ${Math.round(monotonicity * 100)}% monotone`}
       >
@@ -438,20 +453,20 @@ export function AEISummaryTable() {
                   color: 'var(--c-text-body)',
                 }}>
                 <td className="py-1.5 pr-3 whitespace-nowrap" style={{ color: isHighlighted ? 'var(--c-text)' : 'var(--c-text-body)' }}>
-                  <span className="font-mono text-xs mr-1.5" style={{ color: 'var(--c-text-muted)' }}>{soc.code}</span>
+                  <span className="font-data text-xs mr-1.5" style={{ color: 'var(--c-text-muted)' }}>{soc.code}</span>
                   {soc.label}
                 </td>
                 <td className="text-center py-1.5 px-2">{flagBadge(soc.lmi_flag)}</td>
                 <td className="text-center py-1.5 px-1"><TrendArrow socCode={soc.code} /></td>
                 {releases.map(r => (
-                  <td key={r} className="text-right py-1.5 px-2 font-mono">
+                  <td key={r} className="text-right py-1.5 px-2 font-data">
                     {fmt(lookup[`${soc.code}:${r}`]?.task_pct)}
                   </td>
                 ))}
-                <td className="text-right py-1.5 pl-2 font-mono">
+                <td className="text-right py-1.5 pl-2 font-data">
                   {v4?.mean_ai_autonomy != null ? v4.mean_ai_autonomy.toFixed(2) : '—'}
                 </td>
-                <td className="text-right py-1.5 pl-2 font-mono">
+                <td className="text-right py-1.5 pl-2 font-data">
                   {v4?.mean_task_success != null ? v4.mean_task_success.toFixed(1) + '%' : '—'}
                 </td>
               </tr>
@@ -516,7 +531,7 @@ export function SOC43SubgroupChart() {
         text: d => d.share_of_soc43_v5.toFixed(1) + '%',
         dx: 5,
         textAnchor: 'start',
-        fontSize: 10,
+        fontSize: TYPE_SCALE.DATA,
         fill: d => groupColor(d.broad_group),
         fillOpacity: d => isMain(d.broad_group) ? 1 : 0.6,
         sort: { y: '-x' },
@@ -564,7 +579,7 @@ export function SOC43SubgroupChart() {
         dx: 8,
         fill: d => groupColor(d.broad_group),
         fillOpacity: d => isMain(d.broad_group) ? 1 : 0.55,
-        fontSize: 11,
+        fontSize: TYPE_SCALE.AXIS,
       }),
     ],
   }, [width])
@@ -690,7 +705,7 @@ export function StateScatter() {
           text: 'geo_id',
           dx: d => LABEL_OFFSETS[d.geo_id]?.dx ?? 7,
           dy: d => LABEL_OFFSETS[d.geo_id]?.dy ?? 0,
-          fontSize: 10,
+          fontSize: TYPE_SCALE.DATA,
           fill: 'var(--c-text-muted)',
         }),
       ],
@@ -715,8 +730,12 @@ export function StateScatter() {
     parityRef.current.innerHTML = ''
     if (parityData.length === 0) return
     const maxVal = Math.max(...parityData.flatMap(d => [d.task_pct, d.national_pct])) * 1.1
-    const labelDots = parityData.filter(d =>
-      d.lmi_flag === 'high' || Math.abs((d.task_pct - d.national_pct)) > 2.5
+    // Label the biggest divergences only. Labelling every LMI-high group plus
+    // everything over 2.5pp put up to a dozen words on one scatter with no
+    // collision avoidance; the tip carries the rest.
+    const labelDots = topLabels(
+      parityData.filter(d => d.lmi_flag === 'high' || Math.abs(d.task_pct - d.national_pct) > 2.5),
+      d => Math.abs(d.task_pct - d.national_pct),
     )
     const chart = Plot.plot({
       width,
@@ -739,8 +758,9 @@ export function StateScatter() {
         }),
         Plot.text(labelDots, {
           x: 'national_pct', y: 'task_pct',
-          text: 'soc_label', dy: -10, fontSize: 10,
+          text: 'soc_label', dy: -11, fontSize: TYPE_SCALE.DATA,
           fill: d => LMI_COLORS[d.lmi_flag],
+          stroke: 'var(--c-bg)', strokeWidth: 3.5, paintOrder: 'stroke',
         }),
       ],
     })
@@ -883,7 +903,7 @@ export function StateSOC43Bar() {
         text: d => d.task_pct.toFixed(1) + '%',
         dx: 4,
         textAnchor: 'start',
-        fontSize: 9.5,
+        fontSize: TYPE_SCALE.DATA,
         fill: d => d.n_soc < 5 ? '#999' : 'var(--c-text-body)',
         sort: { y: '-x' },
       }),
@@ -893,7 +913,7 @@ export function StateSOC43Bar() {
         y: data[data.length - 1]?.state_name,
         text: 'label',
         dy: 22,
-        fontSize: 9,
+        fontSize: TYPE_SCALE.MICRO,
         fill: 'var(--c-text-muted)',
         textAnchor: 'middle',
         lineWidth: 8,
@@ -988,12 +1008,12 @@ export function StateThresholdChart() {
         x: 'n_soc', y: 'cs', text: 'geo_id',
         dy: d => ['CT','DE'].includes(d.geo_id) ? -10 : 10,
         dx: d => ['NY','CA'].includes(d.geo_id) ? -14 : 0,
-        fontSize: 10, fill: LMI_COLORS.low,
+        fontSize: TYPE_SCALE.DATA, fill: LMI_COLORS.low,
       }),
       Plot.text([{ x: nMax - 1, y: csStats.intercept + csStats.slope * (nMax - 1) + 4 }], {
         x: 'x', y: 'y',
         text: () => `r = ${csStats.r.toFixed(2)}`,
-        fontSize: 10, fill: LMI_COLORS.low, textAnchor: 'end',
+        fontSize: TYPE_SCALE.DATA, fill: LMI_COLORS.low, textAnchor: 'end',
       }),
     ],
   }, [width])
@@ -1014,12 +1034,12 @@ export function StateThresholdChart() {
         x: 'n_soc', y: 'soc43', text: 'geo_id',
         dy: d => ['CT','CO'].includes(d.geo_id) ? -10 : 10,
         dx: d => ['CA'].includes(d.geo_id) ? -14 : 0,
-        fontSize: 10, fill: LMI_COLORS.high,
+        fontSize: TYPE_SCALE.DATA, fill: LMI_COLORS.high,
       }),
       Plot.text([{ x: nMax - 1, y: s43Stats.intercept + s43Stats.slope * (nMax - 1) + 0.8 }], {
         x: 'x', y: 'y',
         text: () => `r = ${s43Stats.r.toFixed(2)}`,
-        fontSize: 10, fill: LMI_COLORS.high, textAnchor: 'end',
+        fontSize: TYPE_SCALE.DATA, fill: LMI_COLORS.high, textAnchor: 'end',
       }),
     ],
   }, [width])
@@ -1133,7 +1153,7 @@ export function HawaiiSOCMix() {
         text: d => `${d.hi_task_pct.toFixed(1)}%`,
         dx: 10,
         textAnchor: 'start',
-        fontSize: 10,
+        fontSize: TYPE_SCALE.DATA,
         fill: 'var(--c-text-body)',
       }),
     ],
@@ -1236,7 +1256,7 @@ export function HonoluluExposure() {
         text: d => `+${d.diff.toFixed(1)}`,
         dx: 6,
         textAnchor: 'start',
-        fontSize: 9.5,
+        fontSize: TYPE_SCALE.DATA,
         fill: 'var(--c-text-body)',
       }),
       Plot.text(biggest.filter(d => d.diff < 0), {
@@ -1245,7 +1265,7 @@ export function HonoluluExposure() {
         text: d => d.diff.toFixed(1),
         dx: -6,
         textAnchor: 'end',
-        fontSize: 9.5,
+        fontSize: TYPE_SCALE.DATA,
         fill: 'var(--c-text-body)',
       }),
     ],

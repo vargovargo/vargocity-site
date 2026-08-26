@@ -139,7 +139,7 @@ export default function HeatMapToggle() {
           </Geographies>
         </ComposableMap>
         {!counties && (
-          <p style={{ textAlign: 'center', padding: '24px', fontSize: '13px', color: 'var(--c-text-muted)' }}>
+          <p style={{ textAlign: 'center', padding: '24px', fontSize: '12px', color: 'var(--c-text-muted)' }}>
             Loading…
           </p>
         )}

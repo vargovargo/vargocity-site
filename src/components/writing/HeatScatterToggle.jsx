@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
+import { TYPE_SCALE } from './chartKit'
 
 const TYPE_COLORS = {
   shock:  'var(--c-heat-shock)',
@@ -253,7 +254,7 @@ export default function HeatScatterToggle() {
           {xTicks.map(v => (
             <text key={v}
               x={px(v)} y={H - MB + 14}
-              textAnchor="middle" fontSize={9} fill="var(--c-text-muted)"
+              textAnchor="middle" fontSize={TYPE_SCALE.MICRO} fill="var(--c-text-muted)"
             >
               {(v * 100).toFixed(0)}%
             </text>
@@ -263,7 +264,7 @@ export default function HeatScatterToggle() {
           {yTicks.map(v => (
             <text key={v}
               x={ML - 6} y={py(v) + 3.5}
-              textAnchor="end" fontSize={9} fill="var(--c-text-muted)"
+              textAnchor="end" fontSize={TYPE_SCALE.MICRO} fill="var(--c-text-muted)"
             >
               {v}
             </text>
@@ -272,13 +273,13 @@ export default function HeatScatterToggle() {
           {/* Axis labels */}
           <text
             x={ML + PW / 2} y={H - 4}
-            textAnchor="middle" fontSize={10} fill="var(--c-text-muted)"
+            textAnchor="middle" fontSize={TYPE_SCALE.DATA} fill="var(--c-text-muted)"
           >
             {activeDomain.charAt(0).toUpperCase() + activeDomain.slice(1)} score
           </text>
           <text
             x={10} y={MT + PH / 2}
-            textAnchor="middle" fontSize={10} fill="var(--c-text-muted)"
+            textAnchor="middle" fontSize={TYPE_SCALE.DATA} fill="var(--c-text-muted)"
             transform={`rotate(-90, 10, ${MT + PH / 2})`}
           >
             {Y_LABELS[activeY]}
@@ -296,7 +297,7 @@ export default function HeatScatterToggle() {
               />
               <text
                 x={W - MR - 36} y={MT + 16}
-                textAnchor="middle" fontSize={9.5} fontWeight={600}
+                textAnchor="middle" fontSize={TYPE_SCALE.DATA} fontWeight={600}
                 fill={domainColor}
               >
                 r = {reg.r >= 0 ? '+' : ''}{reg.r.toFixed(2)}
@@ -333,14 +334,14 @@ export default function HeatScatterToggle() {
         )}
 
         {!counties && (
-          <p style={{ textAlign: 'center', padding: '40px', fontSize: '13px', color: 'var(--c-text-muted)' }}>
+          <p style={{ textAlign: 'center', padding: '40px', fontSize: '12px', color: 'var(--c-text-muted)' }}>
             Loading…
           </p>
         )}
       </div>
 
       {/* Caption */}
-      <p style={{ fontSize: '11px', color: 'var(--c-text-muted)', marginTop: '6px', lineHeight: 1.5 }}>
+      <p style={{ fontSize: '12px', color: 'var(--c-text-muted)', marginTop: '8px', lineHeight: 1.5 }}>
         Each dot = one US county, colored by dominant heat type.{' '}
         <span style={{ color: domainColor }}>
           {activeDomain.charAt(0).toUpperCase() + activeDomain.slice(1)} score (x-axis)

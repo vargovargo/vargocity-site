@@ -10,11 +10,12 @@ import AdventuresPage from './pages/AdventuresPage'
 import LabPage from './pages/LabPage'
 import GratitudeOptInPage from './pages/GratitudeOptInPage'
 
-const themes = [
-  { id: 'default', label: 'Default', swatch: '#FAFAF8', ring: '#1A1A1A' },
-  { id: 'warm',    label: 'Warm',    swatch: '#F5EDE0', ring: '#B87333' },
-  { id: 'alpine',  label: 'Alpine',  swatch: '#0F1621', ring: '#7AB8CC' },
-]
+// Restoring the switcher: put these back as a `themes` array, thread them to
+// Footer with an onThemeChange handler, and render the swatch buttons there.
+// The token blocks for all three themes are still in index.css.
+//   default  #FAFAF8 / ring #1A1A1A / Inter headings
+//   warm     #F5EDE0 / ring #B87333 / Lora headings   <- current
+//   alpine   #0F1621 / ring #7AB8CC / Barlow headings (fonts no longer loaded)
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -22,28 +23,36 @@ function ScrollToTop() {
   return null
 }
 
-function SiteLayout({ theme, themes, onThemeChange }) {
+function SiteLayout() {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', backgroundColor: 'var(--c-bg)' }}>
       <SiteNav />
       <main style={{ flex: 1 }}>
         <Outlet />
       </main>
-      <Footer theme={theme} themes={themes} onThemeChange={onThemeChange} />
+      <Footer />
     </div>
   )
 }
 
+// The site shipped with three switchable themes for a year. A visitor's read
+// was that the typography looked unsettled — which is fair, since the heading
+// face changed with a footer swatch. Warm is now the site's look. The switcher
+// mechanism is kept but not rendered (see Footer), so re-enabling it is a
+// one-line change rather than a rebuild.
+const LOCKED_THEME = 'warm'
+
 export default function App() {
-  const [theme, setTheme] = useState(() => localStorage.getItem('site-theme') || 'default')
+  const [theme] = useState(LOCKED_THEME)
 
   useEffect(() => {
+    // Ignore any previously stored preference — a browser holding 'alpine'
+    // from before the lock must not resurrect it.
     if (theme === 'default') {
       document.documentElement.removeAttribute('data-theme')
     } else {
       document.documentElement.setAttribute('data-theme', theme)
     }
-    localStorage.setItem('site-theme', theme)
   }, [theme])
 
   return (
@@ -51,7 +60,7 @@ export default function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/gratitude-opt-in" element={<GratitudeOptInPage />} />
-        <Route element={<SiteLayout theme={theme} themes={themes} onThemeChange={setTheme} />}>
+        <Route element={<SiteLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/research" element={<ResearchPage />} />

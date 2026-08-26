@@ -1,4 +1,6 @@
-export default function Footer({ theme, themes, onThemeChange }) {
+// The theme swatches used to live here. The site is locked to one look now;
+// see LOCKED_THEME in App.jsx for how to bring the switcher back.
+export default function Footer() {
   return (
     <footer style={{ borderTop: '1px solid var(--c-border)', backgroundColor: 'var(--c-bg)' }}
       className="mt-24 py-10">
@@ -27,31 +29,6 @@ export default function Footer({ theme, themes, onThemeChange }) {
               style={{ color: 'var(--c-text-body)' }}>
               GitHub
             </a>
-          </div>
-          <div className="flex gap-0.5">
-            {themes.map(t => (
-              <button
-                key={t.id}
-                onClick={() => onThemeChange(t.id)}
-                title={t.label}
-                aria-label={t.label}
-                style={{
-                  width: '28px', height: '28px',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  background: 'none', border: 'none',
-                  cursor: 'pointer', borderRadius: '50%', padding: 0, flexShrink: 0,
-                }}
-              >
-                <span style={{
-                  display: 'block',
-                  width: '14px', height: '14px',
-                  backgroundColor: t.swatch,
-                  border: `2px solid ${theme === t.id ? t.ring : 'var(--c-border)'}`,
-                  borderRadius: '50%',
-                  pointerEvents: 'none',
-                }} />
-              </button>
-            ))}
           </div>
         </div>
       </div>

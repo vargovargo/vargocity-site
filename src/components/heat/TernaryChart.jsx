@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState, useMemo, useCallback } from 'react'
+import { TYPE_SCALE } from '../writing/chartKit'
 import { STATE_ABBR, TYPE_COLORS, hazardState } from './hazards'
 
 /** @import { CountyRecord } from '../../types/heat-typology.js' */
@@ -125,15 +126,15 @@ export default function TernaryChart({ counties, selectedFips, onSelect, hazard 
         ))}
 
         {/* Vertex labels */}
-        <text x={Ax} y={Ay - 18} textAnchor="middle" fontSize={12} fontWeight={600}
+        <text x={Ax} y={Ay - 18} textAnchor="middle" fontSize={TYPE_SCALE.AXIS} fontWeight={600}
           fill={TYPE_COLORS.shock}>
           Shock
         </text>
-        <text x={Bx} y={By + 24} textAnchor="middle" fontSize={12} fontWeight={600}
+        <text x={Bx} y={By + 24} textAnchor="middle" fontSize={TYPE_SCALE.AXIS} fontWeight={600}
           fill={TYPE_COLORS.stress}>
           Stress
         </text>
-        <text x={Cx} y={Cy + 24} textAnchor="middle" fontSize={12} fontWeight={600}
+        <text x={Cx} y={Cy + 24} textAnchor="middle" fontSize={TYPE_SCALE.AXIS} fontWeight={600}
           fill={TYPE_COLORS.shift}>
           Shift
         </text>
@@ -181,7 +182,7 @@ export default function TernaryChart({ counties, selectedFips, onSelect, hazard 
         )}
 
         {/* Scale hint */}
-        <text x={Ax} y={viewH - 8} textAnchor="middle" fontSize={9} fill="var(--c-text-muted)">
+        <text x={Ax} y={viewH - 8} textAnchor="middle" fontSize={TYPE_SCALE.MICRO} fill="var(--c-text-muted)">
           dot size = population (log scale)
         </text>
       </svg>

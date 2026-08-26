@@ -3,6 +3,7 @@ import {
   TYPE_META, STATE_ABBR, UNTYPED_COPY, NO_DATA,
   hazardState, isMixed,
 } from './hazards'
+import { TYPE_SCALE } from '../writing/chartKit'
 
 function ScoreBar({ type, score }) {
   const { label, color } = TYPE_META[type]
@@ -10,7 +11,7 @@ function ScoreBar({ type, score }) {
     <div className="mb-2">
       <div className="flex justify-between text-xs mb-0.5">
         <span style={{ color: 'var(--c-text-body)' }}>{label}</span>
-        <span className="font-mono" style={{ color: 'var(--c-text-muted)' }}>
+        <span className="font-data" style={{ color: 'var(--c-text-muted)' }}>
           {(score * 100).toFixed(0)}%
         </span>
       </div>
@@ -52,7 +53,7 @@ function PlainRow({ label, value, hint }) {
     <div className="flex items-baseline justify-between text-xs py-1"
       style={{ borderBottom: '1px solid var(--c-border)' }}>
       <span style={{ color: 'var(--c-text-muted)' }} title={hint}>{label}</span>
-      <span className="font-mono" style={{ color: 'var(--c-text-body)' }}>{value}</span>
+      <span className="font-data" style={{ color: 'var(--c-text-body)' }}>{value}</span>
     </div>
   )
 }
@@ -95,11 +96,11 @@ function SmokeSparkline({ values, years }) {
         {/* The peak callout sits above its own bar rather than on the year axis:
             the spike is usually 2023, close enough to the end of the window that
             an axis label would collide with the final year. */}
-        <text x={peakX} y={topPad - 3.5} fontSize={8.5} textAnchor="middle" fill="var(--c-text-body)">
+        <text x={peakX} y={topPad - 3.5} fontSize={TYPE_SCALE.MICRO} textAnchor="middle" fill="var(--c-text-body)">
           {years?.[peakIdx]}: {max}
         </text>
-        <text x={pad} y={topPad + h + 10} fontSize={8} fill="var(--c-text-muted)">{years?.[0]}</text>
-        <text x={w - pad} y={topPad + h + 10} fontSize={8} textAnchor="end"
+        <text x={pad} y={topPad + h + 10} fontSize={TYPE_SCALE.MICRO} fill="var(--c-text-muted)">{years?.[0]}</text>
+        <text x={w - pad} y={topPad + h + 10} fontSize={TYPE_SCALE.MICRO} textAnchor="end"
           fill="var(--c-text-muted)">{years?.[years.length - 1]}</text>
       </svg>
     </div>
@@ -306,7 +307,7 @@ export default function CountyPanel({ county, onClose, hazard = 'heat', meta = n
           <PlainRow label="Community resilience" value={heatMetrics.resl_score?.toFixed(1)} />
           <div className="flex items-baseline justify-between text-xs py-1">
             <span style={{ color: 'var(--c-text-muted)' }}>Population</span>
-            <span className="font-mono" style={{ color: 'var(--c-text-body)' }}>
+            <span className="font-data" style={{ color: 'var(--c-text-body)' }}>
               {county.population.toLocaleString()}
             </span>
           </div>

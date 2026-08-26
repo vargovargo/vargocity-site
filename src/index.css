@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&family=Barlow:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+/* Two families, not four. Inter for body and UI, Lora for headings. Barlow and
+   DM Mono were alpine-theme-only; with the site locked to warm they were being
+   downloaded and never drawn. Re-add them here if alpine is ever restored. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
@@ -37,7 +40,7 @@
   --c-map-dim: #D0D0C8;
   --c-map-selected: #FC4C02;
   --c-font-heading: 'Inter', system-ui, sans-serif;
-  --c-font-mono: ui-monospace, monospace;
+  --c-font-mono: 'Inter', system-ui, sans-serif;
   /* Typology palette. Mirrored in src/components/heat/hazards.js, which needs
      real hex for the react-simple-maps style objects and the +'22' alpha
      suffix — keep the two in sync. Re-stepped 2026-08 — the previous shock/stress pair
@@ -52,6 +55,7 @@
   --c-heat-shift-bg: rgba(75, 124, 184, 0.133);
 }
 
+/* Active site theme — see LOCKED_THEME in App.jsx. */
 [data-theme="warm"] {
   --c-bg: #F5EDE0;
   --c-surface: #FAF4EA;
@@ -73,9 +77,11 @@
   --c-map-dim: #C4B8A0;
   --c-map-selected: #B85C38;
   --c-font-heading: 'Lora', Georgia, serif;
-  --c-font-mono: ui-monospace, monospace;
+  --c-font-mono: 'Inter', system-ui, sans-serif;
 }
 
+/* Unreachable while the theme is locked. Barlow and DM Mono are no longer
+   imported, so this block would fall back to system faces until they are. */
 [data-theme="alpine"] {
   --c-bg: #0F1621;
   --c-surface: #1A2332;
@@ -105,8 +111,14 @@
 }
 
 /* numeric/data labels use mono in alpine */
+/* One numeral voice across the site. This used to resolve to the platform mono
+   (SF Mono / Consolas / whatever), which meant the stat counters rendered in a
+   different face on every machine — a third family showing up by accident.
+   Inter's tabular figures line up just as well and are already loaded. */
 .font-data {
   font-family: var(--c-font-mono);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
 }
 
 /* world map country strokes — overrides hardcoded SVG attribute */

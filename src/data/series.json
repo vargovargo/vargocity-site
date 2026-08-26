@@ -5,7 +5,7 @@
   },
   "heat": {
     "title": "Shock, Stress, Shift",
-    "description": "A framework for classifying climate pressure across Western counties — shock, stress, and opportunity — and what each trajectory means for labor, health, energy, infrastructure, and agriculture.",
+    "description": "A framework for classifying climate pressure across all 3,109 U.S. counties — shock, stress, and shift — and what each trajectory means for labor, health, energy, infrastructure, and agriculture. Now covering wildfire smoke alongside heat.",
     "tool": "/lab/heat",
     "tool_label": "Explore the tool"
   },
