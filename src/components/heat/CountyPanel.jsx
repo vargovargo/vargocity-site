@@ -1,21 +1,8 @@
 /** @import { CountyRecord } from '../../types/heat-typology.js' */
-
-const STATE_ABBR = {
-  '01':'AL','02':'AK','04':'AZ','05':'AR','06':'CA','08':'CO','09':'CT',
-  '10':'DE','11':'DC','12':'FL','13':'GA','15':'HI','16':'ID','17':'IL',
-  '18':'IN','19':'IA','20':'KS','21':'KY','22':'LA','23':'ME','24':'MD',
-  '25':'MA','26':'MI','27':'MN','28':'MS','29':'MO','30':'MT','31':'NE',
-  '32':'NV','33':'NH','34':'NJ','35':'NM','36':'NY','37':'NC','38':'ND',
-  '39':'OH','40':'OK','41':'OR','42':'PA','44':'RI','45':'SC','46':'SD',
-  '47':'TN','48':'TX','49':'UT','50':'VT','51':'VA','53':'WA','54':'WV',
-  '55':'WI','56':'WY',
-}
-
-const TYPE_META = {
-  shock:  { label: 'Shock',  color: '#C0583A', oneliner: 'Rare extremes becoming regular' },
-  stress: { label: 'Stress', color: '#D4813B', oneliner: 'Familiar heat exceeding its envelope' },
-  shift:  { label: 'Shift',  color: '#4B7CB8', oneliner: 'Heat envelope reorganizing viable activity' },
-}
+import {
+  TYPE_META, STATE_ABBR, UNTYPED_COPY, NO_DATA,
+  hazardState, isMixed,
+} from './hazards'
 
 function ScoreBar({ type, score }) {
   const { label, color } = TYPE_META[type]
@@ -37,7 +24,7 @@ function ScoreBar({ type, score }) {
   )
 }
 
-function MetricRow({ label, baseline, projected, unit = 'days/yr' }) {
+function MetricRow({ label, baseline, projected, unit = 'days/yr', digits = 1 }) {
   if (baseline == null && projected == null) return null
   const delta = projected != null && baseline != null ? projected - baseline : null
   return (
@@ -45,12 +32,12 @@ function MetricRow({ label, baseline, projected, unit = 'days/yr' }) {
       style={{ borderBottom: '1px solid var(--c-border)' }}>
       <span style={{ color: 'var(--c-text-muted)' }}>{label}</span>
       <span style={{ color: 'var(--c-text-body)' }}>
-        {baseline != null ? baseline.toFixed(1) : '—'}
+        {baseline != null ? baseline.toFixed(digits) : '—'}
         <span style={{ color: 'var(--c-text-muted)' }}> → </span>
-        {projected != null ? projected.toFixed(1) : '—'}
+        {projected != null ? projected.toFixed(digits) : '—'}
         {delta != null && (
-          <span style={{ color: delta > 0 ? '#C0583A' : '#4B7CB8', marginLeft: 4 }}>
-            ({delta > 0 ? '+' : ''}{delta.toFixed(1)})
+          <span style={{ color: delta > 0 ? 'var(--c-heat-shock)' : 'var(--c-heat-shift)', marginLeft: 4 }}>
+            ({delta > 0 ? '+' : ''}{delta.toFixed(digits)})
           </span>
         )}
         <span className="ml-1" style={{ color: 'var(--c-text-muted)' }}>{unit}</span>
@@ -59,15 +46,150 @@ function MetricRow({ label, baseline, projected, unit = 'days/yr' }) {
   )
 }
 
+function PlainRow({ label, value, hint }) {
+  if (value == null) return null
+  return (
+    <div className="flex items-baseline justify-between text-xs py-1"
+      style={{ borderBottom: '1px solid var(--c-border)' }}>
+      <span style={{ color: 'var(--c-text-muted)' }} title={hint}>{label}</span>
+      <span className="font-mono" style={{ color: 'var(--c-text-body)' }}>{value}</span>
+    </div>
+  )
+}
+
 /**
- * @param {{ county: CountyRecord, onClose: () => void }} props
+ * Annual heavy-smoke days, 2011–2025. The five-year comparison windows that
+ * drive the typology average the spikes away; this is where they are visible.
+ * New York County reads 1,0,0,1,1,0,0,1,1,3,6,0,14,1,4 and tells its own story.
  */
-export default function CountyPanel({ county, onClose }) {
+function SmokeSparkline({ values, years }) {
+  if (!values?.length) return null
+  const w = 212, h = 40, pad = 1, topPad = 12
+  const max = Math.max(...values, 1)
+  const bw = (w - pad * 2) / values.length
+  const peakIdx = values.indexOf(max)
+  const peakX = Math.min(w - pad - 20, Math.max(pad + 20, pad + peakIdx * bw + bw / 2))
+
+  return (
+    <div className="mt-1 mb-2">
+      <svg width="100%" viewBox={`0 0 ${w} ${topPad + h + 12}`} role="img"
+        aria-label={`Heavy-smoke days per year, ${years?.[0] ?? ''} to ${years?.[years.length - 1] ?? ''}`}>
+        {values.map((v, i) => {
+          const bh = max ? (v / max) * h : 0
+          return (
+            <rect
+              key={i}
+              x={pad + i * bw + 0.6}
+              y={topPad + h - bh}
+              width={Math.max(1, bw - 1.2)}
+              height={bh}
+              rx={0.8}
+              fill="var(--c-heat-shock)"
+              fillOpacity={i === peakIdx ? 0.95 : 0.42}
+            >
+              <title>{`${years?.[i] ?? i}: ${v} heavy-smoke ${v === 1 ? 'day' : 'days'}`}</title>
+            </rect>
+          )
+        })}
+        <line x1={0} y1={topPad + h} x2={w} y2={topPad + h} stroke="var(--c-border)" strokeWidth={0.8} />
+        {/* The peak callout sits above its own bar rather than on the year axis:
+            the spike is usually 2023, close enough to the end of the window that
+            an axis label would collide with the final year. */}
+        <text x={peakX} y={topPad - 3.5} fontSize={8.5} textAnchor="middle" fill="var(--c-text-body)">
+          {years?.[peakIdx]}: {max}
+        </text>
+        <text x={pad} y={topPad + h + 10} fontSize={8} fill="var(--c-text-muted)">{years?.[0]}</text>
+        <text x={w - pad} y={topPad + h + 10} fontSize={8} textAnchor="end"
+          fill="var(--c-text-muted)">{years?.[years.length - 1]}</text>
+      </svg>
+    </div>
+  )
+}
+
+function HeatMetrics({ metrics }) {
+  return (
+    <div className="mb-3">
+      <p className="text-xs font-medium mb-2" style={{ color: 'var(--c-text-muted)' }}>
+        Heat index days (baseline → projected)
+      </p>
+      <MetricRow label="≥ 95°F days" baseline={metrics.baseline_hi95} projected={metrics.projected_hi95} />
+      <MetricRow label="≥ 100°F days" baseline={metrics.baseline_hi100} projected={metrics.projected_hi100} />
+    </div>
+  )
+}
+
+function WildfireMetrics({ metrics, years }) {
+  // Lead with the population-independent drivers. Person-days scale with
+  // population and are deliberately *not* in the typology, so they sit below
+  // and are labelled as magnitude rather than trajectory.
+  const recur = v => (v == null ? null : `${(v * 5).toFixed(0)} of 5`)
+  const pd = v => (v == null ? null : v >= 1e6 ? `${(v / 1e6).toFixed(1)}M` : v.toLocaleString())
+
+  return (
+    <>
+      <div className="mb-3">
+        <p className="text-xs font-medium mb-2" style={{ color: 'var(--c-text-muted)' }}>
+          Heavy smoke (2011–15 → 2021–25)
+        </p>
+        <MetricRow
+          label="Days for the typical resident"
+          baseline={metrics.heavy_pd_per_capita_p1}
+          projected={metrics.heavy_pd_per_capita_p2}
+          unit="days/5yr"
+          digits={0}
+        />
+        <PlainRow label="Years in five with heavy smoke" value={recur(metrics.recurrence_p2)} />
+        <PlainRow
+          label="Person-days, 2021–25"
+          value={pd(metrics.heavy_pd_p2)}
+          hint="Total exposure magnitude — scales with population, and is not an input to the typology."
+        />
+      </div>
+
+      {metrics.heavy_days_annual?.length > 0 && (
+        <div className="mb-3">
+          <p className="text-xs font-medium mb-1" style={{ color: 'var(--c-text-muted)' }}>
+            Heavy-smoke days per year
+          </p>
+          <SmokeSparkline values={metrics.heavy_days_annual} years={years} />
+        </div>
+      )}
+
+      <div className="mb-3">
+        <p className="text-xs font-medium mb-2" style={{ color: 'var(--c-text-muted)' }}>
+          Who is exposed
+        </p>
+        <PlainRow
+          label="Frontline workers"
+          value={metrics.frontline_share != null ? `${(metrics.frontline_share * 100).toFixed(0)}%` : null}
+          hint="ACS C24050: natural resources, construction and maintenance plus production, transportation and material moving — people who work outdoors or indoors without adequate ventilation."
+        />
+        <PlainRow
+          label="In CRA-eligible tracts"
+          value={metrics.cra_pop_share != null ? `${(metrics.cra_pop_share * 100).toFixed(0)}%` : null}
+          hint="Share of population in low- and moderate-income census tracts."
+        />
+        <PlainRow
+          label="Student poverty"
+          value={metrics.student_poverty_share != null ? `${(metrics.student_poverty_share * 100).toFixed(0)}%` : null}
+        />
+      </div>
+    </>
+  )
+}
+
+/**
+ * @param {{ county: CountyRecord, onClose: () => void, hazard: string, meta: object|null }} props
+ */
+export default function CountyPanel({ county, onClose, hazard = 'heat', meta = null }) {
   const stateAbbr = STATE_ABBR[county.state] ?? county.state
-  const heat = county.hazards.heat
-  const { dominant, confidence, scores, metrics } = heat
-  const meta = TYPE_META[dominant]
-  const confidencePct = Math.round(confidence * 100)
+  const { state, record } = hazardState(county, hazard)
+  const heatMetrics = county.hazards.heat?.metrics ?? {}
+  const years = meta?.hazards?.[hazard]?.annual_years
+
+  const typed = state === 'typed'
+  const typeMeta = typed ? TYPE_META[record.dominant] : null
+  const mixed = typed && isMixed(record.confidence)
 
   return (
     <div
@@ -102,65 +224,86 @@ export default function CountyPanel({ county, onClose }) {
       </div>
 
       <div className="p-4">
-        {/* Dominant type */}
+        {/* Dominant type — or an honest account of why there isn't one */}
         <div className="mb-4">
-          <div className="flex items-center gap-2 mb-1">
-            <span
-              className="text-xs font-semibold px-2 py-0.5 rounded"
-              style={{ backgroundColor: meta.color + '22', color: meta.color }}
-            >
-              {meta.label}
-            </span>
-            <span className="text-xs" style={{ color: 'var(--c-text-muted)' }}>
-              {confidencePct}% confidence
-            </span>
-          </div>
-          <p className="text-xs" style={{ color: 'var(--c-text-body)' }}>{meta.oneliner}</p>
-        </div>
-
-        {/* Score bars */}
-        <div className="mb-4">
-          <p className="text-xs font-medium mb-2" style={{ color: 'var(--c-text-muted)' }}>
-            Type scores
-          </p>
-          <ScoreBar type="shock"  score={scores.shock} />
-          <ScoreBar type="stress" score={scores.stress} />
-          <ScoreBar type="shift"  score={scores.shift} />
-          {dominant !== 'shock' && scores.shock >= 0.25 && (
-            <p className="text-xs mt-2" style={{ color: 'var(--c-text-muted)' }}>
-              {Math.round(scores.shock * 100)}% shock weight — some baseline cooling infrastructure still applies.
-            </p>
+          {typed ? (
+            <>
+              <div className="flex items-center gap-2 mb-1 flex-wrap">
+                {mixed ? (
+                  // Below 0.15 the top score barely separates from the others.
+                  // Naming a type here would assert more than the data supports.
+                  <span
+                    className="text-xs font-semibold px-2 py-0.5 rounded"
+                    style={{ backgroundColor: 'var(--c-border)', color: 'var(--c-text-body)' }}
+                  >
+                    Mixed signal
+                  </span>
+                ) : (
+                  <span
+                    className="text-xs font-semibold px-2 py-0.5 rounded"
+                    style={{ backgroundColor: typeMeta.color + '22', color: typeMeta.color }}
+                  >
+                    {typeMeta.label}
+                  </span>
+                )}
+                <span className="text-xs" style={{ color: 'var(--c-text-muted)' }}>
+                  {Math.round(record.confidence * 100)}% confidence
+                </span>
+              </div>
+              <p className="text-xs" style={{ color: 'var(--c-text-body)' }}>
+                {mixed
+                  ? `Leans ${record.dominant}, but the three scores are close enough that this county reads as in transition rather than as a type.`
+                  : typeMeta.oneliner}
+              </p>
+            </>
+          ) : (
+            <>
+              <span
+                className="text-xs font-semibold px-2 py-0.5 rounded"
+                style={{ backgroundColor: 'var(--c-border)', color: 'var(--c-text-body)' }}
+              >
+                {UNTYPED_COPY[state]?.short ?? 'Unclassified'}
+              </span>
+              <p className="text-xs mt-1.5" style={{ color: 'var(--c-text-body)' }}>
+                {UNTYPED_COPY[state]?.long ?? 'No classification for this county.'}
+              </p>
+            </>
           )}
         </div>
 
-        {/* Key metrics */}
-        <div className="mb-3">
-          <p className="text-xs font-medium mb-2" style={{ color: 'var(--c-text-muted)' }}>
-            Heat index days (baseline → projected)
-          </p>
-          <MetricRow label="≥ 95°F days" baseline={metrics.baseline_hi95} projected={metrics.projected_hi95} />
-          <MetricRow label="≥ 100°F days" baseline={metrics.baseline_hi100} projected={metrics.projected_hi100} />
-        </div>
+        {/* Score bars — only where the scores mean something */}
+        {typed && (
+          <div className="mb-4">
+            <p className="text-xs font-medium mb-2" style={{ color: 'var(--c-text-muted)' }}>
+              Type scores
+            </p>
+            <ScoreBar type="shock"  score={record.scores.shock} />
+            <ScoreBar type="stress" score={record.scores.stress} />
+            <ScoreBar type="shift"  score={record.scores.shift} />
+            {!mixed && record.dominant !== 'shock' && record.scores.shock >= 0.25 && (
+              <p className="text-xs mt-2" style={{ color: 'var(--c-text-muted)' }}>
+                {Math.round(record.scores.shock * 100)}% shock weight — {hazard === 'wildfire'
+                  ? 'episodic-event response still applies alongside the recurring burden.'
+                  : 'some baseline cooling infrastructure still applies.'}
+              </p>
+            )}
+          </div>
+        )}
 
-        {/* Vulnerability */}
+        {/* Hazard-specific metrics */}
+        {state !== NO_DATA && (
+          hazard === 'wildfire'
+            ? <WildfireMetrics metrics={record?.metrics ?? {}} years={years} />
+            : <HeatMetrics metrics={heatMetrics} />
+        )}
+
+        {/* Community context — county attributes, same under either hazard */}
         <div>
           <p className="text-xs font-medium mb-2" style={{ color: 'var(--c-text-muted)' }}>
             Community context
           </p>
-          <div className="flex items-baseline justify-between text-xs py-1"
-            style={{ borderBottom: '1px solid var(--c-border)' }}>
-            <span style={{ color: 'var(--c-text-muted)' }}>Social vulnerability</span>
-            <span className="font-mono" style={{ color: 'var(--c-text-body)' }}>
-              {metrics.sovi_score.toFixed(1)}
-            </span>
-          </div>
-          <div className="flex items-baseline justify-between text-xs py-1"
-            style={{ borderBottom: '1px solid var(--c-border)' }}>
-            <span style={{ color: 'var(--c-text-muted)' }}>Community resilience</span>
-            <span className="font-mono" style={{ color: 'var(--c-text-body)' }}>
-              {metrics.resl_score.toFixed(1)}
-            </span>
-          </div>
+          <PlainRow label="Social vulnerability" value={heatMetrics.sovi_score?.toFixed(1)} />
+          <PlainRow label="Community resilience" value={heatMetrics.resl_score?.toFixed(1)} />
           <div className="flex items-baseline justify-between text-xs py-1">
             <span style={{ color: 'var(--c-text-muted)' }}>Population</span>
             <span className="font-mono" style={{ color: 'var(--c-text-body)' }}>

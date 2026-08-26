@@ -1,38 +1,16 @@
 import { useMemo, useCallback, useState, useRef } from 'react'
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
+import {
+  TYPE_COLORS, STATE_ABBR, UNTYPED_COPY, NO_DATA,
+  hazardState, confidenceOpacity, countyMatchesFilter,
+} from './hazards'
 
 const GEO_URL = '/data/us-counties-10m.json'
 
-const TYPE_COLORS = {
-  shock:  '#C0583A',
-  stress: '#D4813B',
-  shift:  '#4B7CB8',
-}
-
-const STATE_ABBR = {
-  '01':'AL','02':'AK','04':'AZ','05':'AR','06':'CA','08':'CO','09':'CT',
-  '10':'DE','11':'DC','12':'FL','13':'GA','15':'HI','16':'ID','17':'IL',
-  '18':'IN','19':'IA','20':'KS','21':'KY','22':'LA','23':'ME','24':'MD',
-  '25':'MA','26':'MI','27':'MN','28':'MS','29':'MO','30':'MT','31':'NE',
-  '32':'NV','33':'NH','34':'NJ','35':'NM','36':'NY','37':'NC','38':'ND',
-  '39':'OH','40':'OK','41':'OR','42':'PA','44':'RI','45':'SC','46':'SD',
-  '47':'TN','48':'TX','49':'UT','50':'VT','51':'VA','53':'WA','54':'WV',
-  '55':'WI','56':'WY',
-}
-
-function countyMatchesFilter(county, filter) {
-  if (!filter) return true
-  const m = county.hazards.heat.metrics
-  if (filter === 'high-sovi')      return m.sovi_score >= 70
-  if (filter === 'low-resilience') return m.resl_score <= 40
-  if (filter === 'double-burden')  return county.hazards.heat.scores.stress >= 0.5 && m.sovi_score >= 70 && m.resl_score <= 40
-  return true
-}
-
 /**
- * @param {{ counties: import('../../types/heat-typology').CountyRecord[]|null, selectedFips: string|null, onSelect: (fips: string|null) => void, overlayFilter: string|null }} props
+ * @param {{ counties: import('../../types/heat-typology').CountyRecord[]|null, selectedFips: string|null, onSelect: (fips: string|null) => void, overlayFilter: string|null, hazard: string }} props
  */
-export default function HeatMap({ counties, selectedFips, onSelect, overlayFilter = null }) {
+export default function HeatMap({ counties, selectedFips, onSelect, overlayFilter = null, hazard = 'heat' }) {
   const containerRef = useRef(null)
   const [hoveredFips, setHoveredFips] = useState(null)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
@@ -46,6 +24,7 @@ export default function HeatMap({ counties, selectedFips, onSelect, overlayFilte
   }, [counties])
 
   const hoveredCounty = hoveredFips ? (fipsMap?.get(hoveredFips) ?? null) : null
+  const hovered = hoveredCounty ? hazardState(hoveredCounty, hazard) : null
 
   const handleClick = useCallback((geo) => {
     if (!fipsMap) return
@@ -82,16 +61,22 @@ export default function HeatMap({ counties, selectedFips, onSelect, overlayFilte
               const county = fipsMap?.get(fips)
               const isSelected = fips === selectedFips
 
+              // Counties outside the panel, counties with no record for this
+              // hazard, and counties the pipeline declined to classify all get
+              // the neutral land fill. Unclassified records still carry
+              // `scores`, but they are not meaningful — never colour by them.
               let fill = 'var(--c-border)'
               let fillOpacity = 0.4
 
               if (county) {
-                const { dominant, confidence } = county.hazards.heat
-                fill = TYPE_COLORS[dominant]
-                const matches = countyMatchesFilter(county, overlayFilter)
-                fillOpacity = matches
-                  ? Math.min(0.92, 0.22 + confidence * 1.0)
-                  : 0.06
+                const { state, record } = hazardState(county, hazard)
+                const matches = countyMatchesFilter(county, hazard, overlayFilter)
+                if (state === 'typed') {
+                  fill = TYPE_COLORS[record.dominant]
+                  fillOpacity = matches ? confidenceOpacity(record.confidence) : 0.06
+                } else {
+                  fillOpacity = matches ? 0.4 : 0.06
+                }
               }
 
               return (
@@ -131,7 +116,7 @@ export default function HeatMap({ counties, selectedFips, onSelect, overlayFilte
         </Geographies>
       </ComposableMap>
 
-      {hoveredCounty && (
+      {hoveredCounty && hovered && (
         <div
           style={{
             position: 'absolute',
@@ -153,9 +138,17 @@ export default function HeatMap({ counties, selectedFips, onSelect, overlayFilte
             {hoveredCounty.name}, {STATE_ABBR[hoveredCounty.state] ?? hoveredCounty.state}
           </span>
           <span style={{ color: 'var(--c-text-muted)', margin: '0 5px' }}>·</span>
-          <span style={{ color: TYPE_COLORS[hoveredCounty.hazards.heat.dominant], textTransform: 'capitalize' }}>
-            {hoveredCounty.hazards.heat.dominant}
-          </span>
+          {hovered.state === 'typed' ? (
+            <span style={{ color: TYPE_COLORS[hovered.record.dominant], textTransform: 'capitalize' }}>
+              {hovered.record.dominant}
+            </span>
+          ) : (
+            <span style={{ color: 'var(--c-text-muted)' }}>
+              {hovered.state === NO_DATA
+                ? UNTYPED_COPY[NO_DATA].long
+                : UNTYPED_COPY[hovered.state]?.short ?? 'unclassified'}
+            </span>
+          )}
         </div>
       )}
 

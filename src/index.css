@@ -38,11 +38,17 @@
   --c-map-selected: #FC4C02;
   --c-font-heading: 'Inter', system-ui, sans-serif;
   --c-font-mono: ui-monospace, monospace;
-  --c-heat-shock: #C0583A;
-  --c-heat-stress: #D4813B;
+  /* Typology palette. Mirrored in src/components/heat/hazards.js, which needs
+     real hex for the react-simple-maps style objects and the +'22' alpha
+     suffix — keep the two in sync. Re-stepped 2026-08 — the previous shock/stress pair
+     (#C0583A / #D4813B) sat at deltaE 10.7, under the 15 floor for normal
+     vision, so full-colour readers could not reliably tell them apart.
+     These validate at 23.7 normal / 21.6 deutan. Shift is unchanged. */
+  --c-heat-shock: #B4442F;
+  --c-heat-stress: #E0A03C;
   --c-heat-shift: #4B7CB8;
-  --c-heat-shock-bg: rgba(192, 88, 58, 0.133);
-  --c-heat-stress-bg: rgba(212, 129, 59, 0.133);
+  --c-heat-shock-bg: rgba(180, 68, 47, 0.133);
+  --c-heat-stress-bg: rgba(224, 160, 60, 0.133);
   --c-heat-shift-bg: rgba(75, 124, 184, 0.133);
 }
 
