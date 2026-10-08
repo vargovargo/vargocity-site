@@ -498,5 +498,25 @@
     "url": "https://www.frbsf.org/research-and-insights/publications/community-development-articles/2026/07/applying-federal-reserve-data-to-local-financial-inclusion-efforts-central-valley-california/",
     "citations": 0,
     "tags": ["policy", "finance"]
+  },
+  {
+    "id": "donnelly2026heat",
+    "title": "Inequities in heat-related emergency department visits in California from 2005–2017",
+    "authors": ["M Donnelly", "Brooke Lappe", "M Milet", "Jason Vargo"],
+    "year": 2026,
+    "venue": "PLOS Climate",
+    "url": "https://doi.org/10.1371/journal.pclm.0000586",
+    "citations": 0,
+    "tags": ["climate", "health"]
+  },
+  {
+    "id": "vargo2026oz-cra",
+    "title": "The Opportunity for Alignment: OZ Investments and the Community Reinvestment Act",
+    "authors": ["Jason Vargo"],
+    "year": 2026,
+    "venue": "Federal Reserve Bank of San Francisco Community Development Articles",
+    "url": "https://www.frbsf.org/research-and-insights/publications/community-development-articles/2026/09/opportunity-for-alignment-oz-cra/",
+    "citations": 0,
+    "tags": ["policy", "finance"]
   }
 ]
