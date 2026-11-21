@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yosemite Picks — vargo.city</title>
+  <meta name="description" content="Three quick Yosemite picks: film, hike, waterfall." />
+  <meta name="robots" content="noindex" />
+  <meta property="og:title" content="Yosemite picks: film, hike, waterfall" />
+  <meta property="og:description" content="Three taps. Then see how the crew voted." />
+  <link rel="icon" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F5EDE0;
+      --surface: #FAF4EA;
+      --border: #D8CCBA;
+      --text: #1C1714;
+      --text-body: #4A3F35;
+      --muted: #8A7A6A;
+      --accent: #B87333;
+      --selected: #B85C38;
+      --hover: #F0E8D8;
+      --invert-bg: #1C1714;
+      --invert-text: #FAF4EA;
+      --serif: 'Lora', Georgia, serif;
+      --sans: 'Inter', system-ui, sans-serif;
+    }
+
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--text-body);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+    main { max-width: 560px; margin: 0 auto; padding: 32px 16px 64px; }
+
+    .eyebrow {
+      font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--accent); font-weight: 600; margin-bottom: 8px;
+    }
+    h1 { font-family: var(--serif); color: var(--text); font-weight: 600; line-height: 1.2; font-size: 30px; margin-bottom: 10px; }
+    h2 { font-family: var(--serif); color: var(--text); font-weight: 600; font-size: 21px; line-height: 1.25; margin-bottom: 12px; }
+    h2 .num { color: var(--accent); margin-right: 6px; }
+    h3 { font-family: var(--serif); color: var(--text); font-size: 17px; margin-bottom: 10px; }
+    .lede { margin-bottom: 24px; }
+    .q { margin-bottom: 34px; }
+
+    /* Q1: posters */
+    .posters { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .poster {
+      position: relative; display: block; width: 100%; padding: 0; cursor: pointer;
+      background: var(--surface); border: 3px solid transparent; border-radius: 12px;
+      overflow: hidden; font: inherit; color: inherit; text-align: center;
+      transition: border-color .12s, transform .12s, opacity .12s;
+    }
+    .poster img { display: block; width: 100%; height: auto; aspect-ratio: 250 / 354; object-fit: contain; background: var(--invert-bg); }
+    .poster .cap { display: block; padding: 8px 6px 10px; font-family: var(--serif); font-weight: 600; color: var(--text); font-size: 15px; }
+    .poster:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .poster[aria-pressed=true] { border-color: var(--selected); transform: translateY(-2px); }
+    .posters.picked .poster[aria-pressed=false] { opacity: .55; }
+    .poster .check {
+      position: absolute; top: 8px; right: 8px; width: 32px; height: 32px; border-radius: 50%;
+      background: var(--selected); color: var(--invert-text); display: none; place-items: center;
+      font-weight: 700; box-shadow: 0 1px 4px rgba(0,0,0,.3);
+    }
+    .poster[aria-pressed=true] .check { display: grid; }
+
+    /* Q2, Q3: option list */
+    .choices { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .choice {
+      display: flex; align-items: center; gap: 10px; width: 100%; min-height: 52px;
+      padding: 10px 12px; text-align: left; cursor: pointer;
+      font: inherit; font-weight: 500; color: var(--text);
+      background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px;
+      transition: border-color .12s, background .12s;
+    }
+    .choice:hover { background: var(--hover); }
+    .choice:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .choice .dot { flex: none; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--border); }
+    .choice[aria-pressed=true] { border-color: var(--selected); background: var(--hover); }
+    .choice[aria-pressed=true] .dot { border: 6px solid var(--selected); }
+
+    .suggest { margin-top: 14px; }
+    label.sub { display: block; font-size: 14px; font-weight: 500; color: var(--text-body); margin-bottom: 6px; }
+    .suggest input[type=text] { margin-bottom: 0; }
+    .suggested { margin-top: 18px; }
+    .suggested h4 { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 4px; }
+    label.field { display: block; font-family: var(--serif); font-weight: 600; color: var(--text); margin-bottom: 10px; font-size: 19px; }
+    input[type=text] {
+      width: 100%; font: inherit; color: var(--text);
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+      padding: 12px 14px; margin-bottom: 24px;
+    }
+    input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+
+    .row { display: flex; gap: 10px; align-items: center; }
+    .grow { flex: 1; }
+    button.btn {
+      font: inherit; font-weight: 600; cursor: pointer; border-radius: 10px;
+      padding: 13px 20px; min-height: 48px; border: 1.5px solid var(--invert-bg);
+      background: var(--invert-bg); color: var(--invert-text);
+    }
+    button.btn.ghost { background: transparent; color: var(--text); border-color: var(--border); }
+    button.btn:disabled { opacity: .35; cursor: not-allowed; }
+    button.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    button.link {
+      font: inherit; background: none; border: 0; color: var(--accent); cursor: pointer;
+      text-decoration: underline; text-underline-offset: 3px; padding: 4px 0;
+    }
+    .notice {
+      background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+      border-radius: 8px; padding: 10px 14px; margin-bottom: 22px; font-size: 14.5px;
+    }
+    .error { color: var(--selected); font-size: 14px; margin: -10px 0 14px; }
+
+    /* Results */
+    section.block { border-top: 1px solid var(--border); padding-top: 20px; margin-bottom: 26px; }
+    .score { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .score .side { text-align: center; }
+    .score img { width: 100%; max-width: 130px; height: auto; aspect-ratio: 250 / 354; object-fit: contain; background: var(--invert-bg); border-radius: 8px; display: block; margin: 0 auto 8px; }
+    .score .n { font-family: var(--serif); font-size: 32px; font-weight: 600; color: var(--text); line-height: 1; font-variant-numeric: tabular-nums; }
+    .score .lbl { font-size: 13px; color: var(--muted); }
+    .score .side.lead .n { color: var(--selected); }
+    .split { display: flex; height: 12px; border-radius: 6px; overflow: hidden; background: var(--border); margin-bottom: 10px; }
+    .split div { background: var(--muted); }
+    .split div.lead { background: var(--selected); }
+    .split div + div { border-left: 2px solid var(--bg); }
+    .verdict { text-align: center; color: var(--text); font-weight: 500; }
+    .bars { display: grid; gap: 12px; }
+    .bar-head { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; color: var(--text); margin-bottom: 4px; }
+    .bar-head .c { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+    .bar-head .you { color: var(--muted); font-weight: 400; font-size: 13px; }
+    .track { height: 10px; background: var(--border); border-radius: 5px; overflow: hidden; }
+    .fill { height: 100%; background: var(--muted); border-radius: 5px; }
+    .fill.lead { background: var(--selected); }
+    ul.plain { list-style: none; }
+    ul.plain li { padding: 5px 0; color: var(--text); }
+    .empty { color: var(--muted); padding: 20px 0; }
+    footer { margin-top: 40px; font-size: 13px; color: var(--muted); }
+    footer a { color: var(--muted); }
+  </style>
+</head>
+<body>
+<main id="app" aria-live="polite"></main>
+
+<script>
+(() => {
+  const API = '/api/yosemite'
+  // Keep option ids in sync with OPTIONS in functions/api/yosemite.js.
+  const QUESTIONS = [
+    { id: 'hike', title: 'Favorite hike', suggest: 'Suggest another hike', suggestHead: 'Hikes people suggested', options: [
+      { id: 'mirror-lake', label: 'Mirror Lake' },
+      { id: 'yosemite-falls', label: 'Yosemite Falls' },
+      { id: 'glacier-point', label: 'Glacier Point' },
+      { id: 'mist-trail', label: 'Mist Trail' },
+    ] },
+    { id: 'fall', title: 'Best waterfall', options: [
+      { id: 'yosemite', label: 'Yosemite Falls' },
+      { id: 'vernal', label: 'Vernal Fall' },
+      { id: 'nevada', label: 'Nevada Fall' },
+      { id: 'bridalveil', label: 'Bridalveil Fall' },
+      { id: 'horsetail', label: 'Horsetail Fall' },
+    ] },
+    { id: 'film', title: 'Head to head: Free Solo or The Dawn Wall?', suggest: 'Suggest another Yosemite climbing film', suggestHead: 'Suggested for movie night', options: [
+      { id: 'free-solo', label: 'Free Solo', img: 'free-solo.jpg' },
+      { id: 'dawn-wall', label: 'The Dawn Wall', img: 'dawn-wall.jpg' },
+    ] },
+  ]
+  const SUGGEST = QUESTIONS.filter(q => q.suggest).map(q => q.id)
+  const label = (q, id) => QUESTIONS.find(x => x.id === q)?.options.find(o => o.id === id)?.label || ''
+
+  // Per-phone memory: an id so answering again replaces the old answers, and the last answers.
+  const store = {
+    get(k) { try { return JSON.parse(localStorage.getItem('yos.' + k)) } catch { return null } },
+    set(k, v) { try { localStorage.setItem('yos.' + k, JSON.stringify(v)) } catch {} },
+  }
+  let deviceId = store.get('device')
+  if (!deviceId) {
+    deviceId = crypto.randomUUID ? crypto.randomUUID() : (Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12))
+    store.set('device', deviceId)
+  }
+  let last = store.get('answers') // { hike, fall, film, suggest_hike, suggest_film }
+
+  const state = {
+    view: 'vote',
+    answers: Object.fromEntries(QUESTIONS.map(q => [q.id, last?.[q.id] || ''])),
+    suggest: Object.fromEntries(SUGGEST.map(q => [q, last?.[`suggest_${q}`] || ''])),
+    busy: false, error: '',
+  }
+  let results = null
+
+  const app = document.getElementById('app')
+  const h = (tag, attrs = {}, ...kids) => {
+    const el = document.createElement(tag)
+    for (const [k, v] of Object.entries(attrs)) {
+      if (v == null || v === false) continue
+      if (k.startsWith('on')) el.addEventListener(k.slice(2), v)
+      else if (k === 'text') el.textContent = v
+      else el.setAttribute(k, v === true ? '' : v)
+    }
+    for (const kid of kids.flat()) if (kid != null && kid !== false) el.append(kid)
+    return el
+  }
+
+  const pick = (q, id) => {
+    state.answers[q] = state.answers[q] === id ? '' : id // tap again to clear
+    state.error = ''; render()
+  }
+
+  const canSubmit = () => Object.values(state.answers).some(Boolean) || Object.values(state.suggest).some(s => s.trim())
+
+  function suggestBox(q) {
+    if (!q.suggest) return null
+    const id = `suggest-${q.id}`
+    return h('div', { class: 'suggest' },
+      h('label', { class: 'sub', for: id, text: q.suggest }),
+      h('input', { type: 'text', id, maxlength: 80, value: state.suggest[q.id], placeholder: 'Optional',
+        oninput: e => {
+          state.suggest[q.id] = e.target.value
+          const btn = document.getElementById('submit')
+          if (btn && !state.busy) btn.disabled = !canSubmit()
+        } }))
+  }
+
+  function questionBlock(q, i) {
+    const sel = state.answers[q.id]
+    const head = h('h2', { id: `q-${q.id}` }, h('span', { class: 'num', text: `${i + 1}.` }), q.title)
+    if (q.id === 'film') {
+      return h('div', { class: 'q' }, head,
+        h('div', { class: 'posters' + (sel ? ' picked' : ''), role: 'group', 'aria-labelledby': `q-${q.id}` },
+          q.options.map(o => h('button', { class: 'poster', 'aria-pressed': String(sel === o.id), 'aria-label': o.label, onclick: () => pick(q.id, o.id) },
+            h('img', { src: o.img, alt: '', width: 250, height: 354 }),
+            h('span', { class: 'check', 'aria-hidden': 'true', text: '✓' }),
+            h('span', { class: 'cap', text: o.label })))),
+        suggestBox(q))
+    }
+    return h('div', { class: 'q' }, head,
+      h('div', { class: 'choices', role: 'group', 'aria-labelledby': `q-${q.id}` },
+        q.options.map(o => h('button', { class: 'choice', 'aria-pressed': String(sel === o.id), onclick: () => pick(q.id, o.id) },
+          h('span', { class: 'dot', 'aria-hidden': 'true' }), o.label))),
+      suggestBox(q))
+  }
+
+  function viewVote() {
+    return [
+      h('div', { class: 'eyebrow', text: 'Yosemite trip' }),
+      h('h1', { text: 'Three quick picks' }),
+      h('p', { class: 'lede', text: 'Hike, waterfall, film. Gut calls, one tap each. Then see how the crew voted.' }),
+      last ? h('div', { class: 'notice', text: 'Your earlier picks are filled in. Change anything and resubmit.' }) : null,
+      QUESTIONS.map(questionBlock),
+      state.error ? h('p', { class: 'error', text: state.error }) : null,
+      h('div', { class: 'row' },
+        h('button', { class: 'btn grow', id: 'submit', disabled: !canSubmit() || state.busy, onclick: submit, text: state.busy ? 'Sending…' : (last ? 'Update my picks' : 'Submit') })),
+      h('p', { style: 'margin-top:14px' }, h('button', { class: 'link', onclick: showResults, text: 'Just show me the results' })),
+    ]
+  }
+
+  async function submit() {
+    state.busy = true; state.error = ''; render()
+    try {
+      const res = await fetch(API, {
+        method: 'POST', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ deviceId, ...state.answers, ...Object.fromEntries(SUGGEST.map(q => [`suggest_${q}`, state.suggest[q]])) }),
+      })
+      const data = await res.json().catch(() => ({}))
+      state.busy = false
+      if (!res.ok) {
+        state.error = data.error === 'not_configured' ? 'This isn’t hooked up to storage yet. Tell Jason!' : 'Something went wrong saving that. Try again?'
+        return render()
+      }
+      const { createdAt: _c, updatedAt: _u, ...picks } = data.vote
+      last = picks
+      store.set('answers', last)
+      showResults()
+    } catch {
+      state.busy = false; state.error = 'Couldn’t reach the server. Check your signal and try again.'; render()
+    }
+  }
+
+  function showResults() {
+    history.replaceState(null, '', '?view=results')
+    state.view = 'results'; results = null; render(); window.scrollTo(0, 0); loadResults()
+  }
+
+  async function loadResults() {
+    try {
+      const res = await fetch(`${API}?me=${encodeURIComponent(deviceId)}`, { cache: 'no-store' })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'failed')
+      // KV's listing can trail a fresh write by a few seconds; count our own answers if missing.
+      if (!data.mine && last) {
+        data.respondents++
+        for (const q of QUESTIONS) if (last[q.id] && data.counts[q.id]?.[last[q.id]] != null) data.counts[q.id][last[q.id]]++
+        for (const q of SUGGEST) if (last[`suggest_${q}`]) data.suggestions[q].push(last[`suggest_${q}`])
+      }
+      results = data
+    } catch (e) {
+      results = { error: e.message === 'not_configured' ? 'Storage isn’t connected yet.' : 'Couldn’t load results.' }
+    }
+    render()
+  }
+
+  function filmResult(counts) {
+    const [fa, fb] = QUESTIONS.find(q => q.id === 'film').options
+    const a = counts[fa.id], b = counts[fb.id], n = a + b
+    if (!n) return h('p', { class: 'empty', text: 'No film votes yet.' })
+    const side = (o, c, lead) => h('div', { class: 'side' + (lead ? ' lead' : '') },
+      h('img', { src: o.img, alt: o.label, width: 130, height: 184 }),
+      h('div', { class: 'n', text: c }),
+      h('div', { class: 'lbl', text: `${c === 1 ? 'vote' : 'votes'} · ${Math.round((c / n) * 100)}%` }))
+    return [
+      h('div', { class: 'score' }, side(fa, a, a > b), side(fb, b, b > a)),
+      h('div', { class: 'split', role: 'img', 'aria-label': `${fa.label} ${a}, ${fb.label} ${b}` },
+        a ? h('div', { class: a > b ? 'lead' : '', style: `flex:${a}` }) : null, b ? h('div', { class: b > a ? 'lead' : '', style: `flex:${b}` }) : null),
+      h('p', { class: 'verdict', text: a === b ? `Dead even, ${a}–${b}.` : `${a > b ? fa.label : fb.label} leads, ${Math.max(a, b)}–${Math.min(a, b)}.` }),
+    ]
+  }
+
+  function barResult(q, counts) {
+    const rows = q.options.map(o => ({ o, c: counts[o.id] || 0 })).sort((x, y) => y.c - x.c)
+    const max = Math.max(...rows.map(r => r.c))
+    if (!max) return h('p', { class: 'empty', text: 'No votes yet.' })
+    return h('div', { class: 'bars' }, rows.map(({ o, c }) => h('div', {},
+      h('div', { class: 'bar-head' },
+        h('span', {}, o.label, last?.[q.id] === o.id ? h('span', { class: 'you', text: ' · your pick' }) : null),
+        h('span', { class: 'c', text: c })),
+      h('div', { class: 'track', role: 'img', 'aria-label': `${o.label}: ${c}` },
+        h('div', { class: 'fill' + (c === max ? ' lead' : ''), style: `width:${(c / max) * 100}%` })))))
+  }
+
+  function viewResults() {
+    const head = [
+      h('div', { class: 'eyebrow', text: 'Yosemite trip' }),
+      h('h1', { text: 'How the crew voted' }),
+    ]
+    const again = h('div', { class: 'row' },
+      h('button', { class: 'btn ghost', onclick: () => { results = null; render(); loadResults() }, text: 'Refresh' }),
+      h('button', { class: 'btn grow', onclick: () => { history.replaceState(null, '', location.pathname); state.view = 'vote'; render(); window.scrollTo(0, 0) }, text: last ? 'Change my picks' : 'Vote' }))
+    if (!results) return [...head, h('p', { class: 'empty', text: 'Loading…' })]
+    if (results.error) return [...head, h('p', { class: 'empty', text: results.error }), again]
+    const n = results.respondents
+    if (!n) return [...head, h('p', { class: 'empty', text: 'No votes yet. Be the first.' }), again]
+
+    const suggList = (q) => {
+      const items = [...new Set((results.suggestions[q.id] || []).map(s => s.trim()).filter(Boolean))]
+      return items.length ? h('div', { class: 'suggested' }, h('h4', { text: q.suggestHead }), h('ul', { class: 'plain' }, items.map(s => h('li', { text: s })))) : null
+    }
+    return [
+      ...head,
+      h('p', { class: 'lede', text: `${n} ${n === 1 ? 'person has' : 'people have'} voted so far.` }),
+      QUESTIONS.map(q => h('section', { class: 'block' },
+        h('h3', { text: q.id === 'film' ? 'Free Solo vs. The Dawn Wall' : q.title }),
+        q.id === 'film' ? filmResult(results.counts.film) : barResult(q, results.counts[q.id]),
+        suggList(q))),
+      again,
+    ]
+  }
+
+  function render() {
+    const view = (state.view === 'results' ? viewResults() : viewVote()).flat()
+    app.replaceChildren(...view.filter(n => n != null && n !== false), h('footer', {}, h('a', { href: '/', text: 'vargo.city' })))
+  }
+
+  if (new URLSearchParams(location.search).get('view') === 'results') showResults()
+  else render()
+})()
+</script>
+</body>
+</html>
