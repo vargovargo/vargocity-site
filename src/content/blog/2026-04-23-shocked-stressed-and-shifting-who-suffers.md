@@ -49,9 +49,9 @@ And the cost of staying cool rises faster for the people who can least afford it
 
 Here is what makes all of this genuinely a story about adaptation rather than just exposure.
 
-Park, Pankratz, and Behrer note one finding that cuts against the weight of the rest of their paper. Between 2001 and 2018, the heat-sensitivity of workplace injuries in California declined. The effect of a day above 100°F on worker safety falls by roughly a third over the period. By 2005 onward, days above 100°F no longer produce a statistically distinguishable injury increase at all. 2005 is the year California implemented the first heat safety standard in the country — mandated water, shade, cool-down breaks, and acclimatization protocols for outdoor workers in agriculture, construction, and related sectors.
+Park, Pankratz, and Behrer note one finding that cuts against the weight of the rest of their paper. Between 2001 and 2018, the heat-sensitivity of workplace injuries in California declined. The effect of a day above 90°F on worker safety falls by roughly a third over the period, and from 2005 onward, days above 100°F no longer produce a statistically distinguishable injury increase at all. 2005 is the year California implemented the first heat safety standard in the country — mandated water, shade, cool-down breaks, and acclimatization protocols for outdoor workers in agriculture, construction, and related sectors. The authors stop short of saying the standard caused the decline. But when they test other years as the turning point, nothing else lines up.
 
-An adaptation that worked.
+An adaptation that, by every test they could run, appears to have worked.
 
 Not perfectly, not everywhere, not for every worker — but measurably, over time, in the data, for a specific kind of worker in a specific regulatory environment. Stress adaptation can succeed when the intervention is designed for the exposure. The heat didn't go away; the protection of the people most exposed to it got better.
 
